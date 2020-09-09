@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml"     
+     xmlns:cc="http://java.sun.com/jsf/composite"    
+     xmlns:hsk="http://xmlns.jcp.org/jsf/composite/hsk"
+     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <cc:interface componentType="menuContainer">
+        <cc:attribute name="value"/>
+        <cc:attribute name="type" default="root"/>
+        <cc:attribute name="index" type="java.lang.Integer"/>
+    </cc:interface>
+    <cc:implementation>
+        <c:choose>
+            <c:when test="#{cc.attrs.type == 'root'}">
+                <ul class="c-sidebar-nav">
+                    <c:forEach items="#{cc.value}" varStatus="loop" var="item">
+                        <hsk:menu value="#{cc.parent.value.get(loop.index)}" 
+                                   type="item"
+                                   index="#{loop.index}"/>
+                    </c:forEach>
+                </ul>
+            </c:when>
+            <c:when test="#{cc.attrs.type == 'item' and !cc.value.isLink}">
+                <li class="c-sidebar-nav-dropdown">
+                    <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                        <i class="c-sidebar-nav-icon fa fa-#{cc.value.icon}"/>
+                        #{cc.value.name}
+                    </a>
+                    <ul class="c-sidebar-nav-dropdown-items">
+                        <c:forEach items="#{cc.value.items}" varStatus="loop" var="item">
+                            <hsk:menu value="#{cc.parent.value.items.get(loop.index)}" 
+                                       type="item"
+                                       index="#{loop.index}"/>
+                        </c:forEach>
+                    </ul>
+                </li>
+            </c:when>
+            <c:when test="#{cc.attrs.type == 'item' and cc.value.isLink}">
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="#{cc.value.pathTarget}">
+                        <i class="c-sidebar-nav-icon fa fa-#{cc.value.icon}"/>
+                        #{cc.value.name}
+                    </a>
+                </li>
+            </c:when>
+        </c:choose>
+    </cc:implementation>
+</div>

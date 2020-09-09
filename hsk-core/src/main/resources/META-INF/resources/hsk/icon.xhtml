@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:cc="http://java.sun.com/jsf/composite">
+    <cc:interface>
+        <cc:attribute name="name" required="true"/>
+        <cc:attribute name="group" default="default"/>
+        <cc:attribute name="styleClass" default="c-icon"/>
+        <cc:attribute name="style"/>
+        <cc:attribute name="width"/>
+        <cc:attribute name="height"/>
+        <cc:attribute name="alt"/>
+        <cc:attribute name="size" default="0"/>
+        <cc:attribute name="level"/>
+        <cc:attribute name="title"/>
+        <cc:attribute name="src" default="svg/#{cc.attrs.group}.svg"/>
+        <cc:attribute name="svgStyleClass" default="#{cc.attrs.styleClass} c-icon-#{cc.attrs.size}xl text-#{cc.attrs.level}"/>
+        <cc:attribute name="xlinkHref" default="#{resource[cc.attrs.src]}##{cc.attrs.name}"/>
+    </cc:interface>
+    <cc:implementation >
+        <svg class="#{cc.attrs.svgStyleClass}"
+             style="#{cc.attrs.style}"
+             width="#{cc.attrs.width}"
+             height="#{cc.attrs.height}"
+             alt="#{cc.attrs.alt}">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#{cc.attrs.xlinkHref}"></use>
+            <title>#{cc.attrs.title}</title>
+        </svg>
+    </cc:implementation>
+</div>

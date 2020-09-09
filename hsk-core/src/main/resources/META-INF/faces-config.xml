@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.3" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd">
+    <factory>
+        <!--exception-handler-factory>com.hiska.faces.factory.ExceptionResultHandlerFactory</exception-handler-factory-->
+    </factory>
+    <application>
+        <action-listener>com.hiska.faces.application.ActionResultListener</action-listener>
+        <el-resolver>com.hiska.faces.application.ELI18NResolver</el-resolver>
+        <navigation-handler>com.hiska.faces.application.NavegationRedirectHandler</navigation-handler>
+        <resource-bundle>
+            <base-name>com.hiska.faces.label</base-name>
+            <var>HSK</var>
+        </resource-bundle>
+    </application>
+    <lifecycle>
+        <phase-listener>com.hiska.faces.KeepScopedListener</phase-listener>
+    </lifecycle>
+    <converter>
+        <converter-id>javax.faces.Object</converter-id>
+        <converter-class>com.hiska.faces.converter.ObjectConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>javax.faces.String</converter-id>
+        <converter-class>com.hiska.faces.converter.StringConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>javax.faces.Date</converter-id>
+        <converter-class>com.hiska.faces.converter.DateConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>hiska.faces.Param</converter-id>
+        <converter-class>com.hiska.faces.converter.ParamConverter</converter-class>
+    </converter>
+</faces-config>

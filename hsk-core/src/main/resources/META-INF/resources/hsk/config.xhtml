@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml"     
+     xmlns:cc="http://java.sun.com/jsf/composite"    
+     xmlns:hsk="http://xmlns.jcp.org/jsf/composite/hsk"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+     xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <cc:interface>
+        <cc:attribute name="fullName"/>
+        <cc:attribute name="email"/>
+    </cc:interface>
+    <cc:implementation>
+        <div class="c-sidebar c-sidebar-lg c-sidebar-light c-sidebar-right c-sidebar-overlaid" id="#{cc.id}">
+            <button class="c-sidebar-close c-class-toggler"
+                    type="button"
+                    data-target="##{cc.id}" 
+                    data-class="c-sidebar-show"
+                    responsive="true">
+                <hsk:icon name="cil-x"/>
+            </button>
+            <ul class="nav nav-tabs nav-underline nav-underline-primary">
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#timeline" role="tab">
+                        <hsk:icon name="cil-list" />
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#messages" role="tab">
+                        <hsk:icon name="cil-speech" />
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+
+                <div class="tab-pane" id="timeline">
+                    <div class="list-group list-group-accent">
+                        <strong class="list-group-item list-group-item-accent-info text-center text-white bg-info">
+                            #{_perfil.nombre}
+                        </strong>
+                        <div class="list-group-item list-group-item-accent-info list-group-item-divider">
+                            <div class="text-truncate font-weight-bold">
+                                <span class="la la-lg la-address-card"/>
+                                #{_perfil.usuario.nombre}
+                            </div>
+                            <div class="small">
+                                <span class="la la-lg la-envelope"/>
+                                #{_perfil.usuario.correo}
+                                <br/>
+                                <span class="la la-lg la-calendar-check"/>
+                                <h:outputText value="#{_perfil.fecha}">
+                                    <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+                                </h:outputText>
+                                <br/>
+                                <span class="la la-lg la-building"/>
+                                #{_perfil.coreuiicipante.nombre}
+                                <br/>
+                                <span class="la la-lg la-map-marker"/>
+                                #{_perfil.agencia.nombre}
+                            </div>
+                        </div>
+                        <div class="list-group-item list-group-item-accent-danger">
+                            <div class="text-truncate font-weight-bold">
+                                <span class="la la-lg la-toolbox"/>
+                                #{HSK.ROL_PERFIL}
+                            </div>
+                            <div class="overflow-auto small">
+                                <c:forEach var="it" items="#{_perfil.roles}">
+                                    <span class="badge badge-info">#{it}</span>
+                                </c:forEach>
+                            </div>
+                        </div>
+                        <strong class="list-group-item list-group-item-accent-warning text-center text-white bg-warning">
+                            #{HSK.INF_SYSTEM}
+                        </strong>
+                        <div class="list-group-item list-group-item-accent-info list-group-item-divider">
+                            <span class="la la-lg la-box"></span>
+                            <b>#{_config.title}</b>
+                            <br/>
+                            <span class="la la-lg la-boxes"></span>
+                            #{_help.recurso.description}
+                            <br/>
+                            <span class="la la-lg la-file-code"></span>
+                            #{_help.recurso.path}
+                            <br/>
+                            <span class="la la-thumbtack"></span>
+                            #{_help.recurso.rol}
+                        </div>
+                        <div class="list-group-item list-group-item-accent-warning list-group-item-divider">
+                            <table>
+                                <c:forEach items="#{_perfil.sistemas}" var="item">
+                                    <tr>
+                                        <td>
+                                            <span class="fa fa-circle text-#{item.estado=='ABIERTO'? 'success' : item.estado=='CERRADO'?  'danger' : 'muted'}" title="#{item.estado}"/>
+
+                                        </td>
+                                        <th>
+                                            #{item.nombre}
+                                        </th>
+                                        <td><span class="la la-lg la-calendar"/></td>
+                                        <td>
+                                            <h:outputText value="#{item.fecha}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                            </h:outputText>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                            <br/>
+                            <span class="la la-lg la-calendar"/>
+                            <b>#{HSK.DATE_LOGIN}:</b>
+                            <h:outputText value="#{_config.today}">
+                                <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+                            </h:outputText>
+                            <br/>
+                            <span class="la la-lg la-calendar"/>
+                            <b>#{HSK.DATE_CONF}:</b>
+                            <h:outputText value="#{_config.today}">
+                                <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+                            </h:outputText>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane p-3 active" id="messages">
+                    <hsk:messageHistory id="message-history"/>
+                </div>
+            </div>
+        </div>
+    </cc:implementation>
+</div>

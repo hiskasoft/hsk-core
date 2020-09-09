@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:cc="http://java.sun.com/jsf/composite"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+     xmlns:hsk="http://xmlns.jcp.org/jsf/composite/hsk">
+    <cc:interface>
+    </cc:interface>
+    <cc:implementation>
+        <div id="#{cc.clientId}" class="card #{cc.attrs.id}">
+            <div class="card-header font-weight-bold">
+                <cc:renderFacet name="header"/>
+            </div>
+            <div class="card-body">
+                <cc:insertChildren/>
+            </div>
+            <div class="card-footer">
+                <cc:renderFacet name="footer"/>
+            </div>
+        </div>
+    </cc:implementation>
+</div>

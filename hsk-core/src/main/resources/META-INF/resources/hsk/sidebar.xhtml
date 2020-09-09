@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml"     
+     xmlns:cc="http://java.sun.com/jsf/composite"     
+     xmlns:hsk="http://xmlns.jcp.org/jsf/composite/hsk"
+     xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <cc:interface>
+        <cc:attribute name="title"/>
+        <cc:attribute name="banner"/>
+        <cc:attribute name="logo"/>
+        <cc:attribute name="menus"/>
+        <cc:attribute name="grupo" default="default"/>
+    </cc:interface>
+    <cc:implementation>
+        <div class="c-sidebar c-sidebar-fixed c-sidebar-lg-show" id="#{cc.id}">
+            <div class="c-sidebar-brand d-lg-down-none c-env svg-white">
+                <hsk:icon name="#{cc.attrs.banner}"
+                         group="#{cc.attrs.grupo}"
+                         styleClass="c-sidebar-brand-full" 
+                         width="343" 
+                         height="48"
+                         alt="#{cc.attrs.title}" />
+                <hsk:icon name="#{cc.attrs.logo}" 
+                         group="#{cc.attrs.grupo}"
+                         styleClass="c-sidebar-brand-minimized" 
+                         width="48" 
+                         height="48"
+                         alt="#{cc.attrs.title}"/>
+            </div>
+            <hsk:menu value="#{cc.attrs.menus}">
+                <f:facet name="title">
+                    <hsk:icon name="#{cc.attrs.logo}"
+                             group="#{cc.attrs.grupo}"
+                             styleClass="c-sidebar-brand-minimized bg-white" 
+                             style="height: 50px!important;"
+                             alt="#{cc.attrs.title}" />
+                </f:facet>
+            </hsk:menu>
+            <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="##{cc.id}"
+                    data-class="c-sidebar-minimized">
+            </button>
+        </div>
+    </cc:implementation>
+</div>

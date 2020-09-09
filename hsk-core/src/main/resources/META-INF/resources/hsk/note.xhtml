@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:cc="http://java.sun.com/jsf/composite">
+    <cc:interface>
+        <cc:attribute name="title"/>
+        <cc:attribute name="level" default="warning"/>
+        <cc:facet name="footer"/>
+    </cc:interface>
+    <cc:implementation>
+        <div class="alert alert-#{cc.attrs.level} alert-dismissible fade show" role="alert">
+            <h4 class="alert-heading">
+                #{cc.attrs.title}
+            </h4>
+            <div>
+                <cc:insertChildren/>
+            </div>
+            <hr/>
+            <div class="mb-0">
+                <cc:insertFacet name="footer"/>
+            </div>
+        </div>
+    </cc:implementation>
+</div>
