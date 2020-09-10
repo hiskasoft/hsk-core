@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:cc="http://java.sun.com/jsf/composite" xmlns="http://java.sun.com/xml/ns/javaee" version="2.0">
     <xsl:output omit-xml-declaration="yes" indent="yes"/>
+    <xsl:param name="URL"/>
     <xsl:template match="/">
         <facelet-taglib xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd" version="2.0">
-            <namespace>http://hiskasoft.com/jsf/hsk</namespace>
+            <namespace>
+                <xsl:value-of select="$URL"/>
+            </namespace>
             <xsl:apply-templates/>
         </facelet-taglib>
     </xsl:template>

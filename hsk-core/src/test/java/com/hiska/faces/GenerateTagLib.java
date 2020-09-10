@@ -22,22 +22,27 @@ public class GenerateTagLib {
    }
 
    public static void generate() throws Exception {
-      TransformerFactory factory = TransformerFactory.newInstance();
       File resources = new File("src/main/resources/META-INF/resources");
       File target = new File("target/generated-xml/");
       List<Entry> entries = createDocuments(resources, target);
       for (Entry entry : entries) {
          entry.document = null;
-         System.out.println("-->" + entry);
-         File fileXslt = new File("src/test/resources/taglib.xslt");
-         File fileOutput = new File("src/main/resources/META-INF/" + entry.name + ".taglib.xml");
-         Source xslt = new StreamSource(fileXslt);
-         Source xml = new StreamSource(entry.file);
-         Transformer transformer = factory.newTransformer(xslt);
-         // StreamResult result = new StreamResult(System.out);
-         StreamResult result = new StreamResult(fileOutput);
-         transformer.transform(xml, result);
+         File fileOutput = new File("src/main/resources/META-INF/" + entry.name + "-cc.taglib.xml");
+         createTagLib(entry.file, fileOutput, "http://xmlns.jcp.org/jsf/composite/hsk");
+         fileOutput = new File("src/main/resources/META-INF/" + entry.name + ".taglib.xml");
+         createTagLib(entry.file, fileOutput, "http://hiskasoft.com/jsf/hsk");
       }
+   }
+
+   public static void createTagLib(File fileInput, File fileOutput, String url) throws Exception {
+      TransformerFactory factory = TransformerFactory.newInstance();
+      File fileXslt = new File("src/test/resources/taglib.xslt");
+      Source xslt = new StreamSource(fileXslt);
+      Source xml = new StreamSource(fileInput);
+      Transformer transformer = factory.newTransformer(xslt);
+      transformer.setParameter("URL", url);
+      StreamResult result = new StreamResult(fileOutput);
+      transformer.transform(xml, result);
    }
 
    public static List<Entry> createDocuments(File resources, File output) throws Exception {
