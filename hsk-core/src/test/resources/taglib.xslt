@@ -14,8 +14,8 @@
         <xsl:apply-templates/>
     </xsl:template>
     <xsl:template match="cc:component">
-        <xsl:comment>Componente from
-            <xsl:value-of select="@fileName"/>.
+        <xsl:comment>
+            <xsl:value-of select="@fileName"/>
         </xsl:comment>
         <xsl:apply-templates/>
     </xsl:template>
@@ -30,7 +30,9 @@
                 <xsl:value-of select="../@name"/>
             </tag-name>
             <component>
-                <component-type>javax.faces.component.UINamingContainer</component-type>
+                <resource-id>
+                    <xsl:value-of select="../@resourceId"/>
+                </resource-id>
             </component>
             <xsl:apply-templates/>
         </tag>

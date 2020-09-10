@@ -65,6 +65,7 @@
                                     <directory>${basedir}/target/sources-dependency</directory>
                                     <includes>
                                         <include>META-INF/resources/**/*.*</include>
+                                        <include>**/*.properties</include>
                                     </includes>
                                 </resource>
                                 <resource>

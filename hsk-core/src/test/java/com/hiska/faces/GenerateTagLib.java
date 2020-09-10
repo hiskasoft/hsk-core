@@ -64,6 +64,7 @@ public class GenerateTagLib {
                System.out.println("APPEND: " + xhtml.getName());
                // --------
                Element fileElement = entry.document.createElementNS(url, "cc:component");
+               fileElement.setAttribute("resourceId", lib.getName() + "/" + xhtml.getName());
                fileElement.setAttribute("fileName", xhtml.getName());
                fileElement.setAttribute("name", xhtml.getName().replace(".xhtml", ""));
                // --------
@@ -103,7 +104,7 @@ public class GenerateTagLib {
       DOMSource source = new DOMSource(doc);
       StreamResult result = new StreamResult(file);
       transformer.transform(source, result);
-      StreamResult consoleResult = new StreamResult(System.out);
-      transformer.transform(source, consoleResult);
+//      StreamResult consoleResult = new StreamResult(System.out);
+//      transformer.transform(source, consoleResult);
    }
 }
