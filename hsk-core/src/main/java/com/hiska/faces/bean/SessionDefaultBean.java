@@ -10,22 +10,17 @@
  */
 package com.hiska.faces.bean;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-
 /**
  * @author Willyams Yujra
  */
-@SessionScoped
-@ManagedBean(name = "_session")
 @lombok.Getter
 @lombok.Setter
 @lombok.ToString
 @SuppressWarnings("unchecked")
-public class SessionBean {
+public class SessionDefaultBean {
    /**
     * Creates a new instance of SessionBean
     */
-   public SessionBean() {
+   public SessionDefaultBean() {
    }
 }

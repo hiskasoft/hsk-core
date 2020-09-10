@@ -134,12 +134,14 @@
                 <artifactId>lombok</artifactId>
                 <version>1.18.12</version>
                 <scope>provided</scope>
+                <optional>true</optional>
             </dependency>
             <dependency>
                 <groupId>javax</groupId>
                 <artifactId>javaee-api</artifactId>
                 <version>8.0</version>
                 <scope>provided</scope>
+                <optional>true</optional>
             </dependency>
         </dependencies>
     </dependencyManagement>

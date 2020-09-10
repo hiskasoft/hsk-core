@@ -14,16 +14,12 @@ import com.hiska.faces.cc.Menu;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
-@SessionScoped
-@ManagedBean(name = "_config")
 @lombok.Getter
 @lombok.Setter
 @lombok.ToString
 @SuppressWarnings("unchecked")
-public class ConfigBean {
+public class ConfigDefaultBean {
    private String title = "Sistema de Atencion de Servicios";
    private String template = "/resources/template/coreui.xhtml";
    private String styleClass = "dev";

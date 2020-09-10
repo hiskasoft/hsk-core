@@ -21,21 +21,17 @@ import javax.faces.model.SelectItem;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 /**
  * @author Willyams Yujra
  */
-@RequestScoped
-@ManagedBean(name = "_help")
 @lombok.Getter
 @lombok.Setter
 @lombok.ToString
 @SuppressWarnings("unchecked")
-public class HelpBean {
-   private static final Logger LOGGER = Logger.getLogger(HelpBean.class.getName());
+public class HelpDefaultBean {
+   private static final Logger LOGGER = Logger.getLogger(HelpDefaultBean.class.getName());
    private static final List<SelectItem> STRING = asSelectItem(Filter.Expr.none, Filter.Expr.eq, Filter.Expr.neq, Filter.Expr.like);
    private static final List<SelectItem> NUMBER = asSelectItem(Filter.Expr.none, Filter.Expr.eq, Filter.Expr.neq, Filter.Expr.bw);
    private static final List<SelectItem> DATE = asSelectItem(Filter.Expr.none, Filter.Expr.eq, Filter.Expr.neq, Filter.Expr.bw);
