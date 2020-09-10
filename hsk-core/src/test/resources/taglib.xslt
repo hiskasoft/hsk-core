@@ -3,7 +3,7 @@
     <xsl:output omit-xml-declaration="yes" indent="yes"/>
     <xsl:template match="/">
         <facelet-taglib xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd" version="2.0">
-            <namespace>http://xmlns.jcp.org/jsf/composite/hsk</namespace>
+            <namespace>http://hiskasoft.com/jsf/hsk</namespace>
             <xsl:apply-templates/>
         </facelet-taglib>
     </xsl:template>
@@ -26,18 +26,19 @@
             <tag-name>
                 <xsl:value-of select="../@name"/>
             </tag-name>
+            <component>
+                <component-type>javax.faces.component.UINamingContainer</component-type>
+            </component>
             <xsl:apply-templates/>
         </tag>
     </xsl:template>
     <xsl:template match="cc:attribute">
         <attribute>
-            <xsl:if test="@description != ''">
-                <description>
-                    <xsl:comment>
-                        <xsl:value-of select="@description"/>
-                    </xsl:comment>
-                </description>
-            </xsl:if>
+            <description>
+                <xsl:comment>
+                    <xsl:value-of select="@description"/>
+                </xsl:comment>
+            </description>
             <name>
                 <xsl:value-of select="@name"/>
             </name>

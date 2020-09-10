@@ -45,7 +45,7 @@
                 </executions>
                 <configuration>
                     <attachSources>true</attachSources>
-                    <includes>com/hiska/faces/**,META-INF/resources/**</includes>
+                    <includes>com/hiska/faces/**,META-INF/**</includes>
                 </configuration>
             </plugin>
             <plugin>
@@ -65,6 +65,12 @@
                                     <directory>${basedir}/target/sources-dependency</directory>
                                     <includes>
                                         <include>META-INF/resources/**/*.*</include>
+                                    </includes>
+                                </resource>
+                                <resource>
+                                    <directory>${basedir}/target/sources-dependency</directory>
+                                    <includes>
+                                        <include>META-INF/*.xml</include>
                                     </includes>
                                 </resource>
                             </resources>

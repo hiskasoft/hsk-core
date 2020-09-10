@@ -1,638 +1,773 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cc="http://java.sun.com/jsf/composite" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd" version="2.0">
-    <namespace>http://xmlns.jcp.org/jsf/composite/hsk</namespace>
-    <!--
-            Componente from selectFilter.xhtml.
+    <namespace>http://hiskasoft.com/jsf/hsk</namespace>
+    <!--Componente from
+            selectFilter.xhtml.
         -->
     <tag>
-        <description></description>
+        <description/>
         <tag-name>selectFilter</tag-name>
+        <component>
+            <component-type>javax.faces.component.UINamingContainer</component-type>
+        </component>
         <attribute>
+            <description/>
             <name>value</name>
             <required>false</required>
             <type>com.hiska.result.Filter</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>label</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>alt</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>converter</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>javax.faces.String</default>
         </attribute>
         <attribute>
+            <description/>
             <name>option</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>false</default>
         </attribute>
         <attribute>
+            <description/>
             <name>update</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.clientId}</default>
         </attribute>
         <attribute>
+            <description/>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>form-control form-control-sm</default>
         </attribute>
     </tag>
-    <!--
-            Componente from sortText.xhtml.
+    <!--Componente from
+            sortText.xhtml.
         -->
     <tag>
-        <description></description>
+        <description/>
         <tag-name>sortText</tag-name>
+        <component>
+            <component-type>javax.faces.component.UINamingContainer</component-type>
+        </component>
         <attribute>
+            <description/>
             <name>name</name>
             <required>true</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>value</name>
             <required>true</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>pagination</name>
             <required>false</required>
             <type>com.hiska.result.Pagination</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>sortListener</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>update</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>disabled</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.attrs.pagination == null}</default>
         </attribute>
         <attribute>
+            <description/>
             <name>active</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.attrs.pagination.attr == cc.attrs.name}</default>
         </attribute>
     </tag>
-    <!--
-            Componente from header.xhtml.
+    <!--Componente from
+            header.xhtml.
         -->
     <tag>
-        <description></description>
+        <description/>
         <tag-name>header</tag-name>
+        <component>
+            <component-type>javax.faces.component.UINamingContainer</component-type>
+        </component>
         <attribute>
+            <description/>
             <name>sidebarId</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>configId</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>reload</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>false</default>
         </attribute>
         <attribute>
+            <description/>
             <name>showMod</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>false</default>
         </attribute>
         <attribute>
+            <description/>
             <name>showInf</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>true</default>
         </attribute>
         <attribute>
+            <description/>
             <name>showNav</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>false</default>
         </attribute>
         <attribute>
+            <description/>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>Core UI App</default>
         </attribute>
     </tag>
-    <!--
-            Componente from footer.xhtml.
+    <!--Componente from
+            footer.xhtml.
         -->
     <tag>
-        <description></description>
+        <description/>
         <tag-name>footer</tag-name>
+        <component>
+            <component-type>javax.faces.component.UINamingContainer</component-type>
+        </component>
         <attribute>
+            <description/>
             <name>menuId</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>configId</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>today</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>url</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>https://cui.com</default>
         </attribute>
         <attribute>
+            <description/>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>Simple Cui App</default>
         </attribute>
         <attribute>
+            <description/>
             <name>year</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>2020</default>
         </attribute>
     </tag>
-    <!--
-            Componente from menu.xhtml.
+    <!--Componente from
+            menu.xhtml.
         -->
     <tag>
-        <description></description>
+        <description/>
         <tag-name>menu</tag-name>
+        <component>
+            <component-type>javax.faces.component.UINamingContainer</component-type>
+        </component>
         <attribute>
+            <description/>
             <name>value</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>type</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>root</default>
         </attribute>
         <attribute>
+            <description/>
             <name>index</name>
             <required>false</required>
             <type>java.lang.Integer</type>
             <default/>
         </attribute>
     </tag>
-    <!--
-            Componente from messageFlash.xhtml.
+    <!--Componente from
+            messageFlash.xhtml.
         -->
     <tag>
-        <description></description>
+        <description/>
         <tag-name>messageFlash</tag-name>
+        <component>
+            <component-type>javax.faces.component.UINamingContainer</component-type>
+        </component>
         <attribute>
+            <description/>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>toaster-top-right mt-2 mr-2</default>
         </attribute>
         <attribute>
+            <description/>
             <name>key</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>toast</default>
         </attribute>
         <attribute>
+            <description/>
             <name>facesResultMessage</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{_help.facesResultMessage}</default>
         </attribute>
     </tag>
-    <!--
-            Componente from icon.xhtml.
+    <!--Componente from
+            icon.xhtml.
         -->
     <tag>
-        <description></description>
+        <description/>
         <tag-name>icon</tag-name>
+        <component>
+            <component-type>javax.faces.component.UINamingContainer</component-type>
+        </component>
         <attribute>
+            <description/>
             <name>name</name>
             <required>true</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>group</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>default</default>
         </attribute>
         <attribute>
+            <description/>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>c-icon</default>
         </attribute>
         <attribute>
+            <description/>
             <name>style</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>width</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>height</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>alt</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>size</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>0</default>
         </attribute>
         <attribute>
+            <description/>
             <name>level</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>src</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>svg/#{cc.attrs.group}.svg</default>
         </attribute>
         <attribute>
+            <description/>
             <name>svgStyleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.attrs.styleClass} c-icon-#{cc.attrs.size}xl text-#{cc.attrs.level}</default>
         </attribute>
         <attribute>
+            <description/>
             <name>xlinkHref</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{resource[cc.attrs.src]}##{cc.attrs.name}</default>
         </attribute>
     </tag>
-    <!--
-            Componente from panelFilter.xhtml.
+    <!--Componente from
+            panelFilter.xhtml.
         -->
     <tag>
-        <description></description>
+        <description/>
         <tag-name>panelFilter</tag-name>
+        <component>
+            <component-type>javax.faces.component.UINamingContainer</component-type>
+        </component>
         <attribute>
+            <description/>
             <name>rendered</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>pagination</name>
             <required>false</required>
             <type>com.hiska.result.Pagination</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>size</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>5</default>
         </attribute>
         <attribute>
+            <description/>
             <name>open</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>false</default>
         </attribute>
         <attribute>
+            <description/>
             <name>applyListener</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>cleanListener</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>update</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.clientId}</default>
         </attribute>
     </tag>
-    <!--
-            Componente from messageHistory.xhtml.
+    <!--Componente from
+            messageHistory.xhtml.
         -->
     <tag>
-        <description></description>
+        <description/>
         <tag-name>messageHistory</tag-name>
+        <component>
+            <component-type>javax.faces.component.UINamingContainer</component-type>
+        </component>
         <attribute>
+            <description/>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>facesResultMessage</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{_help.facesResultMessageHistory}</default>
         </attribute>
     </tag>
-    <!--
-            Componente from panelModal.xhtml.
+    <!--Componente from
+            panelModal.xhtml.
         -->
     <tag>
-        <description></description>
+        <description/>
         <tag-name>panelModal</tag-name>
+        <component>
+            <component-type>javax.faces.component.UINamingContainer</component-type>
+        </component>
         <attribute>
+            <description/>
             <name>header</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>Dialogo......</default>
         </attribute>
         <attribute>
+            <description/>
             <name>appendTo</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>@(body)</default>
         </attribute>
         <attribute>
+            <description/>
             <name>widgetVar</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.id}Dialog</default>
         </attribute>
         <attribute>
+            <description/>
             <name>idForm</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.id}Form</default>
         </attribute>
         <attribute>
+            <description/>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>..</default>
         </attribute>
     </tag>
-    <!--
-            Componente from pagination.xhtml.
+    <!--Componente from
+            pagination.xhtml.
         -->
     <tag>
-        <description></description>
+        <description/>
         <tag-name>pagination</tag-name>
+        <component>
+            <component-type>javax.faces.component.UINamingContainer</component-type>
+        </component>
         <attribute>
+            <description/>
             <name>value</name>
             <required>true</required>
             <type>com.hiska.result.Pagination</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>size</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>5</default>
         </attribute>
         <attribute>
+            <description/>
             <name>applyListener</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{_help.noneListener}</default>
         </attribute>
         <attribute>
+            <description/>
             <name>update</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.clientId}</default>
         </attribute>
         <attribute>
+            <description/>
             <name>disabled</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.attrs.value == null || cc.attrs.value.length == 0}</default>
         </attribute>
         <attribute>
+            <description/>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
     </tag>
-    <!--
-            Componente from inputFilter.xhtml.
+    <!--Componente from
+            inputFilter.xhtml.
         -->
     <tag>
-        <description></description>
+        <description/>
         <tag-name>inputFilter</tag-name>
+        <component>
+            <component-type>javax.faces.component.UINamingContainer</component-type>
+        </component>
         <attribute>
+            <description/>
             <name>value</name>
             <required>false</required>
             <type>com.hiska.result.Filter</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>label</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>alt</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>converter</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>javax.faces.String</default>
         </attribute>
         <attribute>
+            <description/>
             <name>withNull</name>
             <required>false</required>
             <type>java.lang.Boolean</type>
             <default>false</default>
         </attribute>
         <attribute>
+            <description/>
             <name>withIneq</name>
             <required>false</required>
             <type>java.lang.Boolean</type>
             <default>false</default>
         </attribute>
         <attribute>
+            <description/>
             <name>items</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>update</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.clientId}</default>
         </attribute>
     </tag>
-    <!--
-            Componente from note.xhtml.
+    <!--Componente from
+            note.xhtml.
         -->
     <tag>
-        <description></description>
+        <description/>
         <tag-name>note</tag-name>
+        <component>
+            <component-type>javax.faces.component.UINamingContainer</component-type>
+        </component>
         <attribute>
+            <description/>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>level</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>warning</default>
         </attribute>
     </tag>
-    <!--
-            Componente from config.xhtml.
+    <!--Componente from
+            config.xhtml.
         -->
     <tag>
-        <description></description>
+        <description/>
         <tag-name>config</tag-name>
+        <component>
+            <component-type>javax.faces.component.UINamingContainer</component-type>
+        </component>
         <attribute>
+            <description/>
             <name>fullName</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>email</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
     </tag>
-    <!--
-            Componente from sidebar.xhtml.
+    <!--Componente from
+            sidebar.xhtml.
         -->
     <tag>
-        <description></description>
+        <description/>
         <tag-name>sidebar</tag-name>
+        <component>
+            <component-type>javax.faces.component.UINamingContainer</component-type>
+        </component>
         <attribute>
+            <description/>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>banner</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>logo</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>menus</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
+            <description/>
             <name>grupo</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>default</default>
         </attribute>
     </tag>
-    <!--
-            Componente from panelForm.xhtml.
+    <!--Componente from
+            panelForm.xhtml.
         -->
     <tag>
-        <description></description>
+        <description/>
         <tag-name>panelForm</tag-name>
+        <component>
+            <component-type>javax.faces.component.UINamingContainer</component-type>
+        </component>
     </tag>
 </facelet-taglib>

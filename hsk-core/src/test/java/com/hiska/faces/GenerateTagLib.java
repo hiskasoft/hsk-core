@@ -27,9 +27,10 @@ public class GenerateTagLib {
       File target = new File("target/generated-xml/");
       List<Entry> entries = createDocuments(resources, target);
       for (Entry entry : entries) {
+         entry.document = null;
          System.out.println("-->" + entry);
          File fileXslt = new File("src/test/resources/taglib.xslt");
-         File fileOutput = new File("src/main/resources/META-INF/hiska-" + entry.name + ".taglib.xml");
+         File fileOutput = new File("src/main/resources/META-INF/" + entry.name + ".taglib.xml");
          Source xslt = new StreamSource(fileXslt);
          Source xml = new StreamSource(entry.file);
          Transformer transformer = factory.newTransformer(xslt);
