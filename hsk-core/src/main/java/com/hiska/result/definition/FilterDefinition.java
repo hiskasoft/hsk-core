@@ -24,13 +24,13 @@ import java.util.Map;
 public class FilterDefinition implements Definition<Filter> {
    private final String ref;
    private final String[] name;
-   private final boolean isParam;
+   private final boolean param;
    private final Method method;
 
    public FilterDefinition(Field field, FilterElement element) {
       ref = assertParamName(element.ref(), field.getName());
       name = assertAttrNames(element.name(), field.getName());
-      isParam = element.isParam();
+      param = element.param();
       method = Common.assertGetter(field, field.getDeclaringClass());
    }
 

@@ -10,6 +10,7 @@
  */
 package com.hiska.result;
 
+import java.io.Serializable;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -19,7 +20,7 @@ import java.util.function.Function;
 @lombok.Getter
 @lombok.Setter
 @lombok.ToString(callSuper = true)
-public class ResultItem<T> extends Result {
+public class ResultItem<T> extends Result implements Serializable {
    /**
     * Object
     */

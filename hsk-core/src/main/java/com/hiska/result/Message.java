@@ -10,6 +10,7 @@
  */
 package com.hiska.result;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ import java.util.List;
 @lombok.Getter
 @lombok.Setter
 @lombok.ToString
-public class Message {
+public class Message implements Serializable {
    /**
     * Level Message
     */

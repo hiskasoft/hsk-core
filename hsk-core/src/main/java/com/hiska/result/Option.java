@@ -10,6 +10,7 @@
  */
 package com.hiska.result;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ import java.util.List;
 @lombok.Getter
 @lombok.Setter
 @lombok.ToString
-public class Option {
+public class Option implements Serializable {
    private String value;
    private String label;
    private String description;

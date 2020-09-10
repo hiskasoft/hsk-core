@@ -40,5 +40,5 @@ public @interface FilterElement {
     *
     * @return
     */
-   public boolean isParam() default false;
+   public boolean param() default false;
 }

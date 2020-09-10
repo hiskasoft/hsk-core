@@ -10,13 +10,15 @@
  */
 package com.hiska.result;
 
+import java.io.Serializable;
+
 /**
  * Pagination Filter
  */
 @lombok.Getter
 @lombok.Setter
 @lombok.ToString
-public class Pagination {
+public class Pagination implements Serializable {
    public enum Sort {
       asc,
       desc,

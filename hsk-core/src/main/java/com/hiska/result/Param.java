@@ -10,6 +10,8 @@
  */
 package com.hiska.result;
 
+import java.io.Serializable;
+
 /**
  * Trust Data
  */
@@ -18,7 +20,7 @@ package com.hiska.result;
 @lombok.EqualsAndHashCode(of = {"value"})
 @lombok.NoArgsConstructor
 @lombok.AllArgsConstructor
-public class Param {
+public class Param implements Serializable {
    private String value;
    private String label;
    private String description;

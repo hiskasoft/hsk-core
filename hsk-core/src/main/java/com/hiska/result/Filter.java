@@ -10,13 +10,15 @@
  */
 package com.hiska.result;
 
+import java.io.Serializable;
+
 /**
  * Filter Element
  */
 @lombok.Getter
 @lombok.Setter
 @lombok.ToString
-public class Filter<T> {
+public class Filter<T> implements Serializable {
    public static enum Expr {
       none("", -1),
       eq("=", 1),

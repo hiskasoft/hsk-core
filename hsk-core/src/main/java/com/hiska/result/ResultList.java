@@ -22,7 +22,7 @@ import static java.util.stream.Collectors.toList;
 @lombok.Getter
 @lombok.Setter
 @lombok.ToString(callSuper = true)
-public class ResultList<T> extends Result {
+public class ResultList<T> extends Result implements Serializable {
    /**
     * List of Object
     */

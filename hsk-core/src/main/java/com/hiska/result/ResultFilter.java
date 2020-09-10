@@ -10,6 +10,7 @@
  */
 package com.hiska.result;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.function.Function;
 import static java.util.stream.Collectors.toList;
@@ -20,7 +21,7 @@ import static java.util.stream.Collectors.toList;
 @lombok.Getter
 @lombok.Setter
 @lombok.ToString(callSuper = true)
-public class ResultFilter<T> extends Result {
+public class ResultFilter<T> extends Result implements Serializable {
    /**
     * Pagination Result
     */

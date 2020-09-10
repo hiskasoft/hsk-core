@@ -10,6 +10,7 @@
  */
 package com.hiska.result;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ import java.util.Map;
 @lombok.Getter
 @lombok.Setter
 @lombok.ToString
-public class Behavior {
+public class Behavior implements Serializable {
    /**
     * Type Behavior
     */

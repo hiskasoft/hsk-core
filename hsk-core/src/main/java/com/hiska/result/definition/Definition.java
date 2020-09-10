@@ -18,7 +18,7 @@ package com.hiska.result.definition;
 import java.lang.reflect.Method;
 
 /**
- * @author yracnet
+ * @author willyams yujra
  */
 public interface Definition<T> {
    public Method getMethod();

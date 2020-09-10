@@ -10,6 +10,8 @@
  */
 package com.hiska.result;
 
+import java.io.Serializable;
+
 /**
  * Trust Data
  */
@@ -19,7 +21,7 @@ package com.hiska.result;
 @lombok.EqualsAndHashCode(of = {"value"})
 @lombok.NoArgsConstructor
 @lombok.AllArgsConstructor
-public class Domain {
+public class Domain implements Serializable {
    private String code;
    private String classifier;
    private String value;

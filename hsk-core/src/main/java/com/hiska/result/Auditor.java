@@ -10,12 +10,13 @@
  */
 package com.hiska.result;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @lombok.Getter
 @lombok.Setter
 @lombok.ToString
-public class Auditor {
+public class Auditor implements Serializable {
    private Date updatedAt;
    private String updatedBy;
    private Long version;
