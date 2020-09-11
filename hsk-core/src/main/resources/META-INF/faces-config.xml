@@ -46,4 +46,11 @@
         <converter-id>hiska.faces.Param</converter-id>
         <converter-class>com.hiska.faces.converter.ParamConverter</converter-class>
     </converter>
+    <render-kit>
+        <renderer>
+            <component-family>javax.faces.Message</component-family>
+            <renderer-type>javax.faces.Message</renderer-type>
+            <renderer-class>com.hiska.faces.renderkit.BootstrapMessageRenderer</renderer-class>
+        </renderer>
+    </render-kit>
 </faces-config>
