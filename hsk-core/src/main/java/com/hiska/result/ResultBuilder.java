@@ -47,6 +47,11 @@ public class ResultBuilder {
       return this;
    }
 
+   public ResultBuilder setSuccess(boolean success) {
+      result.setSuccess(success);
+      return this;
+   }
+
    public ResultBuilder message(Message message) {
       result.addMessage(message);
       return this;

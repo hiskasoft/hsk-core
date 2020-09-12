@@ -17,6 +17,7 @@ import com.hiska.result.Message;
 import com.hiska.result.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.faces.model.SelectItem;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -200,5 +201,13 @@ public class HelpDefaultBean {
          history.add(item);
       }
       return new ArrayList<>(history);
+   }
+
+   public long getTimeMillis() {
+      return System.currentTimeMillis();
+   }
+
+   public double getRandom() {
+      return Math.random();
    }
 }

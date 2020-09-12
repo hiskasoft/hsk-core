@@ -12,6 +12,7 @@ package com.hiska.result;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -32,7 +33,7 @@ public class Result implements Serializable {
    /**
     * List of Behavior
     */
-   private Behavior behavior;
+   private List<Behavior> behaviors = new ArrayList<>();
 
    public Result() {
    }
@@ -43,7 +44,27 @@ public class Result implements Serializable {
    }
 
    public void addMessage(final Message message) {
-      messages.add(message);
+      if (message != null) {
+         messages.add(message);
+      }
+   }
+
+   public void addAllMessage(final Collection<Message> allMessage) {
+      if (allMessage != null) {
+         allMessage.forEach(this::addMessage);
+      }
+   }
+
+   public void addBehavior(final Behavior behavior) {
+      if (behavior != null) {
+         behaviors.add(behavior);
+      }
+   }
+
+   public void addAllBehavior(final Collection<Behavior> allBehavior) {
+      if (allBehavior != null) {
+         allBehavior.forEach(this::addBehavior);
+      }
    }
 
    public Result asResult() {
@@ -74,5 +95,11 @@ public class Result implements Serializable {
 
    public boolean isError() {
       return !success;
+   }
+
+   public void append(Result result) {
+      success = result.success;
+      addAllMessage(result.messages);
+      addAllBehavior(result.behaviors);
    }
 }
