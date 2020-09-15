@@ -53,6 +53,11 @@ public class Document implements Serializable {
       return type != null && type.isPlain();
    }
 
+   /**
+    * ISO Content MimeType
+    * 
+    * @return
+    */
    public String getContentMimeType() {
       return type != null ? type.getMimeType() : "";
    }

@@ -75,15 +75,39 @@ public class Result implements Serializable {
       behaviors.clear();
    }
 
+   /**
+    * Create a simple Result Object
+    * 
+    * @return
+    */
    public Result asResult() {
       return new Result(this);
    }
 
+   /**
+    * Create and add a new Message
+    * 
+    * @return
+    */
    public MessageBuilder message() {
       return MessageBuilder.create()
             .set(messages::add);
    }
 
+   /**
+    * Create and add a new Message
+    * Text Message in format XXX-####: Text
+    * XXX is a PREFIX
+    * #### is a Number
+    * 0### is INFO
+    * 1### is INFO
+    * 2### is WARN
+    * 3### is ERROR
+    * 9### is FATAL
+    * 
+    * @param  text
+    * @return
+    */
    public MessageBuilder message(String text) {
       return MessageBuilder.create(text)
             .set(messages::add);
@@ -105,12 +129,26 @@ public class Result implements Serializable {
       return !success;
    }
 
+   /**
+    * Append Messages and Behaviors to Result
+    * Message is included
+    * Behavior is included
+    * 
+    * @param result
+    */
    public void append(Result result) {
       success = result.success;
       addAllMessage(result.messages);
       addAllBehavior(result.behaviors);
    }
 
+   /**
+    * Accept Messages and Behaviors to Result
+    * Message is replaced
+    * Behavior is replaced
+    * 
+    * @param result
+    */
    public void accept(Result result) {
       success = result.success;
       messages.clear();
@@ -119,6 +157,11 @@ public class Result implements Serializable {
       addAllBehavior(result.behaviors);
    }
 
+   /**
+    * Throw a new ResultException if success is false
+    * 
+    * @param message
+    */
    public void throwException(String message) {
       if (success == false) {
          throw new ResultException(message, this);

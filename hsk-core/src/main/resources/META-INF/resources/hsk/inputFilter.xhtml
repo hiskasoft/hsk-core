@@ -10,6 +10,7 @@
         <cc:attribute name="title"/>
         <cc:attribute name="alt"/>
         <cc:attribute name="styleClass"/>
+        <cc:attribute name="disabled" type="java.lang.Boolean" default="false"/>
         <cc:attribute name="converter" default="javax.faces.String"/>
         <cc:attribute name="withNull" type="java.lang.Boolean" default="false"/>
         <cc:attribute name="withIneq" type="java.lang.Boolean" default="false"/>
@@ -23,28 +24,32 @@
             <div class="input-group input-group-sm">
                 <h:selectOneMenu value="#{cc.attrs.value.expr}"
                                  title="Fitlrar Campo '#{cc.attrs.label}'"
+                                 disabled="#{cc.attrs.disabled}"
                                  styleClass="filter-eq form-control form-control-sm">
                     <f:selectItems value="#{cc.attrs.items}"/>
                     <f:ajax event="change"
                             render="#{cc.attrs.update}"
                             immediate="true"/>
                 </h:selectOneMenu>
-                <h:inputText label="#{cc.attrs.label}"
-                             value="#{cc.attrs.value.value}" 
+                <h:inputText value="#{cc.attrs.value.value}" 
                              rendered="#{cc.attrs.value.withValue}"
+                             disabled="#{cc.attrs.disabled}"
+                             label="#{cc.attrs.label}"
                              title="Valor '#{cc.attrs.label}'"
                              styleClass="form-control form-control-sm">
                     <f:converter converterId="#{cc.attrs.converter}"/>
                 </h:inputText>
-                <h:inputText label="#{cc.attrs.label}"
-                             value="#{cc.attrs.value.other}" 
+                <h:inputText value="#{cc.attrs.value.other}" 
                              rendered="#{cc.attrs.value.withOther}"
+                             disabled="#{cc.attrs.disabled}"
+                             label="#{cc.attrs.label}"
                              title="Valor '#{cc.attrs.label}'"
                              styleClass="form-control form-control-sm">
                     <f:converter converterId="#{cc.attrs.converter}"/>
                 </h:inputText>
                 <h:commandLink styleClass="btn btn-sm btn-danger"
                                rendered="#{!cc.attrs.value.ignore}"
+                               disabled="#{cc.attrs.disabled}"
                                title="Quitar '#{cc.attrs.label}'">
                     <span class="fa fa-lg fa-times"></span>
                     <f:ajax event="action" 

@@ -114,6 +114,19 @@ public class MessageBuilder {
 
    private static final Pattern TXT_CODE = Pattern.compile("([A-Z]{3,5}-[0-9]{3,5}):(.*)", Pattern.DOTALL);
 
+   /**
+    * Text Message in format XXX-####: Text
+    * XXX is a PREFIX
+    * #### is a Number
+    * 0### is INFO
+    * 1### is INFO
+    * 2### is WARN
+    * 3### is ERROR
+    * 9### is FATAL
+    * 
+    * @param  text
+    * @return
+    */
    public MessageBuilder text(String text) {
       if (text != null) {
          Matcher matcher = TXT_CODE.matcher(text);
@@ -128,7 +141,7 @@ public class MessageBuilder {
                message.setLevel(Message.Level.warn);
             } else if (code.contains("-3")) {
                message.setLevel(Message.Level.error);
-            } else {
+            } else if (code.contains("-9")) {
                message.setLevel(Message.Level.fatal);
             }
          } else {
