@@ -9,6 +9,7 @@
         <cc:attribute name="label"/>
         <cc:attribute name="title"/>
         <cc:attribute name="alt"/>
+        <cc:attribute name="disabled" type="java.lang.Boolean" default="false"/>
         <cc:attribute name="converter" type="java.lang.String" default="javax.faces.String"/>
         <cc:attribute name="option" default="false"/>
         <cc:attribute name="update" default="#{cc.clientId}"/>
@@ -19,9 +20,10 @@
             <c:set target="#{cc.attrs}" property="value" value="#{_help.createFilterValue(cc.attrs.value)}"/>
             <div class="input-group input-group-sm">
                 <h:selectOneMenu value="#{cc.attrs.value.value}"
+                                 disabled="#{cc.attrs.disabled}"
                                  title="Fitlrar Campo '#{cc.attrs.label}'"
                                  styleClass="filter-eq form-control form-control-sm">
-                    <f:selectItem itemValue="#{null}" itemLabel="Todos"/>
+                    <f:selectItem itemValue="#{null}" itemLabel="Todos #{cc.attrs.label}"/>
                     <cc:insertChildren/>
                     <f:ajax event="change"
                             immediate="true"/>
@@ -30,6 +32,7 @@
                             listener="#{_help.changeValue(cc.attrs.value)}"/>
                 </h:selectOneMenu>
                 <h:commandLink styleClass="btn btn-sm btn-danger"
+                               disabled="#{cc.attrs.disabled}"
                                rendered="#{!cc.attrs.value.ignore}"
                                title="Quitar '#{cc.attrs.label}'">
                     <span class="fa fa-lg fa-times"></span>

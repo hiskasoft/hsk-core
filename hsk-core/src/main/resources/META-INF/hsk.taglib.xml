@@ -38,6 +38,13 @@
         </attribute>
         <attribute>
             <description></description>
+            <name>disabled</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+            <default>false</default>
+        </attribute>
+        <attribute>
+            <description></description>
             <name>converter</name>
             <required>false</required>
             <type>java.lang.String</type>
