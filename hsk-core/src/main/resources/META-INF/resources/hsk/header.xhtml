@@ -8,11 +8,17 @@
     <cc:interface>
         <cc:attribute name="sidebarId"/>
         <cc:attribute name="configId"/>
-        <cc:attribute name="reload" default="false"/>
-        <cc:attribute name="showMod" default="false"/>
         <cc:attribute name="showInf" default="true"/>
         <cc:attribute name="showNav" default="false"/>
         <cc:attribute name="title" default="Core UI App"/>
+        <cc:attribute name="username" default="¿username?"/>
+        <cc:attribute name="fullName" default="¿fullName?"/>
+        <cc:attribute name="profileName" default="¿profileName?"/>
+        <cc:attribute name="email" default="¿email?"/>
+        <cc:attribute name="loginDate" default="#{_help.noneDate}" type="java.util.Date"/>
+        <cc:attribute name="actionLogout" default="#{_help.noneAction}" method-signature="void m()"/>
+        <cc:attribute name="logo" default="app-logo"/>
+        <cc:attribute name="group" default="app"/>
         <cc:facet name="title"/>
     </cc:interface>
     <cc:implementation>
@@ -31,8 +37,8 @@
                 <hsk:icon name="cil-menu" styleClass="c-icon c-icon-lg" />
             </button>
             <a class="c-header-brand d-lg-none c-env" href="#">
-                <hsk:icon name="app-logo"
-                         group="app"
+                <hsk:icon name="#{cc.attrs.logo}"
+                         group="#{cc.attrs.group}"
                          styleClass="c-sidebar-brand-minimized" width="48"
                          height="48" alt="#{cc.attrs.title}" />
             </a>
@@ -46,37 +52,32 @@
                     <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                        aria-expanded="false">
                         <div class="c-avatar">
-                            #{_perfil.username}@gmail.com
+                            #{cc.attrs.username}
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right pt-0">
                         <div class="dropdown-item">
                             <div class="text-truncate font-weight-bold">
-                                #{_perfil.usuario.nombre}
+                                #{cc.attrs.fullName}
                             </div>
                         </div>  
                         <div class="dropdown-item">
                             <small>
                                 <hsk:icon name="cil-user-follow" level="primary"/>
-                                <b>#{_perfil.perfil}</b>
+                                <b>#{cc.attrs.profileName}</b>
                                 <br/>
                                 <hsk:icon name="cil-envelope-closed" level="secundary"/>
-                                #{_perfil.correo}
+                                #{cc.attrs.email}
                                 <br/>
                                 <hsk:icon name="cil-calendar" />
-                                <h:outputText value="#{_perfil.fecha}">
+                                <h:outputText value="#{cc.attrs.loginDate}">
                                     <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
                                 </h:outputText>
                             </small>
                         </div>
-                        <a class="dropdown-item" href="#">
-                            <hsk:icon name="cil-lock-locked" styleClass="c-icon mr-2" />
-                            Lock Account
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <hsk:icon name="cil-account-logout" styleClass="c-icon mr-2" />
-                            Logout
-                        </a>
+                        <h:form class="dropdown-item" >
+                            <h:commandButton action="#{cc.attrs.actionLogout}" value="Salir" styleClass="btn btn-danger btn-block"/>
+                        </h:form>
                     </div>
                 </li>
             </ul>
@@ -101,9 +102,7 @@
             </div>
             <div class="c-subheader c-subheader-title">
                 <span class=" m-3">
-
                     <cc:renderFacet name="title"/>
-
                 </span>
             </div>
         </header>

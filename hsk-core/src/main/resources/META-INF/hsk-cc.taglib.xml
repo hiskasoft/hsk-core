@@ -152,20 +152,6 @@
         </attribute>
         <attribute>
             <description/>
-            <name>reload</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>false</default>
-        </attribute>
-        <attribute>
-            <description/>
-            <name>showMod</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>false</default>
-        </attribute>
-        <attribute>
-            <description/>
             <name>showInf</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -184,6 +170,62 @@
             <required>false</required>
             <type>java.lang.String</type>
             <default>Core UI App</default>
+        </attribute>
+        <attribute>
+            <description/>
+            <name>username</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>¿username?</default>
+        </attribute>
+        <attribute>
+            <description/>
+            <name>fullName</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>¿fullName?</default>
+        </attribute>
+        <attribute>
+            <description/>
+            <name>profileName</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>¿profileName?</default>
+        </attribute>
+        <attribute>
+            <description/>
+            <name>email</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>¿email?</default>
+        </attribute>
+        <attribute>
+            <description/>
+            <name>loginDate</name>
+            <required>false</required>
+            <type>java.util.Date</type>
+            <default>#{_help.noneDate}</default>
+        </attribute>
+        <attribute>
+            <description/>
+            <name>actionLogout</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>#{_help.noneAction}</default>
+        </attribute>
+        <attribute>
+            <description/>
+            <name>logo</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>app-logo</default>
+        </attribute>
+        <attribute>
+            <description/>
+            <name>group</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>app</default>
         </attribute>
     </tag>
     <!--footer.xhtml-->

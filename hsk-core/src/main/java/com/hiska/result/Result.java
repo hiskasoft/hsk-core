@@ -55,6 +55,10 @@ public class Result implements Serializable {
       }
    }
 
+   public void clearMessage() {
+      messages.clear();
+   }
+
    public void addBehavior(final Behavior behavior) {
       if (behavior != null) {
          behaviors.add(behavior);
@@ -65,6 +69,10 @@ public class Result implements Serializable {
       if (allBehavior != null) {
          allBehavior.forEach(this::addBehavior);
       }
+   }
+
+   public void clearBehavior() {
+      behaviors.clear();
    }
 
    public Result asResult() {
@@ -101,5 +109,19 @@ public class Result implements Serializable {
       success = result.success;
       addAllMessage(result.messages);
       addAllBehavior(result.behaviors);
+   }
+
+   public void accept(Result result) {
+      success = result.success;
+      messages.clear();
+      behaviors.clear();
+      addAllMessage(result.messages);
+      addAllBehavior(result.behaviors);
+   }
+
+   public void throwException(String message) {
+      if (success == false) {
+         throw new ResultException(message, this);
+      }
    }
 }

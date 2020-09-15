@@ -13,11 +13,6 @@
         <managed-bean-class>com.hiska.faces.bean.HelpDefaultBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
-    <managed-bean>
-        <managed-bean-name>_session</managed-bean-name>
-        <managed-bean-class>com.hiska.faces.bean.SessionDefaultBean</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
     <application>
         <action-listener>com.hiska.faces.application.ActionResultListener</action-listener>
         <el-resolver>com.hiska.faces.application.ELI18NResolver</el-resolver>

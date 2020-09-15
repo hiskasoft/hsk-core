@@ -16,7 +16,10 @@ import com.hiska.result.Filter;
 import com.hiska.result.Message;
 import com.hiska.result.Resource;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import javax.faces.model.SelectItem;
 import java.util.logging.Level;
@@ -73,8 +76,20 @@ public class HelpDefaultBean {
       return items;
    }
 
+   public void noneAction() {
+      LOGGER.log(Level.FINE, "noneAction");
+   }
+
    public void noneListener() {
       LOGGER.log(Level.FINE, "noneListener");
+   }
+
+   public Object getNoneObject() {
+      return NONE;
+   }
+
+   public Date getNoneDate() {
+      return new Date();
    }
 
    public int[] getPages(Pagination pagination, int size) {
@@ -210,4 +225,16 @@ public class HelpDefaultBean {
    public double getRandom() {
       return Math.random();
    }
+
+   private static final Map NONE = new HashMap<>() {
+      @Override
+      public Object getOrDefault(Object key, Object defaultValue) {
+         return "<<" + key + ">>";
+      }
+
+      @Override
+      public Object get(Object key) {
+         return "<<" + key + ">>";
+      }
+   };
 }

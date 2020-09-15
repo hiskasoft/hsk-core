@@ -26,11 +26,11 @@ public class Param implements Serializable {
    private String description;
 
    public static Param create(Object valor) {
-      return valor == null ? null : create(valor.toString(), "DEFAULT: " + valor);
+      return valor == null ? null : create(valor.toString(), "DEFAULT_" + valor);
    }
 
    public static Param create(String valor, String label) {
-      return new Param(valor, label, valor + ": " + label);
+      return new Param(valor, label, "DEFAULT_" + valor);
    }
 
    public static Param create(String valor, String label, String description) {

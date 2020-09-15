@@ -5,34 +5,40 @@
      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <cc:interface>
         <cc:attribute name="title"/>
-        <cc:attribute name="banner"/>
-        <cc:attribute name="logo"/>
+        <cc:attribute name="logoFull"/>
+        <cc:attribute name="logoMinimized"/>
         <cc:attribute name="menus"/>
         <cc:attribute name="grupo" default="default"/>
+        <cc:facet name="brandFull"/>
+        <cc:facet name="brandMinimized"/>
     </cc:interface>
     <cc:implementation>
         <div class="c-sidebar c-sidebar-fixed c-sidebar-lg-show" id="#{cc.id}">
             <div class="c-sidebar-brand d-lg-down-none c-env svg-white">
-                <hsk:icon name="#{cc.attrs.banner}"
-                         group="#{cc.attrs.grupo}"
-                         styleClass="c-sidebar-brand-full" 
-                         width="343" 
-                         height="48"
-                         alt="#{cc.attrs.title}" />
-                <hsk:icon name="#{cc.attrs.logo}" 
-                         group="#{cc.attrs.grupo}"
-                         styleClass="c-sidebar-brand-minimized" 
-                         width="48" 
-                         height="48"
-                         alt="#{cc.attrs.title}"/>
+                <span class="c-sidebar-brand-full" title="#{cc.attrs.title}">
+                    <hsk:icon name="#{cc.attrs.logoFull}"
+                              group="#{cc.attrs.grupo}"
+                              width="343" 
+                              height="48"
+                              rendered="#{empty cc.facets.brandFull}"/>
+                    <cc:renderFacet name="brand-full"/>
+                </span>
+                <span class="c-sidebar-brand-minimized" title="#{cc.attrs.title}">
+                    <hsk:icon name="#{cc.attrs.logoMinimized}" 
+                              group="#{cc.attrs.grupo}"
+                              width="48" 
+                              height="48"
+                              rendered="#{empty cc.facets.brandMinimized}"/>
+                    <cc:renderFacet name="brand-minimized"/>
+                </span>
             </div>
             <hsk:menu value="#{cc.attrs.menus}">
                 <f:facet name="title">
                     <hsk:icon name="#{cc.attrs.logo}"
-                             group="#{cc.attrs.grupo}"
-                             styleClass="c-sidebar-brand-minimized bg-white" 
-                             style="height: 50px!important;"
-                             alt="#{cc.attrs.title}" />
+                              group="#{cc.attrs.grupo}"
+                              styleClass="c-sidebar-brand-minimized bg-white" 
+                              style="height: 50px!important;"
+                              alt="#{cc.attrs.title}" />
                 </f:facet>
             </hsk:menu>
             <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="##{cc.id}"

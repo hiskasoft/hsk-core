@@ -10,7 +10,6 @@
  */
 package com.hiska.faces.converter;
 
-import com.hiska.faces.ContextUtil;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -20,7 +19,7 @@ import com.hiska.result.Param;
 public class ParamConverter implements Converter {
    @Override
    public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
-      return Param.create(value, "JSF: " + value);
+      return Param.create(value, "JSF_" + value);
    }
 
    @Override
