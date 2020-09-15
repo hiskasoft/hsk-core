@@ -56,7 +56,7 @@ public class Common {
       String value = aClass.getSimpleName();
       Table table = (Table) aClass.getAnnotation(Table.class);
       if (table != null) {
-         if (isDefaultValue(table.name())) {
+         if (!isDefaultValue(table.name())) {
             value = table.name();
          }
          if (!isDefaultValue(table.schema())) {
@@ -71,7 +71,7 @@ public class Common {
       String value = aField.getName();
       Column column = (Column) aField.getAnnotation(Column.class);
       if (column != null) {
-         if (isDefaultValue(column.name())) {
+         if (!isDefaultValue(column.name())) {
             value = column.name();
          }
       }

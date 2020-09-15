@@ -10,7 +10,6 @@
  */
 package com.hiska.result.definition;
 
-import com.hiska.result.FilterElement;
 import com.hiska.result.Param;
 import com.hiska.result.ParamElement;
 import java.lang.reflect.Field;
@@ -35,13 +34,13 @@ public class ParamDefinition implements Definition<Param> {
       method = Common.assertGetter(field, field.getDeclaringClass());
    }
 
-   private static final Map<Class, List<ParamDefinition>> CACHE = new HashMap<>();
+   private static final Map<String, List<ParamDefinition>> CACHE = new HashMap<>();
 
    public static List<ParamDefinition> get(Class<?> aClass) {
-      List<ParamDefinition> items = CACHE.get(aClass);
+      List<ParamDefinition> items = CACHE.get(aClass.getName());
       if (items == null) {
          items = new ArrayList<>();
-         CACHE.put(aClass, items);
+         CACHE.put(aClass.getName(), items);
          for (Field field : Common.assertAllField(aClass)) {
             ParamElement element = field.getAnnotation(ParamElement.class);
             if (element != null) {
