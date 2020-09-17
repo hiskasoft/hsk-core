@@ -14,13 +14,14 @@ import com.hiska.faces.application.FacesResultMessage;
 import com.hiska.result.Pagination;
 import com.hiska.result.Filter;
 import com.hiska.result.Message;
+import com.hiska.result.Option;
+import com.hiska.result.Param;
 import com.hiska.result.Resource;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import javax.faces.model.SelectItem;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,9 +37,9 @@ import javax.faces.context.FacesContext;
 @SuppressWarnings("unchecked")
 public class HelpDefaultBean {
    private static final Logger LOGGER = Logger.getLogger(HelpDefaultBean.class.getName());
-   private static final List<SelectItem> STRING = asSelectItem(Filter.Expr.none, Filter.Expr.eq, Filter.Expr.neq, Filter.Expr.like);
-   private static final List<SelectItem> NUMBER = asSelectItem(Filter.Expr.none, Filter.Expr.eq, Filter.Expr.neq, Filter.Expr.bw);
-   private static final List<SelectItem> DATE = asSelectItem(Filter.Expr.none, Filter.Expr.eq, Filter.Expr.neq, Filter.Expr.bw);
+   private static final List<SelectItem> STRING = asSelectItem(Filter.Expr.eq, Filter.Expr.neq, Filter.Expr.like);
+   private static final List<SelectItem> NUMBER = asSelectItem(Filter.Expr.eq, Filter.Expr.neq, Filter.Expr.bw);
+   private static final List<SelectItem> DATE = asSelectItem(Filter.Expr.eq, Filter.Expr.neq, Filter.Expr.bw);
    private static final List<SelectItem> NULL = asSelectItem(Filter.Expr.isNull, Filter.Expr.notNull);
    private static final List<SelectItem> INEQ = asSelectItem(Filter.Expr.lt, Filter.Expr.lte, Filter.Expr.gt, Filter.Expr.gte);
 
@@ -52,6 +53,18 @@ public class HelpDefaultBean {
 
    public Filter createFilterValue(Filter value) {
       return value == null ? new Filter() : value;
+   }
+
+   public Filter.Expr getFilterNone() {
+      return Filter.Expr.none;
+   }
+
+   public Param getParamNone() {
+      return Param.NONE;
+   }
+
+   public Option getOptionNone() {
+      return Option.NONE;
    }
 
    public Object createItemsValue(String convert, Object items, boolean withNull, boolean withIneq) {
@@ -82,6 +95,10 @@ public class HelpDefaultBean {
 
    public void noneListener() {
       LOGGER.log(Level.FINE, "noneListener");
+   }
+
+   public void logger(String text, Object object) {
+      LOGGER.log(Level.INFO, "LOGGER: {0}: {1}", new Object[]{text, object});
    }
 
    public Object getNoneObject() {

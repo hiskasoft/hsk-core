@@ -7,23 +7,28 @@
     <cc:interface>
         <cc:attribute name="value" type="com.hiska.result.Filter"/>
         <cc:attribute name="label"/>
-        <cc:attribute name="title"/>
-        <cc:attribute name="alt"/>
+        <cc:attribute name="itemLabel" default="#{cc.attrs.label}"/>
+        <cc:attribute name="icon" default="filter"/>
         <cc:attribute name="disabled" type="java.lang.Boolean" default="false"/>
         <cc:attribute name="converter" type="java.lang.String" default="javax.faces.String"/>
         <cc:attribute name="option" default="false"/>
         <cc:attribute name="update" default="#{cc.clientId}"/>
-        <cc:attribute name="styleClass" default="form-control form-control-sm"/>
+        <cc:attribute name="styleClass" default="col"/>
     </cc:interface>
     <cc:implementation>
-        <div id="#{cc.clientId}" class="hsk-input-filter #{styleClass}">
+        <div id="#{cc.clientId}" class="hsk-input-filter #{cc.attrs.value.withValue? 'open' : 'close'} #{cc.attrs.styleClass}">
             <c:set target="#{cc.attrs}" property="value" value="#{_help.createFilterValue(cc.attrs.value)}"/>
             <div class="input-group input-group-sm">
+                <h:panelGroup styleClass="input-group-prepend" rendered="#{cc.attrs.icon!=null}">
+                    <div class="input-group-text">
+                        <span class="fa fa-#{cc.attrs.icon}"></span>
+                    </div>
+                </h:panelGroup>
                 <h:selectOneMenu value="#{cc.attrs.value.value}"
                                  disabled="#{cc.attrs.disabled}"
                                  title="Fitlrar Campo '#{cc.attrs.label}'"
-                                 styleClass="filter-eq form-control form-control-sm">
-                    <f:selectItem itemValue="#{null}" itemLabel="Todos #{cc.attrs.label}"/>
+                                 styleClass="form-control">
+                    <f:selectItem itemValue="#{_help.filterNone}" itemLabel="#{cc.attrs.itemLabel}"/>
                     <cc:insertChildren/>
                     <f:ajax event="change"
                             immediate="true"/>
@@ -33,7 +38,7 @@
                 </h:selectOneMenu>
                 <h:commandLink styleClass="btn btn-sm btn-danger"
                                disabled="#{cc.attrs.disabled}"
-                               rendered="#{!cc.attrs.value.ignore}"
+                               rendered="#{cc.attrs.value.withValue}"
                                title="Quitar '#{cc.attrs.label}'">
                     <span class="fa fa-lg fa-times"></span>
                     <f:ajax event="action" 

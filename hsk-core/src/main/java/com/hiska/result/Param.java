@@ -11,15 +11,16 @@
 package com.hiska.result;
 
 import java.io.Serializable;
+import lombok.*;
 
 /**
- * Trust Data
+ * Param Data
  */
-@lombok.Getter
-@lombok.Setter
-@lombok.EqualsAndHashCode(of = {"value"})
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode(of = {"value"})
+@NoArgsConstructor
+@AllArgsConstructor
 public class Param implements Serializable {
    private String value;
    private String label;
@@ -41,4 +42,6 @@ public class Param implements Serializable {
    public String toString() {
       return value + ": " + label;
    }
+
+   public static final Param NONE = create("NONE");
 }

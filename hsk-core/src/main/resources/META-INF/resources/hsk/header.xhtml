@@ -3,7 +3,6 @@
      xmlns:cc="http://java.sun.com/jsf/composite"    
      xmlns:hsk="http://xmlns.jcp.org/jsf/composite/hsk"
      xmlns:h="http://xmlns.jcp.org/jsf/html"
-     xmlns:jsf="http://xmlns.jcp.org/jsf"
      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <cc:interface>
         <cc:attribute name="sidebarId"/>
@@ -38,54 +37,56 @@
             </button>
             <a class="c-header-brand d-lg-none c-env" href="#">
                 <hsk:icon name="#{cc.attrs.logo}"
-                         group="#{cc.attrs.group}"
-                         styleClass="c-sidebar-brand-minimized" width="48"
-                         height="48" alt="#{cc.attrs.title}" />
+                          group="#{cc.attrs.group}"
+                          styleClass="c-sidebar-brand-minimized" width="48"
+                          height="48" alt="#{cc.attrs.title}" />
             </a>
             <h:form styleClass="h3 ml-2 mt-3 font-weight-bolder text-uppercase">
                 <h:commandLink>
                     #{cc.attrs.title}
                 </h:commandLink>
             </h:form>
-            <ul class="c-header-nav ml-auto" jsf:rendered="#{cc.attrs.showInf}">
-                <li class="c-header-nav-item dropdown">
-                    <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                       aria-expanded="false">
-                        <div class="c-avatar">
-                            #{cc.attrs.username}
-                        </div>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right pt-0">
-                        <div class="dropdown-item">
-                            <div class="text-truncate font-weight-bold">
-                                #{cc.attrs.fullName}
+            <h:panelGroup rendered="#{cc.attrs.showInf}">
+                <ul class="c-header-nav ml-auto">
+                    <li class="c-header-nav-item dropdown">
+                        <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                           aria-expanded="false">
+                            <div class="c-avatar">
+                                #{cc.attrs.username}
                             </div>
-                        </div>  
-                        <div class="dropdown-item">
-                            <small>
-                                <hsk:icon name="cil-user-follow" level="primary"/>
-                                <b>#{cc.attrs.profileName}</b>
-                                <br/>
-                                <hsk:icon name="cil-envelope-closed" level="secundary"/>
-                                #{cc.attrs.email}
-                                <br/>
-                                <hsk:icon name="cil-calendar" />
-                                <h:outputText value="#{cc.attrs.loginDate}">
-                                    <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
-                                </h:outputText>
-                            </small>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right pt-0">
+                            <div class="dropdown-item">
+                                <div class="text-truncate font-weight-bold">
+                                    #{cc.attrs.fullName}
+                                </div>
+                            </div>  
+                            <div class="dropdown-item">
+                                <small>
+                                    <hsk:icon name="cil-user-follow" level="primary"/>
+                                    <b>#{cc.attrs.profileName}</b>
+                                    <br/>
+                                    <hsk:icon name="cil-envelope-closed" level="secundary"/>
+                                    #{cc.attrs.email}
+                                    <br/>
+                                    <hsk:icon name="cil-calendar" />
+                                    <h:outputText value="#{cc.attrs.loginDate}">
+                                        <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+                                    </h:outputText>
+                                </small>
+                            </div>
+                            <h:form class="dropdown-item" >
+                                <h:commandButton action="#{cc.attrs.actionLogout}" value="Salir" styleClass="btn btn-danger btn-block"/>
+                            </h:form>
                         </div>
-                        <h:form class="dropdown-item" >
-                            <h:commandButton action="#{cc.attrs.actionLogout}" value="Salir" styleClass="btn btn-danger btn-block"/>
-                        </h:form>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </h:panelGroup>
             <button class="c-header-toggler c-class-toggler ml-auto mr-3" type="button" data-target="##{cc.attrs.configId}"
                     data-class="c-sidebar-show">
                 <hsk:icon name="cil-applications-settings" styleClass="c-icon c-icon-lg" />
             </button>
-            <div class="c-subheader px-3" jsf:rendered="#{cc.attrs.showNav}">
+            <h:panelGroup styleClass="c-subheader px-3" rendered="#{cc.attrs.showNav}">
                 <ol class="breadcrumb border-0 m-0">
                     <li class="breadcrumb-item">
                         Home
@@ -99,7 +100,7 @@
                         Dashboard
                     </li>
                 </ol>
-            </div>
+            </h:panelGroup>
             <div class="c-subheader c-subheader-title">
                 <span class=" m-3">
                     <cc:renderFacet name="title"/>

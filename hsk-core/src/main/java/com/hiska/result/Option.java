@@ -12,13 +12,17 @@ package com.hiska.result;
 
 import java.io.Serializable;
 import java.util.List;
+import lombok.*;
 
 /**
  * Option Data
  */
-@lombok.Getter
-@lombok.Setter
-@lombok.ToString
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode(of = {"value"})
+@NoArgsConstructor
+@AllArgsConstructor
 public class Option implements Serializable {
    private String value;
    private String label;
@@ -40,4 +44,6 @@ public class Option implements Serializable {
       option.description = description;
       return option;
    }
+
+   public static final Option NONE = create("NONE");
 }

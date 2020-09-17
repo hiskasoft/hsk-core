@@ -21,7 +21,7 @@ import javax.persistence.Converter;
 public class ParamConverter implements AttributeConverter<Param, String> {
    @Override
    public String convertToDatabaseColumn(Param param) {
-      return param == null ? null : param.getValue();
+      return param == null || param == Param.NONE ? null : param.getValue();
    }
 
    @Override

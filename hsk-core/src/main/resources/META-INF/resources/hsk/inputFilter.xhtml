@@ -7,25 +7,31 @@
     <cc:interface>
         <cc:attribute name="value" type="com.hiska.result.Filter"/>
         <cc:attribute name="label"/>
-        <cc:attribute name="title"/>
-        <cc:attribute name="alt"/>
-        <cc:attribute name="styleClass"/>
+        <cc:attribute name="itemLabel" default="#{cc.attrs.label}"/>
+        <cc:attribute name="icon" default="filter"/>
         <cc:attribute name="disabled" type="java.lang.Boolean" default="false"/>
         <cc:attribute name="converter" default="javax.faces.String"/>
         <cc:attribute name="withNull" type="java.lang.Boolean" default="false"/>
         <cc:attribute name="withIneq" type="java.lang.Boolean" default="false"/>
         <cc:attribute name="items"/>
         <cc:attribute name="update" default="#{cc.clientId}"/>
+        <cc:attribute name="styleClass" default="col"/>
     </cc:interface>
     <cc:implementation>
-        <div id="#{cc.clientId}" class="hsk-input-filter">
+        <div id="#{cc.clientId}" class="hsk-input-filter #{cc.attrs.value.withValue? 'open' : 'close'} #{cc.attrs.styleClass}">
             <c:set target="#{cc.attrs}" property="value" value="#{_help.createFilterValue(cc.attrs.value)}"/>
             <c:set target="#{cc.attrs}" property="items" value="#{_help.createItemsValue(cc.attrs.converter, cc.attrs.items, cc.attrs.withNull, cc.attrs.withIneq)}"/>
             <div class="input-group input-group-sm">
+                <h:panelGroup styleClass="input-group-prepend" rendered="#{cc.attrs.icon!=null}">
+                    <div class="input-group-text">
+                        <span class="fa fa-#{cc.attrs.icon}"></span>
+                    </div>
+                </h:panelGroup>
                 <h:selectOneMenu value="#{cc.attrs.value.expr}"
-                                 title="Fitlrar Campo '#{cc.attrs.label}'"
+                                 title="Fitrar Campo '#{cc.attrs.label}'"
                                  disabled="#{cc.attrs.disabled}"
-                                 styleClass="filter-eq form-control form-control-sm">
+                                 styleClass="form-control oper">
+                    <f:selectItem itemValue="#{_help.filterNone}" itemLabel="#{cc.attrs.itemLabel}"/>
                     <f:selectItems value="#{cc.attrs.items}"/>
                     <f:ajax event="change"
                             render="#{cc.attrs.update}"
@@ -36,7 +42,7 @@
                              disabled="#{cc.attrs.disabled}"
                              label="#{cc.attrs.label}"
                              title="Valor '#{cc.attrs.label}'"
-                             styleClass="form-control form-control-sm">
+                             styleClass="form-control">
                     <f:converter converterId="#{cc.attrs.converter}"/>
                 </h:inputText>
                 <h:inputText value="#{cc.attrs.value.other}" 
@@ -44,10 +50,10 @@
                              disabled="#{cc.attrs.disabled}"
                              label="#{cc.attrs.label}"
                              title="Valor '#{cc.attrs.label}'"
-                             styleClass="form-control form-control-sm">
+                             styleClass="form-control">
                     <f:converter converterId="#{cc.attrs.converter}"/>
                 </h:inputText>
-                <h:commandLink styleClass="btn btn-sm btn-danger"
+                <h:commandLink styleClass="btn btn-danger"
                                rendered="#{!cc.attrs.value.ignore}"
                                disabled="#{cc.attrs.disabled}"
                                title="Quitar '#{cc.attrs.label}'">

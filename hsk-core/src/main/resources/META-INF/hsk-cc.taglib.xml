@@ -24,17 +24,17 @@
         </attribute>
         <attribute>
             <description></description>
-            <name>title</name>
+            <name>itemLabel</name>
             <required>false</required>
             <type>java.lang.String</type>
-            <default/>
+            <default>#{cc.attrs.label}</default>
         </attribute>
         <attribute>
             <description></description>
-            <name>alt</name>
+            <name>icon</name>
             <required>false</required>
             <type>java.lang.String</type>
-            <default/>
+            <default>filter</default>
         </attribute>
         <attribute>
             <description></description>
@@ -69,7 +69,7 @@
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
-            <default>form-control form-control-sm</default>
+            <default>col</default>
         </attribute>
     </tag>
     <!--sortText.xhtml-->
@@ -637,24 +637,17 @@
         </attribute>
         <attribute>
             <description></description>
-            <name>title</name>
+            <name>itemLabel</name>
             <required>false</required>
             <type>java.lang.String</type>
-            <default/>
+            <default>#{cc.attrs.label}</default>
         </attribute>
         <attribute>
             <description></description>
-            <name>alt</name>
+            <name>icon</name>
             <required>false</required>
             <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description></description>
-            <name>styleClass</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
+            <default>filter</default>
         </attribute>
         <attribute>
             <description></description>
@@ -697,6 +690,13 @@
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.clientId}</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>styleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>col</default>
         </attribute>
     </tag>
     <!--note.xhtml-->

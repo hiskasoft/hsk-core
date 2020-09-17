@@ -96,30 +96,34 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
 
    private void appendWhere(StringBuilder queryString) {
       if (!entries.isEmpty()) {
-         queryString.append("\n WHERE");
+         StringBuilder whereString = new StringBuilder();
          for (Entry entry : entries) {
             Filter filter = entry.filter;
             Filter.Expr expr = filter.getExpr();
             if (expr.ignore()) {
                continue;
             }
-            queryString.append(" (");
+            whereString.append("(");
             for (String name : entry.names) {
-               queryString.append("\n   ")
+               whereString.append("\n   ")
                      .append(alias).append(".").append(name)
                      .append(" ").append(expr.oper());
                if (expr.params() == 1) {
-                  queryString.append(" :").append(entry.param1);
+                  whereString.append(" :").append(entry.param1);
                } else if (expr.params() == 2) {
-                  queryString.append(" :").append(entry.param1);
-                  queryString.append(" AND :").append(entry.param2);
+                  whereString.append(" :").append(entry.param1);
+                  whereString.append(" AND :").append(entry.param2);
                }
-               queryString.append("\n  OR ");
+               whereString.append("\n  OR ");
             }
-            queryString.setLength(queryString.length() - 6); // remove last OR
-            queryString.append("\n ) AND");
+            whereString.setLength(whereString.length() - 6); // remove last OR
+            whereString.append("\n ) AND ");
          }
-         queryString.setLength(queryString.length() - 4); // remove last AND
+         if (whereString.length() != 0) {
+            whereString.setLength(whereString.length() - 5); // remove last AND
+            queryString.append("\n WHERE ");
+            queryString.append(whereString);
+         }
       }
    }
 

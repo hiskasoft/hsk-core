@@ -69,12 +69,13 @@ span.btn {
     color: gray;
 }
 
-.hsk-input-filter select.filter-eq {
+.input-group-text .fa{
+    min-width: 1em;
+}
+
+.hsk-input-filter.open select.oper{
     width: 80px;
     max-width: 80px;
-}
-.hsk-input-filter select.filter-eq + input.form-control{
-    width: 80%;
 }
 
 .row-filter{}
