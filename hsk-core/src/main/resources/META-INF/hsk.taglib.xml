@@ -38,6 +38,13 @@
         </attribute>
         <attribute>
             <description/>
+            <name>size</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>sm</default>
+        </attribute>
+        <attribute>
+            <description/>
             <name>disabled</name>
             <required>false</required>
             <type>java.lang.Boolean</type>
@@ -648,6 +655,13 @@
             <required>false</required>
             <type>java.lang.String</type>
             <default>filter</default>
+        </attribute>
+        <attribute>
+            <description/>
+            <name>size</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>sm</default>
         </attribute>
         <attribute>
             <description/>

@@ -9,6 +9,7 @@
         <cc:attribute name="label"/>
         <cc:attribute name="itemLabel" default="#{cc.attrs.label}"/>
         <cc:attribute name="icon" default="filter"/>
+        <cc:attribute name="size" default="sm"/>
         <cc:attribute name="disabled" type="java.lang.Boolean" default="false"/>
         <cc:attribute name="converter" default="javax.faces.String"/>
         <cc:attribute name="withNull" type="java.lang.Boolean" default="false"/>
@@ -21,7 +22,7 @@
         <div id="#{cc.clientId}" class="hsk-input-filter #{cc.attrs.value.withValue? 'open' : 'close'} #{cc.attrs.styleClass}">
             <c:set target="#{cc.attrs}" property="value" value="#{_help.createFilterValue(cc.attrs.value)}"/>
             <c:set target="#{cc.attrs}" property="items" value="#{_help.createItemsValue(cc.attrs.converter, cc.attrs.items, cc.attrs.withNull, cc.attrs.withIneq)}"/>
-            <div class="input-group input-group-sm">
+            <div class="input-group input-group-#{cc.attrs.size}">
                 <h:panelGroup styleClass="input-group-prepend" rendered="#{cc.attrs.icon!=null}">
                     <div class="input-group-text">
                         <span class="fa fa-#{cc.attrs.icon}"></span>
