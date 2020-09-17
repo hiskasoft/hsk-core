@@ -6,9 +6,10 @@
      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
      xmlns:hsk="http://xmlns.jcp.org/jsf/composite/hsk">
     <cc:interface>
+        <cc:attribute name="styleClass"/>
     </cc:interface>
     <cc:implementation>
-        <div id="#{cc.clientId}" class="card #{cc.attrs.id}">
+        <div id="#{cc.clientId}" class="card #{cc.attrs.id} #{cc.attrs.styleClass}">
             <div class="card-header font-weight-bold">
                 <cc:renderFacet name="header"/>
             </div>

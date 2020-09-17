@@ -15,7 +15,7 @@ import java.util.Map;
 import javax.faces.context.FacesContext;
 import javax.faces.application.ConfigurableNavigationHandler;
 import javax.faces.application.ConfigurableNavigationHandlerWrapper;
-import com.hiska.faces.KeepScoped;
+import com.hiska.faces.ViewKeeped;
 
 public class NavegationRedirectHandler extends ConfigurableNavigationHandlerWrapper {
    private ConfigurableNavigationHandler wrapped;
@@ -38,15 +38,15 @@ public class NavegationRedirectHandler extends ConfigurableNavigationHandlerWrap
             outcome = outcome + "?faces-redirect=true";
          }
          Map<String, Object> dirMap = new HashMap<>();
+         Map<String, Object> sessionScope = context.getExternalContext().getSessionMap();
+         sessionScope.put("DIR_MAP", dirMap);
          Map<String, Object> viewMap = context.getViewRoot().getViewMap();
          viewMap.forEach((k, v) -> {
-            KeepScoped scope = v.getClass().getAnnotation(KeepScoped.class);
+            ViewKeeped scope = v.getClass().getAnnotation(ViewKeeped.class);
             if (scope != null) {
                dirMap.put(k, v);
             }
          });
-         Map<String, Object> sessionScope = context.getExternalContext().getSessionMap();
-         sessionScope.put("DIR_MAP", dirMap);
       }
       super.handleNavigation(context, fromAction, outcome);
    }

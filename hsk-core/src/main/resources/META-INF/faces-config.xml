@@ -23,7 +23,7 @@
         </resource-bundle>
     </application>
     <lifecycle>
-        <phase-listener>com.hiska.faces.KeepScopedListener</phase-listener>
+        <phase-listener>com.hiska.faces.ViewKeepedListener</phase-listener>
     </lifecycle>
     <converter>
         <converter-id>javax.faces.Object</converter-id>

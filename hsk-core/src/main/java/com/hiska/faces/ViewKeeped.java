@@ -17,6 +17,6 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface KeepScoped {
-   public String dir();
+public @interface ViewKeeped {
+   public String value();
 }

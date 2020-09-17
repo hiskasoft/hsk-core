@@ -21,7 +21,7 @@ import javax.faces.event.PhaseListener;
 /**
  * @author Willyams Yujra
  */
-public class KeepScopedListener implements PhaseListener {
+public class ViewKeepedListener implements PhaseListener {
    @Override
    public PhaseId getPhaseId() {
       return PhaseId.RESTORE_VIEW;
@@ -29,8 +29,6 @@ public class KeepScopedListener implements PhaseListener {
 
    @Override
    public void beforePhase(PhaseEvent event) {
-      // System.out.println("DirectoryScopeListener-beforePhase: " +
-      // event.getPhaseId());
    }
 
    @Override
@@ -41,8 +39,8 @@ public class KeepScopedListener implements PhaseListener {
          Map<String, Object> viewMap = context.getViewRoot().getViewMap();
          String viewId = context.getViewRoot().getViewId();
          dirMap.forEach((var k, var v) -> {
-            KeepScoped scope = v.getClass().getAnnotation(KeepScoped.class);
-            if (scope != null && viewId.startsWith(scope.dir())) {
+            ViewKeeped scope = v.getClass().getAnnotation(ViewKeeped.class);
+            if (scope != null && viewId.startsWith(scope.value())) {
                LOGGER.log(Level.FINE, "RESTORE: {0} - {1}: {2}", new Object[]{scope, k, v});
                viewMap.put(k, v);
             }
@@ -50,5 +48,5 @@ public class KeepScopedListener implements PhaseListener {
       }
    }
 
-   private static final Logger LOGGER = Logger.getLogger(KeepScopedListener.class.getName());
+   private static final Logger LOGGER = Logger.getLogger(ViewKeepedListener.class.getName());
 }
