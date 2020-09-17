@@ -28,7 +28,7 @@
                                  disabled="#{cc.attrs.disabled}"
                                  title="Fitlrar Campo '#{cc.attrs.label}'"
                                  styleClass="form-control">
-                    <f:selectItem itemValue="#{_help.filterNone}" itemLabel="#{cc.attrs.itemLabel}"/>
+                    <f:selectItem itemValue="#{null}" itemLabel="#{cc.attrs.itemLabel}"/>
                     <cc:insertChildren/>
                     <f:ajax event="change"
                             immediate="true"/>
