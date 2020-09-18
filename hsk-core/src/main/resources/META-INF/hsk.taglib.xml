@@ -1,409 +1,406 @@
-<facelet-taglib xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd" version="2.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cc="http://java.sun.com/jsf/composite">
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cc="http://java.sun.com/jsf/composite" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd" version="2.0">
     <namespace>http://hiskasoft.com/jsf/hsk</namespace>
-    <!--selectFilter.xhtml-->
+    <!--cardForm.xhtml-->
     <tag>
-        <description>
-            <!---->
-        </description>
-        <tag-name>selectFilter</tag-name>
+        <description></description>
+        <tag-name>cardForm</tag-name>
         <component>
-            <resource-id>hsk/selectFilter.xhtml</resource-id>
+            <resource-id>hsk/cardForm.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>value</name>
-            <required>false</required>
-            <type>com.hiska.result.Filter</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>label</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>itemLabel</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>#{cc.attrs.label}</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>icon</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>filter</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>size</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>sm</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>disabled</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-            <default>false</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>converter</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>javax.faces.String</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>option</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>false</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>update</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>#{cc.clientId}</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
-            <default>col</default>
+            <default>center col-12 col-lg-10 col-xl-6</default>
         </attribute>
     </tag>
-    <!--sortText.xhtml-->
+    <!--config.xhtml-->
     <tag>
-        <description>
-            <!---->
-        </description>
-        <tag-name>sortText</tag-name>
+        <description></description>
+        <tag-name>config</tag-name>
         <component>
-            <resource-id>hsk/sortText.xhtml</resource-id>
+            <resource-id>hsk/config.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>name</name>
-            <required>true</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>value</name>
-            <required>true</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>title</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>pagination</name>
-            <required>false</required>
-            <type>com.hiska.result.Pagination</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>sortListener</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>update</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>disabled</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>#{cc.attrs.pagination == null}</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>active</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>#{cc.attrs.pagination.attr == cc.attrs.name}</default>
-        </attribute>
-    </tag>
-    <!--header.xhtml-->
-    <tag>
-        <description>
-            <!---->
-        </description>
-        <tag-name>header</tag-name>
-        <component>
-            <resource-id>hsk/header.xhtml</resource-id>
-        </component>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>sidebarId</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>configId</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>showInf</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>true</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>showNav</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>false</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>title</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>Core UI App</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>username</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>¿username?</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>fullName</name>
             <required>false</required>
             <type>java.lang.String</type>
-            <default>¿fullName?</default>
+            <default/>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>profileName</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>¿profileName?</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>email</name>
             <required>false</required>
             <type>java.lang.String</type>
-            <default>¿email?</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>loginDate</name>
-            <required>false</required>
-            <type>java.util.Date</type>
-            <default>#{_help.noneDate}</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>actionLogout</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>#{_help.noneAction}</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>logo</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>app-logo</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>group</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>app</default>
+            <default/>
         </attribute>
     </tag>
     <!--footer.xhtml-->
     <tag>
-        <description>
-            <!---->
-        </description>
+        <description></description>
         <tag-name>footer</tag-name>
         <component>
             <resource-id>hsk/footer.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>menuId</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>configId</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>today</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>url</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>https://cui.com</default>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>Simple Cui App</default>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>year</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>2020</default>
         </attribute>
     </tag>
+    <!--header.xhtml-->
+    <tag>
+        <description></description>
+        <tag-name>header</tag-name>
+        <component>
+            <resource-id>hsk/header.xhtml</resource-id>
+        </component>
+        <attribute>
+            <description></description>
+            <name>sidebarId</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>configId</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>showInf</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>true</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>showNav</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>false</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>title</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>Core UI App</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>username</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>¿username?</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>fullName</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>¿fullName?</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>profileName</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>¿profileName?</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>email</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>¿email?</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>loginDate</name>
+            <required>false</required>
+            <type>java.util.Date</type>
+            <default>#{_help.noneDate}</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>actionLogout</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>#{_help.noneAction}</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>logo</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>app-logo</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>group</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>app</default>
+        </attribute>
+    </tag>
+    <!--icon.xhtml-->
+    <tag>
+        <description></description>
+        <tag-name>icon</tag-name>
+        <component>
+            <resource-id>hsk/icon.xhtml</resource-id>
+        </component>
+        <attribute>
+            <description></description>
+            <name>name</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>group</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>default</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>styleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>c-icon</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>style</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>width</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>height</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>alt</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>size</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>0</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>level</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>title</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>src</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>svg/#{cc.attrs.group}.svg</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>svgStyleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>#{cc.attrs.styleClass} c-icon-#{cc.attrs.size}xl text-#{cc.attrs.level}</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>xlinkHref</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>#{resource[cc.attrs.src]}##{cc.attrs.name}</default>
+        </attribute>
+    </tag>
+    <!--inputFilter.xhtml-->
+    <tag>
+        <description></description>
+        <tag-name>inputFilter</tag-name>
+        <component>
+            <resource-id>hsk/inputFilter.xhtml</resource-id>
+        </component>
+        <attribute>
+            <description></description>
+            <name>value</name>
+            <required>false</required>
+            <type>com.hiska.result.Filter</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>label</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>itemLabel</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>#{cc.attrs.label}</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>icon</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>filter</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>size</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>sm</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>disabled</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+            <default>false</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>converter</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>javax.faces.String</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>withNull</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+            <default>false</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>withIneq</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+            <default>false</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>items</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>update</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>#{cc.clientId}</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>styleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>col</default>
+        </attribute>
+    </tag>
     <!--menu.xhtml-->
     <tag>
-        <description>
-            <!---->
-        </description>
+        <description></description>
         <tag-name>menu</tag-name>
         <component>
             <resource-id>hsk/menu.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>value</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>type</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>root</default>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>index</name>
             <required>false</required>
             <type>java.lang.Integer</type>
@@ -412,634 +409,446 @@
     </tag>
     <!--messageFlash.xhtml-->
     <tag>
-        <description>
-            <!---->
-        </description>
+        <description></description>
         <tag-name>messageFlash</tag-name>
         <component>
             <resource-id>hsk/messageFlash.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>toaster-top-right mt-2 mr-2</default>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>key</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>toast</default>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>facesResultMessage</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{_help.facesResultMessage}</default>
         </attribute>
     </tag>
-    <!--icon.xhtml-->
-    <tag>
-        <description>
-            <!---->
-        </description>
-        <tag-name>icon</tag-name>
-        <component>
-            <resource-id>hsk/icon.xhtml</resource-id>
-        </component>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>name</name>
-            <required>true</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>group</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>default</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>styleClass</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>c-icon</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>style</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>width</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>height</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>alt</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>size</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>0</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>level</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>title</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>src</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>svg/#{cc.attrs.group}.svg</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>svgStyleClass</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>#{cc.attrs.styleClass} c-icon-#{cc.attrs.size}xl text-#{cc.attrs.level}</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>xlinkHref</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>#{resource[cc.attrs.src]}##{cc.attrs.name}</default>
-        </attribute>
-    </tag>
-    <!--panelFilter.xhtml-->
-    <tag>
-        <description>
-            <!---->
-        </description>
-        <tag-name>panelFilter</tag-name>
-        <component>
-            <resource-id>hsk/panelFilter.xhtml</resource-id>
-        </component>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>rendered</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>pagination</name>
-            <required>false</required>
-            <type>com.hiska.result.Pagination</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>size</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>5</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>open</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>false</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>applyListener</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>cleanListener</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>update</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>#{cc.clientId}</default>
-        </attribute>
-    </tag>
     <!--messageHistory.xhtml-->
     <tag>
-        <description>
-            <!---->
-        </description>
+        <description></description>
         <tag-name>messageHistory</tag-name>
         <component>
             <resource-id>hsk/messageHistory.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>facesResultMessage</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{_help.facesResultMessageHistory}</default>
         </attribute>
     </tag>
-    <!--panelModal.xhtml-->
-    <tag>
-        <description>
-            <!---->
-        </description>
-        <tag-name>panelModal</tag-name>
-        <component>
-            <resource-id>hsk/panelModal.xhtml</resource-id>
-        </component>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>header</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>Dialogo......</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>appendTo</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>@(body)</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>widgetVar</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>#{cc.id}Dialog</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>idForm</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>#{cc.id}Form</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>styleClass</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>..</default>
-        </attribute>
-    </tag>
-    <!--pagination.xhtml-->
-    <tag>
-        <description>
-            <!---->
-        </description>
-        <tag-name>pagination</tag-name>
-        <component>
-            <resource-id>hsk/pagination.xhtml</resource-id>
-        </component>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>value</name>
-            <required>true</required>
-            <type>com.hiska.result.Pagination</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>size</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>5</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>applyListener</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>#{_help.noneListener}</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>update</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>#{cc.clientId}</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>disabled</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>#{cc.attrs.value == null || cc.attrs.value.length == 0}</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>styleClass</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-    </tag>
-    <!--inputFilter.xhtml-->
-    <tag>
-        <description>
-            <!---->
-        </description>
-        <tag-name>inputFilter</tag-name>
-        <component>
-            <resource-id>hsk/inputFilter.xhtml</resource-id>
-        </component>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>value</name>
-            <required>false</required>
-            <type>com.hiska.result.Filter</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>label</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>itemLabel</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>#{cc.attrs.label}</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>icon</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>filter</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>size</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>sm</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>disabled</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-            <default>false</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>converter</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>javax.faces.String</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>withNull</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-            <default>false</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>withIneq</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-            <default>false</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>items</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>update</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>#{cc.clientId}</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>styleClass</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>col</default>
-        </attribute>
-    </tag>
     <!--note.xhtml-->
     <tag>
-        <description>
-            <!---->
-        </description>
+        <description></description>
         <tag-name>note</tag-name>
         <component>
             <resource-id>hsk/note.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>level</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>warning</default>
         </attribute>
     </tag>
-    <!--config.xhtml-->
+    <!--pagination.xhtml-->
     <tag>
-        <description>
-            <!---->
-        </description>
-        <tag-name>config</tag-name>
+        <description></description>
+        <tag-name>pagination</tag-name>
         <component>
-            <resource-id>hsk/config.xhtml</resource-id>
+            <resource-id>hsk/pagination.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>fullName</name>
-            <required>false</required>
-            <type>java.lang.String</type>
+            <description></description>
+            <name>value</name>
+            <required>true</required>
+            <type>com.hiska.result.Pagination</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>email</name>
+            <description></description>
+            <name>size</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>5</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>applyListener</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>#{_help.noneListener}</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>update</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>#{cc.clientId}</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>disabled</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>#{cc.attrs.value == null || cc.attrs.value.length == 0}</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
     </tag>
+    <!--panelFilter.xhtml-->
+    <tag>
+        <description></description>
+        <tag-name>panelFilter</tag-name>
+        <component>
+            <resource-id>hsk/panelFilter.xhtml</resource-id>
+        </component>
+        <attribute>
+            <description></description>
+            <name>rendered</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>pagination</name>
+            <required>false</required>
+            <type>com.hiska.result.Pagination</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>size</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>5</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>open</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>false</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>applyListener</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>cleanListener</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>update</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>#{cc.clientId}</default>
+        </attribute>
+    </tag>
+    <!--rowLabel.xhtml-->
+    <tag>
+        <description></description>
+        <tag-name>rowLabel</tag-name>
+        <component>
+            <resource-id>hsk/rowLabel.xhtml</resource-id>
+        </component>
+        <attribute>
+            <description></description>
+            <name>styleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>text</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>size</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>labelCol</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>col-12 col-md-2</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>inputCol</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>col-12 col-md-10</default>
+        </attribute>
+    </tag>
+    <!--rowSide.xhtml-->
+    <tag>
+        <description></description>
+        <tag-name>rowSide</tag-name>
+        <component>
+            <resource-id>hsk/rowSide.xhtml</resource-id>
+        </component>
+        <attribute>
+            <description></description>
+            <name>styleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>size</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>icon</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>text</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+    </tag>
+    <!--selectFilter.xhtml-->
+    <tag>
+        <description></description>
+        <tag-name>selectFilter</tag-name>
+        <component>
+            <resource-id>hsk/selectFilter.xhtml</resource-id>
+        </component>
+        <attribute>
+            <description></description>
+            <name>value</name>
+            <required>false</required>
+            <type>com.hiska.result.Filter</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>label</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>itemLabel</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>#{cc.attrs.label}</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>icon</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>filter</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>size</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>sm</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>disabled</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+            <default>false</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>converter</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>javax.faces.String</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>option</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>false</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>update</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>#{cc.clientId}</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>styleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>col</default>
+        </attribute>
+    </tag>
     <!--sidebar.xhtml-->
     <tag>
-        <description>
-            <!---->
-        </description>
+        <description></description>
         <tag-name>sidebar</tag-name>
         <component>
             <resource-id>hsk/sidebar.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>logoFull</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>logoMinimized</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>menus</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!---->
-            </description>
+            <description></description>
             <name>grupo</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>default</default>
         </attribute>
     </tag>
-    <!--panelForm.xhtml-->
+    <!--sortText.xhtml-->
     <tag>
-        <description>
-            <!---->
-        </description>
-        <tag-name>panelForm</tag-name>
+        <description></description>
+        <tag-name>sortText</tag-name>
         <component>
-            <resource-id>hsk/panelForm.xhtml</resource-id>
+            <resource-id>hsk/sortText.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!---->
-            </description>
-            <name>styleClass</name>
+            <description></description>
+            <name>name</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>value</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>pagination</name>
+            <required>false</required>
+            <type>com.hiska.result.Pagination</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>sortListener</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>update</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>disabled</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>#{cc.attrs.pagination == null}</default>
+        </attribute>
+        <attribute>
+            <description></description>
+            <name>active</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>#{cc.attrs.pagination.attr == cc.attrs.name}</default>
         </attribute>
     </tag>
 </facelet-taglib>

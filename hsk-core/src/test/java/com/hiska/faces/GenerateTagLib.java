@@ -20,6 +20,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
@@ -65,6 +66,7 @@ public class GenerateTagLib {
          entry.name = lib.getName();
          System.out.println("READ LIB: " + lib.getName());
          File[] xhtmls = lib.listFiles(f -> f.getName().endsWith(".xhtml"));
+         Arrays.sort(xhtmls);
          String url = "http://java.sun.com/jsf/composite";
          if (xhtmls.length > 0) {
             entry.document = dBuilder.newDocument();

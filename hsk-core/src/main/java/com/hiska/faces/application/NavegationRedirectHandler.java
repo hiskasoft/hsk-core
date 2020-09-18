@@ -18,10 +18,11 @@ import javax.faces.application.ConfigurableNavigationHandlerWrapper;
 import com.hiska.faces.ViewKeeped;
 
 public class NavegationRedirectHandler extends ConfigurableNavigationHandlerWrapper {
-   private ConfigurableNavigationHandler wrapped;
+   private static final String UIVIEWACTION_BROADCAST = "javax.faces.ViewAction.broadcast";
+   private final ConfigurableNavigationHandler wrapped;
 
-   public NavegationRedirectHandler(ConfigurableNavigationHandler delegate) {
-      this.wrapped = delegate;
+   public NavegationRedirectHandler(ConfigurableNavigationHandler wrapped) {
+      this.wrapped = wrapped;
    }
 
    @Override
@@ -31,12 +32,9 @@ public class NavegationRedirectHandler extends ConfigurableNavigationHandlerWrap
 
    @Override
    public void handleNavigation(FacesContext context, String fromAction, String outcome) {
-      if (outcome != null && !outcome.contains("faces-redirect")) {
-         if (outcome.contains("?")) {
-            outcome = outcome + "&faces-redirect=true";
-         } else {
-            outcome = outcome + "?faces-redirect=true";
-         }
+      Map<Object, Object> attrs = context.getAttributes();
+      attrs.put(UIVIEWACTION_BROADCAST, Boolean.TRUE);
+      if (outcome != null && !outcome.isEmpty()) {
          Map<String, Object> dirMap = new HashMap<>();
          Map<String, Object> sessionScope = context.getExternalContext().getSessionMap();
          sessionScope.put("DIR_MAP", dirMap);
@@ -48,6 +46,6 @@ public class NavegationRedirectHandler extends ConfigurableNavigationHandlerWrap
             }
          });
       }
-      super.handleNavigation(context, fromAction, outcome);
+      wrapped.handleNavigation(context, fromAction, outcome);
    }
 }
