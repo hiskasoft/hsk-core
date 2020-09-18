@@ -5,19 +5,19 @@
         <cc:attribute name="styleClass"/>
         <cc:attribute name="text"/>
         <cc:attribute name="size"/>
-        <cc:attribute name="labelCol" default="col-12  col-md-2 "/>
-        <cc:attribute name="inputCol" default="col-12  col-md-10"/>
+        <cc:attribute name="classText" default="col-12 col-md-2 "/>
+        <cc:attribute name="classValue" default="col-12 col-md-10"/>
     </cc:interface>
 
     <cc:implementation>
         <div class="row-label mb-2 #{cc.attrs.styleClass}">
             <div class="row">
-                <div class="col #{cc.attrs.labelCol}">
+                <div class="col #{cc.attrs.classText}">
                     <label class="col-form-label">
                         #{cc.attrs.text}
                     </label>
                 </div>
-                <div class="col #{cc.attrs.inputCol}">
+                <div class="col #{cc.attrs.classValue}">
                     <cc:insertChildren/>
                 </div>
             </div>
