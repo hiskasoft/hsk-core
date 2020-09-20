@@ -2,15 +2,15 @@
 <div xmlns="http://www.w3.org/1999/xhtml"
      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
     <cc:interface>
-        <cc:attribute name="styleClass"/>
         <cc:attribute name="text"/>
         <cc:attribute name="size"/>
-        <cc:attribute name="classText" default="col-12 col-md-2 "/>
+        <cc:attribute name="classRow" default="col-12"/>
+        <cc:attribute name="classText" default="col-12 col-md-2"/>
         <cc:attribute name="classValue" default="col-12 col-md-10"/>
     </cc:interface>
 
     <cc:implementation>
-        <div class="row-label mb-2 #{cc.attrs.styleClass}">
+        <div class="row-label mb-2 #{cc.attrs.classRow}">
             <div class="row">
                 <div class="col #{cc.attrs.classText}">
                     <label class="col-form-label">

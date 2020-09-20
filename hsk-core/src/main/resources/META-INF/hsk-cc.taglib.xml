@@ -1,9 +1,10 @@
-<facelet-taglib xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd" version="2.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cc="http://java.sun.com/jsf/composite">
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cc="http://java.sun.com/jsf/composite" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd" version="2.0">
     <namespace>http://xmlns.jcp.org/jsf/composite/hsk</namespace>
     <!--cardForm.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>cardForm</tag-name>
         <component>
@@ -11,7 +12,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>styleClass</name>
             <required>false</required>
@@ -22,7 +23,7 @@
     <!--config.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>config</tag-name>
         <component>
@@ -30,7 +31,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>fullName</name>
             <required>false</required>
@@ -39,7 +40,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>email</name>
             <required>false</required>
@@ -50,7 +51,7 @@
     <!--footer.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>footer</tag-name>
         <component>
@@ -58,7 +59,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>menuId</name>
             <required>false</required>
@@ -67,7 +68,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>configId</name>
             <required>false</required>
@@ -76,7 +77,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>today</name>
             <required>false</required>
@@ -85,7 +86,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>url</name>
             <required>false</required>
@@ -94,7 +95,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>title</name>
             <required>false</required>
@@ -103,7 +104,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>year</name>
             <required>false</required>
@@ -114,7 +115,7 @@
     <!--header.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>header</tag-name>
         <component>
@@ -122,7 +123,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>sidebarId</name>
             <required>false</required>
@@ -131,7 +132,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>configId</name>
             <required>false</required>
@@ -140,7 +141,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>showInf</name>
             <required>false</required>
@@ -149,7 +150,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>showNav</name>
             <required>false</required>
@@ -158,7 +159,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>title</name>
             <required>false</required>
@@ -167,7 +168,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>username</name>
             <required>false</required>
@@ -176,7 +177,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>fullName</name>
             <required>false</required>
@@ -185,7 +186,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>profileName</name>
             <required>false</required>
@@ -194,7 +195,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>email</name>
             <required>false</required>
@@ -203,7 +204,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>loginDate</name>
             <required>false</required>
@@ -212,7 +213,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>actionLogout</name>
             <required>false</required>
@@ -221,7 +222,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>logo</name>
             <required>false</required>
@@ -230,7 +231,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>group</name>
             <required>false</required>
@@ -241,7 +242,7 @@
     <!--icon.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>icon</tag-name>
         <component>
@@ -249,7 +250,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>name</name>
             <required>true</required>
@@ -258,7 +259,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>group</name>
             <required>false</required>
@@ -267,7 +268,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>styleClass</name>
             <required>false</required>
@@ -276,7 +277,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>style</name>
             <required>false</required>
@@ -285,7 +286,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>width</name>
             <required>false</required>
@@ -294,7 +295,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>height</name>
             <required>false</required>
@@ -303,7 +304,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>alt</name>
             <required>false</required>
@@ -312,7 +313,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>size</name>
             <required>false</required>
@@ -321,7 +322,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>level</name>
             <required>false</required>
@@ -330,7 +331,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>title</name>
             <required>false</required>
@@ -339,7 +340,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>src</name>
             <required>false</required>
@@ -348,7 +349,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>svgStyleClass</name>
             <required>false</required>
@@ -357,7 +358,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>xlinkHref</name>
             <required>false</required>
@@ -368,7 +369,7 @@
     <!--inputFilter.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>inputFilter</tag-name>
         <component>
@@ -376,7 +377,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>value</name>
             <required>false</required>
@@ -385,7 +386,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>label</name>
             <required>false</required>
@@ -394,7 +395,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>itemLabel</name>
             <required>false</required>
@@ -403,7 +404,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>icon</name>
             <required>false</required>
@@ -412,7 +413,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>size</name>
             <required>false</required>
@@ -421,7 +422,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>disabled</name>
             <required>false</required>
@@ -430,7 +431,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>converter</name>
             <required>false</required>
@@ -439,7 +440,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>withNull</name>
             <required>false</required>
@@ -448,7 +449,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>withIneq</name>
             <required>false</required>
@@ -457,7 +458,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>items</name>
             <required>false</required>
@@ -466,7 +467,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>update</name>
             <required>false</required>
@@ -475,7 +476,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>styleClass</name>
             <required>false</required>
@@ -486,7 +487,7 @@
     <!--menu.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>menu</tag-name>
         <component>
@@ -494,7 +495,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>value</name>
             <required>false</required>
@@ -503,7 +504,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>type</name>
             <required>false</required>
@@ -512,7 +513,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>index</name>
             <required>false</required>
@@ -523,7 +524,7 @@
     <!--messageFlash.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>messageFlash</tag-name>
         <component>
@@ -531,7 +532,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>styleClass</name>
             <required>false</required>
@@ -540,7 +541,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>key</name>
             <required>false</required>
@@ -549,7 +550,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>facesResultMessage</name>
             <required>false</required>
@@ -560,7 +561,7 @@
     <!--messageHistory.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>messageHistory</tag-name>
         <component>
@@ -568,7 +569,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>styleClass</name>
             <required>false</required>
@@ -577,7 +578,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>facesResultMessage</name>
             <required>false</required>
@@ -588,7 +589,7 @@
     <!--note.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>note</tag-name>
         <component>
@@ -596,7 +597,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>title</name>
             <required>false</required>
@@ -605,7 +606,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>level</name>
             <required>false</required>
@@ -616,7 +617,7 @@
     <!--pagination.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>pagination</tag-name>
         <component>
@@ -624,7 +625,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>value</name>
             <required>true</required>
@@ -633,7 +634,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>size</name>
             <required>false</required>
@@ -642,7 +643,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>applyListener</name>
             <required>false</required>
@@ -651,7 +652,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>update</name>
             <required>false</required>
@@ -660,7 +661,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>disabled</name>
             <required>false</required>
@@ -669,7 +670,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>styleClass</name>
             <required>false</required>
@@ -680,7 +681,7 @@
     <!--panelFilter.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>panelFilter</tag-name>
         <component>
@@ -688,7 +689,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>rendered</name>
             <required>false</required>
@@ -697,7 +698,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>pagination</name>
             <required>false</required>
@@ -706,7 +707,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>size</name>
             <required>false</required>
@@ -715,7 +716,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>open</name>
             <required>false</required>
@@ -724,7 +725,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>applyListener</name>
             <required>false</required>
@@ -733,7 +734,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>cleanListener</name>
             <required>false</required>
@@ -742,7 +743,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>update</name>
             <required>false</required>
@@ -753,7 +754,7 @@
     <!--rowLabel.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>rowLabel</tag-name>
         <component>
@@ -761,16 +762,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
-            </description>
-            <name>styleClass</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default/>
-        </attribute>
-        <attribute>
-            <description>
-                <!---->
+                <!--.-->
             </description>
             <name>text</name>
             <required>false</required>
@@ -779,7 +771,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>size</name>
             <required>false</required>
@@ -788,16 +780,25 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
+            </description>
+            <name>classRow</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>col-12</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
             </description>
             <name>classText</name>
             <required>false</required>
             <type>java.lang.String</type>
-            <default>col-12 col-md-2 </default>
+            <default>col-12 col-md-2</default>
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>classValue</name>
             <required>false</required>
@@ -808,7 +809,7 @@
     <!--rowSide.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>rowSide</tag-name>
         <component>
@@ -816,7 +817,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>styleClass</name>
             <required>false</required>
@@ -825,7 +826,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>size</name>
             <required>false</required>
@@ -834,7 +835,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>icon</name>
             <required>false</required>
@@ -843,7 +844,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>text</name>
             <required>false</required>
@@ -854,7 +855,7 @@
     <!--selectFilter.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>selectFilter</tag-name>
         <component>
@@ -862,7 +863,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>value</name>
             <required>false</required>
@@ -871,7 +872,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>label</name>
             <required>false</required>
@@ -880,7 +881,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>itemLabel</name>
             <required>false</required>
@@ -889,7 +890,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>icon</name>
             <required>false</required>
@@ -898,7 +899,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>size</name>
             <required>false</required>
@@ -907,7 +908,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>disabled</name>
             <required>false</required>
@@ -916,7 +917,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>converter</name>
             <required>false</required>
@@ -925,7 +926,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>option</name>
             <required>false</required>
@@ -934,7 +935,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>update</name>
             <required>false</required>
@@ -943,7 +944,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>styleClass</name>
             <required>false</required>
@@ -954,7 +955,7 @@
     <!--sidebar.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>sidebar</tag-name>
         <component>
@@ -962,7 +963,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>title</name>
             <required>false</required>
@@ -971,7 +972,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>logoFull</name>
             <required>false</required>
@@ -980,7 +981,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>logoMinimized</name>
             <required>false</required>
@@ -989,7 +990,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>menus</name>
             <required>false</required>
@@ -998,7 +999,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>grupo</name>
             <required>false</required>
@@ -1009,7 +1010,7 @@
     <!--sortText.xhtml-->
     <tag>
         <description>
-            <!---->
+            <!--.-->
         </description>
         <tag-name>sortText</tag-name>
         <component>
@@ -1017,7 +1018,7 @@
         </component>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>name</name>
             <required>true</required>
@@ -1026,7 +1027,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>value</name>
             <required>true</required>
@@ -1035,7 +1036,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>title</name>
             <required>false</required>
@@ -1044,7 +1045,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>pagination</name>
             <required>false</required>
@@ -1053,7 +1054,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>sortListener</name>
             <required>false</required>
@@ -1062,7 +1063,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>update</name>
             <required>false</required>
@@ -1071,7 +1072,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>disabled</name>
             <required>false</required>
@@ -1080,7 +1081,7 @@
         </attribute>
         <attribute>
             <description>
-                <!---->
+                <!--.-->
             </description>
             <name>active</name>
             <required>false</required>

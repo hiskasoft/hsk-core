@@ -2,6 +2,7 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:cc="http://java.sun.com/jsf/composite" xmlns="http://java.sun.com/xml/ns/javaee" version="2.0">
     <xsl:output omit-xml-declaration="yes" indent="yes"/>
     <xsl:param name="URL"/>
+    <xsl:variable name="NONE" select="'.'"/>
     <xsl:template match="/">
         <facelet-taglib xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd" version="2.0">
             <namespace>
@@ -23,7 +24,14 @@
         <tag>
             <description>
                 <xsl:comment>
-                    <xsl:value-of select="@description"/>
+                    <xsl:choose>
+                        <xsl:when test="@description != ''">
+                            <xsl:value-of select="@description"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="$NONE"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </xsl:comment>
             </description>
             <tag-name>
@@ -41,7 +49,14 @@
         <attribute>
             <description>
                 <xsl:comment>
-                    <xsl:value-of select="@description"/>
+                    <xsl:choose>
+                        <xsl:when test="@description != ''">
+                            <xsl:value-of select="@description"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="$NONE"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </xsl:comment>
             </description>
             <name>
