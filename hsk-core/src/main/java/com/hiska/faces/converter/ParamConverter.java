@@ -16,18 +16,14 @@ import javax.faces.convert.Converter;
 
 import com.hiska.result.Param;
 
-public class ParamConverter implements Converter {
+public class ParamConverter implements Converter<Param> {
    @Override
-   public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+   public Param getAsObject(FacesContext facesContext, UIComponent component, String value) {
       return Param.create(value, "JSF_" + value);
    }
 
    @Override
-   public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
-      if (object instanceof Param) {
-         Param param = (Param) object;
-         return param.getValue();
-      }
-      return object == null ? null : object.toString();
+   public String getAsString(FacesContext facesContext, UIComponent component, Param param) {
+      return param == null ? null : param.getValue();
    }
 }
