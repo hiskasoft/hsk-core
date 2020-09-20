@@ -15,6 +15,7 @@
  */
 package com.hiska.faces.cc;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -29,7 +30,7 @@ import java.util.stream.Collectors;
 @lombok.ToString
 @lombok.NoArgsConstructor
 @lombok.AllArgsConstructor
-public class Menu implements Comparable<Menu> {
+public class Menu implements Comparable<Menu>, Serializable {
    private Long id;
    private Integer order;
    private String name;

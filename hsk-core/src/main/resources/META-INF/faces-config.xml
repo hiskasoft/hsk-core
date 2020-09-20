@@ -24,6 +24,7 @@
     </application>
     <lifecycle>
         <phase-listener>com.hiska.faces.ViewKeepedListener</phase-listener>
+        <phase-listener>com.hiska.faces.ViewCacheListener</phase-listener>
     </lifecycle>
     <converter>
         <converter-id>javax.faces.Object</converter-id>

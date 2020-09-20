@@ -8,7 +8,7 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.faces.filter;
+package com.hiska.faces;
 
 import java.io.IOException;
 import java.util.Enumeration;
@@ -28,8 +28,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author Willyams Yujra
  */
-@WebFilter(filterName = "AjaxRefreshFilter", urlPatterns = {"/*"})
-public class AjaxRefreshFilter implements Filter {
+@WebFilter(filterName = "ViewAjaxFilter", urlPatterns = {"/*"})
+public class ViewAjaxFilter implements Filter {
    // private String includeRender = "";
    @Override
    public void init(FilterConfig filterConfig) throws ServletException {
