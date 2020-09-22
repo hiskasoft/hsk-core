@@ -19,7 +19,7 @@ import com.hiska.result.Param;
 public class ParamConverter implements Converter {
    @Override
    public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
-      return Param.create(value, "JSF_" + value);
+      return value == null ? null : Param.create(value, "JSF_" + value);
    }
 
    @Override

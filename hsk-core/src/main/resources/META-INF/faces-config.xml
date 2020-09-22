@@ -17,6 +17,7 @@
         <action-listener>com.hiska.faces.application.ActionResultListener</action-listener>
         <el-resolver>com.hiska.faces.application.ELI18NResolver</el-resolver>
         <navigation-handler>com.hiska.faces.application.NavegationRedirectHandler</navigation-handler>
+        <view-handler>com.hiska.faces.application.CustomViewHandler</view-handler>
         <resource-bundle>
             <base-name>com.hiska.faces.label</base-name>
             <var>HSK</var>
