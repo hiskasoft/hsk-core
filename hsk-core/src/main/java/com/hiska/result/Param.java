@@ -38,9 +38,18 @@ public class Param implements Serializable {
       return new Param(valor, label, description);
    }
 
+   public static boolean isEquals(String str, Param param) {
+      String old = param == null ? null : param.getValue();
+      return str != null && str.equals(old);
+   }
+
+   public boolean isEquals(String str) {
+      return str != null && str.equals(value);
+   }
+
    @Override
    public String toString() {
-      return value + ": " + label;
+      return "[" + value + "] " + label;
    }
 
    public static final Param NONE = create("NONE");

@@ -55,6 +55,9 @@ public class Result implements Serializable {
       }
    }
 
+   /**
+    * Clear all messages
+    */
    public void clearMessage() {
       messages.clear();
    }
@@ -71,7 +74,32 @@ public class Result implements Serializable {
       }
    }
 
+   /**
+    * Clear all behaviors
+    */
    public void clearBehavior() {
+      behaviors.clear();
+   }
+
+   /**
+    * Result Clear
+    * Clear all messages
+    * Clear all behaviors
+    */
+   public void clear() {
+      messages.clear();
+      behaviors.clear();
+   }
+
+   /**
+    * Result Reset
+    * Clear all messages
+    * Clear all behaviors
+    * success is true
+    */
+   public void reset() {
+      success = true;
+      messages.clear();
       behaviors.clear();
    }
 

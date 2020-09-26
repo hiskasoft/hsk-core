@@ -45,5 +45,14 @@ public class Option implements Serializable {
       return option;
    }
 
+   public static boolean isEquals(String str, Option option) {
+      String old = option == null ? null : option.getValue();
+      return str != null && str.equals(old);
+   }
+
+   public boolean isEquals(String str) {
+      return str != null && str.equals(value);
+   }
+
    public static final Option NONE = create("NONE");
 }
