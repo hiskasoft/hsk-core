@@ -14,6 +14,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Basic Result Response for Request
@@ -125,13 +127,27 @@ public class Result implements Serializable {
    /**
     * Create and add a new Message
     * Text Message in format XXX-####: Text
+    * <p>
     * XXX is a PREFIX
+    * </p>
+    * <p>
     * #### is a Number
+    * </p>
+    * <p>
     * 0### is INFO
+    * </p>
+    * <p>
     * 1### is INFO
+    * </p>
+    * <p>
     * 2### is WARN
+    * </p>
+    * <p>
     * 3### is ERROR
+    * </p>
+    * <p>
     * 9### is FATAL
+    * </p>
     * 
     * @param  text
     * @return
@@ -194,5 +210,23 @@ public class Result implements Serializable {
       if (success == false) {
          throw new ResultException(message, this);
       }
+   }
+
+   private static final Logger LOGGER = Logger.getLogger(Result.class.getName());
+
+   /**
+    * Create Log Result
+    */
+   public void log() {
+      log("·");
+   }
+
+   /**
+    * Create Log Result
+    * 
+    * @param title title log
+    */
+   public void log(String title) {
+      LOGGER.log(Level.INFO, "Result:{0}|Success={1}|Messages={2}|Behaviors={3}|This={4}", new Object[]{title, success, messages, behaviors, this});
    }
 }

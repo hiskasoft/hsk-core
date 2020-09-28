@@ -116,13 +116,27 @@ public class MessageBuilder {
 
    /**
     * Text Message in format XXX-####: Text
+    * <p>
     * XXX is a PREFIX
+    * </p>
+    * <p>
     * #### is a Number
+    * </p>
+    * <p>
     * 0### is INFO
+    * </p>
+    * <p>
     * 1### is INFO
+    * </p>
+    * <p>
     * 2### is WARN
+    * </p>
+    * <p>
     * 3### is ERROR
+    * </p>
+    * <p>
     * 9### is FATAL
+    * </p>
     * 
     * @param  text
     * @return
