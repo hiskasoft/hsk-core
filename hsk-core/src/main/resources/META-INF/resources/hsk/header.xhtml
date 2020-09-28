@@ -10,6 +10,7 @@
         <cc:attribute name="showInf" default="true"/>
         <cc:attribute name="showNav" default="false"/>
         <cc:attribute name="title" default="Core UI App"/>
+        <cc:attribute name="subtitle" default="Core UI Module"/>
         <cc:attribute name="username" default="¿username?"/>
         <cc:attribute name="fullName" default="¿fullName?"/>
         <cc:attribute name="profileName" default="¿profileName?"/>
@@ -19,6 +20,7 @@
         <cc:attribute name="logo" default="app-logo"/>
         <cc:attribute name="group" default="app"/>
         <cc:facet name="title"/>
+        <cc:facet name="subtitle"/>
     </cc:interface>
     <cc:implementation>
         <style>
@@ -42,9 +44,10 @@
                           height="48" alt="#{cc.attrs.title}" />
             </a>
             <h:form styleClass="h3 ml-2 mt-3 font-weight-bolder text-uppercase">
-                <h:commandLink>
+                <h:commandLink rendered="#{empty cc.facets.title}">
                     #{cc.attrs.title}
                 </h:commandLink>
+                <cc:renderFacet name="title"/>
             </h:form>
             <h:panelGroup rendered="#{cc.attrs.showInf}">
                 <ul class="c-header-nav ml-auto">
@@ -103,7 +106,9 @@
             </h:panelGroup>
             <div class="c-subheader c-subheader-title">
                 <span class=" m-3">
-                    <cc:renderFacet name="title"/>
+                    <h:outputText value="#{cc.attrs.subtitle}"
+                                  rendered="#{empty cc.facets.subtitle}"/>
+                    <cc:renderFacet name="subtitle"/>
                 </span>
             </div>
         </header>

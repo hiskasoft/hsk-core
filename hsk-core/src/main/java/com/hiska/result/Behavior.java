@@ -10,6 +10,7 @@
  */
 package com.hiska.result;
 
+import lombok.*;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,9 +18,11 @@ import java.util.Map;
 /**
  * @author Willyams Yujra
  */
-@lombok.Getter
-@lombok.Setter
-@lombok.ToString
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Behavior implements Serializable {
    /**
     * Type Behavior
@@ -36,5 +39,21 @@ public class Behavior implements Serializable {
 
    public void addParam(String name, String value) {
       params.put(name, value);
+   }
+
+   public boolean isEquals(String type, String action) {
+      return action != null && type != null && action.equals(this.action) && type.equals(this.type);
+   }
+
+   public boolean isEquals(String action) {
+      return action != null && action.equals(this.action);
+   }
+
+   public static Behavior create(String action) {
+      return new Behavior("CASE", action);
+   }
+
+   public static Behavior create(String type, String action) {
+      return new Behavior(type, action);
    }
 }

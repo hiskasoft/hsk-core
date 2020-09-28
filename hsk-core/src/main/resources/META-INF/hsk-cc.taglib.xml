@@ -170,6 +170,15 @@
             <description>
                 <!--.-->
             </description>
+            <name>subtitle</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>Core UI Module</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
             <name>username</name>
             <required>false</required>
             <type>java.lang.String</type>

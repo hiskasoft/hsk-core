@@ -10,39 +10,43 @@
  */
 package com.hiska.result;
 
+import lombok.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * Basic Result Response for Request
  */
-@lombok.Getter
-@lombok.Setter
-@lombok.ToString
+@Getter
+@Setter
+@ToString
 public class Result implements Serializable {
    /**
     * Flag attribute for error result
     */
    private boolean success = true;
    /**
-    * List of Message
-    */
-   private List<Message> messages = new ArrayList<>();
-   /**
     * List of Behavior
     */
-   private List<Behavior> behaviors = new ArrayList<>();
+   private Behavior behavior;
+   /**
+    * List of Message
+    */
+   private final List<Message> messages;
 
    public Result() {
+      messages = new ArrayList<>();
    }
 
    public Result(final Result other) {
       success = other.success;
-      messages.addAll(other.messages);
+      behavior = other.behavior;
+      messages = new ArrayList<>(other.messages);
    }
 
    public void addMessage(final Message message) {
@@ -64,45 +68,26 @@ public class Result implements Serializable {
       messages.clear();
    }
 
-   public void addBehavior(final Behavior behavior) {
-      if (behavior != null) {
-         behaviors.add(behavior);
-      }
-   }
-
-   public void addAllBehavior(final Collection<Behavior> allBehavior) {
-      if (allBehavior != null) {
-         allBehavior.forEach(this::addBehavior);
-      }
-   }
-
-   /**
-    * Clear all behaviors
-    */
-   public void clearBehavior() {
-      behaviors.clear();
-   }
-
    /**
     * Result Clear
+    * Reset behavior
     * Clear all messages
-    * Clear all behaviors
     */
    public void clear() {
       messages.clear();
-      behaviors.clear();
+      behavior = null;
    }
 
    /**
     * Result Reset
+    * Reset behavior
     * Clear all messages
-    * Clear all behaviors
     * success is true
     */
    public void reset() {
       success = true;
+      behavior = null;
       messages.clear();
-      behaviors.clear();
    }
 
    /**
@@ -173,6 +158,32 @@ public class Result implements Serializable {
       return !success;
    }
 
+   public void ifBehavior(String action, Runnable caller) {
+      if (isBehavior(action)) {
+         caller.run();
+      }
+   }
+
+   public void ifBehavior(String action, Consumer<Result> caller) {
+      if (isBehavior(action)) {
+         caller.accept(this);
+      }
+   }
+
+   public void ifBehavior(String type, String action, Consumer<Result> caller) {
+      if (isBehavior(type, action)) {
+         caller.accept(this);
+      }
+   }
+
+   public boolean isBehavior(String action) {
+      return behavior != null && behavior.isEquals(action);
+   }
+
+   public boolean isBehavior(String type, String action) {
+      return behavior != null && behavior.isEquals(type, action);
+   }
+
    /**
     * Append Messages and Behaviors to Result
     * Message is included
@@ -182,8 +193,8 @@ public class Result implements Serializable {
     */
    public void append(Result result) {
       success = result.success;
+      behavior = result.behavior;
       addAllMessage(result.messages);
-      addAllBehavior(result.behaviors);
    }
 
    /**
@@ -195,10 +206,9 @@ public class Result implements Serializable {
     */
    public void accept(Result result) {
       success = result.success;
+      behavior = result.behavior;
       messages.clear();
-      behaviors.clear();
       addAllMessage(result.messages);
-      addAllBehavior(result.behaviors);
    }
 
    /**
@@ -227,6 +237,6 @@ public class Result implements Serializable {
     * @param title title log
     */
    public void log(String title) {
-      LOGGER.log(Level.INFO, "Result:{0}|Success={1}|Messages={2}|Behaviors={3}|This={4}", new Object[]{title, success, messages, behaviors, this});
+      LOGGER.log(Level.INFO, "Result:{0}|Success={1}|Messages={2}|Behavior={3}|This={4}", new Object[]{title, success, messages, behavior, this});
    }
 }
