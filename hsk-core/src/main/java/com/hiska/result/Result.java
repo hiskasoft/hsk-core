@@ -228,7 +228,7 @@ public class Result implements Serializable {
     * Create Log Result
     */
    public void log() {
-      log("·");
+      log("==");
    }
 
    /**
