@@ -13,21 +13,55 @@ package com.hiska.faces.converter;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import java.util.HashMap;
+import java.util.Map;
 
+import com.hiska.result.Option;
 import com.hiska.result.Param;
 
 public class ParamConverter implements Converter {
    @Override
    public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
-      return value == null ? null : Param.create(value, "JSF_" + value);
+      Param param = null;
+      Map<String, Object> items = getItems(component);
+      Object real = items.get(value);
+      if (real instanceof Option) {
+         Option option = (Option) real;
+         param = Param.create(value, option.getLabel(), option.getDescription());
+      } else if (real instanceof Param) {
+         param = (Param) real;
+      } else if (value != null) {
+         param = Param.create(value, "JSF_" + value);
+      }
+      return param;
    }
 
    @Override
    public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
-      if (object instanceof Param) {
+      String value = null;
+      Map<String, Object> items = getItems(component);
+      if (object instanceof Option) {
+         Option option = (Option) object;
+         items.put(option.getValue(), option);
+         value = option.getValue();
+      } else if (object instanceof Param) {
          Param param = (Param) object;
-         return param.getValue();
+         items.put(param.getValue(), param);
+         value = param.getValue();
+      } else if (object != null) {
+         value = object.toString();
       }
-      return object == null ? null : object.toString();
+      return value;
    }
+
+   private Map<String, Object> getItems(UIComponent component) {
+      Map<String, Object> items = (Map) component.getAttributes().get(ITEM_LIST);
+      if (items == null) {
+         items = new HashMap<>();
+         component.getAttributes().put(ITEM_LIST, items);
+      }
+      return items;
+   }
+
+   public static final String ITEM_LIST = "==items==";
 }

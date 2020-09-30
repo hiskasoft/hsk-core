@@ -11,6 +11,7 @@
 package com.hiska.result;
 
 import java.io.Serializable;
+import java.util.Objects;
 import lombok.*;
 
 /**
@@ -18,7 +19,6 @@ import lombok.*;
  */
 @Getter
 @Setter
-@EqualsAndHashCode(of = {"value"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class Param implements Serializable {
@@ -35,7 +35,27 @@ public class Param implements Serializable {
    }
 
    public static Param create(String valor, String label, String description) {
-      return new Param(valor, label, description);
+      Param param = new Param();
+      param.value = valor;
+      param.label = label;
+      param.description = description;
+      return param;
+   }
+
+   public static Param create(Param other) {
+      Param param = new Param();
+      param.value = other.getValue();
+      param.label = other.getLabel();
+      param.description = other.getDescription();
+      return param;
+   }
+
+   public static Param create(Option other) {
+      Param param = new Param();
+      param.value = other.getValue();
+      param.label = other.getLabel();
+      param.description = other.getDescription();
+      return param;
    }
 
    public static boolean isEquals(String str, Param param) {
@@ -50,6 +70,28 @@ public class Param implements Serializable {
    @Override
    public String toString() {
       return "[" + value + "] " + label;
+   }
+
+   @Override
+   public boolean equals(Object o) {
+      if (o instanceof Param) {
+         Param param = (Param) o;
+         return value != null && value.equals(param.getValue());
+      } else if (o instanceof Option) {
+         Option option = (Option) o;
+         return value != null && value.equals(option.getValue());
+      } else if (o instanceof String) {
+         String string = (String) o;
+         return value != null && value.equals(string);
+      }
+      return false;
+   }
+
+   @Override
+   public int hashCode() {
+      int hash = 5;
+      hash = 61 * hash + Objects.hashCode(this.value);
+      return hash;
    }
 
    public static final Param NONE = create("NONE");

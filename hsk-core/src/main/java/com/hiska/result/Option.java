@@ -12,6 +12,7 @@ package com.hiska.result;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import lombok.*;
 
 /**
@@ -20,7 +21,6 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(of = {"value"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class Option implements Serializable {
@@ -45,6 +45,22 @@ public class Option implements Serializable {
       return option;
    }
 
+   public static Option create(Option other) {
+      Option option = new Option();
+      option.value = other.getValue();
+      option.label = other.getLabel();
+      option.description = other.getDescription();
+      return option;
+   }
+
+   public static Option create(Param other) {
+      Option option = new Option();
+      option.value = other.getValue();
+      option.label = other.getLabel();
+      option.description = other.getDescription();
+      return option;
+   }
+
    public static boolean isEquals(String str, Option option) {
       String old = option == null ? null : option.getValue();
       return str != null && str.equals(old);
@@ -52,6 +68,28 @@ public class Option implements Serializable {
 
    public boolean isEquals(String str) {
       return str != null && str.equals(value);
+   }
+
+   @Override
+   public boolean equals(Object o) {
+      if (o instanceof Param) {
+         Param param = (Param) o;
+         return value != null && value.equals(param.getValue());
+      } else if (o instanceof Option) {
+         Option option = (Option) o;
+         return value != null && value.equals(option.getValue());
+      } else if (o instanceof String) {
+         String string = (String) o;
+         return value != null && value.equals(string);
+      }
+      return false;
+   }
+
+   @Override
+   public int hashCode() {
+      int hash = 5;
+      hash = 61 * hash + Objects.hashCode(this.value);
+      return hash;
    }
 
    public static final Option NONE = create("NONE");
