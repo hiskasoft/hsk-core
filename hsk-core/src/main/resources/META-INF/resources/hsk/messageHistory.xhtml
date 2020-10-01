@@ -7,7 +7,8 @@
         <cc:attribute name="facesResultMessage" default="#{_help.facesResultMessageHistory}"/>
     </cc:interface>
     <cc:implementation>
-        <div id="#{cc.clientId}" class="#{cc.attrs.styleClass}">
+        <div id="#{cc.clientId}"
+             class="#{cc.attrs.styleClass}">
             <c:forEach var="message" items="#{cc.attrs.facesResultMessage}">
                 <div class="message">
                     <div class="text-muted  font-weight-bold">

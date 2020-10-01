@@ -5,13 +5,15 @@
      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <cc:interface componentType="menuContainer">
         <cc:attribute name="value"/>
+        <cc:attribute name="styleClass"/>
         <cc:attribute name="type" default="root"/>
         <cc:attribute name="index" type="java.lang.Integer"/>
     </cc:interface>
     <cc:implementation>
         <c:choose>
             <c:when test="#{cc.attrs.type == 'root'}">
-                <ul class="c-sidebar-nav">
+                <ul id="#{cc.clientId}"
+                    class="c-sidebar-nav #{cc.attrs.styleClass}">
                     <c:forEach items="#{cc.value}" varStatus="loop" var="item">
                         <hsk:menu value="#{cc.parent.value.get(loop.index)}" 
                                    type="item"
@@ -20,7 +22,8 @@
                 </ul>
             </c:when>
             <c:when test="#{cc.attrs.type == 'item' and !cc.value.isLink}">
-                <li class="c-sidebar-nav-dropdown">
+                <li id="#{cc.clientId}"
+                    class="c-sidebar-nav-dropdown #{cc.attrs.styleClass}">
                     <a class="c-sidebar-nav-dropdown-toggle" href="#">
                         <i class="c-sidebar-nav-icon fa fa-#{cc.value.icon}"/>
                         #{cc.value.name}
@@ -35,7 +38,8 @@
                 </li>
             </c:when>
             <c:when test="#{cc.attrs.type == 'item' and cc.value.isLink}">
-                <li class="c-sidebar-nav-item">
+                <li id="#{cc.clientId}"
+                    class="c-sidebar-nav-item #{cc.attrs.styleClass}">
                     <a class="c-sidebar-nav-link" href="#{cc.value.pathTarget}">
                         <i class="c-sidebar-nav-icon fa fa-#{cc.value.icon}"/>
                         #{cc.value.name}

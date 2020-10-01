@@ -7,6 +7,7 @@
     <cc:interface>
         <cc:attribute name="sidebarId"/>
         <cc:attribute name="configId"/>
+        <cc:attribute name="styleClass"/>
         <cc:attribute name="showInf" default="true"/>
         <cc:attribute name="showNav" default="false"/>
         <cc:attribute name="title" default="Core UI App"/>
@@ -23,12 +24,13 @@
         <cc:facet name="subtitle"/>
     </cc:interface>
     <cc:implementation>
-        <style>
-            ul.ml-auto+button.ml-auto{
-                margin-left: 0!important;
-            }
-        </style>
-        <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
+        <header id="#{cc.clientId}" 
+                class="c-header c-header-light c-header-fixed c-header-with-subheader #{cc.attrs.styleClass}">
+            <style>
+                ul.ml-auto+button.ml-auto{
+                    margin-left: 0!important;
+                }
+            </style>
             <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="##{cc.attrs.sidebarId}"
                     data-class="c-sidebar-show">
                 <hsk:icon name="cil-menu" styleClass="c-icon c-icon-lg" />

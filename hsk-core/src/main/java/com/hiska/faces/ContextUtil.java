@@ -10,6 +10,10 @@
  */
 package com.hiska.faces;
 
+import com.hiska.result.Document;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.http.HttpResponse;
 import javax.el.*;
 import javax.faces.application.*;
 import javax.faces.component.UIComponent;
@@ -128,8 +132,25 @@ public class ContextUtil {
    public static UIComponent getCurrentComponent(FacesContext context) {
       return UIComponent.getCurrentComponent(context);
    }
-//   public static void setSortEventToConfig(Config config) {
-//      DataTable dt = (DataTable) getCurrentComponent();
-//      config.setColumnSort(dt.getSortField(), dt.getSortOrder());
-//   }
+
+   public static void downloadDocument(String disposition, Document document) throws IOException {
+      downloadDocument(disposition, document, FacesContext.getCurrentInstance());
+   }
+
+   public static void downloadDocument(String disposition, Document document, FacesContext context) throws IOException {
+      if (disposition == null) {
+         disposition = "";
+      } else {
+         disposition = disposition + "; ";
+      }
+      ExternalContext external = context.getExternalContext();
+      external.responseReset();
+      external.setResponseContentType(document.getContentMimeType());
+      external.setResponseContentLength(document.getContentLength());
+      external.setResponseHeader("Content-Disposition", disposition + "filename=\"" + document.getFileName() + "\"");
+      OutputStream output = external.getResponseOutputStream();
+      output.write(document.getContent());
+      output.flush();
+      context.responseComplete();
+   }
 }

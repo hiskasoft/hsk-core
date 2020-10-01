@@ -13,11 +13,11 @@
         <cc:attribute name="level"/>
         <cc:attribute name="title"/>
         <cc:attribute name="src" default="svg/#{cc.attrs.group}.svg"/>
-        <cc:attribute name="svgStyleClass" default="#{cc.attrs.styleClass} c-icon-#{cc.attrs.size}xl text-#{cc.attrs.level}"/>
         <cc:attribute name="xlinkHref" default="#{resource[cc.attrs.src]}##{cc.attrs.name}"/>
     </cc:interface>
     <cc:implementation >
-        <svg class="#{cc.attrs.svgStyleClass}"
+        <svg id="#{cc.clientId}"
+             class="#{cc.attrs.styleClass} c-icon-#{cc.attrs.size}xl text-#{cc.attrs.level}"
              style="#{cc.attrs.style}"
              width="#{cc.attrs.width}"
              height="#{cc.attrs.height}"

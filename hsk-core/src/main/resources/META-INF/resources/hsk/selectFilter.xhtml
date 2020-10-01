@@ -17,7 +17,8 @@
         <cc:attribute name="styleClass" default="col"/>
     </cc:interface>
     <cc:implementation>
-        <div id="#{cc.clientId}" class="hsk-input-filter #{cc.attrs.value.withValue? 'open' : 'close'} #{cc.attrs.styleClass}">
+        <div id="#{cc.clientId}"
+             class="hsk-input-filter #{cc.attrs.value.withValue? 'open' : 'close'} #{cc.attrs.styleClass}">
             <c:set target="#{cc.attrs}" property="value" value="#{_help.createFilterValue(cc.attrs.value)}"/>
             <div class="input-group input-group-#{cc.attrs.size}">
                 <h:panelGroup styleClass="input-group-prepend" rendered="#{cc.attrs.icon!=null}">

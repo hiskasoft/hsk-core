@@ -6,11 +6,13 @@
      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <cc:interface>
+        <cc:attribute name="styleClass"/>
         <cc:attribute name="fullName"/>
         <cc:attribute name="email"/>
     </cc:interface>
     <cc:implementation>
-        <div class="c-sidebar c-sidebar-lg c-sidebar-light c-sidebar-right c-sidebar-overlaid" id="#{cc.id}">
+        <div id="#{cc.id}"
+             class="c-sidebar c-sidebar-lg c-sidebar-light c-sidebar-right c-sidebar-overlaid #{cc.attrs.styleClass}">
             <button class="c-sidebar-close c-class-toggler"
                     type="button"
                     data-target="##{cc.id}" 
@@ -31,7 +33,6 @@
                 </li>
             </ul>
             <div class="tab-content">
-
                 <div class="tab-pane" id="timeline">
                     <div class="list-group list-group-accent">
                         <strong class="list-group-item list-group-item-accent-info text-center text-white bg-info">

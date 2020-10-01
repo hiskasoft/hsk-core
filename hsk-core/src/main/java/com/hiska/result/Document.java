@@ -22,9 +22,12 @@ import lombok.*;
 public class Document implements Serializable {
    @ToString
    public static enum Type {
+      TXT("text/plain", true),
       CSV("text/csv", true),
       XML("text/xml", true),
+      HTM("text/htm", true),
       HTML("text/html", true),
+      XHTML("text/xhtml", true),
       PNG("image/png", false),
       JPG("image/jpge", false),
       PDF("application/pdf", false),
@@ -60,5 +63,14 @@ public class Document implements Serializable {
     */
    public String getContentMimeType() {
       return type != null ? type.getMimeType() : "";
+   }
+
+   /**
+    * Length content
+    * 
+    * @return
+    */
+   public int getContentLength() {
+      return content == null ? 0 : content.length;
    }
 }

@@ -10,7 +10,8 @@
     </cc:interface>
 
     <cc:implementation>
-        <div class="row row-side #{cc.attrs.styleClass}">
+        <div id="#{cc.clientId}"
+             class="row row-side #{cc.attrs.styleClass}">
             <div class="input-group input-group-#{cc.attrs.size} mb-1">
                 <div class="input-group-prepend">
                     <h:panelGroup styleClass="input-group-text" rendered="#{cc.attrs.icon!=null}">

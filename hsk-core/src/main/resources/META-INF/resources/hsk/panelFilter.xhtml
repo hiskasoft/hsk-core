@@ -6,6 +6,7 @@
      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
      xmlns:hsk="http://xmlns.jcp.org/jsf/composite/hsk">
     <cc:interface>
+        <cc:attribute name="styleClass"/>
         <cc:attribute name="rendered"/>
         <cc:attribute name="pagination" rendered="true" type="com.hiska.result.Pagination"/>
         <cc:attribute name="size" default="5"/>
@@ -19,7 +20,8 @@
         <cc:facet name="action"/>
     </cc:interface>
     <cc:implementation>
-        <div id="#{cc.clientId}" class="card #{cc.attrs.id}">
+        <div id="#{cc.clientId}"
+             class="card #{cc.attrs.id} #{cc.attrs.styleClass}">
             <style>
                 .#{cc.attrs.id} .fm1{
                     display: #{cc.attrs.open? 'none' : 'block'};

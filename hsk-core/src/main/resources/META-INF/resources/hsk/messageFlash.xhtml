@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml"     
      xmlns:cc="http://java.sun.com/jsf/composite"    
-     xmlns:hsk="http://xmlns.jcp.org/jsf/composite/hsk"
-     xmlns:h="http://xmlns.jcp.org/jsf/html"
-     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-     xmlns:jsf="http://xmlns.jcp.org/jsf"
-     xmlns:f="http://xmlns.jcp.org/jsf/core">
+     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <cc:interface>
         <cc:attribute name="styleClass" default="toaster-top-right mt-2 mr-2"/>
         <cc:attribute name="key" default="toast"/>
         <cc:attribute name="facesResultMessage" default="#{_help.facesResultMessage}"/>
     </cc:interface>
     <cc:implementation>
-        <div id="#{cc.clientId}" class="#{cc.attrs.styleClass}">
+        <div id="#{cc.clientId}"
+             class="#{cc.attrs.styleClass}">
             <c:forEach var="message" items="#{cc.attrs.facesResultMessage}">
                 <div class="#{cc.attrs.key} toast border-#{message.levelClass}" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-header">

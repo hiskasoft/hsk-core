@@ -13,7 +13,9 @@
         <cc:facet name="footer"/>
     </cc:interface>
     <cc:implementation>
-        <div class="alert alert-#{cc.attrs.level} alert-dismissible fade show #{cc.attrs.styleClass}" role="alert">
+        <div id="#{cc.clientId}"
+             class="alert alert-#{cc.attrs.level} alert-dismissible fade show #{cc.attrs.styleClass}"
+             role="alert">
             <h:panelGroup rendered="#{not empty cc.facets.header and cc.attrs.title != null}" styleClass="alert-heading h4">
                 <i class="fa fa-#{cc.attrs.icon}"/>
                 #{cc.attrs.title}

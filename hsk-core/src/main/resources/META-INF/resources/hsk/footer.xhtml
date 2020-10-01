@@ -6,6 +6,7 @@
     <cc:interface>
         <cc:attribute name="menuId"/>
         <cc:attribute name="configId"/>
+        <cc:attribute name="styleClass"/>
         <cc:attribute name="today"/>
         <cc:attribute name="url" default="https://cui.com"/>
         <cc:attribute name="title" default="Simple Cui App"/>
@@ -13,7 +14,8 @@
     </cc:interface>
 
     <cc:implementation>
-        <footer class="c-footer">
+        <footer id="#{cc.clientId}"
+                class="c-footer #{cc.attrs.styleClass}">
             <div>
                 <a href="#{cc.attrs.url}">
                     #{cc.attrs.title}

@@ -33,6 +33,15 @@
             <description>
                 <!--.-->
             </description>
+            <name>styleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
             <name>fullName</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -71,6 +80,15 @@
                 <!--.-->
             </description>
             <name>configId</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
@@ -135,6 +153,15 @@
                 <!--.-->
             </description>
             <name>configId</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
@@ -360,15 +387,6 @@
             <description>
                 <!--.-->
             </description>
-            <name>svgStyleClass</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-            <default>#{cc.attrs.styleClass} c-icon-#{cc.attrs.size}xl text-#{cc.attrs.level}</default>
-        </attribute>
-        <attribute>
-            <description>
-                <!--.-->
-            </description>
             <name>xlinkHref</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -515,6 +533,15 @@
             <description>
                 <!--.-->
             </description>
+            <name>styleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
             <name>type</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -617,10 +644,37 @@
             <description>
                 <!--.-->
             </description>
+            <name>detail</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>icon</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>check</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
             <name>level</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>warning</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>styleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
         </attribute>
     </tag>
     <!--pagination.xhtml-->
@@ -696,6 +750,15 @@
         <component>
             <resource-id>hsk/panelFilter.xhtml</resource-id>
         </component>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>styleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
         <attribute>
             <description>
                 <!--.-->
@@ -983,6 +1046,15 @@
             <description>
                 <!--.-->
             </description>
+            <name>styleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
             <name>logoFull</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -1040,6 +1112,15 @@
             </description>
             <name>value</name>
             <required>true</required>
+            <type>java.lang.String</type>
+            <default/>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>styleClass</name>
+            <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>

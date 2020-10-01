@@ -20,6 +20,8 @@ import com.hiska.result.Option;
 import com.hiska.result.Param;
 
 public class ParamConverter implements Converter {
+   private static final String FAMILY_OUTPUT = "javax.faces.Output";
+
    @Override
    public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
       Param param = null;
@@ -39,6 +41,18 @@ public class ParamConverter implements Converter {
    @Override
    public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
       String value = null;
+      if (FAMILY_OUTPUT.equals(component.getFamily())) {
+         if (object instanceof Option) {
+            Option option = (Option) object;
+            value = option.getLabel();
+         } else if (object instanceof Param) {
+            Param param = (Param) object;
+            value = param.getLabel();
+         } else if (object != null) {
+            value = object.toString();
+         }
+         return value;
+      }
       Map<String, Object> items = getItems(component);
       if (object instanceof Option) {
          Option option = (Option) object;

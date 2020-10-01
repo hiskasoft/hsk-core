@@ -5,6 +5,7 @@
      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <cc:interface>
         <cc:attribute name="title"/>
+        <cc:attribute name="styleClass"/>
         <cc:attribute name="logoFull"/>
         <cc:attribute name="logoMinimized"/>
         <cc:attribute name="menus"/>
@@ -13,7 +14,8 @@
         <cc:facet name="brandMinimized"/>
     </cc:interface>
     <cc:implementation>
-        <div class="c-sidebar c-sidebar-fixed c-sidebar-lg-show" id="#{cc.id}">
+        <div id="#{cc.id}"
+             class="c-sidebar c-sidebar-fixed c-sidebar-lg-show #{cc.attrs.styleClass}">
             <div class="c-sidebar-brand d-lg-down-none c-env svg-white">
                 <span class="c-sidebar-brand-full" title="#{cc.attrs.title}">
                     <hsk:icon name="#{cc.attrs.logoFull}"

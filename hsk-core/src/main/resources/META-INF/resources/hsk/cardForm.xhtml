@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml"
-     xmlns:cc="http://java.sun.com/jsf/composite">
+     xmlns:cc="http://java.sun.com/jsf/composite"
+     xmlns:h="http://xmlns.jcp.org/jsf/html">
     <cc:interface>
         <cc:attribute name="styleClass" default="center col-12 col-lg-10 col-xl-6"/>
+        <cc:facet name="header"/>
+        <cc:facet name="footer"/>
     </cc:interface>
     <cc:implementation>
-        <div id="#{cc.clientId}" class="card-form card #{cc.attrs.styleClass}">
-            <div class="card-header font-weight-bold">
+        <div id="#{cc.clientId}"
+             class="card-form card #{cc.attrs.styleClass}">
+            <h:panelGroup styleClass="card-header font-weight-bold"
+                          rendered="#{not empty cc.facets.header}">
                 <cc:renderFacet name="header"/>
-            </div>
+            </h:panelGroup>
             <div class="card-body">
                 <cc:insertChildren/>
             </div>
-            <div class="card-footer">
+            <h:panelGroup class="card-footer"
+                          rendered="#{not empty cc.facets.footer}">
                 <cc:renderFacet name="footer"/>
-            </div>
+            </h:panelGroup>
         </div>
     </cc:implementation>
 </div>
