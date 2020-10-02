@@ -32,7 +32,7 @@ public class ParamConverter implements Converter {
          param = Param.create(value, option.getLabel(), option.getDescription());
       } else if (real instanceof Param) {
          param = (Param) real;
-      } else if (value != null) {
+      } else if (value != null && !value.isEmpty()) {
          param = Param.create(value, "JSF_" + value);
       }
       return param;

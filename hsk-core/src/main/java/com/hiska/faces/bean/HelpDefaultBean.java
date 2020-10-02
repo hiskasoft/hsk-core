@@ -10,13 +10,16 @@
  */
 package com.hiska.faces.bean;
 
+import com.hiska.faces.ContextUtil;
 import com.hiska.faces.application.FacesResultMessage;
+import com.hiska.result.Document;
 import com.hiska.result.Pagination;
 import com.hiska.result.Filter;
 import com.hiska.result.Message;
 import com.hiska.result.Option;
 import com.hiska.result.Param;
 import com.hiska.result.Resource;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -142,6 +145,25 @@ public class HelpDefaultBean {
 //    }
    public void callListener(Runtime... runner) {
       // runner
+   }
+
+   public void downloadDocument(Document document) throws IOException {
+      ContextUtil.downloadDocument("inline", document);
+   }
+
+   public void downloadObject(String name, byte[] content) throws IOException {
+      Document document = new Document();
+      document.setFileName(name);
+      document.setContent(content);
+      ContextUtil.downloadDocument("inline", document);
+   }
+
+   public void downloadObject(String name, String type, byte[] content) throws IOException {
+      Document document = new Document();
+      document.setFileName(name);
+      document.setTypeString(type);
+      document.setContent(content);
+      ContextUtil.downloadDocument("inline", document);
    }
 
    public void setEquals(Filter filter) {

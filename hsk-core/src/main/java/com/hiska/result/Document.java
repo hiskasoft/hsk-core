@@ -45,6 +45,19 @@ public class Document implements Serializable {
          this.mimeType = mimeType;
          this.plain = plain;
       }
+
+      public boolean stringEquals(String value) {
+         return name().equalsIgnoreCase(value) || mimeType.equalsIgnoreCase(value);
+      }
+
+      public static Type valueOfString(String value) {
+         for (Type t : Type.values()) {
+            if (t.stringEquals(value)) {
+               return t;
+            }
+         }
+         return null;
+      }
    }
 
    private String fileName;
@@ -72,5 +85,14 @@ public class Document implements Serializable {
     */
    public int getContentLength() {
       return content == null ? 0 : content.length;
+   }
+
+   /**
+    * Detect MimeType Support
+    * 
+    * @param value
+    */
+   public void setTypeString(String value) {
+      type = Type.valueOfString(value);
    }
 }
