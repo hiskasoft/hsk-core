@@ -81,6 +81,10 @@ public class Pagination implements Serializable {
       return sort != null && sort != Sort.none && attr != null && !attr.isEmpty();
    }
 
+   public boolean withSort() {
+      return sort != null && attr != null && !attr.isEmpty();
+   }
+
    public void clean() {
       count = 0;
       length = -1;

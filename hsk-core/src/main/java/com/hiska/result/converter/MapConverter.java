@@ -10,9 +10,8 @@
  */
 package com.hiska.result.converter;
 
-import com.hiska.result.Param;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
@@ -20,30 +19,37 @@ import javax.persistence.Converter;
  * @author Willyams Yujra
  */
 @Converter(autoApply = true)
-public class ParamListConverter implements AttributeConverter<List<Param>, String> {
+public class MapConverter implements AttributeConverter<Map<String, String>, String> {
    @Override
-   public String convertToDatabaseColumn(List<Param> paramList) {
+   public String convertToDatabaseColumn(Map<String, String> map) {
       StringBuilder result = new StringBuilder();
-      if (paramList != null) {
-         paramList.forEach(v -> {
-            result.append(v).append(";");
+      if (map != null) {
+         map.forEach((k, v) -> {
+            if (v != null) {
+               result.append(k)
+                     .append(":")
+                     .append(v)
+                     .append(";");
+            }
          });
       }
       return result.toString();
    }
 
    @Override
-   public List<Param> convertToEntityAttribute(String value) {
-      List<Param> result = new ArrayList<>();
+   public Map<String, String> convertToEntityAttribute(String value) {
+      Map map = new HashMap();
       if (value != null) {
          String[] values = value.split(";");
          for (String it : values) {
             if (!it.isEmpty()) {
-               Param p = Param.create(it, "DB_" + it);
-               result.add(p);
+               String[] its = it.split(":", 2);
+               if (its.length == 2) {
+                  map.put(its[0], its[1]);
+               }
             }
          }
       }
-      return result;
+      return map;
    }
 }

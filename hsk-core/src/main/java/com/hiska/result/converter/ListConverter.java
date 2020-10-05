@@ -10,7 +10,6 @@
  */
 package com.hiska.result.converter;
 
-import com.hiska.result.Param;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.AttributeConverter;
@@ -20,9 +19,9 @@ import javax.persistence.Converter;
  * @author Willyams Yujra
  */
 @Converter(autoApply = true)
-public class ParamListConverter implements AttributeConverter<List<Param>, String> {
+public class ListConverter implements AttributeConverter<List<String>, String> {
    @Override
-   public String convertToDatabaseColumn(List<Param> paramList) {
+   public String convertToDatabaseColumn(List<String> paramList) {
       StringBuilder result = new StringBuilder();
       if (paramList != null) {
          paramList.forEach(v -> {
@@ -33,14 +32,13 @@ public class ParamListConverter implements AttributeConverter<List<Param>, Strin
    }
 
    @Override
-   public List<Param> convertToEntityAttribute(String value) {
-      List<Param> result = new ArrayList<>();
+   public List<String> convertToEntityAttribute(String value) {
+      List<String> result = new ArrayList<>();
       if (value != null) {
          String[] values = value.split(";");
          for (String it : values) {
             if (!it.isEmpty()) {
-               Param p = Param.create(it, "DB_" + it);
-               result.add(p);
+               result.add(it);
             }
          }
       }
