@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <div xmlns="http://www.w3.org/1999/xhtml"
      xmlns:cc="http://java.sun.com/jsf/composite">
-    <cc:interface>
+    <cc:interface shortDescription="HTML Icon estructure for CoreUI">
         <cc:attribute name="name" required="true"/>
         <cc:attribute name="group" default="default"/>
-        <cc:attribute name="styleClass" default="c-icon"/>
-        <cc:attribute name="style"/>
-        <cc:attribute name="width"/>
-        <cc:attribute name="height"/>
-        <cc:attribute name="alt"/>
-        <cc:attribute name="size" default="0"/>
-        <cc:attribute name="level"/>
-        <cc:attribute name="title"/>
-        <cc:attribute name="src" default="svg/#{cc.attrs.group}.svg"/>
+        <cc:attribute name="styleClass" default="c-icon" shortDescription="HTML style class"/>
+        <cc:attribute name="style" shortDescription="HTML style"/>
+        <cc:attribute name="width" shortDescription="HTML width"/>
+        <cc:attribute name="height" shortDescription="HTML height"/>
+        <cc:attribute name="alt" shortDescription="HTML alt"/>
+        <cc:attribute name="size" default="0" shortDescription="CSS Size Bootstrap"/>
+        <cc:attribute name="level" shortDescription="CSS Level bootstrap"/>
+        <cc:attribute name="title" shortDescription="Html title"/>
+        <cc:attribute name="src" default="svg/#{cc.attrs.group}.svg" shortDescription="HTML src file"/>
         <cc:attribute name="xlinkHref" default="#{resource[cc.attrs.src]}##{cc.attrs.name}"/>
     </cc:interface>
     <cc:implementation >

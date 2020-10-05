@@ -11,6 +11,7 @@
 package com.hiska.result.filter;
 
 import com.hiska.result.Filter;
+import java.util.Arrays;
 
 /**
  * @author Willyams Yujra
@@ -28,7 +29,8 @@ public class XxxRun {
       f1.setId(Filter.create(1L));
       f1.setCol(Filter.create("xxx"));
       f1.setColName(Filter.create("xxx"));
-      f1.setCode(Filter.create("xxx"));
+      f1.setCode(Filter.create("01", "03"));
+      f1.setRef(Filter.create(Arrays.asList(1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L)));
       jpsql = FilterBuilder.create(XxxEntity.class, f1)
             .createQuery();
       space();

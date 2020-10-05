@@ -11,6 +11,7 @@
 package com.hiska.result;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Filter Element
@@ -30,7 +31,8 @@ public class Filter<T> implements Serializable {
       like("like", 1),
       bw("between", 2),
       isNull("is null", 0),
-      notNull("is not null", 0);
+      notNull("is not null", 0),
+      in("in", 99);
 
       private final String oper;
       private final int params;
@@ -65,6 +67,10 @@ public class Filter<T> implements Serializable {
     * Other Value filter
     */
    private T other;
+   /**
+    * Other Values filter
+    */
+   private List<T> values;
 
    public Filter() {
    }
@@ -76,6 +82,17 @@ public class Filter<T> implements Serializable {
    public Filter(T value, Expr expr) {
       this.value = value;
       this.expr = expr;
+   }
+
+   public Filter(T value, T other) {
+      this.value = value;
+      this.other = other;
+      this.expr = Expr.bw;
+   }
+
+   public Filter(List<T> values) {
+      this.values = values;
+      this.expr = Expr.in;
    }
 
    public Expr getExpr() {
@@ -96,11 +113,27 @@ public class Filter<T> implements Serializable {
       return expr != null && expr.params() == 2;
    }
 
+   public boolean isWithList() {
+      return expr != null && expr.params() == 99;
+   }
+
    public boolean isIgnore() {
       return expr != null && expr.ignore();
    }
 
+   public int getValuesSize() {
+      return values == null ? 0 : values.size();
+   }
+
    public static <T> Filter<T> create(T value) {
       return new Filter<>(value);
+   }
+
+   public static <T> Filter<T> create(T value, T other) {
+      return new Filter<>(value, other);
+   }
+
+   public static <T> Filter<T> create(List<T> values) {
+      return new Filter<>(values);
    }
 }

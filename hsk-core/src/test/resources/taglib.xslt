@@ -2,7 +2,7 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:cc="http://java.sun.com/jsf/composite" xmlns="http://java.sun.com/xml/ns/javaee" version="2.0">
     <xsl:output omit-xml-declaration="yes" indent="yes"/>
     <xsl:param name="URL"/>
-    <xsl:variable name="NONE" select="'.'"/>
+    <xsl:variable name="POINT" select="'.'"/>
     <xsl:template match="/">
         <facelet-taglib xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd" version="2.0">
             <namespace>
@@ -23,16 +23,8 @@
     <xsl:template match="cc:interface">
         <tag>
             <description>
-                <xsl:comment>
-                    <xsl:choose>
-                        <xsl:when test="@description != ''">
-                            <xsl:value-of select="@description"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:value-of select="$NONE"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </xsl:comment>
+                <xsl:value-of select="@shortDescription"/>
+                <xsl:value-of select="$POINT"/>
             </description>
             <tag-name>
                 <xsl:value-of select="../@name"/>
@@ -48,16 +40,8 @@
     <xsl:template match="cc:attribute">
         <attribute>
             <description>
-                <xsl:comment>
-                    <xsl:choose>
-                        <xsl:when test="@description != ''">
-                            <xsl:value-of select="@description"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:value-of select="$NONE"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </xsl:comment>
+                <xsl:value-of select="@shortDescription"/>
+                <xsl:value-of select="$POINT"/>
             </description>
             <name>
                 <xsl:value-of select="@name"/>

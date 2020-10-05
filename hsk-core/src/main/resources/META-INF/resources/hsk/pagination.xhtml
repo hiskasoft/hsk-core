@@ -4,13 +4,13 @@
      xmlns:h="http://java.sun.com/jsf/html"
      xmlns:f="http://java.sun.com/jsf/core"
      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-    <cc:interface>
-        <cc:attribute name="value" required="true" type="com.hiska.result.Pagination"/>
-        <cc:attribute name="size" default="5"/>
-        <cc:attribute name="applyListener" method-signature="void call()" default="#{_help.noneListener}"/>
-        <cc:attribute name="update" default="#{cc.clientId}"/>
-        <cc:attribute name="disabled" default="#{cc.attrs.value == null || cc.attrs.value.length == 0}"/>
-        <cc:attribute name="styleClass"/>
+    <cc:interface shortDescription="HTML Pagination estructure for Bootstrap">
+        <cc:attribute name="value" required="true" type="com.hiska.result.Pagination" shortDescription="Pagination Object"/>
+        <cc:attribute name="size" default="5" shortDescription="Pagination size"/>
+        <cc:attribute name="applyListener" method-signature="void call()" default="#{_help.noneListener}" shortDescription="Action listener on apply filter"/>
+        <cc:attribute name="update" default="#{cc.clientId}" shortDescription="JSF id render ajax"/>
+        <cc:attribute name="disabled" default="#{cc.attrs.value == null || cc.attrs.value.length == 0}" shortDescription="JSF disabled components"/>
+        <cc:attribute name="styleClass" shortDescription="HTML style class"/>
     </cc:interface>
     <cc:implementation>
         <!-- 

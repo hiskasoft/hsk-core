@@ -3,14 +3,14 @@
      xmlns:cc="http://java.sun.com/jsf/composite"
      xmlns:h="http://xmlns.jcp.org/jsf/html"
      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <cc:interface>
-        <cc:attribute name="menuId"/>
-        <cc:attribute name="configId"/>
-        <cc:attribute name="styleClass"/>
-        <cc:attribute name="today"/>
-        <cc:attribute name="url" default="https://cui.com"/>
-        <cc:attribute name="title" default="Simple Cui App"/>
-        <cc:attribute name="year" default="2020"/>
+    <cc:interface shortDescription="HTML Footer estructure for CoreUI">
+        <cc:attribute name="menuId"  shortDescription="Meni ID Collapse"/>
+        <cc:attribute name="configId" shortDescription="Config ID Collapse"/>
+        <cc:attribute name="styleClass" shortDescription="HTML style class"/>
+        <cc:attribute name="today" type="java.util.Date" shortDescription="Today Date"/>
+        <cc:attribute name="url" default="https://cui.com"  shortDescription="URL company"/>
+        <cc:attribute name="title" default="Simple Cui App"  shortDescription="Applicaion title"/>
+        <cc:attribute name="year" default="2020"  shortDescription="Year copyright"/>
     </cc:interface>
 
     <cc:implementation>

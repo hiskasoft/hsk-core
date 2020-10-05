@@ -27,4 +27,6 @@ public class XxxFilter {
    private Filter<String> colName;
    @FilterElement(param = true)
    private Filter<String> code;
+   @FilterElement(name = {"other.ref", "ref"})
+   private Filter<Long> ref;
 }

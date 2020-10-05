@@ -5,26 +5,26 @@
      xmlns:h="http://xmlns.jcp.org/jsf/html"
      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <cc:interface>
-        <cc:attribute name="styleClass"/>
-        <cc:attribute name="username" default="¿username?"/>
-        <cc:attribute name="fullName" default="¿fullName?"/>
-        <cc:attribute name="email" default="¿email?"/>
-        <cc:attribute name="building" default="¿building?"/>
-        <cc:attribute name="location" default="¿location?"/>
+    <cc:interface shortDescription="HTML Config estructure for CoreUI">
+        <cc:attribute name="styleClass" shortDescription="HTML style class"/>
+        <cc:attribute name="username" default="¿username?"  shortDescription="USer username"/>
+        <cc:attribute name="fullName" default="¿fullName?"  shortDescription="User fullname"/>
+        <cc:attribute name="email" default="¿email?" shortDescription="User email"/>
+        <cc:attribute name="building" default="¿building?"  shortDescription="Company name"/>
+        <cc:attribute name="location" default="¿location?"  shortDescription="Location work"/>
 
-        <cc:attribute name="systemName" default="Core UI App"/>
-        <cc:attribute name="moduleName" default="Core UI Description"/>
-        <cc:attribute name="pageName" default="#{view.viewId}"/>
-        <cc:attribute name="profileName" default="¿profileName?"/>
-        <cc:attribute name="rolName" default="¿rolName?"/>
+        <cc:attribute name="systemName" default="Core UI App" shortDescription="System name"/>
+        <cc:attribute name="moduleName" default="Core UI Description" shortDescription="Module name"/>
+        <cc:attribute name="pageName" default="#{view.viewId}" shortDescription="Page name or title"/>
+        <cc:attribute name="profileName" default="¿profileName?" shortDescription="Profile name"/>
+        <cc:attribute name="rolName" default="¿rolName?"  shortDescription="Rol name"/>
 
-        <cc:attribute name="loginDate" default="#{_help.noneDate}" type="java.util.Date"/>
-        <cc:attribute name="systemDate" default="#{_help.noneDate}" type="java.util.Date"/>
-        <cc:attribute name="configDate" default="#{_help.noneDate}" type="java.util.Date"/>
+        <cc:attribute name="loginDate" default="#{_help.noneDate}" type="java.util.Date" shortDescription="Login date"/>
+        <cc:attribute name="systemDate" default="#{_help.noneDate}" type="java.util.Date" shortDescription="System date"/>
+        <cc:attribute name="configDate" default="#{_help.noneDate}" type="java.util.Date" shortDescription="Config date"/>
 
-        <cc:attribute name="rolList" default="#{_help.noneList}" type="java.util.List"/>
-        <cc:attribute name="stateList" default="#{_help.noneList}" type="java.util.List"/>
+        <cc:attribute name="rolList" default="#{_help.noneList}" type="java.util.List" shortDescription="List of rols"/>
+        <cc:attribute name="stateList" default="#{_help.noneList}" type="java.util.List"  shortDescription="Lis of status"/>
     </cc:interface>
     <cc:implementation>
         <div id="#{cc.id}"

@@ -3,17 +3,13 @@
     <namespace>http://xmlns.jcp.org/jsf/composite/hsk</namespace>
     <!--cardForm.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Card estructure for Bootstrap.</description>
         <tag-name>cardForm</tag-name>
         <component>
             <resource-id>hsk/cardForm.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class.</description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -22,152 +18,118 @@
     </tag>
     <!--config.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Config estructure for CoreUI.</description>
         <tag-name>config</tag-name>
         <component>
             <resource-id>hsk/config.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class.</description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>USer username.</description>
             <name>username</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>¿username?</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>User fullname.</description>
             <name>fullName</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>¿fullName?</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>User email.</description>
             <name>email</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>¿email?</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Company name.</description>
             <name>building</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>¿building?</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Location work.</description>
             <name>location</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>¿location?</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>System name.</description>
             <name>systemName</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>Core UI App</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Module name.</description>
             <name>moduleName</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>Core UI Description</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Page name or title.</description>
             <name>pageName</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{view.viewId}</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Profile name.</description>
             <name>profileName</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>¿profileName?</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Rol name.</description>
             <name>rolName</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>¿rolName?</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Login date.</description>
             <name>loginDate</name>
             <required>false</required>
             <type>java.util.Date</type>
             <default>#{_help.noneDate}</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>System date.</description>
             <name>systemDate</name>
             <required>false</required>
             <type>java.util.Date</type>
             <default>#{_help.noneDate}</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Config date.</description>
             <name>configDate</name>
             <required>false</required>
             <type>java.util.Date</type>
             <default>#{_help.noneDate}</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>List of rols.</description>
             <name>rolList</name>
             <required>false</required>
             <type>java.util.List</type>
             <default>#{_help.noneList}</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Lis of status.</description>
             <name>stateList</name>
             <required>false</required>
             <type>java.util.List</type>
@@ -176,71 +138,55 @@
     </tag>
     <!--footer.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Footer estructure for CoreUI.</description>
         <tag-name>footer</tag-name>
         <component>
             <resource-id>hsk/footer.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Meni ID Collapse.</description>
             <name>menuId</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Config ID Collapse.</description>
             <name>configId</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class.</description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Today Date.</description>
             <name>today</name>
             <required>false</required>
-            <type>java.lang.String</type>
+            <type>java.util.Date</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>URL company.</description>
             <name>url</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>https://cui.com</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Applicaion title.</description>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>Simple Cui App</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Year copyright.</description>
             <name>year</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -249,143 +195,111 @@
     </tag>
     <!--header.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Header estructure for CoreUI.</description>
         <tag-name>header</tag-name>
         <component>
             <resource-id>hsk/header.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Sidebar ID Collapse.</description>
             <name>sidebarId</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Config ID Collapse.</description>
             <name>configId</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class.</description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Rendered Info block.</description>
             <name>showInf</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>true</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Rendered Navegation Block.</description>
             <name>showNav</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>false</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Application title.</description>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>Core UI App</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Application subtitle.</description>
             <name>subtitle</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>Core UI Module</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>User username.</description>
             <name>username</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>¿username?</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>User fullname.</description>
             <name>fullName</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>¿fullName?</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>User profile name.</description>
             <name>profileName</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>¿profileName?</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>User email.</description>
             <name>email</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>¿email?</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Login date.</description>
             <name>loginDate</name>
             <required>false</required>
             <type>java.util.Date</type>
             <default>#{_help.noneDate}</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Action on logout application.</description>
             <name>actionLogout</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{_help.noneAction}</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Logo name in SVG file.</description>
             <name>logo</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>app-logo</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>SVG file group.</description>
             <name>group</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -394,116 +308,90 @@
     </tag>
     <!--icon.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Icon estructure for CoreUI.</description>
         <tag-name>icon</tag-name>
         <component>
             <resource-id>hsk/icon.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>name</name>
             <required>true</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>group</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>default</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class.</description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>c-icon</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style.</description>
             <name>style</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML width.</description>
             <name>width</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML height.</description>
             <name>height</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML alt.</description>
             <name>alt</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>CSS Size Bootstrap.</description>
             <name>size</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>0</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>CSS Level bootstrap.</description>
             <name>level</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Html title.</description>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML src file.</description>
             <name>src</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>svg/#{cc.attrs.group}.svg</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>xlinkHref</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -512,116 +400,97 @@
     </tag>
     <!--inputFilter.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Filter estructure for Bootstrap.</description>
         <tag-name>inputFilter</tag-name>
         <component>
             <resource-id>hsk/inputFilter.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Value Filter.</description>
             <name>value</name>
-            <required>false</required>
+            <required>true</required>
             <type>com.hiska.result.Filter</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML label.</description>
             <name>label</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML label item.</description>
             <name>itemLabel</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.attrs.label}</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>CSS icon name FontAwesome.</description>
             <name>icon</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>filter</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>CSS size component Bootstrap.</description>
             <name>size</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>sm</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>JSF disabled value.</description>
             <name>disabled</name>
             <required>false</required>
             <type>java.lang.Boolean</type>
             <default>false</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>JSF required value.</description>
+            <name>required</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+            <default>false</default>
+        </attribute>
+        <attribute>
+            <description>JSF Converter ID.</description>
             <name>converter</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>javax.faces.String</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Include Null operators.</description>
             <name>withNull</name>
             <required>false</required>
             <type>java.lang.Boolean</type>
             <default>false</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Include inequalities operators.</description>
             <name>withIneq</name>
             <required>false</required>
             <type>java.lang.Boolean</type>
             <default>false</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Items for operators.</description>
             <name>items</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>ID render update ajax.</description>
             <name>update</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.clientId}</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class.</description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -630,44 +499,34 @@
     </tag>
     <!--menu.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Menu estructure for CoreUI.</description>
         <tag-name>menu</tag-name>
         <component>
             <resource-id>hsk/menu.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>value</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class.</description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>type</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>root</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>index</name>
             <required>false</required>
             <type>java.lang.Integer</type>
@@ -676,35 +535,27 @@
     </tag>
     <!--messageFlash.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Message Flash estructure for CoreUI.</description>
         <tag-name>messageFlash</tag-name>
         <component>
             <resource-id>hsk/messageFlash.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class.</description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>toaster-top-right mt-2 mr-2</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>key</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>toast</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>facesResultMessage</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -713,26 +564,20 @@
     </tag>
     <!--messageHistory.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Message History estructure for CoreUI.</description>
         <tag-name>messageHistory</tag-name>
         <component>
             <resource-id>hsk/messageHistory.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class.</description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>facesResultMessage</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -741,53 +586,41 @@
     </tag>
     <!--note.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Notification estructure for Bootstrap.</description>
         <tag-name>note</tag-name>
         <component>
             <resource-id>hsk/note.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>detail</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>icon</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>check</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>level</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>warning</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class.</description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -796,62 +629,48 @@
     </tag>
     <!--pagination.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Pagination estructure for Bootstrap.</description>
         <tag-name>pagination</tag-name>
         <component>
             <resource-id>hsk/pagination.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Pagination Object.</description>
             <name>value</name>
             <required>true</required>
             <type>com.hiska.result.Pagination</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Pagination size.</description>
             <name>size</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>5</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Action listener on apply filter.</description>
             <name>applyListener</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{_help.noneListener}</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>JSF id render ajax.</description>
             <name>update</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.clientId}</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>JSF disabled components.</description>
             <name>disabled</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.attrs.value == null || cc.attrs.value.length == 0}</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class.</description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -860,80 +679,62 @@
     </tag>
     <!--panelFilter.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Filter Panel estructure for Bootstrap.</description>
         <tag-name>panelFilter</tag-name>
         <component>
             <resource-id>hsk/panelFilter.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class.</description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>JSF rendered component.</description>
             <name>rendered</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Pagination Object.</description>
             <name>pagination</name>
-            <required>false</required>
+            <required>true</required>
             <type>com.hiska.result.Pagination</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Size pagination.</description>
             <name>size</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>5</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Show component open filter block.</description>
             <name>open</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>false</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Action listener on apply filter.</description>
             <name>applyListener</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Action listener on clean filter.</description>
             <name>cleanListener</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>JSF render id ajax.</description>
             <name>update</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -942,53 +743,41 @@
     </tag>
     <!--rowLabel.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Row Label estructure for Bootstrap.</description>
         <tag-name>rowLabel</tag-name>
         <component>
             <resource-id>hsk/rowLabel.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Text show.</description>
             <name>text</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>CSS size component Bootstrap.</description>
             <name>size</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class for row.</description>
             <name>classRow</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>col-12</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class for text.</description>
             <name>classText</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>col-12 col-md-2</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class for content.</description>
             <name>classValue</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -997,44 +786,34 @@
     </tag>
     <!--rowSide.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Input Group estructure for Bootstrap.</description>
         <tag-name>rowSide</tag-name>
         <component>
             <resource-id>hsk/rowSide.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class.</description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>CSS size component Bootstrap.</description>
             <name>size</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>CSS icion name FontAwesome.</description>
             <name>icon</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Text show.</description>
             <name>text</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -1043,98 +822,83 @@
     </tag>
     <!--selectFilter.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Selection Filter estructure for Bootstrap.</description>
         <tag-name>selectFilter</tag-name>
         <component>
             <resource-id>hsk/selectFilter.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>value</name>
             <required>false</required>
             <type>com.hiska.result.Filter</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>label</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>itemLabel</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.attrs.label}</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>icon</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>filter</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>size</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>sm</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>disabled</name>
             <required>false</required>
             <type>java.lang.Boolean</type>
             <default>false</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
+            <name>required</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+            <default>false</default>
+        </attribute>
+        <attribute>
+            <description>.</description>
             <name>converter</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>javax.faces.String</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>option</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>false</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>update</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.clientId}</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class.</description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -1143,62 +907,48 @@
     </tag>
     <!--sidebar.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Sidebar estructure for CoreUI.</description>
         <tag-name>sidebar</tag-name>
         <component>
             <resource-id>hsk/sidebar.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class.</description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>logoFull</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>logoMinimized</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>menus</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>.</description>
             <name>grupo</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -1207,89 +957,69 @@
     </tag>
     <!--sortText.xhtml-->
     <tag>
-        <description>
-            <!--.-->
-        </description>
+        <description>HTML Sort Text estructure for Bootstrap.</description>
         <tag-name>sortText</tag-name>
         <component>
             <resource-id>hsk/sortText.xhtml</resource-id>
         </component>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Sort name.</description>
             <name>name</name>
             <required>true</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML Text Value.</description>
             <name>value</name>
             <required>true</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML style class.</description>
             <name>styleClass</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>HTML Title.</description>
             <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Pagination Object.</description>
             <name>pagination</name>
             <required>false</required>
             <type>com.hiska.result.Pagination</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>JSF Action listener on sort event.</description>
             <name>sortListener</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>JSF Render ID ajax.</description>
             <name>update</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default/>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>JSF Disabled component.</description>
             <name>disabled</name>
             <required>false</required>
             <type>java.lang.String</type>
             <default>#{cc.attrs.pagination == null}</default>
         </attribute>
         <attribute>
-            <description>
-                <!--.-->
-            </description>
+            <description>Flag active sort.</description>
             <name>active</name>
             <required>false</required>
             <type>java.lang.String</type>

@@ -27,8 +27,9 @@ import javax.persistence.Query;
 public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    @lombok.Builder
    static class Entry<T> {
-      private final String param1;
-      private final String param2;
+      private final String param;
+      private final String paramA;
+      private final String paramB;
       private final String[] names;
       private final Filter<T> filter;
       private final boolean isParam;
@@ -51,8 +52,9 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    public FilterBuilder<T> appendEntry(final String param, final String[] names, final Filter filter, boolean isParam) {
       if (filter != null && !filter.isIgnore()) {
          Entry entry = Entry.builder()
-               .param1(param + "_1")
-               .param2(param + "_2")
+               .param(param)
+               .paramA(param + "_A")
+               .paramB(param + "_B")
                .names(names)
                .filter(filter)
                .isParam(isParam)
@@ -109,10 +111,25 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
                      .append(alias).append(".").append(name)
                      .append(" ").append(expr.oper());
                if (expr.params() == 1) {
-                  whereString.append(" :").append(entry.param1);
+                  whereString.append(" :").append(entry.param);
                } else if (expr.params() == 2) {
-                  whereString.append(" :").append(entry.param1);
-                  whereString.append(" AND :").append(entry.param2);
+                  whereString.append(" :").append(entry.paramA);
+                  whereString.append(" AND :").append(entry.paramB);
+               } else if (expr.params() == 99) {
+                  whereString.append(" (");
+                  int size = filter.getValuesSize();
+                  for (int i = 0; i < size; i++) {
+                     whereString.append(" :")
+                           .append(entry.param)
+                           .append("_")
+                           .append(i)
+                           .append(" ,");
+                  }
+                  if (size > 1) {
+                     whereString.setLength(whereString.length() - 1);// remove
+                     // last ,
+                  }
+                  whereString.append(")");
                }
                whereString.append("\n  OR ");
             }
@@ -190,19 +207,29 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
          }
          Object value = filter.getValue();
          Object other = filter.getOther();
+         List values = filter.getValues();
          if (entry.isParam) {
             value = Param.create(value);
             other = Param.create(other);
          }
          if (expr.params() == 1) {
             if (expr == Filter.Expr.like) {
-               query.setParameter(entry.param1, "%" + value + "%");
+               query.setParameter(entry.param, "%" + value + "%");
             } else {
-               query.setParameter(entry.param1, value);
+               query.setParameter(entry.param, value);
             }
          } else if (expr.params() == 2) {
-            query.setParameter(entry.param1, value);
-            query.setParameter(entry.param2, other);
+            query.setParameter(entry.paramA, value);
+            query.setParameter(entry.paramB, other);
+         } else if (expr.params() == 99) {
+            int size = filter.getValuesSize();
+            for (int i = 0; i < size; i++) {
+               Object valueIt = values.get(i);
+               if (entry.isParam) {
+                  valueIt = Param.create(valueIt);
+               }
+               query.setParameter(entry.param + "_" + i, valueIt);
+            }
          }
       }
    }
