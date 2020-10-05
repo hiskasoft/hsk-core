@@ -18,7 +18,7 @@ import static com.sun.faces.renderkit.RenderKitUtils.renderOnchange;
 import static com.sun.faces.renderkit.RenderKitUtils.renderPassThruAttributes;
 import static com.sun.faces.renderkit.RenderKitUtils.renderXHTMLStyleBooleanAttributes;
 import com.sun.faces.renderkit.SelectItemsIterator;
-import com.sun.faces.renderkit.html_basic.MenuRenderer;
+import com.sun.faces.renderkit.html_basic.SelectManyCheckboxListRenderer;
 import java.io.IOException;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -29,14 +29,14 @@ import javax.faces.model.SelectItem;
 /**
  * @author Willyams Yujra
  */
-public class MenuSpanRenderer extends MenuRenderer {
+public class SpanSelectManyCheckboxListRenderer extends SelectManyCheckboxListRenderer {
    private static final Attribute[] OUTPUT_ATTRIBUTES = AttributeManager.getAttributes(AttributeManager.Key.OUTPUTTEXT);
 
    @Override
-   protected void renderSelect(FacesContext context, UIComponent component) throws IOException {
+   public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
       boolean isSpan = isSpan(context, component);
       if (!isSpan) {
-         super.renderSelect(context, component);
+         super.encodeEnd(context, component);
          return;
       }
       ResponseWriter writer = context.getResponseWriter();
@@ -55,7 +55,17 @@ public class MenuSpanRenderer extends MenuRenderer {
       writer.endElement("span");
    }
 
-   @Override
+   public boolean isSpan(FacesContext context, UIComponent component) throws IOException {
+      return (Boolean) component.getAttributes().get("disabled") || (Boolean) component.getAttributes().get("readonly");
+   }
+
+   private void writeStyleClassAttributeIfNecessary(FacesContext context, ResponseWriter writer, UIComponent component) throws IOException {
+      String styleClass = (String) component.getAttributes().get("styleClass");
+      if (styleClass != null) {
+         writer.writeAttribute("class", styleClass, "styleClass");
+      }
+   }
+
    protected boolean renderOption(FacesContext context, UIComponent component, UIComponent selectComponent, Converter<?> converter, SelectItem curItem,
          Object currentSelections, Object[] submittedValues, OptionComponentInfo optionInfo) throws IOException {
       boolean isSpan = isSpan(context, component);
@@ -108,16 +118,5 @@ public class MenuSpanRenderer extends MenuRenderer {
       writer.endElement("span");
       writer.writeText("\n", component, null);
       return true;
-   }
-
-   public boolean isSpan(FacesContext context, UIComponent component) throws IOException {
-      return (Boolean) component.getAttributes().get("disabled") || (Boolean) component.getAttributes().get("readonly");
-   }
-
-   private void writeStyleClassAttributeIfNecessary(FacesContext context, ResponseWriter writer, UIComponent component) throws IOException {
-      String styleClass = (String) component.getAttributes().get("styleClass");
-      if (styleClass != null) {
-         writer.writeAttribute("class", styleClass, "styleClass");
-      }
    }
 }

@@ -51,7 +51,37 @@
         <renderer>
             <component-family>javax.faces.Message</component-family>
             <renderer-type>javax.faces.Message</renderer-type>
-            <renderer-class>com.hiska.faces.renderkit.BootstrapMessageRenderer</renderer-class>
+            <renderer-class>com.hiska.faces.renderkit.SpanMessageRenderer</renderer-class>
+        </renderer>
+        <renderer>
+            <component-family>javax.faces.Input</component-family>
+            <renderer-type>javax.faces.Text</renderer-type>
+            <renderer-class>com.hiska.faces.renderkit.SpanTextRenderer</renderer-class>
+        </renderer>
+        <renderer>
+            <component-family>javax.faces.Input</component-family>
+            <renderer-type>javax.faces.Textarea</renderer-type>
+            <renderer-class>com.hiska.faces.renderkit.SpanTextareaRenderer</renderer-class>
+        </renderer>
+        <renderer>
+            <component-family>javax.faces.SelectOne</component-family>
+            <renderer-type>javax.faces.Menu</renderer-type>
+            <renderer-class>com.hiska.faces.renderkit.SpanMenuRenderer</renderer-class>
+        </renderer>
+        <renderer>
+            <component-family>javax.faces.SelectMany</component-family>
+            <renderer-type>javax.faces.Menu</renderer-type>
+            <renderer-class>com.hiska.faces.renderkit.SpanMenuRenderer</renderer-class>
+        </renderer>
+        <renderer>
+            <component-family>javax.faces.SelectMany</component-family>
+            <renderer-type>javax.faces.Checkbox</renderer-type>
+            <renderer-class>com.hiska.faces.renderkit.SpanSelectManyCheckboxListRenderer</renderer-class>
+        </renderer>
+        <renderer>
+            <component-family>javax.faces.SelectMany</component-family>
+            <renderer-type>javax.faces.Listbox</renderer-type>
+            <renderer-class>com.hiska.faces.renderkit.SpanListboxRenderer</renderer-class>
         </renderer>
     </render-kit>
 </faces-config>

@@ -18,7 +18,7 @@ import static com.sun.faces.renderkit.RenderKitUtils.renderOnchange;
 import static com.sun.faces.renderkit.RenderKitUtils.renderPassThruAttributes;
 import static com.sun.faces.renderkit.RenderKitUtils.renderXHTMLStyleBooleanAttributes;
 import com.sun.faces.renderkit.SelectItemsIterator;
-import com.sun.faces.renderkit.html_basic.ListboxRenderer;
+import com.sun.faces.renderkit.html_basic.MenuRenderer;
 import java.io.IOException;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -29,48 +29,37 @@ import javax.faces.model.SelectItem;
 /**
  * @author Willyams Yujra
  */
-public class ListboxSpanRenderer extends ListboxRenderer {
+public class SpanMenuRenderer extends MenuRenderer {
    private static final Attribute[] OUTPUT_ATTRIBUTES = AttributeManager.getAttributes(AttributeManager.Key.OUTPUTTEXT);
 
    @Override
-   public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
-      boolean isSpan = isSpan(context, component);
-      if (!isSpan) {
-         super.encodeEnd(context, component);
-         return;
-      }
-      ResponseWriter writer = context.getResponseWriter();
-      writer.startElement("span", component);
-      writeIdAttributeIfNecessary(context, writer, component);
-      writeStyleClassAttributeIfNecessary(context, writer, component);
-      SelectItemsIterator<SelectItem> items = getSelectItems(context, component);
-      FastStringWriter bufferedWriter = new FastStringWriter(128);
-      context.setResponseWriter(writer.cloneWithWriter(bufferedWriter));
-      renderOptions(context, component, items);
-      context.setResponseWriter(writer);
-      renderPassThruAttributes(context, writer, component, OUTPUT_ATTRIBUTES, getNonOnChangeBehaviors(component));
-      renderXHTMLStyleBooleanAttributes(writer, component);
-      renderOnchange(context, component, false);
-      writer.write(bufferedWriter.toString());
-      writer.endElement("span");
-   }
-
-   public boolean isSpan(FacesContext context, UIComponent component) throws IOException {
-      return (Boolean) component.getAttributes().get("disabled") || (Boolean) component.getAttributes().get("readonly");
-   }
-
-   private void writeStyleClassAttributeIfNecessary(FacesContext context, ResponseWriter writer, UIComponent component) throws IOException {
-      String styleClass = (String) component.getAttributes().get("styleClass");
-      if (styleClass != null) {
-         writer.writeAttribute("class", styleClass, "styleClass");
+   protected void renderSelect(FacesContext context, UIComponent component) throws IOException {
+      boolean renderAsOutput = RenderkitHelp.isRenderAsOutput(context, component);
+      if (!renderAsOutput) {
+         super.renderSelect(context, component);
+      } else {
+         ResponseWriter writer = context.getResponseWriter();
+         writer.startElement("span", component);
+         writeIdAttributeIfNecessary(context, writer, component);
+         RenderkitHelp.writeStyleClassAttributeIfNecessary(context, writer, component);
+         SelectItemsIterator<SelectItem> items = getSelectItems(context, component);
+         FastStringWriter bufferedWriter = new FastStringWriter(128);
+         context.setResponseWriter(writer.cloneWithWriter(bufferedWriter));
+         renderOptions(context, component, items);
+         context.setResponseWriter(writer);
+         renderPassThruAttributes(context, writer, component, OUTPUT_ATTRIBUTES, getNonOnChangeBehaviors(component));
+         renderXHTMLStyleBooleanAttributes(writer, component);
+         renderOnchange(context, component, false);
+         writer.write(bufferedWriter.toString());
+         writer.endElement("span");
       }
    }
 
    @Override
    protected boolean renderOption(FacesContext context, UIComponent component, UIComponent selectComponent, Converter<?> converter, SelectItem curItem,
          Object currentSelections, Object[] submittedValues, OptionComponentInfo optionInfo) throws IOException {
-      boolean isSpan = isSpan(context, component);
-      if (!isSpan) {
+      boolean renderAsOutput = RenderkitHelp.isRenderAsOutput(context, component);
+      if (!renderAsOutput) {
          return super.renderOption(context, component, component, converter, curItem, currentSelections, submittedValues, optionInfo);
       }
       Object valuesArray;
