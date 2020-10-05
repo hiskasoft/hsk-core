@@ -21,6 +21,7 @@ import com.hiska.result.Param;
 import com.hiska.result.Resource;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -110,6 +111,10 @@ public class HelpDefaultBean {
 
    public Date getNoneDate() {
       return new Date();
+   }
+
+   public List getNoneList() {
+      return Collections.EMPTY_LIST;
    }
 
    public int[] getPages(Pagination pagination, int size) {

@@ -42,10 +42,19 @@
             <description>
                 <!--.-->
             </description>
+            <name>username</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>¿username?</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
             <name>fullName</name>
             <required>false</required>
             <type>java.lang.String</type>
-            <default/>
+            <default>¿fullName?</default>
         </attribute>
         <attribute>
             <description>
@@ -54,7 +63,115 @@
             <name>email</name>
             <required>false</required>
             <type>java.lang.String</type>
-            <default/>
+            <default>¿email?</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>building</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>¿building?</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>location</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>¿location?</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>systemName</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>Core UI App</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>moduleName</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>Core UI Description</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>pageName</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>#{view.viewId}</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>profileName</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>¿profileName?</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>rolName</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <default>¿rolName?</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>loginDate</name>
+            <required>false</required>
+            <type>java.util.Date</type>
+            <default>#{_help.noneDate}</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>systemDate</name>
+            <required>false</required>
+            <type>java.util.Date</type>
+            <default>#{_help.noneDate}</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>configDate</name>
+            <required>false</required>
+            <type>java.util.Date</type>
+            <default>#{_help.noneDate}</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>rolList</name>
+            <required>false</required>
+            <type>java.util.List</type>
+            <default>#{_help.noneList}</default>
+        </attribute>
+        <attribute>
+            <description>
+                <!--.-->
+            </description>
+            <name>stateList</name>
+            <required>false</required>
+            <type>java.util.List</type>
+            <default>#{_help.noneList}</default>
         </attribute>
     </tag>
     <!--footer.xhtml-->
