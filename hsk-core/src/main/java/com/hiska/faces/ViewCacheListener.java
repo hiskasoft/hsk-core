@@ -29,14 +29,11 @@ public class ViewCacheListener implements PhaseListener {
    @Override
    public void beforePhase(PhaseEvent event) {
       FacesContext facesContext = event.getFacesContext();
-      String viewId = facesContext.getViewRoot().getViewId();
-      if (viewId.endsWith(".xhtml")) {
-         HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
-         response.addHeader("Pragma", "no-cache");
-         response.addHeader("Cache-Control", "no-cache");
-         response.addHeader("Cache-Control", "no-store");
-         response.addHeader("Cache-Control", "must-revalidate");
-         response.addHeader("Expires", "Mon, 8 Aug 2006 10:00:00 GMT");
-      }
+      HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
+      response.setHeader("Pragma", "no-cache");
+      response.setHeader("Cache-Control", "no-cache");
+      response.setHeader("Cache-Control", "no-store");
+      response.setHeader("Cache-Control", "must-revalidate");
+      response.setHeader("Expires", "Mon, 8 Aug 2006 10:00:00 GMT");
    }
 }

@@ -12,6 +12,7 @@ package com.hiska.result.converter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
@@ -24,9 +25,12 @@ public class ListConverter implements AttributeConverter<List<String>, String> {
    public String convertToDatabaseColumn(List<String> paramList) {
       StringBuilder result = new StringBuilder();
       if (paramList != null) {
-         paramList.forEach(v -> {
-            result.append(v).append(";");
-         });
+         paramList.stream()
+               .filter(it -> it != null)
+               .filter(it -> !it.isEmpty())
+               .forEach(it -> {
+                  result.append(it).append(";");
+               });
       }
       return result.toString();
    }
@@ -35,12 +39,10 @@ public class ListConverter implements AttributeConverter<List<String>, String> {
    public List<String> convertToEntityAttribute(String value) {
       List<String> result = new ArrayList<>();
       if (value != null) {
-         String[] values = value.split(";");
-         for (String it : values) {
-            if (!it.isEmpty()) {
-               result.add(it);
-            }
-         }
+         Stream.of(value.split(";"))
+               .filter(it -> it != null)
+               .filter(it -> !it.isEmpty())
+               .forEach(result::add);
       }
       return result;
    }

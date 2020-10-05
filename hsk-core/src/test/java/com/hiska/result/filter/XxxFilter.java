@@ -15,7 +15,7 @@ import com.hiska.result.FilterElement;
 import lombok.Data;
 
 /**
- * @author yracnet
+ * @author Willyams Yujra
  */
 @Data
 public class XxxFilter {

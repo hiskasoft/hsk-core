@@ -15,7 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * @author yracnet
+ * @author Willyams Yujra
  */
 @Table(name = "XX_TABLE", schema = "OOO")
 public class XxxEntity {

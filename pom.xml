@@ -146,9 +146,15 @@
             <dependency>
                 <groupId>com.sun.faces</groupId>
                 <artifactId>jsf-impl</artifactId>
-                <version>2.2.20</version>
+                <version>2.3.9.SP10</version>
                 <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <repositories>
+        <repository>
+            <id>jbos</id>
+            <url>https://repository.jboss.org/nexus/content/repositories/public/</url>
+        </repository>
+    </repositories>
 </project>

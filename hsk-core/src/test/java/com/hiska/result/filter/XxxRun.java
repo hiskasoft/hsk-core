@@ -13,7 +13,7 @@ package com.hiska.result.filter;
 import com.hiska.result.Filter;
 
 /**
- * @author yracnet
+ * @author Willyams Yujra
  */
 public class XxxRun {
    public static void main(String[] args) {

@@ -16,7 +16,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
 /**
- * @author yracnet
+ * @author Willyams Yujra
  */
 public class BootstrapMessageRenderer extends MessageRenderer {
    @Override
