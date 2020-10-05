@@ -22,15 +22,15 @@ import java.util.Map;
 @lombok.Getter
 @lombok.ToString
 public class FilterDefinition implements Definition<Filter> {
-   private final String ref;
+   private final String param;
    private final String[] name;
-   private final boolean param;
+   private final boolean convertToParam;
    private final Method method;
 
    public FilterDefinition(Field field, FilterElement element) {
-      ref = assertParamName(element.ref(), field.getName());
+      param = assertParamName(element.param(), field.getName());
       name = assertAttrNames(element.name(), field.getName());
-      param = element.param();
+      convertToParam = element.convertToParam();
       method = Common.assertGetter(field, field.getDeclaringClass());
    }
 

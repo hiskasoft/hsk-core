@@ -32,7 +32,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
       private final String paramB;
       private final String[] names;
       private final Filter<T> filter;
-      private final boolean isParam;
+      private final boolean convertToParam;
    }
 
    private String source;
@@ -49,7 +49,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    }
 
    @Override
-   public FilterBuilder<T> appendEntry(final String param, final String[] names, final Filter filter, boolean isParam) {
+   public FilterBuilder<T> appendEntry(final String param, final String[] names, final Filter filter, boolean convertToParam) {
       if (filter != null && !filter.isIgnore()) {
          Entry entry = Entry.builder()
                .param(param)
@@ -57,7 +57,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
                .paramB(param + "_B")
                .names(names)
                .filter(filter)
-               .isParam(isParam)
+               .convertToParam(convertToParam)
                .build();
          entries.add(entry);
       }
@@ -125,7 +125,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
                            .append(i)
                            .append(" ,");
                   }
-                  if (size > 1) {
+                  if (size > 0) {
                      whereString.setLength(whereString.length() - 1);// remove
                      // last ,
                   }
@@ -208,7 +208,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
          Object value = filter.getValue();
          Object other = filter.getOther();
          List values = filter.getValues();
-         if (entry.isParam) {
+         if (entry.convertToParam) {
             value = Param.create(value);
             other = Param.create(other);
          }
@@ -225,7 +225,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
             int size = filter.getValuesSize();
             for (int i = 0; i < size; i++) {
                Object valueIt = values.get(i);
-               if (entry.isParam) {
+               if (entry.convertToParam) {
                   valueIt = Param.create(valueIt);
                }
                query.setParameter(entry.param + "_" + i, valueIt);

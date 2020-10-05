@@ -29,16 +29,16 @@ public @interface FilterElement {
    public String[] name() default "#default";
 
    /**
-    * Reference name in the query
+    * Parameter name in the query
     *
     * @return
     */
-   public String ref() default "#default";
+   public String param() default "#default";
 
    /**
     * Parameter name in the where clause
     *
     * @return
     */
-   public boolean param() default false;
+   public boolean convertToParam() default false;
 }

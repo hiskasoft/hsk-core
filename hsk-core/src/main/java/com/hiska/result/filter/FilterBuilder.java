@@ -49,7 +49,7 @@ public interface FilterBuilder<T> {
          items.stream()
                .forEach(item -> {
                   Filter filter = item.invokeMethod(oFilter);
-                  builder.appendEntry(item.getRef(), item.getName(), filter, item.isParam());
+                  builder.appendEntry(item.getParam(), item.getName(), filter, item.isConvertToParam());
                });
          Pagination pagination = PaginationDefinition.getInstance(oFilter);
          builder.pagination(pagination);
@@ -57,7 +57,7 @@ public interface FilterBuilder<T> {
       return builder;
    }
 
-   public FilterBuilder<T> appendEntry(String param, String[] names, Filter filter, boolean isParam);
+   public FilterBuilder<T> appendEntry(String param, String[] names, Filter filter, boolean convertToParam);
 
    public FilterBuilder<T> pagination(Pagination pagination);
 

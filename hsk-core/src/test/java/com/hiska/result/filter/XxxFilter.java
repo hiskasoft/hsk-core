@@ -12,6 +12,7 @@ package com.hiska.result.filter;
 
 import com.hiska.result.Filter;
 import com.hiska.result.FilterElement;
+import com.hiska.result.Param;
 import lombok.Data;
 
 /**
@@ -25,8 +26,8 @@ public class XxxFilter {
    private Filter<String> col;
    @FilterElement
    private Filter<String> colName;
-   @FilterElement(param = true)
-   private Filter<String> code;
+   @FilterElement
+   private Filter<Param> code;
    @FilterElement(name = {"other.ref", "ref"})
    private Filter<Long> ref;
 }
