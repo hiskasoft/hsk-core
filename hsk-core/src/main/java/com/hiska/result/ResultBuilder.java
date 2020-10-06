@@ -13,6 +13,24 @@ package com.hiska.result;
 import java.util.List;
 
 public class ResultBuilder {
+   public static Result notImplementResult() {
+      Result result = new Result();
+      result.message("APP-9001: Metodo no implementado");
+      return result;
+   }
+
+   public static ResultItem notImplementResultItem() {
+      ResultItem result = new ResultItem();
+      result.message("APP-9001: Metodo no implementado");
+      return result;
+   }
+
+   public static ResultFilter notImplementResultFilter() {
+      ResultFilter result = new ResultFilter();
+      result.message("APP-9001: Metodo no implementado");
+      return result;
+   }
+
    public static Result createResult(Message message) {
       Result result = new Result();
       result.addMessage(message);
