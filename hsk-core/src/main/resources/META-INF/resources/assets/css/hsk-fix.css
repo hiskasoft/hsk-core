@@ -29,6 +29,10 @@ body.c-app {
 .hsk-message ul.hsk-trace li.hsk-line + li.hsk-title {
     margin-top: 0.5em
 }
+.hsk-info .la,
+.hsk-info .fa{
+    margin-right: 5px;
+}
 td.row-action {
     margin: 0;
     padding-top: 0 !important;

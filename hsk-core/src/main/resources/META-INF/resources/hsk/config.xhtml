@@ -52,21 +52,21 @@
             <div class="tab-content">
                 <div class="tab-pane" id="timeline">
                     <div class="list-group list-group-accent">
-                        <strong class="list-group-item list-group-item-accent-info text-center text-white bg-info">
+                        <strong class="list-group-item list-group-item-accent-info text-center text-white bg-info hsk-info">
                             <i class="la la-lg la-codepen"></i>
-                            #{cc.attrs.profileName}
+                            <h:outputText value="#{cc.attrs.profileName}"/>
                         </strong>
                         <div class="list-group-item list-group-item-accent-info list-group-item-divider">
-                            <div class="text-truncate font-weight-bold">
+                            <div class="text-truncate font-weight-bold hsk-info">
                                 <span class="la la-lg la-address-card"/>
-                                #{cc.attrs.fullName}
+                                <h:outputText value="#{cc.attrs.fullName}"/>
                             </div>
-                            <div class="small">
+                            <div class="small hsk-info">
                                 <span class="la la-lg la-user"/>
-                                #{cc.attrs.username}
+                                <h:outputText value="#{cc.attrs.username}"/>
                                 <br/>
                                 <span class="la la-lg la-envelope"/>
-                                #{cc.attrs.email}
+                                <h:outputText value="#{cc.attrs.email}"/>
                                 <br/>
                                 <span class="la la-lg la-calendar-check"/>
                                 <h:outputText value="#{cc.attrs.loginDate}">
@@ -74,10 +74,10 @@
                                 </h:outputText>
                                 <br/>
                                 <span class="la la-lg la-building"/>
-                                #{cc.attrs.building}
+                                <h:outputText value="#{cc.attrs.building}"/>
                                 <br/>
                                 <span class="la la-lg la-map-marker"/>
-                                #{cc.attrs.location}
+                                <h:outputText value="#{cc.attrs.location}"/>
                             </div>
                         </div>
                         <div class="list-group-item list-group-item-accent-danger">
