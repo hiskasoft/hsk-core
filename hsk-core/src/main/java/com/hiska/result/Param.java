@@ -63,7 +63,17 @@ public class Param implements Serializable {
       return str != null && str.equals(value);
    }
 
-   public static boolean isEqualsIn(Param param, String... strs) {
+   public static boolean isNotIn(Param param, String... strs) {
+      String value = param == null ? null : param.getValue();
+      for (String str : strs) {
+         if (str != null && str.equals(value)) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   public static boolean isIn(Param param, String... strs) {
       String value = param == null ? null : param.getValue();
       for (String str : strs) {
          if (str != null && str.equals(value)) {
@@ -77,13 +87,22 @@ public class Param implements Serializable {
       return str != null && str.equals(value);
    }
 
-   public boolean isEqualsIn(String... strs) {
+   public boolean isIn(String... strs) {
       for (String str : strs) {
          if (str != null && str.equals(value)) {
             return true;
          }
       }
       return false;
+   }
+
+   public boolean isNotIn(String... strs) {
+      for (String str : strs) {
+         if (str != null && str.equals(value)) {
+            return false;
+         }
+      }
+      return true;
    }
 
    @Override

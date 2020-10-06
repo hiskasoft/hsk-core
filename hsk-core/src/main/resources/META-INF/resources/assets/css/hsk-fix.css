@@ -81,3 +81,12 @@ span.btn {
 .row-filter{}
 .row-form{}
 .row-view {}
+
+
+.hsk-roles > .badge{
+    padding: 6px 8px;
+}
+
+.hsk-states {
+    
+}

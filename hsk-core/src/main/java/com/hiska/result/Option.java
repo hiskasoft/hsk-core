@@ -61,7 +61,7 @@ public class Option implements Serializable {
       return option;
    }
 
-   public static boolean isEquals(String str, Option option) {
+   public static boolean isEquals(Option option, String str) {
       String old = option == null ? null : option.getValue();
       return str != null && str.equals(old);
    }
