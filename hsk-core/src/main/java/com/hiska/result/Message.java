@@ -13,6 +13,7 @@ package com.hiska.result;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.json.bind.annotation.JsonbTransient;
 
 /**
  * Message data
@@ -78,6 +79,7 @@ public class Message implements Serializable {
       causes.add(value);
    }
 
+   @JsonbTransient
    public boolean isCauseEmpty() {
       return causes.isEmpty();
    }
@@ -86,6 +88,7 @@ public class Message implements Serializable {
       traces.add(value);
    }
 
+   @JsonbTransient
    public boolean isTraceEmpty() {
       return traces.isEmpty();
    }

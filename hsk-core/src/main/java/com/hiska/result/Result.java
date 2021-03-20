@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.json.bind.annotation.JsonbTransient;
 
 /**
  * Basic Result Response for Request
@@ -65,8 +66,7 @@ public class Result implements Serializable {
    }
 
    /**
-    * Outcome SUCCESS
-    * Clear all messages
+    * Outcome SUCCESS Clear all messages
     */
    public void reset() {
       outcome = SUCCESS;
@@ -75,7 +75,7 @@ public class Result implements Serializable {
 
    /**
     * Create a simple Result Object
-    * 
+    *
     * @return
     */
    public Result asResult() {
@@ -84,7 +84,7 @@ public class Result implements Serializable {
 
    /**
     * Create and add a new Message
-    * 
+    *
     * @return
     */
    public MessageBuilder message() {
@@ -93,8 +93,7 @@ public class Result implements Serializable {
    }
 
    /**
-    * Create and add a new Message
-    * Text Message in format XXX-####: Text
+    * Create and add a new Message Text Message in format XXX-####: Text
     * <p>
     * XXX is a PREFIX
     * </p>
@@ -116,7 +115,7 @@ public class Result implements Serializable {
     * <p>
     * 9### is FATAL
     * </p>
-    * 
+    *
     * @param  text
     * @return
     */
@@ -137,10 +136,12 @@ public class Result implements Serializable {
       }
    }
 
+   @JsonbTransient
    public boolean isSuccess() {
       return SUCCESS.equalsIgnoreCase(outcome);
    }
 
+   @JsonbTransient
    public boolean isError() {
       return ERROR.equalsIgnoreCase(outcome);
    }
@@ -158,10 +159,9 @@ public class Result implements Serializable {
    }
 
    /**
-    * Append Messages and Behaviors to Result
-    * Message is included
-    * Behavior is included
-    * 
+    * Append Messages and Behaviors to Result Message is included Behavior is
+    * included
+    *
     * @param result
     */
    public void append(Result result) {
@@ -170,10 +170,9 @@ public class Result implements Serializable {
    }
 
    /**
-    * Accept Messages and Behaviors to Result
-    * Message is replaced
-    * Behavior is replaced
-    * 
+    * Accept Messages and Behaviors to Result Message is replaced Behavior is
+    * replaced
+    *
     * @param result
     */
    public void accept(Result result) {
@@ -184,7 +183,7 @@ public class Result implements Serializable {
 
    /**
     * Throw a new ResultException if not success
-    * 
+    *
     * @param message
     */
    public void throwException(String message) {
@@ -204,7 +203,7 @@ public class Result implements Serializable {
 
    /**
     * Create Log Result
-    * 
+    *
     * @param title title log
     */
    public void log(String title) {

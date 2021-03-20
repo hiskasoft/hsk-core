@@ -54,6 +54,10 @@ public class MessageBuilder {
       return new MessageBuilder().text(text);
    }
 
+   public static MessageBuilder createPong(String name) {
+      return new MessageBuilder().text("APP-0001: Pong Method: " + name);
+   }
+
    private MessageBuilder() {
       this.message = new Message();
    }
@@ -112,6 +116,11 @@ public class MessageBuilder {
       return this;
    }
 
+   public MessageBuilder trace(String value) {
+      message.addTrace(value);
+      return this;
+   }
+
    private static final Pattern TXT_CODE = Pattern.compile("([A-Z]{3,5}-[0-9]{3,5}):(.*)", Pattern.DOTALL);
 
    /**
@@ -137,7 +146,7 @@ public class MessageBuilder {
     * <p>
     * 9### is FATAL
     * </p>
-    * 
+    *
     * @param  text
     * @return
     */
@@ -149,7 +158,13 @@ public class MessageBuilder {
             String desc = matcher.group(2).trim();
             message.setCode(code);
             message.setDescription(desc);
-            if (code.contains("-0") || code.contains("-1")) {
+            if (code.startsWith("HTTP-2")) {
+               message.setLevel(Message.Level.info);
+            } else if (code.startsWith("HTTP-4")) {
+               message.setLevel(Message.Level.error);
+            } else if (code.startsWith("HTTP-5")) {
+               message.setLevel(Message.Level.fatal);
+            } else if (code.contains("-0") || code.contains("-1")) {
                message.setLevel(Message.Level.info);
             } else if (code.contains("-2")) {
                message.setLevel(Message.Level.warn);
@@ -241,12 +256,33 @@ public class MessageBuilder {
       return this;
    }
 
+   public ResultBuilder asResultBuilder() {
+      return ResultBuilder.create(message);
+   }
+
+   public Result asResult() {
+      Result result = new Result();
+      result.addMessage(message);
+      return result;
+   }
+
    public <T> ResultItem<T> asResultItem() {
       return asResultItem(null);
    }
 
    public <T> ResultItem<T> asResultItem(T value) {
       ResultItem<T> result = new ResultItem();
+      result.addMessage(message);
+      result.setValue(value);
+      return result;
+   }
+
+   public <T> ResultList<T> asResultList() {
+      return asResultList(null);
+   }
+
+   public <T> ResultList<T> asResultList(List<T> value) {
+      ResultList<T> result = new ResultList();
       result.addMessage(message);
       result.setValue(value);
       return result;

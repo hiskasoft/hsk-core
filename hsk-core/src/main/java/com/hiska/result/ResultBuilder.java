@@ -60,6 +60,11 @@ public class ResultBuilder {
       return this;
    }
 
+   public ResultBuilder outcome(String outcome) {
+      result.setOutcome(outcome);
+      return this;
+   }
+
    public ResultBuilder success() {
       result.setSuccess();
       return this;
