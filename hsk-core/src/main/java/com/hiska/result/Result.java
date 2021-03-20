@@ -15,7 +15,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,7 +25,6 @@ import java.util.logging.Logger;
 @Setter
 @ToString
 public class Result implements Serializable {
-   
    public static final String SUCCESS = "success";
    public static final String ERROR = "error";
    /**
