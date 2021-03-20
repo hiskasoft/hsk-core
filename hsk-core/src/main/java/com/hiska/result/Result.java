@@ -26,14 +26,13 @@ import java.util.logging.Logger;
 @Setter
 @ToString
 public class Result implements Serializable {
+   
+   public static final String SUCCESS = "success";
+   public static final String ERROR = "error";
    /**
-    * Flag attribute for error result
+    * String Flag attribute for outcome result
     */
-   private boolean success = true;
-   /**
-    * List of Behavior
-    */
-   private Behavior behavior;
+   private String outcome = SUCCESS;
    /**
     * List of Message
     */
@@ -44,8 +43,7 @@ public class Result implements Serializable {
    }
 
    public Result(final Result other) {
-      success = other.success;
-      behavior = other.behavior;
+      outcome = other.outcome;
       messages = new ArrayList<>(other.messages);
    }
 
@@ -69,24 +67,11 @@ public class Result implements Serializable {
    }
 
    /**
-    * Result Clear
-    * Reset behavior
+    * Outcome SUCCESS
     * Clear all messages
-    */
-   public void clear() {
-      messages.clear();
-      behavior = null;
-   }
-
-   /**
-    * Result Reset
-    * Reset behavior
-    * Clear all messages
-    * success is true
     */
    public void reset() {
-      success = true;
-      behavior = null;
+      outcome = SUCCESS;
       messages.clear();
    }
 
@@ -143,45 +128,35 @@ public class Result implements Serializable {
    }
 
    public void ifSuccess(Runnable caller) {
-      if (success) {
+      if (isSuccess()) {
          caller.run();
       }
    }
 
    public void ifError(Runnable caller) {
-      if (!success) {
+      if (!isSuccess()) {
          caller.run();
       }
+   }
+
+   public boolean isSuccess() {
+      return SUCCESS.equalsIgnoreCase(outcome);
    }
 
    public boolean isError() {
-      return !success;
+      return ERROR.equalsIgnoreCase(outcome);
    }
 
-   public void ifBehavior(String action, Runnable caller) {
-      if (isBehavior(action)) {
-         caller.run();
-      }
+   public void setSuccess() {
+      outcome = SUCCESS;
    }
 
-   public void ifBehavior(String action, Consumer<Result> caller) {
-      if (isBehavior(action)) {
-         caller.accept(this);
-      }
+   public void setError() {
+      outcome = ERROR;
    }
 
-   public void ifBehavior(String type, String action, Consumer<Result> caller) {
-      if (isBehavior(type, action)) {
-         caller.accept(this);
-      }
-   }
-
-   public boolean isBehavior(String action) {
-      return behavior != null && behavior.isEquals(action);
-   }
-
-   public boolean isBehavior(String type, String action) {
-      return behavior != null && behavior.isEquals(type, action);
+   public boolean isOutcome(String name) {
+      return name != null && name.equalsIgnoreCase(outcome);
    }
 
    /**
@@ -192,8 +167,7 @@ public class Result implements Serializable {
     * @param result
     */
    public void append(Result result) {
-      success = result.success;
-      behavior = result.behavior;
+      outcome = result.outcome;
       addAllMessage(result.messages);
    }
 
@@ -205,19 +179,18 @@ public class Result implements Serializable {
     * @param result
     */
    public void accept(Result result) {
-      success = result.success;
-      behavior = result.behavior;
+      outcome = result.outcome;
       messages.clear();
       addAllMessage(result.messages);
    }
 
    /**
-    * Throw a new ResultException if success is false
+    * Throw a new ResultException if not success
     * 
     * @param message
     */
    public void throwException(String message) {
-      if (success == false) {
+      if (!isSuccess()) {
          throw new ResultException(message, this);
       }
    }
@@ -237,6 +210,6 @@ public class Result implements Serializable {
     * @param title title log
     */
    public void log(String title) {
-      LOGGER.log(Level.INFO, "Result:{0}|Success={1}|Messages={2}|Behavior={3}|This={4}", new Object[]{title, success, messages, behavior, this});
+      LOGGER.log(Level.INFO, "Result:{0}|Outcome={1}|Messages={2}|This={4}", new Object[]{title, outcome, messages, this});
    }
 }

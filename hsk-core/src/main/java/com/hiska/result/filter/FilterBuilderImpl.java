@@ -117,7 +117,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
                   whereString.append(" AND :").append(entry.paramB);
                } else if (expr.params() == 99) {
                   whereString.append(" (");
-                  int size = filter.getValuesSize();
+                  int size = filter.getSizeValues();
                   for (int i = 0; i < size; i++) {
                      whereString.append(" :")
                            .append(entry.param)
@@ -190,7 +190,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
          result.setValue(list);
       } catch (Exception e) {
          LOGGER.log(Level.SEVERE, "EXCEPTION QUERY", e);
-         result.setSuccess(false);
+         result.setError();
          result.message("HSK-2001: Error al ejecutar la consulta")
                .exception(e)
                .action("Contactese con el administrador de sistemas");
@@ -222,7 +222,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
             query.setParameter(entry.paramA, value);
             query.setParameter(entry.paramB, other);
          } else if (expr.params() == 99) {
-            int size = filter.getValuesSize();
+            int size = filter.getSizeValues();
             for (int i = 0; i < size; i++) {
                Object valueIt = values.get(i);
                if (entry.convertToParam) {

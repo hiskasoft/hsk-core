@@ -121,7 +121,7 @@ public class Filter<T> implements Serializable {
       return expr != null && expr.ignore();
    }
 
-   public int getValuesSize() {
+   public int getSizeValues() {
       return values == null ? 0 : values.size();
    }
 

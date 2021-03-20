@@ -56,17 +56,17 @@ public class ResultBuilder {
    }
 
    public ResultBuilder error() {
-      result.setSuccess(false);
+      result.setError();
       return this;
    }
 
    public ResultBuilder success() {
-      result.setSuccess(true);
+      result.setSuccess();
       return this;
    }
 
    public ResultBuilder setSuccess(boolean success) {
-      result.setSuccess(success);
+      result.setSuccess();
       return this;
    }
 
