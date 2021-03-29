@@ -263,6 +263,7 @@ public class MessageBuilder {
    public Result asResult() {
       Result result = new Result();
       result.addMessage(message);
+      result.setOutcome(getOutcome());
       return result;
    }
 
@@ -273,6 +274,7 @@ public class MessageBuilder {
    public <T> ResultItem<T> asResultItem(T value) {
       ResultItem<T> result = new ResultItem();
       result.addMessage(message);
+      result.setOutcome(getOutcome());
       result.setValue(value);
       return result;
    }
@@ -284,7 +286,13 @@ public class MessageBuilder {
    public <T> ResultList<T> asResultList(List<T> value) {
       ResultList<T> result = new ResultList();
       result.addMessage(message);
+      result.setOutcome(getOutcome());
       result.setValue(value);
       return result;
+   }
+
+   private String getOutcome() {
+      Message.Level level = message.getLevel();
+      return level == Message.Level.info ? "success" : "error";
    }
 }
