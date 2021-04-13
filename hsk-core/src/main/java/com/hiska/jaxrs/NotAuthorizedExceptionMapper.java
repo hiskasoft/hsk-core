@@ -8,33 +8,22 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.hiska.jaxrs;
 
 import com.hiska.result.MessageBuilder;
 import com.hiska.result.Result;
-import javax.ws.rs.ClientErrorException;
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 /**
  * @author yracnet
  */
 @Provider
-public class NotAuthorizedExceptionMapper implements ExceptionMapper<WebApplicationException> {
+public class NotAuthorizedExceptionMapper extends JaxrsExceptionMapper<WebApplicationException> {
    @Override
-   public Response toResponse(WebApplicationException ex) {
-      System.out.println("--->" + ex.getClass());
-      ex.printStackTrace();
+   public Response processResponse(WebApplicationException ex) {
       Response.Status status = Response.Status.UNAUTHORIZED;
       Result result = MessageBuilder.create("HTTP-401: No autorizado")
             .exception(ex)

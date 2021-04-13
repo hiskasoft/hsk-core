@@ -8,11 +8,6 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.hiska.jaxrs;
 
 import com.hiska.result.MessageBuilder;
@@ -20,16 +15,15 @@ import com.hiska.result.Result;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 /**
  * @author yracnet
  */
 @Provider
-public class NotFoundExceptionMapper implements ExceptionMapper<NotFoundException> {
+public class NotFoundExceptionMapper extends JaxrsExceptionMapper<NotFoundException> {
    @Override
-   public Response toResponse(NotFoundException ex) {
+   public Response processResponse(NotFoundException ex) {
       Response.Status status = Response.Status.NOT_FOUND;
       Result result = MessageBuilder.create("HTTP-404: Recurso no encontrado")
             .exception(ex)

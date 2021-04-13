@@ -8,11 +8,6 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.hiska.jaxrs;
 
 import com.hiska.result.MessageBuilder;
@@ -21,14 +16,13 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 /**
  * @author yracnet
  */
 @Provider
-public class ValidationExceptionMapper implements ExceptionMapper<ConstraintViolationException> {
+public class ValidationExceptionMapper extends JaxrsExceptionMapper<ConstraintViolationException> {
    private String getClassName(Object o) {
       return o == null ? "<null>" : o.getClass().getSimpleName();
    }
@@ -39,7 +33,7 @@ public class ValidationExceptionMapper implements ExceptionMapper<ConstraintViol
    }
 
    @Override
-   public Response toResponse(ConstraintViolationException exception) {
+   public Response processResponse(ConstraintViolationException exception) {
       MessageBuilder mb = MessageBuilder.create("APP-2001: Parametros invalidos")
             .title("Validacion")
             .warn();
