@@ -14,6 +14,7 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,6 +37,10 @@ public class Result implements Serializable {
     * List of Message
     */
    private final List<Message> messages;
+   /**
+    * Date Response
+    */
+   private Date at = new Date();
 
    public Result() {
       messages = new ArrayList<>();
@@ -146,12 +151,12 @@ public class Result implements Serializable {
       return ERROR.equalsIgnoreCase(outcome);
    }
 
-   public void setSuccess() {
-      outcome = SUCCESS;
+   public void setSuccess(boolean value) {
+      outcome = value ? SUCCESS : ERROR;
    }
 
-   public void setError() {
-      outcome = ERROR;
+   public void setError(boolean value) {
+      outcome = value ? ERROR : SUCCESS;
    }
 
    public boolean isOutcome(String name) {

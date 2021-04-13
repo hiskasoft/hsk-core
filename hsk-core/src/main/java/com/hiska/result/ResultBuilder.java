@@ -55,23 +55,28 @@ public class ResultBuilder {
       result = new Result();
    }
 
-   public ResultBuilder error() {
-      result.setError();
-      return this;
-   }
-
    public ResultBuilder outcome(String outcome) {
       result.setOutcome(outcome);
       return this;
    }
 
-   public ResultBuilder success() {
-      result.setSuccess();
+   public ResultBuilder error() {
+      result.setError(true);
       return this;
    }
 
-   public ResultBuilder setSuccess(boolean success) {
-      result.setSuccess();
+   public ResultBuilder error(boolean error) {
+      result.setError(error);
+      return this;
+   }
+
+   public ResultBuilder success() {
+      result.setSuccess(true);
+      return this;
+   }
+
+   public ResultBuilder success(boolean success) {
+      result.setSuccess(success);
       return this;
    }
 

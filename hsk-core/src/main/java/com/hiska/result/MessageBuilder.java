@@ -40,6 +40,7 @@ public class MessageBuilder {
 
    public static Message createMessageFatal(Throwable root) {
       return MessageBuilder.create("HSK-2000: Exception no controlada")
+            .description("Ha ocurrido una excepcion no controlada en el servidor")
             .exception(root)
             .get();
    }
@@ -55,7 +56,8 @@ public class MessageBuilder {
    }
 
    public static MessageBuilder createPong(String name) {
-      return new MessageBuilder().text("APP-0001: Pong Method: " + name);
+      return new MessageBuilder().text("APP-0000: Pong")
+            .description("Pong service name: " + name);
    }
 
    private MessageBuilder() {
@@ -157,7 +159,7 @@ public class MessageBuilder {
             String code = matcher.group(1).trim();
             String desc = matcher.group(2).trim();
             message.setCode(code);
-            message.setDescription(desc);
+            message.setTitle(desc);
             if (code.startsWith("HTTP-2")) {
                message.setLevel(Message.Level.info);
             } else if (code.startsWith("HTTP-4")) {
@@ -174,7 +176,7 @@ public class MessageBuilder {
                message.setLevel(Message.Level.fatal);
             }
          } else {
-            message.setDescription(text);
+            message.setTitle(text);
          }
       }
       return this;

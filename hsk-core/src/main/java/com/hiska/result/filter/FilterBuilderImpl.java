@@ -190,7 +190,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
          result.setValue(list);
       } catch (Exception e) {
          LOGGER.log(Level.SEVERE, "EXCEPTION QUERY", e);
-         result.setError();
+         result.setError(true);
          result.message("HSK-2001: Error al ejecutar la consulta")
                .exception(e)
                .action("Contactese con el administrador de sistemas");
