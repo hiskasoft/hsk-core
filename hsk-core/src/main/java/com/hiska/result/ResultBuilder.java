@@ -13,6 +13,20 @@ package com.hiska.result;
 import java.util.List;
 
 public class ResultBuilder {
+   public static Result successResult(String message) {
+      Result result = new Result();
+      result.setSuccess(true);
+      result.message(message);
+      return result;
+   }
+
+   public static Result errorResult(String message) {
+      Result result = new Result();
+      result.setError(true);
+      result.message(message);
+      return result;
+   }
+
    public static Result notImplementResult() {
       Result result = new Result();
       result.message("APP-9001: Metodo no implementado");
@@ -84,10 +98,6 @@ public class ResultBuilder {
       result.addMessage(message);
       return this;
    }
-//   public ResultBuilder behavior(Behavior behavior) {
-//      result.addBehavior(behavior);
-//      return this;
-//   }
 
    public Result get() {
       return result;
