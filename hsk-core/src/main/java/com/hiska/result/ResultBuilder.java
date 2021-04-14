@@ -111,4 +111,8 @@ public class ResultBuilder {
       resultItem.setValue(value);
       return resultItem;
    }
+
+   public ResultException getResultException() {
+      return new ResultException(result);
+   }
 }

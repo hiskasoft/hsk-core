@@ -51,6 +51,10 @@ public class MessageBuilder {
       return new MessageBuilder();
    }
 
+   public static MessageBuilder create(Message internal) {
+      return new MessageBuilder(internal);
+   }
+
    public static MessageBuilder create(String text) {
       return new MessageBuilder().text(text);
    }
@@ -218,6 +222,10 @@ public class MessageBuilder {
       return message;
    }
 
+   public MessageException getMessageException() {
+      return new MessageException(message);
+   }
+
    public boolean isCauseEmpty() {
       return message.isCauseEmpty();
    }
@@ -291,6 +299,10 @@ public class MessageBuilder {
       result.setOutcome(getOutcome());
       result.setValue(value);
       return result;
+   }
+
+   public ResultException asResultException() {
+      return new ResultException(asResult());
    }
 
    private String getOutcome() {
