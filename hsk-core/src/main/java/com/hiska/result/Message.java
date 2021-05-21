@@ -84,6 +84,11 @@ public class Message implements Serializable {
       return causes.isEmpty();
    }
 
+   @JsonbTransient
+   public boolean isCauseExist() {
+      return !causes.isEmpty();
+   }
+
    public void addTrace(String value) {
       traces.add(value);
    }
@@ -91,5 +96,10 @@ public class Message implements Serializable {
    @JsonbTransient
    public boolean isTraceEmpty() {
       return traces.isEmpty();
+   }
+
+   @JsonbTransient
+   public boolean isTraceExist() {
+      return !traces.isEmpty();
    }
 }

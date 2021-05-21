@@ -21,7 +21,7 @@ import static java.util.stream.Collectors.toList;
 @lombok.Getter
 @lombok.Setter
 @lombok.ToString(callSuper = true)
-public class ResultFilter<T> extends Result implements Serializable {
+public class ResultPage<T> extends Result implements Serializable {
    /**
     * Pagination Result
     */
@@ -31,33 +31,33 @@ public class ResultFilter<T> extends Result implements Serializable {
     */
    private List<T> value;
 
-   public ResultFilter() {
+   public ResultPage() {
    }
 
-   public ResultFilter(final List<T> value) {
+   public ResultPage(final List<T> value) {
       this.value = value;
    }
 
-   public ResultFilter(final List<T> value, final Result other) {
+   public ResultPage(final List<T> value, final Result other) {
       super(other);
       this.value = value;
    }
 
-   public ResultFilter(final List<T> value, final Pagination pagination, final Result other) {
+   public ResultPage(final List<T> value, final Pagination pagination, final Result other) {
       super(other);
       this.value = value;
       this.pagination = pagination;
    }
 
-   public ResultFilter(final Result other) {
+   public ResultPage(final Result other) {
       super(other);
    }
 
-   public <R> ResultFilter<R> mapper(Function<T, R> mapper) {
+   public <R> ResultPage<R> mapper(Function<T, R> mapper) {
       List<R> list = null;
       if (value != null) {
          list = value.stream().map(mapper).collect(toList());
       }
-      return new ResultFilter<>(list, pagination, this);
+      return new ResultPage<>(list, pagination, this);
    }
 }

@@ -39,8 +39,8 @@ public class ResultBuilder {
       return result;
    }
 
-   public static ResultFilter notImplementResultFilter() {
-      ResultFilter result = new ResultFilter();
+   public static ResultPage notImplementResultPage() {
+      ResultPage result = new ResultPage();
       result.message("APP-9001: Metodo no implementado");
       return result;
    }
@@ -103,11 +103,11 @@ public class ResultBuilder {
       return result;
    }
 
-   public <T> ResultFilter<T> get(List<T> value, Pagination pagination) {
-      ResultFilter resultFilter = new ResultFilter<>(result);
-      resultFilter.setPagination(pagination);
-      resultFilter.setValue(value);
-      return resultFilter;
+   public <T> ResultPage<T> get(List<T> value, Pagination pagination) {
+      ResultPage resultPage = new ResultPage<>(result);
+      resultPage.setPagination(pagination);
+      resultPage.setValue(value);
+      return resultPage;
    }
 
    public <T> ResultList<T> get(List<T> value) {

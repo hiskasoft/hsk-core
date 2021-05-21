@@ -75,6 +75,10 @@ public class Filter<T> implements Serializable {
    public Filter() {
    }
 
+   public Filter(Expr expr) {
+      this.expr = expr;
+   }
+
    public Filter(T value) {
       this(value, Expr.eq);
    }
@@ -125,15 +129,18 @@ public class Filter<T> implements Serializable {
       return values == null ? 0 : values.size();
    }
 
-   public static <T> Filter<T> create(T value) {
+   public static <T> Filter<T> of(T value) {
       return new Filter<>(value);
    }
 
-   public static <T> Filter<T> create(T value, T other) {
+   public static <T> Filter<T> of(T value, T other) {
       return new Filter<>(value, other);
    }
 
-   public static <T> Filter<T> create(List<T> values) {
+   public static <T> Filter<T> of(List<T> values) {
       return new Filter<>(values);
    }
+
+   public static Filter IS_NULL = new Filter(Expr.isNull);
+   public static Filter NOT_NULL = new Filter(Expr.notNull);
 }

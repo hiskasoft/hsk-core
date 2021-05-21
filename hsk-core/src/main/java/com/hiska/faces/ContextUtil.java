@@ -13,7 +13,6 @@ package com.hiska.faces;
 import com.hiska.result.Document;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpResponse;
 import javax.el.*;
 import javax.faces.application.*;
 import javax.faces.component.UIComponent;

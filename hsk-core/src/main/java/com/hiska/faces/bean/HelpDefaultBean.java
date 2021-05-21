@@ -270,7 +270,7 @@ public class HelpDefaultBean {
       return Math.random();
    }
 
-   private static final Map NONE = new HashMap<>() {
+   private static final Map NONE = new HashMap() {
       @Override
       public Object getOrDefault(Object key, Object defaultValue) {
          return "<<" + key + ">>";

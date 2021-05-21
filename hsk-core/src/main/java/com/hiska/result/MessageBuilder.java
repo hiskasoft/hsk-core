@@ -230,8 +230,16 @@ public class MessageBuilder {
       return message.isCauseEmpty();
    }
 
+   public boolean isCauseExist() {
+      return message.isCauseExist();
+   }
+
    public boolean isTraceEmpty() {
       return message.isTraceEmpty();
+   }
+
+   public boolean isTraceExist() {
+      return message.isTraceExist();
    }
 
    private final static ValidatorFactory factory = Validation.buildDefaultValidatorFactory();

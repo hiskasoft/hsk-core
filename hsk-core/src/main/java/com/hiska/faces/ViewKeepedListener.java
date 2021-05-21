@@ -38,7 +38,7 @@ public class ViewKeepedListener implements PhaseListener {
       if (dirMap != null) {
          Map<String, Object> viewMap = context.getViewRoot().getViewMap();
          String viewId = context.getViewRoot().getViewId();
-         dirMap.forEach((var k, var v) -> {
+         dirMap.forEach((String k, Object v) -> {
             ViewKeeped scope = v.getClass().getAnnotation(ViewKeeped.class);
             if (scope != null && viewId.startsWith(scope.value())) {
                LOGGER.log(Level.FINE, "RESTORE: {0} - {1}: {2}", new Object[]{scope, k, v});

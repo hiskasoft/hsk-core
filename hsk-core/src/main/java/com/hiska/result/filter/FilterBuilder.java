@@ -10,7 +10,7 @@
  */
 package com.hiska.result.filter;
 
-import com.hiska.result.ResultFilter;
+import com.hiska.result.ResultPage;
 import java.util.List;
 import com.hiska.result.Pagination;
 import com.hiska.result.Filter;
@@ -69,5 +69,5 @@ public interface FilterBuilder<T> {
 
    public List<T> getResultList(EntityManager em);
 
-   public ResultFilter<T> getResultFilter(EntityManager em);
+   public ResultPage<T> getResultPage(EntityManager em);
 }

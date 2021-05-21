@@ -10,7 +10,7 @@
  */
 package com.hiska.result.filter;
 
-import com.hiska.result.ResultFilter;
+import com.hiska.result.ResultPage;
 import java.util.ArrayList;
 import java.util.List;
 import com.hiska.result.Pagination;
@@ -167,8 +167,8 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    }
 
    @Override
-   public ResultFilter<T> getResultFilter(EntityManager em) {
-      ResultFilter<T> result = new ResultFilter();
+   public ResultPage<T> getResultPage(EntityManager em) {
+      ResultPage<T> result = new ResultPage();
       try {
          if (pagination != null) {
             if (pagination.getLength() == -1) {
