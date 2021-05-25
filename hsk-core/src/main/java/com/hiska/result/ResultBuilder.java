@@ -111,15 +111,11 @@ public class ResultBuilder {
    }
 
    public <T> ResultList<T> get(List<T> value) {
-      ResultList resultList = new ResultList<>(result);
-      resultList.setValue(value);
-      return resultList;
+      return new ResultList<>(value, result);
    }
 
    public <T> ResultItem<T> get(T value) {
-      ResultItem resultItem = new ResultItem<>(result);
-      resultItem.setValue(value);
-      return resultItem;
+      return new ResultItem<>(value, result);
    }
 
    public ResultException getResultException() {
