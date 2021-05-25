@@ -8,24 +8,23 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.result.filter;
+package com.hiska.result;
 
-import com.hiska.result.ResultPage;
+import com.hiska.result.definition.FilterDefinition;
+import com.hiska.result.definition.PaginationDefinition;
 import java.util.ArrayList;
 import java.util.List;
-import com.hiska.result.Pagination;
-import com.hiska.result.Filter;
-import com.hiska.result.Param;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import lombok.Builder;
 
 /**
  * @author Willyams Yujra
  */
 public class FilterBuilderImpl<T> implements FilterBuilder<T> {
-   @lombok.Builder
+   @Builder
    static class Entry<T> {
       private final String param;
       private final String paramA;
@@ -40,12 +39,28 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    private String alias = "o";
    private final List<Entry<?>> entries = new ArrayList<>();
 
-   public FilterBuilderImpl() {
+   protected FilterBuilderImpl() {
       source = "DUAL";
    }
 
-   public FilterBuilderImpl(String name) {
+   protected FilterBuilderImpl(String name) {
       this.source = name;
+   }
+
+   @Override
+   public FilterBuilder<T> filter(final Object oFilter) {
+      if (oFilter != null) {
+         Class cFilter = oFilter.getClass();
+         List<FilterDefinition> items = FilterDefinition.get(cFilter);
+         items.stream()
+               .forEach(item -> {
+                  Filter filter = item.invokeMethod(oFilter);
+                  appendEntry(item.getParam(), item.getName(), filter, item.isConvertToParam());
+               });
+         Pagination oPagination = PaginationDefinition.getInstance(oFilter);
+         pagination(oPagination);
+      }
+      return this;
    }
 
    @Override
@@ -145,7 +160,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    }
 
    @Override
-   public Number getResultCount(EntityManager em) {
+   public Number getCount(EntityManager em) {
       String queryString = createQueryCount();
       Query query = em.createQuery(queryString);
       appendParameter(query);
@@ -153,7 +168,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    }
 
    @Override
-   public List<T> getResultList(EntityManager em) {
+   public List<T> getList(EntityManager em) {
       String queryString = createQuery();
       Query query = em.createQuery(queryString);
       appendParameter(query);
@@ -167,12 +182,18 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    }
 
    @Override
+   public ResultList<T> getResultList(EntityManager em) {
+      List<T> list = getList(em);
+      return new ResultList(list);
+   }
+
+   @Override
    public ResultPage<T> getResultPage(EntityManager em) {
       ResultPage<T> result = new ResultPage();
       try {
          if (pagination != null) {
             if (pagination.getLength() == -1) {
-               int count = getResultCount(em).intValue();
+               int count = getCount(em).intValue();
                int size = pagination.getSize();
                int length = count / size;
                if (length * size != count) {
@@ -185,7 +206,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
                pagination.setIndex(pagination.getLength());
             }
          }
-         List<T> list = getResultList(em);
+         List<T> list = getList(em);
          result.setPagination(pagination);
          result.setValue(list);
       } catch (Exception e) {

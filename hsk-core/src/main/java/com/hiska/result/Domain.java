@@ -11,16 +11,16 @@
 package com.hiska.result;
 
 import java.io.Serializable;
+import lombok.*;
 
 /**
  * Trust Data
  */
-@lombok.Getter
-@lombok.Setter
-@lombok.ToString
-@lombok.EqualsAndHashCode(of = {"value"})
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
+@Data
+@ToString
+@EqualsAndHashCode(of = {"value"})
+@NoArgsConstructor
+@AllArgsConstructor
 public class Domain implements Serializable {
    private String code;
    private String classifier;
