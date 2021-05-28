@@ -29,15 +29,15 @@ public class Option implements Serializable {
    private String description;
    private List<Option> children;
 
-   public static Option create(String value) {
-      return value == null ? null : create(value, "DEFAULT: " + value);
+   public static Option of(String value) {
+      return value == null ? null : of(value, "DEFAULT: " + value);
    }
 
-   public static Option create(String value, String label) {
-      return create(value, label, null);
+   public static Option of(String value, String label) {
+      return of(value, label, null);
    }
 
-   public static Option create(String value, String label, String description) {
+   public static Option of(String value, String label, String description) {
       Option option = new Option();
       option.value = value;
       option.label = label;
@@ -45,7 +45,7 @@ public class Option implements Serializable {
       return option;
    }
 
-   public static Option create(Option other) {
+   public static Option of(Option other) {
       Option option = new Option();
       option.value = other.getValue();
       option.label = other.getLabel();
@@ -53,7 +53,7 @@ public class Option implements Serializable {
       return option;
    }
 
-   public static Option create(Param other) {
+   public static Option of(Param other) {
       Option option = new Option();
       option.value = other.getValue();
       option.label = other.getLabel();
@@ -92,5 +92,5 @@ public class Option implements Serializable {
       return hash;
    }
 
-   public static final Option NONE = create("NONE");
+   public static final Option NONE = of("NONE");
 }

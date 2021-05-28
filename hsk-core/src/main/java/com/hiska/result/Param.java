@@ -26,15 +26,15 @@ public class Param implements Serializable {
    private String label;
    private String description;
 
-   public static Param create(Object valor) {
-      return valor == null ? null : create(valor.toString(), "DEFAULT_" + valor);
+   public static Param of(Object valor) {
+      return valor == null ? null : of(valor.toString(), "DEFAULT_" + valor);
    }
 
-   public static Param create(String valor, String label) {
+   public static Param of(String valor, String label) {
       return new Param(valor, label, "DEFAULT_" + valor);
    }
 
-   public static Param create(String valor, String label, String description) {
+   public static Param of(String valor, String label, String description) {
       Param param = new Param();
       param.value = valor;
       param.label = label;
@@ -42,7 +42,7 @@ public class Param implements Serializable {
       return param;
    }
 
-   public static Param create(Param other) {
+   public static Param of(Param other) {
       Param param = new Param();
       param.value = other.getValue();
       param.label = other.getLabel();
@@ -50,7 +50,7 @@ public class Param implements Serializable {
       return param;
    }
 
-   public static Param create(Option other) {
+   public static Param of(Option other) {
       Param param = new Param();
       param.value = other.getValue();
       param.label = other.getLabel();
@@ -132,5 +132,5 @@ public class Param implements Serializable {
       return hash;
    }
 
-   public static final Param NONE = create("NONE");
+   public static final Param NONE = of("NONE");
 }

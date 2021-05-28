@@ -26,6 +26,6 @@ public class ParamConverter implements AttributeConverter<Param, String> {
 
    @Override
    public Param convertToEntityAttribute(String value) {
-      return value == null || value.isEmpty() ? null : Param.create(value, "DB_" + value);
+      return value == null || value.isEmpty() ? null : Param.of(value, "DB_" + value);
    }
 }

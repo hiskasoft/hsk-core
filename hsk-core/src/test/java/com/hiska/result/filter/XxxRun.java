@@ -32,7 +32,7 @@ public class XxxRun {
       f1.setId(Filter.of(1L));
       f1.setCol(Filter.of("xxx"));
       f1.setColName(Filter.of("xxx"));
-      f1.setCode(Filter.of(Param.create("01"), Param.create("01")));
+      f1.setCode(Filter.of(Param.of("01"), Param.of("01")));
       f1.setRef(Filter.of(Arrays.asList(1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L)));
       jpsql = FilterBuilder.create(XxxEntity.class)
             .filter(f1)

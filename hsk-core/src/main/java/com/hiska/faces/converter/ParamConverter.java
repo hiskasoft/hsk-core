@@ -29,11 +29,11 @@ public class ParamConverter implements Converter {
       Object real = items.get(value);
       if (real instanceof Option) {
          Option option = (Option) real;
-         param = Param.create(value, option.getLabel(), option.getDescription());
+         param = Param.of(value, option.getLabel(), option.getDescription());
       } else if (real instanceof Param) {
          param = (Param) real;
       } else if (value != null && !value.isEmpty()) {
-         param = Param.create(value, "JSF_" + value);
+         param = Param.of(value, "JSF_" + value);
       }
       return param;
    }

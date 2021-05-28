@@ -230,8 +230,8 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
          Object other = filter.getOther();
          List values = filter.getValues();
          if (entry.convertToParam) {
-            value = Param.create(value);
-            other = Param.create(other);
+            value = Param.of(value);
+            other = Param.of(other);
          }
          if (expr.params() == 1) {
             if (expr == Filter.Expr.like) {
@@ -247,7 +247,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
             for (int i = 0; i < size; i++) {
                Object valueIt = values.get(i);
                if (entry.convertToParam) {
-                  valueIt = Param.create(valueIt);
+                  valueIt = Param.of(valueIt);
                }
                query.setParameter(entry.param + "_" + i, valueIt);
             }

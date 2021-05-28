@@ -44,7 +44,7 @@ public class ParamListConverter implements AttributeConverter<List<Param>, Strin
          Stream.of(value.split(";"))
                .filter(it -> it != null)
                .filter(it -> !it.isEmpty())
-               .map(it -> Param.create(it, "DB_" + it))
+               .map(it -> Param.of(it, "DB_" + it))
                .forEach(result::add);
       }
       return result;
