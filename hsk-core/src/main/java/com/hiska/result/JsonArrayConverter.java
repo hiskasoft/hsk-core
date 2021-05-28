@@ -8,11 +8,11 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.result.converter;
+package com.hiska.result;
 
 import java.io.StringReader;
 import javax.json.Json;
-import javax.json.JsonObject;
+import javax.json.JsonArray;
 import javax.json.JsonReader;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
@@ -21,20 +21,20 @@ import javax.persistence.Converter;
  * @author Willyams Yujra
  */
 @Converter(autoApply = true)
-public class JsonObjectConverter implements AttributeConverter<JsonObject, String> {
+public class JsonArrayConverter implements AttributeConverter<JsonArray, String> {
    @Override
-   public String convertToDatabaseColumn(JsonObject jo) {
-      return jo == null ? null : jo.toString();
+   public String convertToDatabaseColumn(JsonArray ja) {
+      return ja == null ? null : ja.toString();
    }
 
    @Override
-   public JsonObject convertToEntityAttribute(String value) {
-      JsonObject jo = Json.createObjectBuilder().build();
+   public JsonArray convertToEntityAttribute(String value) {
+      JsonArray ja = Json.createArrayBuilder().build();
       if (value != null) {
          try (JsonReader jsonReader = Json.createReader(new StringReader(value))) {
-            jo = jsonReader.readObject();
+            ja = jsonReader.readArray();
          }
       }
-      return jo;
+      return ja;
    }
 }

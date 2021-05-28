@@ -8,7 +8,7 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.result.converter;
+package com.hiska.result;
 
 import com.hiska.result.Param;
 import java.util.ArrayList;

@@ -8,24 +8,23 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.result.converter;
+package com.hiska.result;
 
-import com.hiska.result.Param;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 /**
  * @author Willyams Yujra
  */
-@Converter(autoApply = true)
-public class ParamConverter implements AttributeConverter<Param, String> {
+@Converter
+public class BooleanConverter implements AttributeConverter<Boolean, String> {
    @Override
-   public String convertToDatabaseColumn(Param param) {
-      return param == null || param == Param.NONE ? null : param.getValue();
+   public String convertToDatabaseColumn(Boolean param) {
+      return param != null && param ? "T" : "F";
    }
 
    @Override
-   public Param convertToEntityAttribute(String value) {
-      return value == null || value.isEmpty() ? null : Param.create(value, "DB_" + value);
+   public Boolean convertToEntityAttribute(String valor) {
+      return valor != null && "T".equals(valor);
    }
 }
