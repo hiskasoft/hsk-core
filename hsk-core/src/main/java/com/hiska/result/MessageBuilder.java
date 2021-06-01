@@ -137,6 +137,12 @@ public class MessageBuilder {
       return this;
    }
 
+   public MessageBuilder trace(String name, Object value) {
+      String string = name + " = " + (value == null ? "NULL" : value.toString());
+      message.addTrace(string);
+      return this;
+   }
+
    private static final Pattern TXT_CODE = Pattern.compile("([A-Z]{3,5}-[0-9]{3,5}):(.*)", Pattern.DOTALL);
 
    /**
