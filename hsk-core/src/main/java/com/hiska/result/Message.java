@@ -60,6 +60,10 @@ public class Message implements Serializable {
     * Trace Error
     */
    private final List<String> traces = new ArrayList<>();
+   /**
+    * Hide
+    */
+   private boolean hide;
 
    public Message() {
    }

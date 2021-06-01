@@ -132,6 +132,16 @@ public class MessageBuilder {
       return this;
    }
 
+   public MessageBuilder hide() {
+      message.setHide(true);
+      return this;
+   }
+
+   public MessageBuilder hide(boolean value) {
+      message.setHide(value);
+      return this;
+   }
+
    public MessageBuilder trace(String value) {
       message.addTrace(value);
       return this;
