@@ -72,6 +72,16 @@ public class MessageBuilder {
       this.message = internal;
    }
 
+   public MessageBuilder accept(MessageException e) {
+      message.accept(e.get());
+      return this;
+   }
+
+   public MessageBuilder accept(Message m) {
+      message.accept(m);
+      return this;
+   }
+
    public MessageBuilder title(String value) {
       message.setTitle(value);
       return this;

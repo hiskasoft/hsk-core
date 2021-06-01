@@ -102,4 +102,15 @@ public class Message implements Serializable {
    public boolean isTraceExist() {
       return !traces.isEmpty();
    }
+
+   public void accept(Message other) {
+      level = other.level;
+      code = other.code;
+      title = other.title;
+      description = other.description;
+      causes.clear();
+      causes.addAll(other.causes);
+      traces.clear();
+      traces.addAll(other.traces);
+   }
 }
