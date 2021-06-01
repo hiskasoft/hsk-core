@@ -43,6 +43,6 @@ public class MessageException extends Exception {
 
    public ResultException asResultException() {
       return ResultBuilder.create(builder.get())
-            .getResultException();
+            .asException();
    }
 }

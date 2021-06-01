@@ -119,7 +119,13 @@ public class ResultBuilder {
       return new ResultItem<>(value, result);
    }
 
-   public ResultException getResultException() {
+   public ResultException asException() {
       return new ResultException(result);
+   }
+
+   public void throwException() throws ResultException {
+      if (result.isError()) {
+         throw new ResultException(result);
+      }
    }
 }

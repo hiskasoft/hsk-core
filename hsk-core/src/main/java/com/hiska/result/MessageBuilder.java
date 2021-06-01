@@ -248,8 +248,14 @@ public class MessageBuilder {
       return message;
    }
 
-   public MessageException getMessageException() {
+   public MessageException asException() {
       return new MessageException(message);
+   }
+
+   public void throwException() throws MessageException {
+      if (message.isCauseExist()) {
+         throw new MessageException(message);
+      }
    }
 
    public boolean isCauseEmpty() {
