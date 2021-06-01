@@ -60,7 +60,8 @@ public class ResultBuilder {
    }
 
    public static ResultBuilder create(Message message) {
-      return new ResultBuilder().message(message);
+      return new ResultBuilder()
+            .message(message);
    }
 
    private final Result result;

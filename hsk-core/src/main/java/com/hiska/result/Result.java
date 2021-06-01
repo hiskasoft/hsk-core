@@ -53,6 +53,10 @@ public class Result implements Serializable {
 
    public void addMessage(final Message message) {
       if (message != null) {
+         if (messages.isEmpty()) {
+            boolean isSuccess = message.getLevel() == Message.Level.info;
+            setSuccess(isSuccess);
+         }
          messages.add(message);
       }
    }
