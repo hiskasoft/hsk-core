@@ -23,8 +23,7 @@ import javax.json.bind.annotation.JsonbTransient;
 /**
  * Basic Result Response for Request
  */
-@Getter
-@Setter
+@Data
 @ToString
 public class Result implements Serializable {
    public static final String SUCCESS = "success";

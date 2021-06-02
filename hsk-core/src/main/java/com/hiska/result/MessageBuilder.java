@@ -15,7 +15,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.validation.ConstraintViolation;
@@ -28,8 +27,6 @@ import javax.validation.groups.Default;
  * @author Willyams Yujra
  */
 public class MessageBuilder {
-   private static final Logger LOGGER = Logger.getLogger(MessageBuilder.class.getName());
-
    public static Message createMessageInfo(String description) {
       return new Message(Message.Level.info, description);
    }
