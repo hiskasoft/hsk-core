@@ -10,6 +10,7 @@
  */
 package com.hiska.result;
 
+import lombok.ToString;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -26,6 +27,7 @@ import javax.validation.groups.Default;
 /**
  * @author Willyams Yujra
  */
+@ToString
 public class MessageBuilder {
    public static Message createMessageInfo(String description) {
       return new Message(Message.Level.info, description);

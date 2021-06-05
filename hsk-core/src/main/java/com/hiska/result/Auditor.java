@@ -10,14 +10,23 @@
  */
 package com.hiska.result;
 
+import lombok.Data;
+import lombok.ToString;
 import java.io.Serializable;
 import java.util.Date;
 
-@lombok.Getter
-@lombok.Setter
-@lombok.ToString
+@Data
+@ToString
 public class Auditor implements Serializable {
-   private Date updatedAt;
-   private String updatedBy;
+   private Entry created;
+   private Entry updated;
+   private Entry deleted;
    private Long version;
+
+   @Data
+   @ToString
+   public static class Entry {
+      private Date at;
+      private String by;
+   }
 }

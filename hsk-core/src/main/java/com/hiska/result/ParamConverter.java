@@ -10,7 +10,6 @@
  */
 package com.hiska.result;
 
-import com.hiska.result.Param;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
