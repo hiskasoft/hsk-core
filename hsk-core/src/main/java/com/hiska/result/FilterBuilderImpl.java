@@ -54,7 +54,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
          List<FilterDefinition> items = FilterDefinition.get(cFilter);
          items.stream()
                .forEach(item -> {
-                  Filter filter = item.invokeMethod(oFilter);
+                  Filter filter = item.invokeGetter(oFilter);
                   appendEntry(item.getParam(), item.getName(), filter, item.isConvertToParam());
                });
          Pagination oPagination = PaginationDefinition.getInstance(oFilter);

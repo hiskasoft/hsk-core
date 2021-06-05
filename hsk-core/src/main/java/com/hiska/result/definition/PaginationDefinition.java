@@ -10,7 +10,6 @@
  */
 package com.hiska.result.definition;
 
-import com.hiska.result.FilterElement;
 import com.hiska.result.Pagination;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -20,7 +19,8 @@ import java.util.Map;
 @lombok.Getter
 @lombok.ToString
 public class PaginationDefinition implements Definition<Pagination> {
-   private Method method;
+   private Method getter;
+   private Method setter;
 //    public PaginationDefinition(Field field, FilterElement element) {
 //        ref = assertParamName(element.ref(), field.getName());
 //        name = assertAttrNames(element.name(), field.getName());
@@ -36,7 +36,8 @@ public class PaginationDefinition implements Definition<Pagination> {
          CACHE.put(aClass, item);
          for (Field field : Common.assertAllField(aClass)) {
             if (field.getType().isAssignableFrom(Pagination.class)) {
-               item.method = Common.assertGetter(field, aClass);
+               item.getter = Common.assertGetter(field, aClass);
+               item.setter = Common.assertSetter(field, aClass, Pagination.class);
                break;
             }
          }
@@ -52,7 +53,7 @@ public class PaginationDefinition implements Definition<Pagination> {
          return new Pagination(other);
       } else {
          PaginationDefinition pd = get(aInstance.getClass());
-         return pd.invokeMethod(aInstance);
+         return pd.invokeGetter(aInstance);
       }
    }
 }

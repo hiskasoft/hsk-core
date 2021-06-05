@@ -22,16 +22,18 @@ import java.util.Map;
 @lombok.Getter
 @lombok.ToString
 public class ParamDefinition implements Definition<Param> {
-   private String domain;
+   private final String domain;
    private final String classifier;
    private final boolean integrity;
-   private Method method;
+   private final Method getter;
+   private final Method setter;
 
    public ParamDefinition(Class aClass, Field field, ParamElement element) {
       domain = assertDomainName(element.domain(), aClass);
       classifier = assertClassifierName(element.classifier(), field);
       integrity = element.integrity();
-      method = Common.assertGetter(field, field.getDeclaringClass());
+      getter = Common.assertGetter(field, field.getDeclaringClass());
+      setter = Common.assertSetter(field, field.getDeclaringClass(), Param.class);
    }
 
    private static final Map<String, List<ParamDefinition>> CACHE = new HashMap<>();

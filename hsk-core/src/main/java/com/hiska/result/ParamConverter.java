@@ -20,11 +20,13 @@ import javax.persistence.Converter;
 public class ParamConverter implements AttributeConverter<Param, String> {
    @Override
    public String convertToDatabaseColumn(Param param) {
+      System.out.println("convertToDatabaseColumn:::" + param);
       return param == null || param == Param.NONE ? null : param.getValue();
    }
 
    @Override
    public Param convertToEntityAttribute(String value) {
+      System.out.println("convertToEntityAttribute:::" + value);
       return value == null || value.isEmpty() ? null : Param.of(value, "DB_" + value);
    }
 }

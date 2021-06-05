@@ -40,6 +40,17 @@ public class Common {
       return method;
    }
 
+   protected static Method assertSetter(Field field, Class aClass, Class aValue) {
+      Method method;
+      try {
+         String nameMethod = "set" + field.getName().toUpperCase().charAt(0) + field.getName().substring(1);
+         method = aClass.getMethod(nameMethod, aValue);
+      } catch (NoSuchMethodException | SecurityException e) {
+         method = null;
+      }
+      return method;
+   }
+
    public static boolean isDefaultValue(String value) {
       return "#default".equals(value) || value == null || value.isEmpty();
    }

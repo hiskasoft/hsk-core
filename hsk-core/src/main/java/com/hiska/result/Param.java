@@ -17,8 +17,9 @@ import lombok.*;
 /**
  * Param Data
  */
-@Getter
-@Setter
+@Data
+//@ToString
+//@EqualsAndHashCode(of = {"value"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class Param implements Serializable {
@@ -114,7 +115,7 @@ public class Param implements Serializable {
    public boolean equals(Object o) {
       if (o instanceof Param) {
          Param param = (Param) o;
-         return value != null && value.equals(param.getValue());
+         return value != null && value.equals(param.value);
       } else if (o instanceof Option) {
          Option option = (Option) o;
          return value != null && value.equals(option.getValue());
@@ -128,8 +129,15 @@ public class Param implements Serializable {
    @Override
    public int hashCode() {
       int hash = 5;
-      hash = 61 * hash + Objects.hashCode(this.value);
+      hash = 61 * hash + Objects.hashCode(value);
+      hash = 61 * hash + Objects.hashCode("PARAM:" + value);
       return hash;
+   }
+
+   public void accept(Param other) {
+      value = other.value;
+      label = other.label;
+      description = other.description;
    }
 
    public static final Param NONE = of("NONE");

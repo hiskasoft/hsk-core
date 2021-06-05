@@ -16,23 +16,35 @@
 package com.hiska.result.definition;
 
 import java.lang.reflect.Method;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author willyams yujra
  */
 public interface Definition<T> {
-   public Method getMethod();
+   public Logger logger = Logger.getLogger(Definition.class.getName());
 
-   public default T invokeMethod(Object aInstance) {
-      Method method = getMethod();
-      if (method == null) {
-         return null;
-      }
+   public Method getGetter();
+
+   public Method getSetter();
+
+   public default T invokeGetter(Object aInstance) {
       try {
-         return (T) method.invoke(aInstance);
+         Method getter = getGetter();
+         return (T) getter.invoke(aInstance);
       } catch (Exception e) {
-         e = null;
+         logger.log(Level.SEVERE, "Error invokeGetter: {0}", e.getMessage());
       }
       return null;
+   }
+
+   public default void invokeSetter(Object aInstance, T value) {
+      try {
+         Method setter = getSetter();
+         setter.invoke(aInstance, value);
+      } catch (Exception e) {
+         logger.log(Level.SEVERE, "Error invokeSetter: {0}", e.getMessage());
+      }
    }
 }
