@@ -8,7 +8,7 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.jaxrs;
+package com.hiska.jaxrs.ext;
 
 import com.hiska.result.Result;
 import java.io.IOException;

@@ -11,18 +11,16 @@
 package com.hiska.result;
 
 import java.io.Serializable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import lombok.Data;
-import lombok.Getter;
-import lombok.ToString;
+import javax.xml.bind.annotation.*;
+import lombok.*;
 
 /**
  * @author Willyams Yujra
  */
 @Data
-@XmlAccessorType(XmlAccessType.FIELD)
 @ToString(exclude = {"content"})
+@EqualsAndHashCode
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Document implements Serializable {
    @ToString
    public static enum Type {

@@ -8,8 +8,9 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.result;
+package com.hiska.result.ext;
 
+import com.hiska.result.*;
 import java.util.List;
 
 public class ResultBuilder {

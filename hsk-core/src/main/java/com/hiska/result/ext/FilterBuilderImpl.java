@@ -8,16 +8,14 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.result;
+package com.hiska.result.ext;
 
-import com.hiska.result.definition.FilterDefinition;
-import com.hiska.result.definition.PaginationDefinition;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import com.hiska.result.Filter;
+import com.hiska.result.*;
+import com.hiska.result.definition.*;
+import java.util.*;
+import java.util.logging.*;
+import javax.persistence.*;
 import lombok.Builder;
 
 /**

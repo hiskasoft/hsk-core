@@ -11,18 +11,16 @@
 package com.hiska.result;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import lombok.Data;
-import lombok.ToString;
+import java.util.*;
+import javax.xml.bind.annotation.*;
+import lombok.*;
 
 /**
  * Message data
  */
 @Data
 @ToString
+@EqualsAndHashCode
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Message implements Serializable {
    /**

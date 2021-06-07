@@ -8,17 +8,16 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.result;
+package com.hiska.result.ext;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface OptionElement {
-   public String domain();
+public @interface ParamElement {
+   public String domain() default "#default";
 
-   public String classifier() default "NONE";
+   public String classifier() default "#default";
+
+   public boolean integrity() default true;
 }

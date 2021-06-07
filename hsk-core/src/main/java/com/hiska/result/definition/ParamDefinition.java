@@ -11,7 +11,7 @@
 package com.hiska.result.definition;
 
 import com.hiska.result.Param;
-import com.hiska.result.ParamElement;
+import com.hiska.result.ext.ParamElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;

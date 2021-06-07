@@ -12,7 +12,7 @@ package com.hiska.faces.application;
 
 import com.hiska.faces.MessageUtil;
 import com.hiska.result.Message;
-import com.hiska.result.MessageBuilder;
+import com.hiska.result.ext.MessageBuilder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.FacesException;

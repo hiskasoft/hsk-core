@@ -8,11 +8,10 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.jaxrs;
+package com.hiska.jaxrs.ext;
 
-import com.hiska.result.MessageBuilder;
 import com.hiska.result.Result;
-import javax.ws.rs.WebApplicationException;
+import com.hiska.result.ResultException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
@@ -21,14 +20,11 @@ import javax.ws.rs.ext.Provider;
  * @author yracnet
  */
 @Provider
-public class NotAuthorizedExceptionMapper extends JaxrsExceptionMapper<WebApplicationException> {
+public class ResultExceptionMapper extends JaxrsExceptionMapper<ResultException> {
    @Override
-   public Response processResponse(WebApplicationException ex) {
-      Response.Status status = Response.Status.UNAUTHORIZED;
-      Result result = MessageBuilder.create("HTTP-401: No autorizado")
-            .exception(ex)
-            .asResult();
-      return Response.status(status)
+   public Response processResponse(ResultException ex) {
+      Result result = ex.getResult();
+      return Response.status(Response.Status.BAD_REQUEST)
             .entity(result)
             .type(MediaType.APPLICATION_JSON)
             .build();

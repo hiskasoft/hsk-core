@@ -8,10 +8,11 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.jaxrs;
+package com.hiska.jaxrs.ext;
 
+import com.hiska.result.ext.MessageBuilder;
 import com.hiska.result.Result;
-import com.hiska.result.ResultException;
+import javax.ws.rs.NotAllowedException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
@@ -20,11 +21,14 @@ import javax.ws.rs.ext.Provider;
  * @author yracnet
  */
 @Provider
-public class ResultExceptionMapper extends JaxrsExceptionMapper<ResultException> {
+public class NotAllowedExceptionMapper extends JaxrsExceptionMapper<NotAllowedException> {
    @Override
-   public Response processResponse(ResultException ex) {
-      Result result = ex.getResult();
-      return Response.status(Response.Status.BAD_REQUEST)
+   public Response processResponse(NotAllowedException ex) {
+      Result result = MessageBuilder.create("HTTP-403: Acceso no permitido")
+            .cause("No tiene las credenciales necesarias ")
+            .exception(ex)
+            .asResult();
+      return Response.status(Response.Status.FORBIDDEN)
             .entity(result)
             .type(MediaType.APPLICATION_JSON)
             .build();

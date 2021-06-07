@@ -11,13 +11,9 @@
 package com.hiska.result;
 
 import java.io.Serializable;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import java.util.function.*;
+import javax.xml.bind.annotation.*;
+import lombok.*;
 
 /**
  * Result Item Response for Request Find

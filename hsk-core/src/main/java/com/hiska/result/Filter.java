@@ -12,16 +12,15 @@ package com.hiska.result;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import lombok.Data;
-import lombok.ToString;
+import javax.xml.bind.annotation.*;
+import lombok.*;
 
 /**
  * Filter Element
  */
 @Data
 @ToString
+@EqualsAndHashCode
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Filter<T> implements Serializable {
    public static enum Expr {

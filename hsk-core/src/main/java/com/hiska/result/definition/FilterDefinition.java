@@ -11,7 +11,7 @@
 package com.hiska.result.definition;
 
 import com.hiska.result.Filter;
-import com.hiska.result.FilterElement;
+import com.hiska.result.ext.FilterElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;

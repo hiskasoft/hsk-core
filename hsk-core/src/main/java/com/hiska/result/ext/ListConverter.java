@@ -8,13 +8,11 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.result;
+package com.hiska.result.ext;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
-import javax.persistence.AttributeConverter;
-import javax.persistence.Converter;
+import javax.persistence.*;
 
 /**
  * @author Willyams Yujra

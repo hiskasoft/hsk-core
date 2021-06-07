@@ -11,9 +11,7 @@
 package com.hiska.result;
 
 import javax.ejb.ApplicationException;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * @author Willyams Yujra

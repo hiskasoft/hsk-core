@@ -10,8 +10,8 @@
  */
 package com.hiska.result;
 
-import lombok.Getter;
-import lombok.ToString;
+import com.hiska.result.ext.*;
+import lombok.*;
 
 @Getter
 @ToString

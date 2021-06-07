@@ -8,14 +8,11 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.result;
+package com.hiska.result.ext;
 
 import java.io.StringReader;
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonReader;
-import javax.persistence.AttributeConverter;
-import javax.persistence.Converter;
+import javax.json.*;
+import javax.persistence.*;
 
 /**
  * @author Willyams Yujra

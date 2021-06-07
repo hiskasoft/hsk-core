@@ -12,13 +12,12 @@ package com.hiska.result;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import lombok.Data;
-import lombok.ToString;
+import javax.xml.bind.annotation.*;
+import lombok.*;
 
 @Data
 @ToString
+@EqualsAndHashCode
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Auditor implements Serializable {
    private Entry created;

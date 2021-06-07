@@ -14,11 +14,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.function.Function;
 import static java.util.stream.Collectors.toList;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import javax.xml.bind.annotation.*;
+import lombok.*;
 
 /**
  * Result Filter Response for Request Filter

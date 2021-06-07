@@ -8,12 +8,10 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.result;
+package com.hiska.result.ext;
 
-import java.util.HashMap;
-import java.util.Map;
-import javax.persistence.AttributeConverter;
-import javax.persistence.Converter;
+import java.util.*;
+import javax.persistence.*;
 
 /**
  * @author Willyams Yujra

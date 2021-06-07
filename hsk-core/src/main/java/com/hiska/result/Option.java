@@ -11,14 +11,9 @@
 package com.hiska.result;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Objects;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import java.util.*;
+import javax.xml.bind.annotation.*;
+import lombok.*;
 
 /**
  * Option Data

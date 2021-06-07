@@ -11,7 +11,7 @@
 package com.hiska.result.filter;
 
 import com.hiska.result.Filter;
-import com.hiska.result.FilterElement;
+import com.hiska.result.ext.FilterElement;
 import com.hiska.result.Param;
 import lombok.Data;
 

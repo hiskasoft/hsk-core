@@ -11,10 +11,8 @@
 package com.hiska.result;
 
 import java.io.Serializable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import lombok.Data;
-import lombok.ToString;
+import javax.xml.bind.annotation.*;
+import lombok.*;
 
 /**
  * Pagination Filter

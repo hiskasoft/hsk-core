@@ -8,10 +8,10 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.result;
+package com.hiska.result.ext;
 
-import javax.persistence.AttributeConverter;
-import javax.persistence.Converter;
+import com.hiska.result.Param;
+import javax.persistence.*;
 
 /**
  * @author Willyams Yujra

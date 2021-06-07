@@ -11,7 +11,7 @@
 package com.hiska.result.filter;
 
 import com.hiska.result.Filter;
-import com.hiska.result.FilterBuilder;
+import com.hiska.result.ext.FilterBuilder;
 import com.hiska.result.Param;
 import java.util.Arrays;
 

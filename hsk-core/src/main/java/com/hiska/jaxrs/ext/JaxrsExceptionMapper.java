@@ -8,7 +8,7 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.jaxrs;
+package com.hiska.jaxrs.ext;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
