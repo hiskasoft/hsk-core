@@ -2,7 +2,7 @@
   * CoreUI v3.0.0-rc.0 (https://coreui.io)
   * Copyright 2020 Łukasz Holeczek
   * Licensed under MIT (https://coreui.io)
-  */
+ */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('popper.js'), require('perfect-scrollbar')) :
   typeof define === 'function' && define.amd ? define(['popper.js', 'perfect-scrollbar'], factory) :
@@ -88,7 +88,7 @@
    * Bootstrap (v4.3.1): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
-   */
+  */
   var MAX_UID = 1000000;
   var MILLISECONDS_MULTIPLIER = 1000;
   var TRANSITION_END = 'transitionend'; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
@@ -100,7 +100,7 @@
    * --------------------------------------------------------------------------
    * Public Util Api
    * --------------------------------------------------------------------------
-   */
+  */
 
 
   var getUID = function getUID(prefix) {
@@ -269,13 +269,13 @@
    * Bootstrap (v4.3.1): dom/data.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
-   */
+  */
 
   /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
   var mapData = function () {
     var storeData = {};
     var id = 1;
@@ -331,7 +331,7 @@
     }
   };
 
-  /* istanbul ignore file */
+  /* istanbul ignore file*/
   var _Element$prototype = Element.prototype,
       matches = _Element$prototype.matches,
       closest = _Element$prototype.closest;
@@ -475,12 +475,12 @@
    * Bootstrap (v4.3.1): dom/event-handler.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
-   */
+  */
   /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
 
   var $ = getjQuery();
   var namespaceRegex = /[^.]*(?=\..*)\.|.*/;
@@ -499,7 +499,7 @@
    * ------------------------------------------------------------------------
    * Private methods
    * ------------------------------------------------------------------------
-   */
+  */
 
   function getUidEvent(element, uid) {
     return uid && uid + "::" + uidEvent++ || element.uidEvent || uidEvent++;
@@ -767,7 +767,7 @@
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
 
   var NAME = 'asyncLoad';
   var VERSION = '3.0.0-rc.0';
@@ -1020,7 +1020,7 @@
    * jQuery
    * ------------------------------------------------------------------------
    * add .asyncLoad to jQuery only if jQuery is present
-   */
+  */
 
   if ($$1) {
     var JQUERY_NO_CONFLICT = $$1.fn[NAME];
@@ -1038,12 +1038,12 @@
    * Bootstrap (v4.3.1): dom/selector-engine.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
-   */
+  */
   /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
 
   var NODE_TEXT = 3;
   var SelectorEngine = {
@@ -1109,7 +1109,7 @@
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
 
   var NAME$1 = 'alert';
   var VERSION$1 = '3.0.0-rc.0';
@@ -1133,7 +1133,7 @@
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
-   */
+  */
 
   var Alert =
   /*#__PURE__*/
@@ -1254,7 +1254,7 @@
    * ------------------------------------------------------------------------
    * Data Api implementation
    * ------------------------------------------------------------------------
-   */
+  */
 
 
   EventHandler.on(document, Event$2.CLICK_DATA_API, Selector$1.DISMISS, Alert.handleDismiss(new Alert()));
@@ -1264,9 +1264,9 @@
    * jQuery
    * ------------------------------------------------------------------------
    * add .alert to jQuery only if jQuery is present
-   */
+  */
 
-  /* istanbul ignore if */
+  /* istanbul ignore if*/
 
   if ($$2) {
     var JQUERY_NO_CONFLICT$1 = $$2.fn[NAME$1];
@@ -1283,7 +1283,7 @@
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
 
   var NAME$2 = 'button';
   var VERSION$2 = '3.0.0-rc.0';
@@ -1311,7 +1311,7 @@
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
-   */
+  */
 
   var Button =
   /*#__PURE__*/
@@ -1404,7 +1404,7 @@
    * ------------------------------------------------------------------------
    * Data Api implementation
    * ------------------------------------------------------------------------
-   */
+  */
 
 
   EventHandler.on(document, Event$3.CLICK_DATA_API, Selector$2.DATA_TOGGLE_CARROT, function (event) {
@@ -1443,9 +1443,9 @@
    * jQuery
    * ------------------------------------------------------------------------
    * add .button to jQuery only if jQuery is present
-   */
+  */
 
-  /* istanbul ignore if */
+  /* istanbul ignore if*/
 
   if ($$3) {
     var JQUERY_NO_CONFLICT$2 = $$3.fn[NAME$2];
@@ -1463,7 +1463,7 @@
    * Bootstrap (v4.3.1): dom/manipulator.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
-   */
+  */
   function normalizeData(val) {
     if (val === 'true') {
       return true;
@@ -1542,7 +1542,7 @@
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
 
   var NAME$3 = 'carousel';
   var VERSION$3 = '3.0.0-rc.0';
@@ -1622,7 +1622,7 @@
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
-   */
+  */
 
   var Carousel =
   /*#__PURE__*/
@@ -2119,7 +2119,7 @@
    * ------------------------------------------------------------------------
    * Data Api implementation
    * ------------------------------------------------------------------------
-   */
+  */
 
 
   EventHandler.on(document, Event$4.CLICK_DATA_API, Selector$3.DATA_SLIDE, Carousel.dataApiClickHandler);
@@ -2136,9 +2136,9 @@
    * jQuery
    * ------------------------------------------------------------------------
    * add .carousel to jQuery only if jQuery is present
-   */
+  */
 
-  /* istanbul ignore if */
+  /* istanbul ignore if*/
 
   if ($$4) {
     var JQUERY_NO_CONFLICT$3 = $$4.fn[NAME$3];
@@ -2155,7 +2155,7 @@
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
 
   var NAME$4 = 'class-toggler';
   var VERSION$4 = '3.0.0-rc.0';
@@ -2182,7 +2182,7 @@
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
-   */
+  */
 
   var ClassToggler =
   /*#__PURE__*/
@@ -2400,7 +2400,7 @@
    * ------------------------------------------------------------------------
    * Data Api implementation
    * ------------------------------------------------------------------------
-   */
+  */
 
 
   EventHandler.on(document, Event$5.CLICK_DATA_API, Selector$4.CLASS_TOGGLER, function (event) {
@@ -2419,7 +2419,7 @@
    * jQuery
    * ------------------------------------------------------------------------
    * add .c-class-toggler to jQuery only if jQuery is present
-   */
+  */
 
   if ($$5) {
     var JQUERY_NO_CONFLICT$4 = $$5.fn[NAME$4];
@@ -2436,7 +2436,7 @@
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
 
   var NAME$5 = 'collapse';
   var VERSION$5 = '3.0.0-rc.0';
@@ -2476,7 +2476,7 @@
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
-   */
+  */
 
   var Collapse =
   /*#__PURE__*/
@@ -2797,7 +2797,7 @@
    * ------------------------------------------------------------------------
    * Data Api implementation
    * ------------------------------------------------------------------------
-   */
+  */
 
 
   EventHandler.on(document, Event$6.CLICK_DATA_API, Selector$5.DATA_TOGGLE, function (event) {
@@ -2834,9 +2834,9 @@
    * jQuery
    * ------------------------------------------------------------------------
    * add .collapse to jQuery only if jQuery is present
-   */
+  */
 
-  /* istanbul ignore if */
+  /* istanbul ignore if*/
 
   if ($$6) {
     var JQUERY_NO_CONFLICT$5 = $$6.fn[NAME$5];
@@ -2853,7 +2853,7 @@
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
 
   var NAME$6 = 'dropdown';
   var VERSION$6 = '3.0.0-rc.0';
@@ -2930,7 +2930,7 @@
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
-   */
+  */
 
   var Dropdown =
   /*#__PURE__*/
@@ -3344,7 +3344,7 @@
    * ------------------------------------------------------------------------
    * Data Api implementation
    * ------------------------------------------------------------------------
-   */
+  */
 
 
   EventHandler.on(document, Event$7.KEYDOWN_DATA_API, Selector$6.DATA_TOGGLE, Dropdown.dataApiKeydownHandler);
@@ -3365,9 +3365,9 @@
    * jQuery
    * ------------------------------------------------------------------------
    * add .dropdown to jQuery only if jQuery is present
-   */
+  */
 
-  /* istanbul ignore if */
+  /* istanbul ignore if*/
 
   if ($$7) {
     var JQUERY_NO_CONFLICT$6 = $$7.fn[NAME$6];
@@ -3384,7 +3384,7 @@
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
 
   var NAME$7 = 'modal';
   var VERSION$7 = '3.0.0-rc.0';
@@ -3440,7 +3440,7 @@
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
-   */
+  */
 
   var Modal =
   /*#__PURE__*/
@@ -3568,7 +3568,7 @@
        * `document` has 2 events `Event.FOCUSIN` and `Event.CLICK_DATA_API`
        * Do not move `document` in `htmlElements` array
        * It will remove `Event.CLICK_DATA_API` event that should remain
-       */
+      */
 
       EventHandler.off(document, Event$8.FOCUSIN);
       Data.removeData(this._element, DATA_KEY$7);
@@ -3942,7 +3942,7 @@
    * ------------------------------------------------------------------------
    * Data Api implementation
    * ------------------------------------------------------------------------
-   */
+  */
 
 
   EventHandler.on(document, Event$8.CLICK_DATA_API, Selector$7.DATA_TOGGLE, function (event) {
@@ -3982,9 +3982,9 @@
    * jQuery
    * ------------------------------------------------------------------------
    * add .modal to jQuery only if jQuery is present
-   */
+  */
 
-  /* istanbul ignore if */
+  /* istanbul ignore if*/
 
   if ($$8) {
     var JQUERY_NO_CONFLICT$7 = $$8.fn[NAME$7];
@@ -4002,21 +4002,21 @@
    * Bootstrap (v4.3.1): util/sanitizer.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
-   */
+  */
   var uriAttrs = ['background', 'cite', 'href', 'itemtype', 'longdesc', 'poster', 'src', 'xlink:href'];
   var ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i;
   /**
    * A pattern that recognizes a commonly useful subset of URLs that are safe.
    *
    * Shoutout to Angular 7 https://github.com/angular/angular/blob/7.2.4/packages/core/src/sanitization/url_sanitizer.ts
-   */
+  */
 
   var SAFE_URL_PATTERN = /^(?:(?:https?|mailto|ftp|tel|file):|[^&:/?#]*(?:[/?#]|$))/gi;
   /**
    * A pattern that matches safe data URLs. Only matches image, video and audio types.
    *
    * Shoutout to Angular 7 https://github.com/angular/angular/blob/7.2.4/packages/core/src/sanitization/url_sanitizer.ts
-   */
+  */
 
   var DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[a-z0-9+/]+=*$/i;
 
@@ -4122,7 +4122,7 @@
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
 
   var NAME$8 = 'tooltip';
   var VERSION$8 = '3.0.0-rc.0';
@@ -4207,7 +4207,7 @@
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
-   */
+  */
 
   var Tooltip =
   /*#__PURE__*/
@@ -4859,9 +4859,9 @@
    * jQuery
    * ------------------------------------------------------------------------
    * add .tooltip to jQuery only if jQuery is present
-   */
+  */
 
-  /* istanbul ignore if */
+  /* istanbul ignore if*/
 
   if ($$9) {
     var JQUERY_NO_CONFLICT$8 = $$9.fn[NAME$8];
@@ -4878,7 +4878,7 @@
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
 
   var NAME$9 = 'popover';
   var VERSION$9 = '3.0.0-rc.0';
@@ -4922,7 +4922,7 @@
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
-   */
+  */
 
   var Popover =
   /*#__PURE__*/
@@ -5054,9 +5054,9 @@
    * ------------------------------------------------------------------------
    * jQuery
    * ------------------------------------------------------------------------
-   */
+  */
 
-  /* istanbul ignore if */
+  /* istanbul ignore if*/
 
   if ($$a) {
     var JQUERY_NO_CONFLICT$9 = $$a.fn[NAME$9];
@@ -5073,7 +5073,7 @@
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
 
   var NAME$a = 'scrollspy';
   var VERSION$a = '3.0.0-rc.0';
@@ -5116,7 +5116,7 @@
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
-   */
+  */
 
   var ScrollSpy =
   /*#__PURE__*/
@@ -5356,7 +5356,7 @@
    * ------------------------------------------------------------------------
    * Data Api implementation
    * ------------------------------------------------------------------------
-   */
+  */
 
 
   EventHandler.on(window, Event$b.LOAD_DATA_API, function () {
@@ -5369,9 +5369,9 @@
    * ------------------------------------------------------------------------
    * jQuery
    * ------------------------------------------------------------------------
-   */
+  */
 
-  /* istanbul ignore if */
+  /* istanbul ignore if*/
 
   if ($$b) {
     var JQUERY_NO_CONFLICT$a = $$b.fn[NAME$a];
@@ -5388,7 +5388,7 @@
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
 
   var NAME$b = 'sidebar';
   var VERSION$b = '3.0.0-rc.0';
@@ -5434,7 +5434,7 @@
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
-   */
+  */
 
   var Sidebar =
   /*#__PURE__*/
@@ -5744,7 +5744,7 @@
    * ------------------------------------------------------------------------
    * Data Api implementation
    * ------------------------------------------------------------------------
-   */
+  */
 
 
   EventHandler.on(window, Event$c.LOAD_DATA_API, function () {
@@ -5759,7 +5759,7 @@
    * jQuery
    * ------------------------------------------------------------------------
   * add .asyncLoad to jQuery only if jQuery is present
-   */
+  */
 
   if ($$c) {
     var JQUERY_NO_CONFLICT$b = $$c.fn[NAME$b];
@@ -5776,7 +5776,7 @@
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
 
   var NAME$c = 'tab';
   var VERSION$c = '3.0.0-rc.0';
@@ -5810,7 +5810,7 @@
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
-   */
+  */
 
   var Tab =
   /*#__PURE__*/
@@ -5977,7 +5977,7 @@
    * ------------------------------------------------------------------------
    * Data Api implementation
    * ------------------------------------------------------------------------
-   */
+  */
 
 
   EventHandler.on(document, Event$d.CLICK_DATA_API, Selector$c.DATA_TOGGLE, function (event) {
@@ -5991,9 +5991,9 @@
    * jQuery
    * ------------------------------------------------------------------------
    * add .tab to jQuery only if jQuery is present
-   */
+  */
 
-  /* istanbul ignore if */
+  /* istanbul ignore if*/
 
   if ($$d) {
     var JQUERY_NO_CONFLICT$c = $$d.fn[NAME$c];
@@ -6010,7 +6010,7 @@
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
-   */
+  */
 
   var NAME$d = 'toast';
   var VERSION$d = '3.0.0-rc.0';
@@ -6046,7 +6046,7 @@
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
-   */
+  */
 
   var Toast =
   /*#__PURE__*/
@@ -6217,9 +6217,9 @@
    * jQuery
    * ------------------------------------------------------------------------
    *  add .toast to jQuery only if jQuery is present
-   */
+  */
 
-  /* istanbul ignore if */
+  /* istanbul ignore if*/
 
   if ($$e) {
     var JQUERY_NO_CONFLICT$d = $$e.fn[NAME$d];
@@ -6232,7 +6232,7 @@
     };
   }
 
-  /* eslint-disable */
+  /* eslint-disable*/
   // Production steps of ECMA-262, Edition 6, 22.1.2.1
   // Reference: https://people.mozilla.org/~jorendorff/es6-draft.html#sec-array.from
   if (!Array.from) {
@@ -6266,7 +6266,7 @@
 
 
       return function from(arrayLike
-      /*, mapFn, thisArg */
+      /*, mapFn, thisArg*/
       ) {
         // 1. Let C be the this value.
         var C = this; // 2. Let items be ToObject(arrayLike).
@@ -6376,7 +6376,7 @@
    * CoreUI (v3.0.0-rc.0): index.umd.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
-   */
+  */
   var index_umd = {
     AsyncLoad: AsyncLoad,
     Alert: Alert,

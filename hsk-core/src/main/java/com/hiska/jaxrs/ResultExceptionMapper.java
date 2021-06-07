@@ -21,12 +21,13 @@ import javax.ws.rs.ext.Provider;
  */
 @Provider
 public class ResultExceptionMapper extends JaxrsExceptionMapper<ResultException> {
-   @Override
-   public Response processResponse(ResultException ex) {
-      Result result = ex.getResult();
-      return Response.status(Response.Status.BAD_REQUEST)
-            .entity(result)
-            .type(MediaType.APPLICATION_JSON)
-            .build();
-   }
+
+    @Override
+    public Response processResponse(ResultException ex) {
+        Result result = ex.getResult();
+        return Response.status(Response.Status.BAD_REQUEST)
+                .entity(result)
+                .type(MediaType.APPLICATION_JSON)
+                .build();
+    }
 }

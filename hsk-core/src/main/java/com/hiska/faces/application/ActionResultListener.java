@@ -10,41 +10,42 @@
  */
 package com.hiska.faces.application;
 
-import com.hiska.result.Message;
 import com.hiska.faces.MessageUtil;
+import com.hiska.result.Message;
 import com.hiska.result.MessageBuilder;
-import javax.faces.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.FacesException;
 import javax.faces.el.EvaluationException;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.ActionListener;
 
 /**
  * @author Willyams Yujra
  */
 public class ActionResultListener implements ActionListener {
-   private static final Logger LOGGER = Logger.getLogger(ActionResultListener.class.getName());
-   private ActionListener delegate;
 
-   public ActionResultListener(ActionListener delegate) {
-      this.delegate = delegate;
-   }
+    private static final Logger LOGGER = Logger.getLogger(ActionResultListener.class.getName());
+    private ActionListener delegate;
 
-   @Override
-   @SuppressWarnings("deprecation")
-   public void processAction(ActionEvent event) throws AbortProcessingException {
-      try {
-         delegate.processAction(event);
-      } catch (FacesException e) {
-         Exception root = (Exception) e.getCause();
-         if (root instanceof EvaluationException) {
-            root = (Exception) root.getCause();
-            LOGGER.log(Level.SEVERE, "FACES EXCEPTION", root);
-         }
-         Message message = MessageBuilder.createMessageFatal(root);
-         MessageUtil.processMessage(message);
-      }
-   }
+    public ActionResultListener(ActionListener delegate) {
+        this.delegate = delegate;
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public void processAction(ActionEvent event) throws AbortProcessingException {
+        try {
+            delegate.processAction(event);
+        } catch (FacesException e) {
+            Exception root = (Exception) e.getCause();
+            if (root instanceof EvaluationException) {
+                root = (Exception) root.getCause();
+                LOGGER.log(Level.SEVERE, "FACES EXCEPTION", root);
+            }
+            Message message = MessageBuilder.createMessageFatal(root);
+            MessageUtil.processMessage(message);
+        }
+    }
 }

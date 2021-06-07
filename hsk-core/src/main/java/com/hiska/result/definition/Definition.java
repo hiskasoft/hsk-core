@@ -8,11 +8,6 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.hiska.result.definition;
 
 import java.lang.reflect.Method;
@@ -20,31 +15,32 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * @author willyams yujra
+ * @author Willyams Yujra
  */
 public interface Definition<T> {
-   public Logger logger = Logger.getLogger(Definition.class.getName());
 
-   public Method getGetter();
+    public Logger logger = Logger.getLogger(Definition.class.getName());
 
-   public Method getSetter();
+    public Method getGetter();
 
-   public default T invokeGetter(Object aInstance) {
-      try {
-         Method getter = getGetter();
-         return (T) getter.invoke(aInstance);
-      } catch (Exception e) {
-         logger.log(Level.SEVERE, "Error invokeGetter: {0}", e.getMessage());
-      }
-      return null;
-   }
+    public Method getSetter();
 
-   public default void invokeSetter(Object aInstance, T value) {
-      try {
-         Method setter = getSetter();
-         setter.invoke(aInstance, value);
-      } catch (Exception e) {
-         logger.log(Level.SEVERE, "Error invokeSetter: {0}", e.getMessage());
-      }
-   }
+    public default T invokeGetter(Object aInstance) {
+        try {
+            Method getter = getGetter();
+            return (T) getter.invoke(aInstance);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Error invokeGetter: {0}", e.getMessage());
+        }
+        return null;
+    }
+
+    public default void invokeSetter(Object aInstance, T value) {
+        try {
+            Method setter = getSetter();
+            setter.invoke(aInstance, value);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Error invokeSetter: {0}", e.getMessage());
+        }
+    }
 }

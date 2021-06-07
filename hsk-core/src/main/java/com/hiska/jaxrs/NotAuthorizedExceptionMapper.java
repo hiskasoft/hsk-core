@@ -22,15 +22,16 @@ import javax.ws.rs.ext.Provider;
  */
 @Provider
 public class NotAuthorizedExceptionMapper extends JaxrsExceptionMapper<WebApplicationException> {
-   @Override
-   public Response processResponse(WebApplicationException ex) {
-      Response.Status status = Response.Status.UNAUTHORIZED;
-      Result result = MessageBuilder.create("HTTP-401: No autorizado")
-            .exception(ex)
-            .asResult();
-      return Response.status(status)
-            .entity(result)
-            .type(MediaType.APPLICATION_JSON)
-            .build();
-   }
+
+    @Override
+    public Response processResponse(WebApplicationException ex) {
+        Response.Status status = Response.Status.UNAUTHORIZED;
+        Result result = MessageBuilder.create("HTTP-401: No autorizado")
+                .exception(ex)
+                .asResult();
+        return Response.status(status)
+                .entity(result)
+                .type(MediaType.APPLICATION_JSON)
+                .build();
+    }
 }

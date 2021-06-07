@@ -22,31 +22,32 @@ import javax.faces.event.PhaseListener;
  * @author Willyams Yujra
  */
 public class ViewKeepedListener implements PhaseListener {
-   @Override
-   public PhaseId getPhaseId() {
-      return PhaseId.RESTORE_VIEW;
-   }
 
-   @Override
-   public void beforePhase(PhaseEvent event) {
-   }
+    @Override
+    public PhaseId getPhaseId() {
+        return PhaseId.RESTORE_VIEW;
+    }
 
-   @Override
-   public void afterPhase(PhaseEvent event) {
-      FacesContext context = event.getFacesContext();
-      Map<String, Object> dirMap = (Map) context.getExternalContext().getSessionMap().remove("DIR_MAP");
-      if (dirMap != null) {
-         Map<String, Object> viewMap = context.getViewRoot().getViewMap();
-         String viewId = context.getViewRoot().getViewId();
-         dirMap.forEach((String k, Object v) -> {
-            ViewKeeped scope = v.getClass().getAnnotation(ViewKeeped.class);
-            if (scope != null && viewId.startsWith(scope.value())) {
-               LOGGER.log(Level.FINE, "RESTORE: {0} - {1}: {2}", new Object[]{scope, k, v});
-               viewMap.put(k, v);
-            }
-         });
-      }
-   }
+    @Override
+    public void beforePhase(PhaseEvent event) {
+    }
 
-   private static final Logger LOGGER = Logger.getLogger(ViewKeepedListener.class.getName());
+    @Override
+    public void afterPhase(PhaseEvent event) {
+        FacesContext context = event.getFacesContext();
+        Map<String, Object> dirMap = (Map) context.getExternalContext().getSessionMap().remove("DIR_MAP");
+        if (dirMap != null) {
+            Map<String, Object> viewMap = context.getViewRoot().getViewMap();
+            String viewId = context.getViewRoot().getViewId();
+            dirMap.forEach((String k, Object v) -> {
+                ViewKeeped scope = v.getClass().getAnnotation(ViewKeeped.class);
+                if (scope != null && viewId.startsWith(scope.value())) {
+                    LOGGER.log(Level.FINE, "RESTORE: {0} - {1}: {2}", new Object[]{scope, k, v});
+                    viewMap.put(k, v);
+                }
+            });
+        }
+    }
+
+    private static final Logger LOGGER = Logger.getLogger(ViewKeepedListener.class.getName());
 }

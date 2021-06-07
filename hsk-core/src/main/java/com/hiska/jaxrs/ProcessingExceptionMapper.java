@@ -22,14 +22,15 @@ import javax.ws.rs.ext.Provider;
  */
 @Provider
 public class ProcessingExceptionMapper extends JaxrsExceptionMapper<ProcessingException> {
-   @Override
-   public Response processResponse(ProcessingException ex) {
-      Result result = MessageBuilder.create("HTTP-400: Error al processar los parametros")
-            .exception(ex)
-            .asResult();
-      return Response.status(Response.Status.BAD_REQUEST)
-            .entity(result)
-            .type(MediaType.APPLICATION_JSON)
-            .build();
-   }
+
+    @Override
+    public Response processResponse(ProcessingException ex) {
+        Result result = MessageBuilder.create("HTTP-400: Error al processar los parametros")
+                .exception(ex)
+                .asResult();
+        return Response.status(Response.Status.BAD_REQUEST)
+                .entity(result)
+                .type(MediaType.APPLICATION_JSON)
+                .build();
+    }
 }

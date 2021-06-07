@@ -7,7 +7,7 @@
  *
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
- */
+*/
 package com.hiska.faces;
 
 import javax.xml.parsers.DocumentBuilderFactory;

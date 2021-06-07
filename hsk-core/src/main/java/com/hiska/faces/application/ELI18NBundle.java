@@ -16,32 +16,33 @@ import java.util.PropertyResourceBundle;
  * @author Willyams Yujra
  */
 public class ELI18NBundle {
-   private final PropertyResourceBundle bundle;
-   private String name = "";
 
-   public ELI18NBundle(PropertyResourceBundle bundle) {
-      this.bundle = bundle;
-   }
+    private final PropertyResourceBundle bundle;
+    private String name = "";
 
-   public void addName(String name) {
-      if (this.name.length() > 1) {
-         this.name += ".";
-      }
-      this.name += name;
-   }
+    public ELI18NBundle(PropertyResourceBundle bundle) {
+        this.bundle = bundle;
+    }
 
-   public String getName() {
-      return name;
-   }
+    public void addName(String name) {
+        if (this.name.length() > 1) {
+            this.name += ".";
+        }
+        this.name += name;
+    }
 
-   @Override
-   public String toString() {
-      String value = "???" + name + "???";
-      try {
-         value = bundle.getString(name);
-      } catch (Exception e) {
-         e = null;
-      }
-      return value;
-   }
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        String value = "???" + name + "???";
+        try {
+            value = bundle.getString(name);
+        } catch (Exception e) {
+            e = null;
+        }
+        return value;
+    }
 }

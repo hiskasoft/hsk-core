@@ -10,23 +10,29 @@
  */
 package com.hiska.result;
 
-import lombok.Data;
-import lombok.ToString;
 import java.io.Serializable;
 import java.util.Date;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import lombok.Data;
+import lombok.ToString;
 
 @Data
 @ToString
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Auditor implements Serializable {
-   private Entry created;
-   private Entry updated;
-   private Entry deleted;
-   private Long version;
 
-   @Data
-   @ToString
-   public static class Entry {
-      private Date at;
-      private String by;
-   }
+    private Entry created;
+    private Entry updated;
+    private Entry deleted;
+    private Long version;
+
+    @Data
+    @ToString
+    @XmlAccessorType(XmlAccessType.FIELD)
+    public static class Entry {
+
+        private Date at;
+        private String by;
+    }
 }

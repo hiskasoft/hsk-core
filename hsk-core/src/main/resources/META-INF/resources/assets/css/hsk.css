@@ -397,7 +397,7 @@ html:not([dir="rtl"]) .ps__rail-y {
 
 /*
  * Scrollbar thumb styles
- */
+*/
 .ps__thumb-x {
   position: absolute;
   bottom: 2px;
@@ -5346,7 +5346,7 @@ html:not([dir="rtl"]) .c-header-nav .c-header-nav-link .badge, html:not([dir="rt
   > .custom-file .custom-file-input:focus {
     z-index: 4;
   }
-  */
+ */
 }
 
 .input-group > .form-control,

@@ -20,73 +20,74 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 public class Common {
-   protected static List<Field> assertAllField(Class aClass) {
-      List<Field> fields = new ArrayList<>();
-      while (aClass != Object.class && aClass != null) {
-         fields.addAll(Arrays.asList(aClass.getDeclaredFields()));
-         aClass = aClass.getSuperclass();
-      }
-      return fields;
-   }
 
-   protected static Method assertGetter(Field field, Class aClass) {
-      Method method;
-      try {
-         String nameMethod = "get" + field.getName().toUpperCase().charAt(0) + field.getName().substring(1);
-         method = aClass.getMethod(nameMethod);
-      } catch (NoSuchMethodException | SecurityException e) {
-         method = null;
-      }
-      return method;
-   }
+    protected static List<Field> assertAllField(Class aClass) {
+        List<Field> fields = new ArrayList<>();
+        while (aClass != Object.class && aClass != null) {
+            fields.addAll(Arrays.asList(aClass.getDeclaredFields()));
+            aClass = aClass.getSuperclass();
+        }
+        return fields;
+    }
 
-   protected static Method assertSetter(Field field, Class aClass, Class aValue) {
-      Method method;
-      try {
-         String nameMethod = "set" + field.getName().toUpperCase().charAt(0) + field.getName().substring(1);
-         method = aClass.getMethod(nameMethod, aValue);
-      } catch (NoSuchMethodException | SecurityException e) {
-         method = null;
-      }
-      return method;
-   }
+    protected static Method assertGetter(Field field, Class aClass) {
+        Method method;
+        try {
+            String nameMethod = "get" + field.getName().toUpperCase().charAt(0) + field.getName().substring(1);
+            method = aClass.getMethod(nameMethod);
+        } catch (NoSuchMethodException | SecurityException e) {
+            method = null;
+        }
+        return method;
+    }
 
-   public static boolean isDefaultValue(String value) {
-      return "#default".equals(value) || value == null || value.isEmpty();
-   }
+    protected static Method assertSetter(Field field, Class aClass, Class aValue) {
+        Method method;
+        try {
+            String nameMethod = "set" + field.getName().toUpperCase().charAt(0) + field.getName().substring(1);
+            method = aClass.getMethod(nameMethod, aValue);
+        } catch (NoSuchMethodException | SecurityException e) {
+            method = null;
+        }
+        return method;
+    }
 
-   public static String getEntityName(Class aClass) {
-      Entity e = (Entity) aClass.getAnnotation(Entity.class);
-      if (e != null && !isDefaultValue(e.name())) {
-         return e.name();
-      }
-      return aClass.getSimpleName();
-   }
+    public static boolean isDefaultValue(String value) {
+        return "#default".equals(value) || value == null || value.isEmpty();
+    }
 
-   static String getTableName(Class aClass) {
-      String value = aClass.getSimpleName();
-      Table table = (Table) aClass.getAnnotation(Table.class);
-      if (table != null) {
-         if (!isDefaultValue(table.name())) {
-            value = table.name();
-         }
-         if (!isDefaultValue(table.schema())) {
-            value = table.schema() + ":" + value;
-         }
-      }
-      value = value.toUpperCase();
-      return value;
-   }
+    public static String getEntityName(Class aClass) {
+        Entity e = (Entity) aClass.getAnnotation(Entity.class);
+        if (e != null && !isDefaultValue(e.name())) {
+            return e.name();
+        }
+        return aClass.getSimpleName();
+    }
 
-   static String getColumnName(Field aField) {
-      String value = aField.getName();
-      Column column = (Column) aField.getAnnotation(Column.class);
-      if (column != null) {
-         if (!isDefaultValue(column.name())) {
-            value = column.name();
-         }
-      }
-      value = value.toUpperCase();
-      return value;
-   }
+    static String getTableName(Class aClass) {
+        String value = aClass.getSimpleName();
+        Table table = (Table) aClass.getAnnotation(Table.class);
+        if (table != null) {
+            if (!isDefaultValue(table.name())) {
+                value = table.name();
+            }
+            if (!isDefaultValue(table.schema())) {
+                value = table.schema() + ":" + value;
+            }
+        }
+        value = value.toUpperCase();
+        return value;
+    }
+
+    static String getColumnName(Field aField) {
+        String value = aField.getName();
+        Column column = (Column) aField.getAnnotation(Column.class);
+        if (column != null) {
+            if (!isDefaultValue(column.name())) {
+                value = column.name();
+            }
+        }
+        value = value.toUpperCase();
+        return value;
+    }
 }

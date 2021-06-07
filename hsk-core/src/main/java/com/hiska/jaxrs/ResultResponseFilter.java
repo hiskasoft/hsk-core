@@ -20,24 +20,25 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class ResultResponseFilter implements ContainerResponseFilter {
-   @Override
-   public void filter(ContainerRequestContext request, ContainerResponseContext response) throws IOException {
-      MultivaluedMap<String, Object> headers = response.getHeaders();
-      // ---------------------------------------------------------------------
-      String tokenValue = (String) request.getProperty("TOKEN-VALUE");
-      if (tokenValue != null) {
-         headers.add("SET-TOKEN", tokenValue);
-      }
-      // ---------------------------------------------------------------------
-      Object o = response.getEntity();
-      if (o instanceof Result) {
-         headers.add("IS-RESULT", "true");
-         Result r = (Result) o;
-         if (r.isError()) {
-            response.setStatus(401);
-         }
-      } else {
-         headers.add("IS-RESULT", "false");
-      }
-   }
+
+    @Override
+    public void filter(ContainerRequestContext request, ContainerResponseContext response) throws IOException {
+        MultivaluedMap<String, Object> headers = response.getHeaders();
+        // ---------------------------------------------------------------------
+        String tokenValue = (String) request.getProperty("TOKEN-VALUE");
+        if (tokenValue != null) {
+            headers.add("SET-TOKEN", tokenValue);
+        }
+        // ---------------------------------------------------------------------
+        Object o = response.getEntity();
+        if (o instanceof Result) {
+            headers.add("IS-RESULT", "true");
+            Result r = (Result) o;
+            if (r.isError()) {
+                response.setStatus(401);
+            }
+        } else {
+            headers.add("IS-RESULT", "false");
+        }
+    }
 }

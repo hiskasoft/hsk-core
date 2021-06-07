@@ -16,22 +16,23 @@ import java.util.LinkedList;
  * @author Willyams Yujra
  */
 public class LimitedQueue<E> extends LinkedList<E> {
-   private final int limit;
 
-   public LimitedQueue(int limit) {
-      this.limit = limit;
-   }
+    private final int limit;
 
-   @Override
-   public boolean add(E o) {
-      boolean added = contains(o);
-      if (added) {
-         return false;
-      }
-      super.addFirst(o);
-      while (size() > limit) {
-         super.remove();
-      }
-      return added;
-   }
+    public LimitedQueue(int limit) {
+        this.limit = limit;
+    }
+
+    @Override
+    public boolean add(E o) {
+        boolean added = contains(o);
+        if (added) {
+            return false;
+        }
+        super.addFirst(o);
+        while (size() > limit) {
+            super.remove();
+        }
+        return added;
+    }
 }

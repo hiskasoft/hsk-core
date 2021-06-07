@@ -16,57 +16,64 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-@lombok.Getter
-@lombok.Setter
-@lombok.ToString
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
+@Data
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Resource implements Serializable {
-   private String path;
-   private String description;
-   private String rol;
-   private List<Resource> items;
 
-   public void addItem(Resource it) {
-      if (items == null) {
-         items = new ArrayList<>();
-      }
-      items.add(it);
-   }
+    private String path;
+    private String description;
+    private String rol;
+    private List<Resource> items;
 
-   public void addAllItem(List<Resource> its) {
-      if (items == null) {
-         items = new ArrayList<>();
-      }
-      items.addAll(its);
-   }
+    public void addItem(Resource it) {
+        if (items == null) {
+            items = new ArrayList<>();
+        }
+        items.add(it);
+    }
 
-   public Map<String, Resource> getItemAsMap() {
-      if (items == null) {
-         return Collections.emptyMap();
-      }
-      return items.stream().collect(Collectors.toMap(it -> it.path, it -> it));
-   }
+    public void addAllItem(List<Resource> its) {
+        if (items == null) {
+            items = new ArrayList<>();
+        }
+        items.addAll(its);
+    }
 
-   public Resource findRecursoByRuta(String value) {
-      if (value == null || value.isEmpty()) {
-         return null;
-      }
-      if (value.equals(path)) {
-         return this;
-      }
-      if (items == null) {
-         return null;
-      }
-      for (Resource item : items) {
-         if (item != null) {
-            item = item.findRecursoByRuta(value);
+    public Map<String, Resource> getItemAsMap() {
+        if (items == null) {
+            return Collections.emptyMap();
+        }
+        return items.stream().collect(Collectors.toMap(it -> it.path, it -> it));
+    }
+
+    public Resource findRecursoByRuta(String value) {
+        if (value == null || value.isEmpty()) {
+            return null;
+        }
+        if (value.equals(path)) {
+            return this;
+        }
+        if (items == null) {
+            return null;
+        }
+        for (Resource item : items) {
             if (item != null) {
-               return item;
+                item = item.findRecursoByRuta(value);
+                if (item != null) {
+                    return item;
+                }
             }
-         }
-      }
-      return null;
-   }
+        }
+        return null;
+    }
 }

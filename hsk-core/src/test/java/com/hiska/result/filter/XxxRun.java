@@ -7,7 +7,7 @@
  *
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
- */
+*/
 package com.hiska.result.filter;
 
 import com.hiska.result.FilterBuilder;
@@ -16,8 +16,8 @@ import com.hiska.result.Param;
 import java.util.Arrays;
 
 /**
- * @author Willyams Yujra
- */
+* @author Willyams Yujra
+*/
 public class XxxRun {
    public static void main(String[] args) {
       XxxFilter f1;

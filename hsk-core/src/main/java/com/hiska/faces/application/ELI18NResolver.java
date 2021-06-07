@@ -20,52 +20,53 @@ import javax.el.ELResolver;
  * @author Willyams Yujra
  */
 public class ELI18NResolver extends ELResolver {
-   @Override
-   public Object getValue(ELContext context, Object object, Object property) {
-      context.setPropertyResolved(false);
-      if (object instanceof PropertyResourceBundle) {
-         PropertyResourceBundle bundle = (PropertyResourceBundle) object;
-         ELI18NBundle i18nBundle = new ELI18NBundle(bundle);
-         String name = (String) property;
-         i18nBundle.addName(name);
-         context.setPropertyResolved(true);
-         return i18nBundle;
-      } else if (object instanceof ELI18NBundle) {
-         ELI18NBundle i18nBundle = (ELI18NBundle) object;
-         String name = (String) property;
-         i18nBundle.addName(name);
-         context.setPropertyResolved(true);
-         return i18nBundle;
-      }
-      return null;
-   }
 
-   @Override
-   public Class<?> getType(ELContext context, Object object, Object property) {
-      context.setPropertyResolved(false);
-      return null;
-   }
+    @Override
+    public Object getValue(ELContext context, Object object, Object property) {
+        context.setPropertyResolved(false);
+        if (object instanceof PropertyResourceBundle) {
+            PropertyResourceBundle bundle = (PropertyResourceBundle) object;
+            ELI18NBundle i18nBundle = new ELI18NBundle(bundle);
+            String name = (String) property;
+            i18nBundle.addName(name);
+            context.setPropertyResolved(true);
+            return i18nBundle;
+        } else if (object instanceof ELI18NBundle) {
+            ELI18NBundle i18nBundle = (ELI18NBundle) object;
+            String name = (String) property;
+            i18nBundle.addName(name);
+            context.setPropertyResolved(true);
+            return i18nBundle;
+        }
+        return null;
+    }
 
-   @Override
-   public void setValue(ELContext context, Object object, Object property, Object value) {
-      context.setPropertyResolved(false);
-   }
+    @Override
+    public Class<?> getType(ELContext context, Object object, Object property) {
+        context.setPropertyResolved(false);
+        return null;
+    }
 
-   @Override
-   public boolean isReadOnly(ELContext context, Object object, Object property) {
-      context.setPropertyResolved(false);
-      return true;
-   }
+    @Override
+    public void setValue(ELContext context, Object object, Object property, Object value) {
+        context.setPropertyResolved(false);
+    }
 
-   @Override
-   public Iterator<FeatureDescriptor> getFeatureDescriptors(ELContext context, Object object) {
-      context.setPropertyResolved(false);
-      return null;
-   }
+    @Override
+    public boolean isReadOnly(ELContext context, Object object, Object property) {
+        context.setPropertyResolved(false);
+        return true;
+    }
 
-   @Override
-   public Class<?> getCommonPropertyType(ELContext context, Object object) {
-      context.setPropertyResolved(false);
-      return null;
-   }
+    @Override
+    public Iterator<FeatureDescriptor> getFeatureDescriptors(ELContext context, Object object) {
+        context.setPropertyResolved(false);
+        return null;
+    }
+
+    @Override
+    public Class<?> getCommonPropertyType(ELContext context, Object object) {
+        context.setPropertyResolved(false);
+        return null;
+    }
 }

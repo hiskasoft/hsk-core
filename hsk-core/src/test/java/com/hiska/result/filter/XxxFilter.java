@@ -7,7 +7,7 @@
  *
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
- */
+*/
 package com.hiska.result.filter;
 
 import com.hiska.result.Filter;
@@ -16,8 +16,8 @@ import com.hiska.result.Param;
 import lombok.Data;
 
 /**
- * @author Willyams Yujra
- */
+* @author Willyams Yujra
+*/
 @Data
 public class XxxFilter {
    @FilterElement

@@ -10,11 +10,11 @@
  */
 package com.hiska.faces.application;
 
-import java.util.List;
-import javax.faces.application.FacesMessage;
 import com.hiska.result.Message;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import javax.faces.application.FacesMessage;
 
 /**
  * @author Willyams Yujra
@@ -23,106 +23,107 @@ import java.util.Date;
 @lombok.Setter
 @lombok.ToString
 public class FacesResultMessage extends FacesMessage {
-   private transient String title;
-   private transient String code;
-   private transient String description;
-   private transient List<String> causes;
-   private transient List<String> traces;
-   private transient String action;
-   private transient String date;
-   private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-   public FacesResultMessage() {
-   }
+    private transient String title;
+    private transient String code;
+    private transient String description;
+    private transient List<String> causes;
+    private transient List<String> traces;
+    private transient String action;
+    private transient String date;
+    private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-   public FacesResultMessage(FacesMessage other) {
-      if (other instanceof FacesResultMessage) {
-         FacesResultMessage message = (FacesResultMessage) other;
-         title = message.getTitle();
-         code = message.getCode();
-         description = message.getDescription();
-         causes = message.getCauses();
-         traces = message.getTraces();
-         action = message.getAction();
-         date = message.getDate();
-         setSeverity(message.getSeverity());
-      } else {
-         description = other.getDetail();
-         setSeverity(other.getSeverity());
-      }
-   }
+    public FacesResultMessage() {
+    }
 
-   public FacesResultMessage(Message message) {
-      title = message.getTitle();
-      code = message.getCode();
-      description = message.getDescription();
-      causes = message.getCauses();
-      traces = message.getTraces();
-      action = message.getAction();
-      date = format.format(new Date());
-      Message.Level level = message.getLevel();
-      Severity severity = level == Message.Level.fatal ? FacesMessage.SEVERITY_FATAL
-            : level == Message.Level.error ? FacesMessage.SEVERITY_ERROR
-                  : level == Message.Level.info ? FacesMessage.SEVERITY_INFO
-                        : level == Message.Level.warn ? FacesMessage.SEVERITY_WARN : FacesMessage.SEVERITY_INFO;
-      setSeverity(severity);
-   }
+    public FacesResultMessage(FacesMessage other) {
+        if (other instanceof FacesResultMessage) {
+            FacesResultMessage message = (FacesResultMessage) other;
+            title = message.getTitle();
+            code = message.getCode();
+            description = message.getDescription();
+            causes = message.getCauses();
+            traces = message.getTraces();
+            action = message.getAction();
+            date = message.getDate();
+            setSeverity(message.getSeverity());
+        } else {
+            description = other.getDetail();
+            setSeverity(other.getSeverity());
+        }
+    }
 
-   @Override
-   public String getSummary() {
-      return title == null ? "Servidor:" : title;
-   }
+    public FacesResultMessage(Message message) {
+        title = message.getTitle();
+        code = message.getCode();
+        description = message.getDescription();
+        causes = message.getCauses();
+        traces = message.getTraces();
+        action = message.getAction();
+        date = format.format(new Date());
+        Message.Level level = message.getLevel();
+        Severity severity = level == Message.Level.fatal ? FacesMessage.SEVERITY_FATAL
+                : level == Message.Level.error ? FacesMessage.SEVERITY_ERROR
+                        : level == Message.Level.info ? FacesMessage.SEVERITY_INFO
+                                : level == Message.Level.warn ? FacesMessage.SEVERITY_WARN : FacesMessage.SEVERITY_INFO;
+        setSeverity(severity);
+    }
 
-   @Override
-   public String getDetail() {
-      return (code == null ? "" : code) + ": " + description;
-   }
+    @Override
+    public String getSummary() {
+        return title == null ? "Servidor:" : title;
+    }
 
-   public boolean isDescriptionEmpty() {
-      return description != null;
-   }
+    @Override
+    public String getDetail() {
+        return (code == null ? "" : code) + ": " + description;
+    }
 
-   public boolean isCodeEmpty() {
-      return code != null;
-   }
+    public boolean isDescriptionEmpty() {
+        return description != null;
+    }
 
-   public boolean isActionEmpty() {
-      return action != null;
-   }
+    public boolean isCodeEmpty() {
+        return code != null;
+    }
 
-   public boolean isCauseEmpty() {
-      return causes != null && !causes.isEmpty();
-   }
+    public boolean isActionEmpty() {
+        return action != null;
+    }
 
-   public boolean isTraceEmpty() {
-      return traces != null && !traces.isEmpty();
-   }
+    public boolean isCauseEmpty() {
+        return causes != null && !causes.isEmpty();
+    }
 
-   public String getIconClass() {
-      Severity severity = getSeverity();
-      if (severity == FacesMessage.SEVERITY_INFO) {
-         return "fa fa-info-circle";
-      } else if (severity == FacesMessage.SEVERITY_WARN) {
-         return "fa fa-exclamation-triangle";
-      } else if (severity == FacesMessage.SEVERITY_ERROR) {
-         return "fa fa-times-circle";
-      } else if (severity == FacesMessage.SEVERITY_FATAL) {
-         return "fa fa-bug";
-      }
-      return "fa fa-check";
-   }
+    public boolean isTraceEmpty() {
+        return traces != null && !traces.isEmpty();
+    }
 
-   public String getLevelClass() {
-      Severity severity = getSeverity();
-      if (severity == FacesMessage.SEVERITY_INFO) {
-         return "info";
-      } else if (severity == FacesMessage.SEVERITY_WARN) {
-         return "warn";
-      } else if (severity == FacesMessage.SEVERITY_ERROR) {
-         return "danger";
-      } else if (severity == FacesMessage.SEVERITY_FATAL) {
-         return "dark";
-      }
-      return "primary";
-   }
+    public String getIconClass() {
+        Severity severity = getSeverity();
+        if (severity == FacesMessage.SEVERITY_INFO) {
+            return "fa fa-info-circle";
+        } else if (severity == FacesMessage.SEVERITY_WARN) {
+            return "fa fa-exclamation-triangle";
+        } else if (severity == FacesMessage.SEVERITY_ERROR) {
+            return "fa fa-times-circle";
+        } else if (severity == FacesMessage.SEVERITY_FATAL) {
+            return "fa fa-bug";
+        }
+        return "fa fa-check";
+    }
+
+    public String getLevelClass() {
+        Severity severity = getSeverity();
+        if (severity == FacesMessage.SEVERITY_INFO) {
+            return "info";
+        } else if (severity == FacesMessage.SEVERITY_WARN) {
+            return "warn";
+        } else if (severity == FacesMessage.SEVERITY_ERROR) {
+            return "danger";
+        } else if (severity == FacesMessage.SEVERITY_FATAL) {
+            return "dark";
+        }
+        return "primary";
+    }
 }

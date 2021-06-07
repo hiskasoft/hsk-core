@@ -13,39 +13,46 @@ package com.hiska.result;
 import java.io.Serializable;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
  * Result Item Response for Request Find
  */
-@lombok.Getter
-@lombok.Setter
-@lombok.ToString(callSuper = true)
+@Data
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ResultItem<T> extends Result implements Serializable {
-   /**
-    * Object
-    */
-   private T value;
 
-   public ResultItem() {
-   }
+    /**
+     * Object
+     */
+    private T value;
 
-   public ResultItem(T value) {
-      this.value = value;
-   }
+    public ResultItem() {
+    }
 
-   public ResultItem(T value, Result other) {
-      super(other);
-      this.value = value;
-   }
+    public ResultItem(T value) {
+        this.value = value;
+    }
 
-   public <R> ResultItem<R> mapper(Function<T, R> mapper) {
-      R other = value == null ? null : mapper.apply(value);
-      return new ResultItem(other, this);
-   }
+    public ResultItem(T value, Result other) {
+        super(other);
+        this.value = value;
+    }
 
-   public void ifSuccess(Consumer<T> caller) {
-      if (isSuccess()) {
-         caller.accept(value);
-      }
-   }
+    public <R> ResultItem<R> mapper(Function<T, R> mapper) {
+        R other = value == null ? null : mapper.apply(value);
+        return new ResultItem(other, this);
+    }
+
+    public void ifSuccess(Consumer<T> caller) {
+        if (isSuccess()) {
+            caller.accept(value);
+        }
+    }
 }

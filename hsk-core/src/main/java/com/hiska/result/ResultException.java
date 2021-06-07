@@ -11,7 +11,9 @@
 package com.hiska.result;
 
 import javax.ejb.ApplicationException;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * @author Willyams Yujra
@@ -21,26 +23,27 @@ import lombok.*;
 @ToString
 @ApplicationException(rollback = true)
 public class ResultException extends RuntimeException {
-   private Result result;
 
-   public ResultException() {
-   }
+    private Result result;
 
-   public ResultException(Throwable cause) {
-      super(cause);
-   }
+    public ResultException() {
+    }
 
-   public ResultException(Result result) {
-      this.result = result;
-   }
+    public ResultException(Throwable cause) {
+        super(cause);
+    }
 
-   public ResultException(String message, Result result) {
-      super(message);
-      this.result = result;
-   }
+    public ResultException(Result result) {
+        this.result = result;
+    }
 
-   public ResultException(Result result, Throwable cause) {
-      super(cause);
-      this.result = result;
-   }
+    public ResultException(String message, Result result) {
+        super(message);
+        this.result = result;
+    }
+
+    public ResultException(Result result, Throwable cause) {
+        super(cause);
+        this.result = result;
+    }
 }

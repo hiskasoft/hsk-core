@@ -10,42 +10,43 @@
  */
 package com.hiska.faces.application;
 
+import com.hiska.faces.ViewKeeped;
 import java.util.HashMap;
 import java.util.Map;
-import javax.faces.context.FacesContext;
 import javax.faces.application.ConfigurableNavigationHandler;
 import javax.faces.application.ConfigurableNavigationHandlerWrapper;
-import com.hiska.faces.ViewKeeped;
+import javax.faces.context.FacesContext;
 
 public class NavegationRedirectHandler extends ConfigurableNavigationHandlerWrapper {
-   private static final String UIVIEWACTION_BROADCAST = "javax.faces.ViewAction.broadcast";
-   private final ConfigurableNavigationHandler wrapped;
 
-   public NavegationRedirectHandler(ConfigurableNavigationHandler wrapped) {
-      this.wrapped = wrapped;
-   }
+    private static final String UIVIEWACTION_BROADCAST = "javax.faces.ViewAction.broadcast";
+    private final ConfigurableNavigationHandler wrapped;
 
-   @Override
-   public ConfigurableNavigationHandler getWrapped() {
-      return wrapped;
-   }
+    public NavegationRedirectHandler(ConfigurableNavigationHandler wrapped) {
+        this.wrapped = wrapped;
+    }
 
-   @Override
-   public void handleNavigation(FacesContext context, String fromAction, String outcome) {
-      Map<Object, Object> attrs = context.getAttributes();
-      attrs.put(UIVIEWACTION_BROADCAST, Boolean.TRUE);
-      if (outcome != null && !outcome.isEmpty()) {
-         Map<String, Object> dirMap = new HashMap<>();
-         Map<String, Object> sessionScope = context.getExternalContext().getSessionMap();
-         sessionScope.put("DIR_MAP", dirMap);
-         Map<String, Object> viewMap = context.getViewRoot().getViewMap();
-         viewMap.forEach((k, v) -> {
-            ViewKeeped scope = v.getClass().getAnnotation(ViewKeeped.class);
-            if (scope != null) {
-               dirMap.put(k, v);
-            }
-         });
-      }
-      wrapped.handleNavigation(context, fromAction, outcome);
-   }
+    @Override
+    public ConfigurableNavigationHandler getWrapped() {
+        return wrapped;
+    }
+
+    @Override
+    public void handleNavigation(FacesContext context, String fromAction, String outcome) {
+        Map<Object, Object> attrs = context.getAttributes();
+        attrs.put(UIVIEWACTION_BROADCAST, Boolean.TRUE);
+        if (outcome != null && !outcome.isEmpty()) {
+            Map<String, Object> dirMap = new HashMap<>();
+            Map<String, Object> sessionScope = context.getExternalContext().getSessionMap();
+            sessionScope.put("DIR_MAP", dirMap);
+            Map<String, Object> viewMap = context.getViewRoot().getViewMap();
+            viewMap.forEach((k, v) -> {
+                ViewKeeped scope = v.getClass().getAnnotation(ViewKeeped.class);
+                if (scope != null) {
+                    dirMap.put(k, v);
+                }
+            });
+        }
+        wrapped.handleNavigation(context, fromAction, outcome);
+    }
 }

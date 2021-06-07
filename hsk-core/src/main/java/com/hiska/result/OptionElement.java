@@ -18,7 +18,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface OptionElement {
-   public String domain();
 
-   public String classifier() default "NONE";
+    public String domain();
+
+    public String classifier() default "NONE";
 }

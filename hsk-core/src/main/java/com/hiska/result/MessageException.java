@@ -10,39 +10,40 @@
  */
 package com.hiska.result;
 
-import lombok.ToString;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
 @ToString
 public class MessageException extends Exception {
-   private final MessageBuilder builder;
 
-   public MessageException(Message internal) {
-      super(internal.toString());
-      this.builder = MessageBuilder.create(internal);
-   }
+    private final MessageBuilder builder;
 
-   public MessageException(MessageBuilder internal) {
-      this.builder = internal;
-   }
+    public MessageException(Message internal) {
+        super(internal.toString());
+        this.builder = MessageBuilder.create(internal);
+    }
 
-   public MessageException(String message) {
-      this(message, null);
-   }
+    public MessageException(MessageBuilder internal) {
+        this.builder = internal;
+    }
 
-   public MessageException(String message, Throwable cause) {
-      super(message, cause);
-      this.builder = MessageBuilder.create(message)
-            .exception(cause);
-   }
+    public MessageException(String message) {
+        this(message, null);
+    }
 
-   public Message get() {
-      return builder.get();
-   }
+    public MessageException(String message, Throwable cause) {
+        super(message, cause);
+        this.builder = MessageBuilder.create(message)
+                .exception(cause);
+    }
 
-   public ResultException asResultException() {
-      return ResultBuilder.create(builder.get())
-            .asException();
-   }
+    public Message get() {
+        return builder.get();
+    }
+
+    public ResultException asResultException() {
+        return ResultBuilder.create(builder.get())
+                .asException();
+    }
 }

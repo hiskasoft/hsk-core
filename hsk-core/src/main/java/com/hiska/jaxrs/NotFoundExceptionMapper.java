@@ -22,15 +22,16 @@ import javax.ws.rs.ext.Provider;
  */
 @Provider
 public class NotFoundExceptionMapper extends JaxrsExceptionMapper<NotFoundException> {
-   @Override
-   public Response processResponse(NotFoundException ex) {
-      Response.Status status = Response.Status.NOT_FOUND;
-      Result result = MessageBuilder.create("HTTP-404: Recurso no encontrado")
-            .exception(ex)
-            .asResult();
-      return Response.status(status)
-            .entity(result)
-            .type(MediaType.APPLICATION_JSON)
-            .build();
-   }
+
+    @Override
+    public Response processResponse(NotFoundException ex) {
+        Response.Status status = Response.Status.NOT_FOUND;
+        Result result = MessageBuilder.create("HTTP-404: Recurso no encontrado")
+                .exception(ex)
+                .asResult();
+        return Response.status(status)
+                .entity(result)
+                .type(MediaType.APPLICATION_JSON)
+                .build();
+    }
 }

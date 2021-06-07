@@ -20,28 +20,29 @@ import javax.faces.convert.Converter;
  * @author Willyams Yujra
  */
 public class DateConverter implements Converter {
-   private final SimpleDateFormat allows[] = {
-         new SimpleDateFormat("dd/MM/yyyy"),
-         new SimpleDateFormat("dd-MM-yyyy")
-   };
 
-   @Override
-   public Object getAsObject(FacesContext contect, UIComponent component, String value) {
-      for (SimpleDateFormat p : allows) {
-         try {
-            return p.parse(value);
-         } catch (Exception e) {
-         }
-      }
-      return null;
-   }
+    private final SimpleDateFormat allows[] = {
+        new SimpleDateFormat("dd/MM/yyyy"),
+        new SimpleDateFormat("dd-MM-yyyy")
+    };
 
-   @Override
-   public String getAsString(FacesContext contect, UIComponent component, Object object) {
-      if (object instanceof Date) {
-         Date date = (Date) object;
-         return allows[0].format(date);
-      }
-      return null;
-   }
+    @Override
+    public Object getAsObject(FacesContext contect, UIComponent component, String value) {
+        for (SimpleDateFormat p : allows) {
+            try {
+                return p.parse(value);
+            } catch (Exception e) {
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public String getAsString(FacesContext contect, UIComponent component, Object object) {
+        if (object instanceof Date) {
+            Date date = (Date) object;
+            return allows[0].format(date);
+        }
+        return null;
+    }
 }

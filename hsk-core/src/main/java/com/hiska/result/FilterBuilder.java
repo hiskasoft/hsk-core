@@ -10,45 +10,46 @@
  */
 package com.hiska.result;
 
-import java.util.List;
 import com.hiska.result.definition.Common;
+import java.util.List;
 import javax.persistence.EntityManager;
 
 /**
  * Filter Builder
  */
 public interface FilterBuilder<T> {
-   public static <T> FilterBuilder<T> create(Class<T> aEntity) {
-      String name = Common.getEntityName(aEntity);
-      return new FilterBuilderImpl(name);
-   }
 
-   public static <T> FilterBuilder<T> create(String name) {
-      return new FilterBuilderImpl(name);
-   }
+    public static <T> FilterBuilder<T> create(Class<T> aEntity) {
+        String name = Common.getEntityName(aEntity);
+        return new FilterBuilderImpl(name);
+    }
 
-   public static <T> FilterBuilder<T> create(Class<T> aEntity, Object oFilter) {
-      String name = Common.getEntityName(aEntity);
-      FilterBuilder<T> builder = new FilterBuilderImpl(name);
-      builder.filter(oFilter);
-      return builder;
-   }
+    public static <T> FilterBuilder<T> create(String name) {
+        return new FilterBuilderImpl(name);
+    }
 
-   public FilterBuilder<T> filter(Object oFilter);
+    public static <T> FilterBuilder<T> create(Class<T> aEntity, Object oFilter) {
+        String name = Common.getEntityName(aEntity);
+        FilterBuilder<T> builder = new FilterBuilderImpl(name);
+        builder.filter(oFilter);
+        return builder;
+    }
 
-   public FilterBuilder<T> appendEntry(String param, String[] names, Filter filter, boolean convertToParam);
+    public FilterBuilder<T> filter(Object oFilter);
 
-   public FilterBuilder<T> pagination(Pagination pagination);
+    public FilterBuilder<T> appendEntry(String param, String[] names, Filter filter, boolean convertToParam);
 
-   public String createQuery();
+    public FilterBuilder<T> pagination(Pagination pagination);
 
-   public String createQueryCount();
+    public String createQuery();
 
-   public Number getCount(EntityManager em);
+    public String createQueryCount();
 
-   public List<T> getList(EntityManager em);
+    public Number getCount(EntityManager em);
 
-   public ResultList<T> getResultList(EntityManager em);
+    public List<T> getList(EntityManager em);
 
-   public ResultPage<T> getResultPage(EntityManager em);
+    public ResultList<T> getResultList(EntityManager em);
+
+    public ResultPage<T> getResultPage(EntityManager em);
 }

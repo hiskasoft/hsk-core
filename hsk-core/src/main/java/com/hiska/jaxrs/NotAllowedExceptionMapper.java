@@ -22,15 +22,16 @@ import javax.ws.rs.ext.Provider;
  */
 @Provider
 public class NotAllowedExceptionMapper extends JaxrsExceptionMapper<NotAllowedException> {
-   @Override
-   public Response processResponse(NotAllowedException ex) {
-      Result result = MessageBuilder.create("HTTP-403: Acceso no permitido")
-            .cause("No tiene las credenciales necesarias ")
-            .exception(ex)
-            .asResult();
-      return Response.status(Response.Status.FORBIDDEN)
-            .entity(result)
-            .type(MediaType.APPLICATION_JSON)
-            .build();
-   }
+
+    @Override
+    public Response processResponse(NotAllowedException ex) {
+        Result result = MessageBuilder.create("HTTP-403: Acceso no permitido")
+                .cause("No tiene las credenciales necesarias ")
+                .exception(ex)
+                .asResult();
+        return Response.status(Response.Status.FORBIDDEN)
+                .entity(result)
+                .type(MediaType.APPLICATION_JSON)
+                .build();
+    }
 }

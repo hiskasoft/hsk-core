@@ -23,34 +23,35 @@ import javax.ws.rs.ext.Provider;
  */
 @Provider
 public class ValidationExceptionMapper extends JaxrsExceptionMapper<ConstraintViolationException> {
-   private String getClassName(Object o) {
-      return o == null ? "<null>" : o.getClass().getSimpleName();
-   }
 
-   private String getPropertyName(Path path) {
-      String[] split = path.toString().split("\\.");
-      return split[split.length - 1];
-   }
+    private String getClassName(Object o) {
+        return o == null ? "<null>" : o.getClass().getSimpleName();
+    }
 
-   @Override
-   public Response processResponse(ConstraintViolationException exception) {
-      MessageBuilder mb = MessageBuilder.create("APP-2001: Parametros invalidos")
-            .title("Validacion")
-            .warn();
-      exception.getConstraintViolations()
-            .stream()
-            .forEach(it -> {
-               String className = getClassName(it.getLeafBean());
-               String name = getPropertyName(it.getPropertyPath());
-               mb.cause(name + ": " + it.getMessage());
-               mb.trace(className + "." + name + " = " + it.getInvalidValue());
-            });
-      Result result = mb.asResultBuilder()
-            .error()
-            .get();
-      return Response.status(Response.Status.BAD_REQUEST)
-            .entity(result)
-            .type(MediaType.APPLICATION_JSON)
-            .build();
-   }
+    private String getPropertyName(Path path) {
+        String[] split = path.toString().split("\\.");
+        return split[split.length - 1];
+    }
+
+    @Override
+    public Response processResponse(ConstraintViolationException exception) {
+        MessageBuilder mb = MessageBuilder.create("APP-2001: Parametros invalidos")
+                .title("Validacion")
+                .warn();
+        exception.getConstraintViolations()
+                .stream()
+                .forEach(it -> {
+                    String className = getClassName(it.getLeafBean());
+                    String name = getPropertyName(it.getPropertyPath());
+                    mb.cause(name + ": " + it.getMessage());
+                    mb.trace(className + "." + name + " = " + it.getInvalidValue());
+                });
+        Result result = mb.asResultBuilder()
+                .error()
+                .get();
+        return Response.status(Response.Status.BAD_REQUEST)
+                .entity(result)
+                .type(MediaType.APPLICATION_JSON)
+                .build();
+    }
 }

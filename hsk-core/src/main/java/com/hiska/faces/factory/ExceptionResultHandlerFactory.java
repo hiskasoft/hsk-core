@@ -10,22 +10,23 @@
  */
 package com.hiska.faces.factory;
 
+import com.hiska.faces.application.ExceptionResultHandler;
 import javax.faces.context.ExceptionHandler;
 import javax.faces.context.ExceptionHandlerFactory;
-import com.hiska.faces.application.ExceptionResultHandler;
 
 /**
  * @author Willyams Yujra
  */
 public class ExceptionResultHandlerFactory extends ExceptionHandlerFactory {
-   private final ExceptionHandlerFactory delegate;
 
-   public ExceptionResultHandlerFactory(ExceptionHandlerFactory delegate) {
-      this.delegate = delegate;
-   }
+    private final ExceptionHandlerFactory delegate;
 
-   @Override
-   public ExceptionHandler getExceptionHandler() {
-      return new ExceptionResultHandler(delegate.getExceptionHandler());
-   }
+    public ExceptionResultHandlerFactory(ExceptionHandlerFactory delegate) {
+        this.delegate = delegate;
+    }
+
+    @Override
+    public ExceptionHandler getExceptionHandler() {
+        return new ExceptionResultHandler(delegate.getExceptionHandler());
+    }
 }

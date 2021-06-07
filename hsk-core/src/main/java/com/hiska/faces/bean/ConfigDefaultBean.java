@@ -14,23 +14,25 @@ import com.hiska.faces.cc.Menu;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import lombok.Data;
+import lombok.ToString;
 
-@lombok.Getter
-@lombok.Setter
-@lombok.ToString
+@Data
+@ToString
 @SuppressWarnings("unchecked")
 public class ConfigDefaultBean {
-   private String title = "Sistema de Atencion de Servicios";
-   private String template = "/resources/template/coreui.xhtml";
-   private String styleClass = "dev";
-   private List<Menu> menus;
-   private Date today = new Date();
-   private String url = "https://hiskasoft.com";
 
-   public void addMenu(Menu value) {
-      if (menus == null) {
-         menus = new ArrayList<>();
-      }
-      menus.add(value);
-   }
+    private String title = "Sistema de Atencion de Servicios";
+    private String template = "/resources/template/coreui.xhtml";
+    private String styleClass = "dev";
+    private List<Menu> menus;
+    private Date today = new Date();
+    private String url = "https://hiskasoft.com";
+
+    public void addMenu(Menu value) {
+        if (menus == null) {
+            menus = new ArrayList<>();
+        }
+        menus.add(value);
+    }
 }

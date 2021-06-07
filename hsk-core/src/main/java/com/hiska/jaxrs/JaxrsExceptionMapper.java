@@ -16,13 +16,14 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 
 public abstract class JaxrsExceptionMapper<E extends Throwable> implements ExceptionMapper<E> {
-   private static final Logger LOG = Logger.getLogger(JaxrsExceptionMapper.class.getName());
 
-   @Override
-   public Response toResponse(E ex) {
-      LOG.log(Level.SEVERE, "JAX-RS Exception - " + this.getClass().getSimpleName(), ex);
-      return processResponse(ex);
-   }
+    private static final Logger LOG = Logger.getLogger(JaxrsExceptionMapper.class.getName());
 
-   public abstract Response processResponse(E ex);
+    @Override
+    public Response toResponse(E ex) {
+        LOG.log(Level.SEVERE, "JAX-RS Exception - " + this.getClass().getSimpleName(), ex);
+        return processResponse(ex);
+    }
+
+    public abstract Response processResponse(E ex);
 }

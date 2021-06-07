@@ -19,17 +19,18 @@ import javax.faces.context.FacesContext;
  * @author Willyams Yujra
  */
 public class SpanMessageRenderer extends MessageRenderer {
-   @Override
-   public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
-      boolean messageToSpan = RenderkitHelp.isMessageToSpan(context);
-      if (!messageToSpan) {
-         super.encodeEnd(context, component);
-      } else {
-         RenderkitHelp.assertAttribute(component, "infoClass", " invalid-feedback text-success d-block");
-         RenderkitHelp.assertAttribute(component, "warnClass", " invalid-feedback text-warning d-block");
-         RenderkitHelp.assertAttribute(component, "errorClass", " invalid-feedback text-danger d-block");
-         RenderkitHelp.assertAttribute(component, "fatalClass", " invalid-feedback text-dark d-block");
-         super.encodeEnd(context, component);
-      }
-   }
+
+    @Override
+    public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+        boolean messageToSpan = RenderkitHelp.isMessageToSpan(context);
+        if (!messageToSpan) {
+            super.encodeEnd(context, component);
+        } else {
+            RenderkitHelp.assertAttribute(component, "infoClass", " invalid-feedback text-success d-block");
+            RenderkitHelp.assertAttribute(component, "warnClass", " invalid-feedback text-warning d-block");
+            RenderkitHelp.assertAttribute(component, "errorClass", " invalid-feedback text-danger d-block");
+            RenderkitHelp.assertAttribute(component, "fatalClass", " invalid-feedback text-dark d-block");
+            super.encodeEnd(context, component);
+        }
+    }
 }
