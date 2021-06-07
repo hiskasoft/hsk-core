@@ -26,42 +26,41 @@ import javax.faces.event.ExceptionQueuedEventContext;
  */
 @SuppressWarnings("deprecation")
 public class ExceptionResultHandler extends ExceptionHandlerWrapper {
+   private final ExceptionHandler delegate;
 
-    private final ExceptionHandler delegate;
+   public ExceptionResultHandler(ExceptionHandler delegate) {
+      this.delegate = delegate;
+   }
 
-    public ExceptionResultHandler(ExceptionHandler delegate) {
-        this.delegate = delegate;
-    }
+   @Override
+   public ExceptionHandler getWrapped() {
+      return delegate;
+   }
 
-    @Override
-    public ExceptionHandler getWrapped() {
-        return delegate;
-    }
-
-    @Override
-    public void handle() throws FacesException {
-        ExceptionHandlerWrapper a = (ExceptionHandlerWrapper) delegate;
-        delegate.handle();
-        final Iterator<ExceptionQueuedEvent> queue = getUnhandledExceptionQueuedEvents().iterator();
-        while (queue.hasNext()) {
-            ExceptionQueuedEvent item = queue.next();
-            System.out.println("--->" + item);
-            ExceptionQueuedEventContext exceptionQueuedEventContext = (ExceptionQueuedEventContext) item.getSource();
-            try {
-                Throwable root = exceptionQueuedEventContext.getException();
-                Throwable cause = root.getCause();
-                String text = root.getMessage();
-                text = text == null ? "" : text;
-                if (root instanceof FacesException && text.contains("actionListener=") && cause instanceof ELException) {
-                    Message message = MessageBuilder.createMessageFatal(cause.getCause());
-                    MessageUtil.processMessage(message);
-                } else {
-                    Message message = MessageBuilder.createMessageFatal(root);
-                    MessageUtil.processMessage(message);
-                }
-            } finally {
-                queue.remove();
+   @Override
+   public void handle() throws FacesException {
+      ExceptionHandlerWrapper a = (ExceptionHandlerWrapper) delegate;
+      delegate.handle();
+      final Iterator<ExceptionQueuedEvent> queue = getUnhandledExceptionQueuedEvents().iterator();
+      while (queue.hasNext()) {
+         ExceptionQueuedEvent item = queue.next();
+         System.out.println("--->" + item);
+         ExceptionQueuedEventContext exceptionQueuedEventContext = (ExceptionQueuedEventContext) item.getSource();
+         try {
+            Throwable root = exceptionQueuedEventContext.getException();
+            Throwable cause = root.getCause();
+            String text = root.getMessage();
+            text = text == null ? "" : text;
+            if (root instanceof FacesException && text.contains("actionListener=") && cause instanceof ELException) {
+               Message message = MessageBuilder.createMessageFatal(cause.getCause());
+               MessageUtil.processMessage(message);
+            } else {
+               Message message = MessageBuilder.createMessageFatal(root);
+               MessageUtil.processMessage(message);
             }
-        }
-    }
+         } finally {
+            queue.remove();
+         }
+      }
+   }
 }

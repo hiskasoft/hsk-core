@@ -18,15 +18,14 @@ import javax.faces.context.ExceptionHandlerFactory;
  * @author Willyams Yujra
  */
 public class ExceptionResultHandlerFactory extends ExceptionHandlerFactory {
+   private final ExceptionHandlerFactory delegate;
 
-    private final ExceptionHandlerFactory delegate;
+   public ExceptionResultHandlerFactory(ExceptionHandlerFactory delegate) {
+      this.delegate = delegate;
+   }
 
-    public ExceptionResultHandlerFactory(ExceptionHandlerFactory delegate) {
-        this.delegate = delegate;
-    }
-
-    @Override
-    public ExceptionHandler getExceptionHandler() {
-        return new ExceptionResultHandler(delegate.getExceptionHandler());
-    }
+   @Override
+   public ExceptionHandler getExceptionHandler() {
+      return new ExceptionResultHandler(delegate.getExceptionHandler());
+   }
 }

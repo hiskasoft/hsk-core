@@ -18,38 +18,37 @@ import javax.persistence.EntityManager;
  * Filter Builder
  */
 public interface FilterBuilder<T> {
+   public static <T> FilterBuilder<T> create(Class<T> aEntity) {
+      String name = Common.getEntityName(aEntity);
+      return new FilterBuilderImpl(name);
+   }
 
-    public static <T> FilterBuilder<T> create(Class<T> aEntity) {
-        String name = Common.getEntityName(aEntity);
-        return new FilterBuilderImpl(name);
-    }
+   public static <T> FilterBuilder<T> create(String name) {
+      return new FilterBuilderImpl(name);
+   }
 
-    public static <T> FilterBuilder<T> create(String name) {
-        return new FilterBuilderImpl(name);
-    }
+   public static <T> FilterBuilder<T> create(Class<T> aEntity, Object oFilter) {
+      String name = Common.getEntityName(aEntity);
+      FilterBuilder<T> builder = new FilterBuilderImpl(name);
+      builder.filter(oFilter);
+      return builder;
+   }
 
-    public static <T> FilterBuilder<T> create(Class<T> aEntity, Object oFilter) {
-        String name = Common.getEntityName(aEntity);
-        FilterBuilder<T> builder = new FilterBuilderImpl(name);
-        builder.filter(oFilter);
-        return builder;
-    }
+   public FilterBuilder<T> filter(Object oFilter);
 
-    public FilterBuilder<T> filter(Object oFilter);
+   public FilterBuilder<T> appendEntry(String param, String[] names, Filter filter, boolean convertToParam);
 
-    public FilterBuilder<T> appendEntry(String param, String[] names, Filter filter, boolean convertToParam);
+   public FilterBuilder<T> pagination(Pagination pagination);
 
-    public FilterBuilder<T> pagination(Pagination pagination);
+   public String createQuery();
 
-    public String createQuery();
+   public String createQueryCount();
 
-    public String createQueryCount();
+   public Number getCount(EntityManager em);
 
-    public Number getCount(EntityManager em);
+   public List<T> getList(EntityManager em);
 
-    public List<T> getList(EntityManager em);
+   public ResultList<T> getResultList(EntityManager em);
 
-    public ResultList<T> getResultList(EntityManager em);
-
-    public ResultPage<T> getResultPage(EntityManager em);
+   public ResultPage<T> getResultPage(EntityManager em);
 }

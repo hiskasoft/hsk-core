@@ -21,25 +21,24 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface FilterElement {
+   /**
+    * Attribute names for the where clause
+    *
+    * @return
+    */
+   public String[] name() default "#default";
 
-    /**
-     * Attribute names for the where clause
-     *
-     * @return
-     */
-    public String[] name() default "#default";
+   /**
+    * Parameter name in the query
+    *
+    * @return
+    */
+   public String param() default "#default";
 
-    /**
-     * Parameter name in the query
-     *
-     * @return
-     */
-    public String param() default "#default";
-
-    /**
-     * Parameter name in the where clause
-     *
-     * @return
-     */
-    public boolean convertToParam() default false;
+   /**
+    * Parameter name in the where clause
+    *
+    * @return
+    */
+   public boolean convertToParam() default false;
 }

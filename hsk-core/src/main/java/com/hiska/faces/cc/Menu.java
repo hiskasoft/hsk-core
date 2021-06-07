@@ -7,7 +7,7 @@
  *
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
-*/
+ */
 package com.hiska.faces.cc;
 
 import java.io.Serializable;
@@ -18,8 +18,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
-* @author Willyams Yujra
-*/
+ * @author Willyams Yujra
+ */
 @lombok.Getter
 @lombok.Setter
 @lombok.ToString

@@ -28,43 +28,42 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ResultPage<T> extends Result implements Serializable {
+   /**
+    * Pagination Result
+    */
+   private Pagination pagination;
+   /**
+    * List of Object
+    */
+   private List<T> value;
 
-    /**
-     * Pagination Result
-     */
-    private Pagination pagination;
-    /**
-     * List of Object
-     */
-    private List<T> value;
+   public ResultPage() {
+   }
 
-    public ResultPage() {
-    }
+   public ResultPage(final List<T> value) {
+      this.value = value;
+   }
 
-    public ResultPage(final List<T> value) {
-        this.value = value;
-    }
+   public ResultPage(final List<T> value, final Result other) {
+      super(other);
+      this.value = value;
+   }
 
-    public ResultPage(final List<T> value, final Result other) {
-        super(other);
-        this.value = value;
-    }
+   public ResultPage(final List<T> value, final Pagination pagination, final Result other) {
+      super(other);
+      this.value = value;
+      this.pagination = pagination;
+   }
 
-    public ResultPage(final List<T> value, final Pagination pagination, final Result other) {
-        super(other);
-        this.value = value;
-        this.pagination = pagination;
-    }
+   public ResultPage(final Result other) {
+      super(other);
+   }
 
-    public ResultPage(final Result other) {
-        super(other);
-    }
-
-    public <R> ResultPage<R> mapper(Function<T, R> mapper) {
-        List<R> list = null;
-        if (value != null) {
-            list = value.stream().map(mapper).collect(toList());
-        }
-        return new ResultPage<>(list, pagination, this);
-    }
+   public <R> ResultPage<R> mapper(Function<T, R> mapper) {
+      List<R> list = null;
+      if (value != null) {
+         list = value.stream().map(mapper).collect(toList());
+      }
+      return new ResultPage<>(list, pagination, this);
+   }
 }

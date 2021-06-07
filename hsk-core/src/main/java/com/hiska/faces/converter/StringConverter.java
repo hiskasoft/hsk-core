@@ -18,16 +18,15 @@ import javax.faces.convert.Converter;
  * @author Willyams Yujra
  */
 public class StringConverter implements Converter {
+   @Override
+   public Object getAsObject(FacesContext contect, UIComponent component, String value) {
+      System.out.println("getAsObject--->" + this + " : " + value);
+      return value;
+   }
 
-    @Override
-    public Object getAsObject(FacesContext contect, UIComponent component, String value) {
-        System.out.println("getAsObject--->" + this + " : " + value);
-        return value;
-    }
-
-    @Override
-    public String getAsString(FacesContext contect, UIComponent component, Object object) {
-        System.out.println("getAsString--->" + this + " : " + object);
-        return object != null ? object.toString() : null;
-    }
+   @Override
+   public String getAsString(FacesContext contect, UIComponent component, Object object) {
+      System.out.println("getAsString--->" + this + " : " + object);
+      return object != null ? object.toString() : null;
+   }
 }

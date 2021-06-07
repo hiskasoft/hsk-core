@@ -26,123 +26,122 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Param implements Serializable {
+   private String value;
+   private String label;
+   private String description;
 
-    private String value;
-    private String label;
-    private String description;
+   public static Param of(Object valor) {
+      return valor == null ? null : of(valor.toString(), "DEFAULT_" + valor);
+   }
 
-    public static Param of(Object valor) {
-        return valor == null ? null : of(valor.toString(), "DEFAULT_" + valor);
-    }
+   public static Param of(String valor, String label) {
+      return new Param(valor, label, "DEFAULT_" + valor);
+   }
 
-    public static Param of(String valor, String label) {
-        return new Param(valor, label, "DEFAULT_" + valor);
-    }
+   public static Param of(String valor, String label, String description) {
+      Param param = new Param();
+      param.value = valor;
+      param.label = label;
+      param.description = description;
+      return param;
+   }
 
-    public static Param of(String valor, String label, String description) {
-        Param param = new Param();
-        param.value = valor;
-        param.label = label;
-        param.description = description;
-        return param;
-    }
+   public static Param of(Param other) {
+      Param param = new Param();
+      param.value = other.getValue();
+      param.label = other.getLabel();
+      param.description = other.getDescription();
+      return param;
+   }
 
-    public static Param of(Param other) {
-        Param param = new Param();
-        param.value = other.getValue();
-        param.label = other.getLabel();
-        param.description = other.getDescription();
-        return param;
-    }
+   public static Param of(Option other) {
+      Param param = new Param();
+      param.value = other.getValue();
+      param.label = other.getLabel();
+      param.description = other.getDescription();
+      return param;
+   }
 
-    public static Param of(Option other) {
-        Param param = new Param();
-        param.value = other.getValue();
-        param.label = other.getLabel();
-        param.description = other.getDescription();
-        return param;
-    }
+   public static boolean isEquals(Param param, String str) {
+      String value = param == null ? null : param.getValue();
+      return str != null && str.equals(value);
+   }
 
-    public static boolean isEquals(Param param, String str) {
-        String value = param == null ? null : param.getValue();
-        return str != null && str.equals(value);
-    }
+   public static boolean isNotIn(Param param, String... strs) {
+      String value = param == null ? null : param.getValue();
+      for (String str : strs) {
+         if (str != null && str.equals(value)) {
+            return false;
+         }
+      }
+      return true;
+   }
 
-    public static boolean isNotIn(Param param, String... strs) {
-        String value = param == null ? null : param.getValue();
-        for (String str : strs) {
-            if (str != null && str.equals(value)) {
-                return false;
-            }
-        }
-        return true;
-    }
+   public static boolean isIn(Param param, String... strs) {
+      String value = param == null ? null : param.getValue();
+      for (String str : strs) {
+         if (str != null && str.equals(value)) {
+            return true;
+         }
+      }
+      return false;
+   }
 
-    public static boolean isIn(Param param, String... strs) {
-        String value = param == null ? null : param.getValue();
-        for (String str : strs) {
-            if (str != null && str.equals(value)) {
-                return true;
-            }
-        }
-        return false;
-    }
+   public boolean isEquals(String str) {
+      return str != null && str.equals(value);
+   }
 
-    public boolean isEquals(String str) {
-        return str != null && str.equals(value);
-    }
+   public boolean isIn(String... strs) {
+      for (String str : strs) {
+         if (str != null && str.equals(value)) {
+            return true;
+         }
+      }
+      return false;
+   }
 
-    public boolean isIn(String... strs) {
-        for (String str : strs) {
-            if (str != null && str.equals(value)) {
-                return true;
-            }
-        }
-        return false;
-    }
+   public boolean isNotIn(String... strs) {
+      for (String str : strs) {
+         if (str != null && str.equals(value)) {
+            return false;
+         }
+      }
+      return true;
+   }
 
-    public boolean isNotIn(String... strs) {
-        for (String str : strs) {
-            if (str != null && str.equals(value)) {
-                return false;
-            }
-        }
-        return true;
-    }
+   @Override
+   public String toString() {
+      return "[" + value + "] " + label;
+   }
 
-    @Override
-    public String toString() {
-        return "[" + value + "] " + label;
-    }
+   @Override
+   public boolean equals(Object o) {
+      if (o instanceof Param) {
+         Param param = (Param) o;
+         return value != null && value.equals(param.value);
+      } else if (o instanceof Option) {
+         Option option = (Option) o;
+         return value != null && value.equals(option.getValue());
+      } else if (o instanceof String) {
+         String string = (String) o;
+         return value != null && value.equals(string);
+      }
+      return false;
+   }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o instanceof Param) {
-            Param param = (Param) o;
-            return value != null && value.equals(param.value);
-        } else if (o instanceof Option) {
-            Option option = (Option) o;
-            return value != null && value.equals(option.getValue());
-        } else if (o instanceof String) {
-            String string = (String) o;
-            return value != null && value.equals(string);
-        }
-        return false;
-    }
+   @Override
+   public int hashCode() {
+      int hash = 5;
+      hash = 61 * hash + Objects.hashCode(value);
+      hash = 61 * hash + Objects.hashCode("PARAM:" + value);
+      return hash;
+   }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 61 * hash + Objects.hashCode(value);
-        hash = 61 * hash + Objects.hashCode("PARAM:" + value);
-        return hash;
-    }
+   public void accept(Param other) {
+      value = other.value;
+      label = other.label;
+      description = other.description;
+   }
 
-    public void accept(Param other) {
-        value = other.value;
-        label = other.label;
-        description = other.description;
-    }
-
-    public static final Param NONE = of("NONE");
+   public static final Param NONE = of("NONE");
 }

@@ -21,18 +21,17 @@ import lombok.ToString;
 @ToString
 @SuppressWarnings("unchecked")
 public class ConfigDefaultBean {
+   private String title = "Sistema de Atencion de Servicios";
+   private String template = "/resources/template/coreui.xhtml";
+   private String styleClass = "dev";
+   private List<Menu> menus;
+   private Date today = new Date();
+   private String url = "https://hiskasoft.com";
 
-    private String title = "Sistema de Atencion de Servicios";
-    private String template = "/resources/template/coreui.xhtml";
-    private String styleClass = "dev";
-    private List<Menu> menus;
-    private Date today = new Date();
-    private String url = "https://hiskasoft.com";
-
-    public void addMenu(Menu value) {
-        if (menus == null) {
-            menus = new ArrayList<>();
-        }
-        menus.add(value);
-    }
+   public void addMenu(Menu value) {
+      if (menus == null) {
+         menus = new ArrayList<>();
+      }
+      menus.add(value);
+   }
 }

@@ -25,27 +25,26 @@ import javax.faces.event.ActionListener;
  * @author Willyams Yujra
  */
 public class ActionResultListener implements ActionListener {
+   private static final Logger LOGGER = Logger.getLogger(ActionResultListener.class.getName());
+   private ActionListener delegate;
 
-    private static final Logger LOGGER = Logger.getLogger(ActionResultListener.class.getName());
-    private ActionListener delegate;
+   public ActionResultListener(ActionListener delegate) {
+      this.delegate = delegate;
+   }
 
-    public ActionResultListener(ActionListener delegate) {
-        this.delegate = delegate;
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public void processAction(ActionEvent event) throws AbortProcessingException {
-        try {
-            delegate.processAction(event);
-        } catch (FacesException e) {
-            Exception root = (Exception) e.getCause();
-            if (root instanceof EvaluationException) {
-                root = (Exception) root.getCause();
-                LOGGER.log(Level.SEVERE, "FACES EXCEPTION", root);
-            }
-            Message message = MessageBuilder.createMessageFatal(root);
-            MessageUtil.processMessage(message);
-        }
-    }
+   @Override
+   @SuppressWarnings("deprecation")
+   public void processAction(ActionEvent event) throws AbortProcessingException {
+      try {
+         delegate.processAction(event);
+      } catch (FacesException e) {
+         Exception root = (Exception) e.getCause();
+         if (root instanceof EvaluationException) {
+            root = (Exception) root.getCause();
+            LOGGER.log(Level.SEVERE, "FACES EXCEPTION", root);
+         }
+         Message message = MessageBuilder.createMessageFatal(root);
+         MessageUtil.processMessage(message);
+      }
+   }
 }

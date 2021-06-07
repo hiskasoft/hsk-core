@@ -20,15 +20,14 @@ import lombok.Data;
  */
 @Data
 public class XxxFilter {
-
-    @FilterElement
-    private Filter<Long> id;
-    @FilterElement(name = {"col1", "col2", "col3"})
-    private Filter<String> col;
-    @FilterElement
-    private Filter<String> colName;
-    @FilterElement
-    private Filter<Param> code;
-    @FilterElement(name = {"other.ref", "ref"})
-    private Filter<Long> ref;
+   @FilterElement
+   private Filter<Long> id;
+   @FilterElement(name = {"col1", "col2", "col3"})
+   private Filter<String> col;
+   @FilterElement
+   private Filter<String> colName;
+   @FilterElement
+   private Filter<Param> code;
+   @FilterElement(name = {"other.ref", "ref"})
+   private Filter<Long> ref;
 }

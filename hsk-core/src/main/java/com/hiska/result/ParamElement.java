@@ -18,10 +18,9 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ParamElement {
+   public String domain() default "#default";
 
-    public String domain() default "#default";
+   public String classifier() default "#default";
 
-    public String classifier() default "#default";
-
-    public boolean integrity() default true;
+   public boolean integrity() default true;
 }

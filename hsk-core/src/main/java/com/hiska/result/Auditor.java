@@ -21,18 +21,16 @@ import lombok.ToString;
 @ToString
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Auditor implements Serializable {
+   private Entry created;
+   private Entry updated;
+   private Entry deleted;
+   private Long version;
 
-    private Entry created;
-    private Entry updated;
-    private Entry deleted;
-    private Long version;
-
-    @Data
-    @ToString
-    @XmlAccessorType(XmlAccessType.FIELD)
-    public static class Entry {
-
-        private Date at;
-        private String by;
-    }
+   @Data
+   @ToString
+   @XmlAccessorType(XmlAccessType.FIELD)
+   public static class Entry {
+      private Date at;
+      private String by;
+   }
 }

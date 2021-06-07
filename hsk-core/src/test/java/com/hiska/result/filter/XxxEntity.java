@@ -19,11 +19,10 @@ import javax.persistence.Table;
  */
 @Table(name = "XX_TABLE", schema = "OOO")
 public class XxxEntity {
-
-    @Id
-    private Long id;
-    @Column
-    private String col1;
-    @Column(name = "col_2")
-    private String col2;
+   @Id
+   private Long id;
+   @Column
+   private String col1;
+   @Column(name = "col_2")
+   private String col2;
 }

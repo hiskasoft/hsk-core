@@ -27,32 +27,31 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ResultItem<T> extends Result implements Serializable {
+   /**
+    * Object
+    */
+   private T value;
 
-    /**
-     * Object
-     */
-    private T value;
+   public ResultItem() {
+   }
 
-    public ResultItem() {
-    }
+   public ResultItem(T value) {
+      this.value = value;
+   }
 
-    public ResultItem(T value) {
-        this.value = value;
-    }
+   public ResultItem(T value, Result other) {
+      super(other);
+      this.value = value;
+   }
 
-    public ResultItem(T value, Result other) {
-        super(other);
-        this.value = value;
-    }
+   public <R> ResultItem<R> mapper(Function<T, R> mapper) {
+      R other = value == null ? null : mapper.apply(value);
+      return new ResultItem(other, this);
+   }
 
-    public <R> ResultItem<R> mapper(Function<T, R> mapper) {
-        R other = value == null ? null : mapper.apply(value);
-        return new ResultItem(other, this);
-    }
-
-    public void ifSuccess(Consumer<T> caller) {
-        if (isSuccess()) {
-            caller.accept(value);
-        }
-    }
+   public void ifSuccess(Consumer<T> caller) {
+      if (isSuccess()) {
+         caller.accept(value);
+      }
+   }
 }

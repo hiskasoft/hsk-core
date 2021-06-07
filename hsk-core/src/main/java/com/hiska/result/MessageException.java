@@ -16,34 +16,33 @@ import lombok.ToString;
 @Getter
 @ToString
 public class MessageException extends Exception {
+   private final MessageBuilder builder;
 
-    private final MessageBuilder builder;
+   public MessageException(Message internal) {
+      super(internal.toString());
+      this.builder = MessageBuilder.create(internal);
+   }
 
-    public MessageException(Message internal) {
-        super(internal.toString());
-        this.builder = MessageBuilder.create(internal);
-    }
+   public MessageException(MessageBuilder internal) {
+      this.builder = internal;
+   }
 
-    public MessageException(MessageBuilder internal) {
-        this.builder = internal;
-    }
+   public MessageException(String message) {
+      this(message, null);
+   }
 
-    public MessageException(String message) {
-        this(message, null);
-    }
+   public MessageException(String message, Throwable cause) {
+      super(message, cause);
+      this.builder = MessageBuilder.create(message)
+            .exception(cause);
+   }
 
-    public MessageException(String message, Throwable cause) {
-        super(message, cause);
-        this.builder = MessageBuilder.create(message)
-                .exception(cause);
-    }
+   public Message get() {
+      return builder.get();
+   }
 
-    public Message get() {
-        return builder.get();
-    }
-
-    public ResultException asResultException() {
-        return ResultBuilder.create(builder.get())
-                .asException();
-    }
+   public ResultException asResultException() {
+      return ResultBuilder.create(builder.get())
+            .asException();
+   }
 }

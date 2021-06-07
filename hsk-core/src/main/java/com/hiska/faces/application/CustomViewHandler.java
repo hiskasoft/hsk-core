@@ -16,24 +16,23 @@ import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 
 public class CustomViewHandler extends ViewHandlerWrapper {
+   private final ViewHandler wrapped;
 
-    private final ViewHandler wrapped;
+   public CustomViewHandler(ViewHandler wrapped) {
+      this.wrapped = wrapped;
+   }
 
-    public CustomViewHandler(ViewHandler wrapped) {
-        this.wrapped = wrapped;
-    }
+   @Override
+   public UIViewRoot restoreView(FacesContext facesContext, String viewId) {
+      UIViewRoot root = wrapped.restoreView(facesContext, viewId);
+      if (root == null) {
+         root = wrapped.createView(facesContext, viewId);
+      }
+      return root;
+   }
 
-    @Override
-    public UIViewRoot restoreView(FacesContext facesContext, String viewId) {
-        UIViewRoot root = wrapped.restoreView(facesContext, viewId);
-        if (root == null) {
-            root = wrapped.createView(facesContext, viewId);
-        }
-        return root;
-    }
-
-    @Override
-    public ViewHandler getWrapped() {
-        return wrapped;
-    }
+   @Override
+   public ViewHandler getWrapped() {
+      return wrapped;
+   }
 }

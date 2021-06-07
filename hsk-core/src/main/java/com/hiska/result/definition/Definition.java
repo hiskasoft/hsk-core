@@ -18,29 +18,28 @@ import java.util.logging.Logger;
  * @author Willyams Yujra
  */
 public interface Definition<T> {
+   public Logger logger = Logger.getLogger(Definition.class.getName());
 
-    public Logger logger = Logger.getLogger(Definition.class.getName());
+   public Method getGetter();
 
-    public Method getGetter();
+   public Method getSetter();
 
-    public Method getSetter();
+   public default T invokeGetter(Object aInstance) {
+      try {
+         Method getter = getGetter();
+         return (T) getter.invoke(aInstance);
+      } catch (Exception e) {
+         logger.log(Level.SEVERE, "Error invokeGetter: {0}", e.getMessage());
+      }
+      return null;
+   }
 
-    public default T invokeGetter(Object aInstance) {
-        try {
-            Method getter = getGetter();
-            return (T) getter.invoke(aInstance);
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error invokeGetter: {0}", e.getMessage());
-        }
-        return null;
-    }
-
-    public default void invokeSetter(Object aInstance, T value) {
-        try {
-            Method setter = getSetter();
-            setter.invoke(aInstance, value);
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error invokeSetter: {0}", e.getMessage());
-        }
-    }
+   public default void invokeSetter(Object aInstance, T value) {
+      try {
+         Method setter = getSetter();
+         setter.invoke(aInstance, value);
+      } catch (Exception e) {
+         logger.log(Level.SEVERE, "Error invokeSetter: {0}", e.getMessage());
+      }
+   }
 }

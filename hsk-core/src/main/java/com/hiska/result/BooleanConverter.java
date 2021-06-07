@@ -18,14 +18,13 @@ import javax.persistence.Converter;
  */
 @Converter
 public class BooleanConverter implements AttributeConverter<Boolean, String> {
+   @Override
+   public String convertToDatabaseColumn(Boolean param) {
+      return param != null && param ? "T" : "F";
+   }
 
-    @Override
-    public String convertToDatabaseColumn(Boolean param) {
-        return param != null && param ? "T" : "F";
-    }
-
-    @Override
-    public Boolean convertToEntityAttribute(String valor) {
-        return valor != null && "T".equals(valor);
-    }
+   @Override
+   public Boolean convertToEntityAttribute(String valor) {
+      return valor != null && "T".equals(valor);
+   }
 }

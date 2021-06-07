@@ -17,24 +17,23 @@ import javax.faces.event.PhaseListener;
 import javax.servlet.http.HttpServletResponse;
 
 public class ViewCacheListener implements PhaseListener {
+   @Override
+   public PhaseId getPhaseId() {
+      return PhaseId.RENDER_RESPONSE;
+   }
 
-    @Override
-    public PhaseId getPhaseId() {
-        return PhaseId.RENDER_RESPONSE;
-    }
+   @Override
+   public void afterPhase(PhaseEvent event) {
+   }
 
-    @Override
-    public void afterPhase(PhaseEvent event) {
-    }
-
-    @Override
-    public void beforePhase(PhaseEvent event) {
-        FacesContext facesContext = event.getFacesContext();
-        HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
-        response.setHeader("Pragma", "no-cache");
-        response.setHeader("Cache-Control", "no-cache");
-        response.setHeader("Cache-Control", "no-store");
-        response.setHeader("Cache-Control", "must-revalidate");
-        response.setHeader("Expires", "Mon, 8 Aug 2006 10:00:00 GMT");
-    }
+   @Override
+   public void beforePhase(PhaseEvent event) {
+      FacesContext facesContext = event.getFacesContext();
+      HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
+      response.setHeader("Pragma", "no-cache");
+      response.setHeader("Cache-Control", "no-cache");
+      response.setHeader("Cache-Control", "no-store");
+      response.setHeader("Cache-Control", "must-revalidate");
+      response.setHeader("Expires", "Mon, 8 Aug 2006 10:00:00 GMT");
+   }
 }

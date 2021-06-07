@@ -22,20 +22,19 @@ import javax.persistence.Converter;
  */
 @Converter(autoApply = true)
 public class JsonArrayConverter implements AttributeConverter<JsonArray, String> {
+   @Override
+   public String convertToDatabaseColumn(JsonArray ja) {
+      return ja == null ? null : ja.toString();
+   }
 
-    @Override
-    public String convertToDatabaseColumn(JsonArray ja) {
-        return ja == null ? null : ja.toString();
-    }
-
-    @Override
-    public JsonArray convertToEntityAttribute(String value) {
-        JsonArray ja = Json.createArrayBuilder().build();
-        if (value != null) {
-            try ( JsonReader jsonReader = Json.createReader(new StringReader(value))) {
-                ja = jsonReader.readArray();
-            }
-        }
-        return ja;
-    }
+   @Override
+   public JsonArray convertToEntityAttribute(String value) {
+      JsonArray ja = Json.createArrayBuilder().build();
+      if (value != null) {
+         try (JsonReader jsonReader = Json.createReader(new StringReader(value))) {
+            ja = jsonReader.readArray();
+         }
+      }
+      return ja;
+   }
 }

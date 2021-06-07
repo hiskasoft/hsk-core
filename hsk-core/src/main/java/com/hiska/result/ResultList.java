@@ -29,39 +29,38 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ResultList<T> extends Result implements Serializable {
+   /**
+    * List of Object
+    */
+   private List<T> value;
 
-    /**
-     * List of Object
-     */
-    private List<T> value;
+   public ResultList() {
+   }
 
-    public ResultList() {
-    }
+   public ResultList(List<T> value) {
+      this.value = value;
+   }
 
-    public ResultList(List<T> value) {
-        this.value = value;
-    }
+   public ResultList(List<T> value, Result other) {
+      super(other);
+      this.value = value;
+   }
 
-    public ResultList(List<T> value, Result other) {
-        super(other);
-        this.value = value;
-    }
+   public ResultList(Result other) {
+      super(other);
+   }
 
-    public ResultList(Result other) {
-        super(other);
-    }
+   public <R extends Serializable> ResultList<R> mapper(Function<T, R> mapper) {
+      List<R> list = null;
+      if (value != null) {
+         list = value.stream().map(mapper).collect(toList());
+      }
+      return new ResultList<>(list, this);
+   }
 
-    public <R extends Serializable> ResultList<R> mapper(Function<T, R> mapper) {
-        List<R> list = null;
-        if (value != null) {
-            list = value.stream().map(mapper).collect(toList());
-        }
-        return new ResultList<>(list, this);
-    }
-
-    public void ifSuccess(Consumer<List<T>> caller) {
-        if (isSuccess()) {
-            caller.accept(value);
-        }
-    }
+   public void ifSuccess(Consumer<List<T>> caller) {
+      if (isSuccess()) {
+         caller.accept(value);
+      }
+   }
 }

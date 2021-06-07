@@ -21,32 +21,31 @@ import javax.persistence.Converter;
  */
 @Converter(autoApply = true)
 public class ParamListConverter implements AttributeConverter<List<Param>, String> {
+   @Override
+   public String convertToDatabaseColumn(List<Param> paramList) {
+      StringBuilder result = new StringBuilder();
+      if (paramList != null) {
+         paramList.stream()
+               .filter(it -> it != null)
+               .map(it -> it.getValue())
+               .filter(it -> it != null)
+               .forEach(v -> {
+                  result.append(v).append(";");
+               });
+      }
+      return result.toString();
+   }
 
-    @Override
-    public String convertToDatabaseColumn(List<Param> paramList) {
-        StringBuilder result = new StringBuilder();
-        if (paramList != null) {
-            paramList.stream()
-                    .filter(it -> it != null)
-                    .map(it -> it.getValue())
-                    .filter(it -> it != null)
-                    .forEach(v -> {
-                        result.append(v).append(";");
-                    });
-        }
-        return result.toString();
-    }
-
-    @Override
-    public List<Param> convertToEntityAttribute(String value) {
-        List<Param> result = new ArrayList<>();
-        if (value != null) {
-            Stream.of(value.split(";"))
-                    .filter(it -> it != null)
-                    .filter(it -> !it.isEmpty())
-                    .map(it -> Param.of(it, "DB_" + it))
-                    .forEach(result::add);
-        }
-        return result;
-    }
+   @Override
+   public List<Param> convertToEntityAttribute(String value) {
+      List<Param> result = new ArrayList<>();
+      if (value != null) {
+         Stream.of(value.split(";"))
+               .filter(it -> it != null)
+               .filter(it -> !it.isEmpty())
+               .map(it -> Param.of(it, "DB_" + it))
+               .forEach(result::add);
+      }
+      return result;
+   }
 }

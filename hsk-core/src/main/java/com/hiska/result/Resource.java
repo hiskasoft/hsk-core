@@ -29,51 +29,50 @@ import lombok.ToString;
 @AllArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Resource implements Serializable {
+   private String path;
+   private String description;
+   private String rol;
+   private List<Resource> items;
 
-    private String path;
-    private String description;
-    private String rol;
-    private List<Resource> items;
+   public void addItem(Resource it) {
+      if (items == null) {
+         items = new ArrayList<>();
+      }
+      items.add(it);
+   }
 
-    public void addItem(Resource it) {
-        if (items == null) {
-            items = new ArrayList<>();
-        }
-        items.add(it);
-    }
+   public void addAllItem(List<Resource> its) {
+      if (items == null) {
+         items = new ArrayList<>();
+      }
+      items.addAll(its);
+   }
 
-    public void addAllItem(List<Resource> its) {
-        if (items == null) {
-            items = new ArrayList<>();
-        }
-        items.addAll(its);
-    }
+   public Map<String, Resource> getItemAsMap() {
+      if (items == null) {
+         return Collections.emptyMap();
+      }
+      return items.stream().collect(Collectors.toMap(it -> it.path, it -> it));
+   }
 
-    public Map<String, Resource> getItemAsMap() {
-        if (items == null) {
-            return Collections.emptyMap();
-        }
-        return items.stream().collect(Collectors.toMap(it -> it.path, it -> it));
-    }
-
-    public Resource findRecursoByRuta(String value) {
-        if (value == null || value.isEmpty()) {
-            return null;
-        }
-        if (value.equals(path)) {
-            return this;
-        }
-        if (items == null) {
-            return null;
-        }
-        for (Resource item : items) {
+   public Resource findRecursoByRuta(String value) {
+      if (value == null || value.isEmpty()) {
+         return null;
+      }
+      if (value.equals(path)) {
+         return this;
+      }
+      if (items == null) {
+         return null;
+      }
+      for (Resource item : items) {
+         if (item != null) {
+            item = item.findRecursoByRuta(value);
             if (item != null) {
-                item = item.findRecursoByRuta(value);
-                if (item != null) {
-                    return item;
-                }
+               return item;
             }
-        }
-        return null;
-    }
+         }
+      }
+      return null;
+   }
 }

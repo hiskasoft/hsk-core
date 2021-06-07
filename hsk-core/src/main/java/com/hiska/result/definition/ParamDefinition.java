@@ -22,50 +22,49 @@ import java.util.Map;
 @lombok.Getter
 @lombok.ToString
 public class ParamDefinition implements Definition<Param> {
+   private final String domain;
+   private final String classifier;
+   private final boolean integrity;
+   private final Method getter;
+   private final Method setter;
 
-    private final String domain;
-    private final String classifier;
-    private final boolean integrity;
-    private final Method getter;
-    private final Method setter;
+   public ParamDefinition(Class aClass, Field field, ParamElement element) {
+      domain = assertDomainName(element.domain(), aClass);
+      classifier = assertClassifierName(element.classifier(), field);
+      integrity = element.integrity();
+      getter = Common.assertGetter(field, field.getDeclaringClass());
+      setter = Common.assertSetter(field, field.getDeclaringClass(), Param.class);
+   }
 
-    public ParamDefinition(Class aClass, Field field, ParamElement element) {
-        domain = assertDomainName(element.domain(), aClass);
-        classifier = assertClassifierName(element.classifier(), field);
-        integrity = element.integrity();
-        getter = Common.assertGetter(field, field.getDeclaringClass());
-        setter = Common.assertSetter(field, field.getDeclaringClass(), Param.class);
-    }
+   private static final Map<String, List<ParamDefinition>> CACHE = new HashMap<>();
 
-    private static final Map<String, List<ParamDefinition>> CACHE = new HashMap<>();
-
-    public static List<ParamDefinition> get(Class<?> aClass) {
-        List<ParamDefinition> items = CACHE.get(aClass.getName());
-        if (items == null) {
-            items = new ArrayList<>();
-            CACHE.put(aClass.getName(), items);
-            for (Field field : Common.assertAllField(aClass)) {
-                ParamElement element = field.getAnnotation(ParamElement.class);
-                if (element != null) {
-                    ParamDefinition item = new ParamDefinition(aClass, field, element);
-                    items.add(item);
-                }
+   public static List<ParamDefinition> get(Class<?> aClass) {
+      List<ParamDefinition> items = CACHE.get(aClass.getName());
+      if (items == null) {
+         items = new ArrayList<>();
+         CACHE.put(aClass.getName(), items);
+         for (Field field : Common.assertAllField(aClass)) {
+            ParamElement element = field.getAnnotation(ParamElement.class);
+            if (element != null) {
+               ParamDefinition item = new ParamDefinition(aClass, field, element);
+               items.add(item);
             }
-        }
-        return items;
-    }
+         }
+      }
+      return items;
+   }
 
-    private String assertDomainName(String domain, Class aClass) {
-        if (Common.isDefaultValue(domain)) {
-            domain = Common.getTableName(aClass);
-        }
-        return domain;
-    }
+   private String assertDomainName(String domain, Class aClass) {
+      if (Common.isDefaultValue(domain)) {
+         domain = Common.getTableName(aClass);
+      }
+      return domain;
+   }
 
-    private String assertClassifierName(String classifier, Field field) {
-        if (Common.isDefaultValue(classifier)) {
-            classifier = Common.getColumnName(field);
-        }
-        return classifier;
-    }
+   private String assertClassifierName(String classifier, Field field) {
+      if (Common.isDefaultValue(classifier)) {
+         classifier = Common.getColumnName(field);
+      }
+      return classifier;
+   }
 }

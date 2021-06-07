@@ -18,35 +18,34 @@ import javax.faces.application.ConfigurableNavigationHandlerWrapper;
 import javax.faces.context.FacesContext;
 
 public class NavegationRedirectHandler extends ConfigurableNavigationHandlerWrapper {
+   private static final String UIVIEWACTION_BROADCAST = "javax.faces.ViewAction.broadcast";
+   private final ConfigurableNavigationHandler wrapped;
 
-    private static final String UIVIEWACTION_BROADCAST = "javax.faces.ViewAction.broadcast";
-    private final ConfigurableNavigationHandler wrapped;
+   public NavegationRedirectHandler(ConfigurableNavigationHandler wrapped) {
+      this.wrapped = wrapped;
+   }
 
-    public NavegationRedirectHandler(ConfigurableNavigationHandler wrapped) {
-        this.wrapped = wrapped;
-    }
+   @Override
+   public ConfigurableNavigationHandler getWrapped() {
+      return wrapped;
+   }
 
-    @Override
-    public ConfigurableNavigationHandler getWrapped() {
-        return wrapped;
-    }
-
-    @Override
-    public void handleNavigation(FacesContext context, String fromAction, String outcome) {
-        Map<Object, Object> attrs = context.getAttributes();
-        attrs.put(UIVIEWACTION_BROADCAST, Boolean.TRUE);
-        if (outcome != null && !outcome.isEmpty()) {
-            Map<String, Object> dirMap = new HashMap<>();
-            Map<String, Object> sessionScope = context.getExternalContext().getSessionMap();
-            sessionScope.put("DIR_MAP", dirMap);
-            Map<String, Object> viewMap = context.getViewRoot().getViewMap();
-            viewMap.forEach((k, v) -> {
-                ViewKeeped scope = v.getClass().getAnnotation(ViewKeeped.class);
-                if (scope != null) {
-                    dirMap.put(k, v);
-                }
-            });
-        }
-        wrapped.handleNavigation(context, fromAction, outcome);
-    }
+   @Override
+   public void handleNavigation(FacesContext context, String fromAction, String outcome) {
+      Map<Object, Object> attrs = context.getAttributes();
+      attrs.put(UIVIEWACTION_BROADCAST, Boolean.TRUE);
+      if (outcome != null && !outcome.isEmpty()) {
+         Map<String, Object> dirMap = new HashMap<>();
+         Map<String, Object> sessionScope = context.getExternalContext().getSessionMap();
+         sessionScope.put("DIR_MAP", dirMap);
+         Map<String, Object> viewMap = context.getViewRoot().getViewMap();
+         viewMap.forEach((k, v) -> {
+            ViewKeeped scope = v.getClass().getAnnotation(ViewKeeped.class);
+            if (scope != null) {
+               dirMap.put(k, v);
+            }
+         });
+      }
+      wrapped.handleNavigation(context, fromAction, outcome);
+   }
 }

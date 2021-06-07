@@ -32,196 +32,195 @@ import lombok.ToString;
 @EqualsAndHashCode
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Result implements Serializable {
+   public static final String SUCCESS = "success";
+   public static final String ERROR = "error";
+   /**
+    * String Flag attribute for outcome result
+    */
+   private String outcome = SUCCESS;
+   /**
+    * List of Message
+    */
+   private final List<Message> messages;
+   /**
+    * Date Response
+    */
+   private Date at = new Date();
 
-    public static final String SUCCESS = "success";
-    public static final String ERROR = "error";
-    /**
-     * String Flag attribute for outcome result
-     */
-    private String outcome = SUCCESS;
-    /**
-     * List of Message
-     */
-    private final List<Message> messages;
-    /**
-     * Date Response
-     */
-    private Date at = new Date();
+   public Result() {
+      messages = new ArrayList<>();
+   }
 
-    public Result() {
-        messages = new ArrayList<>();
-    }
+   public Result(final Result other) {
+      outcome = other.outcome;
+      messages = new ArrayList<>(other.messages);
+   }
 
-    public Result(final Result other) {
-        outcome = other.outcome;
-        messages = new ArrayList<>(other.messages);
-    }
+   public void addMessage(final Message message) {
+      if (message != null) {
+         if (messages.isEmpty()) {
+            boolean isSuccess = message.getLevel() == Message.Level.info;
+            setSuccess(isSuccess);
+         }
+         messages.add(message);
+      }
+   }
 
-    public void addMessage(final Message message) {
-        if (message != null) {
-            if (messages.isEmpty()) {
-                boolean isSuccess = message.getLevel() == Message.Level.info;
-                setSuccess(isSuccess);
-            }
-            messages.add(message);
-        }
-    }
+   public void addAllMessage(final Collection<Message> allMessage) {
+      if (allMessage != null) {
+         allMessage.forEach(this::addMessage);
+      }
+   }
 
-    public void addAllMessage(final Collection<Message> allMessage) {
-        if (allMessage != null) {
-            allMessage.forEach(this::addMessage);
-        }
-    }
+   /**
+    * Clear all messages
+    */
+   public void clearMessage() {
+      messages.clear();
+   }
 
-    /**
-     * Clear all messages
-     */
-    public void clearMessage() {
-        messages.clear();
-    }
+   /**
+    * Outcome SUCCESS Clear all messages
+    */
+   public void reset() {
+      outcome = SUCCESS;
+      messages.clear();
+   }
 
-    /**
-     * Outcome SUCCESS Clear all messages
-     */
-    public void reset() {
-        outcome = SUCCESS;
-        messages.clear();
-    }
+   /**
+    * Create a simple Result Object
+    *
+    * @return
+    */
+   public Result asResult() {
+      return new Result(this);
+   }
 
-    /**
-     * Create a simple Result Object
-     *
-     * @return
-     */
-    public Result asResult() {
-        return new Result(this);
-    }
+   /**
+    * Create and add a new Message
+    *
+    * @return
+    */
+   public MessageBuilder message() {
+      return MessageBuilder.create()
+            .set(messages::add);
+   }
 
-    /**
-     * Create and add a new Message
-     *
-     * @return
-     */
-    public MessageBuilder message() {
-        return MessageBuilder.create()
-                .set(messages::add);
-    }
+   /**
+    * Create and add a new Message Text Message in format XXX-####: Text
+    * <p>
+    * XXX is a PREFIX
+    * </p>
+    * <p>
+    * #### is a Number
+    * </p>
+    * <p>
+    * 0### is INFO
+    * </p>
+    * <p>
+    * 1### is INFO
+    * </p>
+    * <p>
+    * 2### is WARN
+    * </p>
+    * <p>
+    * 3### is ERROR
+    * </p>
+    * <p>
+    * 9### is FATAL
+    * </p>
+    *
+    * @param  text
+    * @return
+    */
+   public MessageBuilder message(String text) {
+      return MessageBuilder.create(text)
+            .set(messages::add);
+   }
 
-    /**
-     * Create and add a new Message Text Message in format XXX-####: Text
-     * <p>
-     * XXX is a PREFIX
-     * </p>
-     * <p>
-     * #### is a Number
-     * </p>
-     * <p>
-     * 0### is INFO
-     * </p>
-     * <p>
-     * 1### is INFO
-     * </p>
-     * <p>
-     * 2### is WARN
-     * </p>
-     * <p>
-     * 3### is ERROR
-     * </p>
-     * <p>
-     * 9### is FATAL
-     * </p>
-     *
-     * @param text
-     * @return
-     */
-    public MessageBuilder message(String text) {
-        return MessageBuilder.create(text)
-                .set(messages::add);
-    }
+   public void ifSuccess(Runnable caller) {
+      if (isSuccess()) {
+         caller.run();
+      }
+   }
 
-    public void ifSuccess(Runnable caller) {
-        if (isSuccess()) {
-            caller.run();
-        }
-    }
+   public void ifError(Runnable caller) {
+      if (!isSuccess()) {
+         caller.run();
+      }
+   }
 
-    public void ifError(Runnable caller) {
-        if (!isSuccess()) {
-            caller.run();
-        }
-    }
+   @XmlElement
+   public boolean isSuccess() {
+      return SUCCESS.equalsIgnoreCase(outcome);
+   }
 
-    @XmlElement
-    public boolean isSuccess() {
-        return SUCCESS.equalsIgnoreCase(outcome);
-    }
+   @XmlElement
+   public boolean isError() {
+      return ERROR.equalsIgnoreCase(outcome);
+   }
 
-    @XmlElement
-    public boolean isError() {
-        return ERROR.equalsIgnoreCase(outcome);
-    }
+   public void setSuccess(boolean value) {
+      outcome = value ? SUCCESS : ERROR;
+   }
 
-    public void setSuccess(boolean value) {
-        outcome = value ? SUCCESS : ERROR;
-    }
+   public void setError(boolean value) {
+      outcome = value ? ERROR : SUCCESS;
+   }
 
-    public void setError(boolean value) {
-        outcome = value ? ERROR : SUCCESS;
-    }
+   public boolean isOutcome(String name) {
+      return name != null && name.equalsIgnoreCase(outcome);
+   }
 
-    public boolean isOutcome(String name) {
-        return name != null && name.equalsIgnoreCase(outcome);
-    }
+   /**
+    * Append Messages and Behaviors to Result Message is included Behavior is
+    * included
+    *
+    * @param result
+    */
+   public void append(Result result) {
+      outcome = result.outcome;
+      addAllMessage(result.messages);
+   }
 
-    /**
-     * Append Messages and Behaviors to Result Message is included Behavior is
-     * included
-     *
-     * @param result
-     */
-    public void append(Result result) {
-        outcome = result.outcome;
-        addAllMessage(result.messages);
-    }
+   /**
+    * Accept Messages and Behaviors to Result Message is replaced Behavior is
+    * replaced
+    *
+    * @param result
+    */
+   public void accept(Result result) {
+      outcome = result.outcome;
+      messages.clear();
+      addAllMessage(result.messages);
+   }
 
-    /**
-     * Accept Messages and Behaviors to Result Message is replaced Behavior is
-     * replaced
-     *
-     * @param result
-     */
-    public void accept(Result result) {
-        outcome = result.outcome;
-        messages.clear();
-        addAllMessage(result.messages);
-    }
+   /**
+    * Throw a new ResultException if not success
+    *
+    * @param message
+    */
+   public void throwException(String message) {
+      if (!isSuccess()) {
+         throw new ResultException(message, this);
+      }
+   }
 
-    /**
-     * Throw a new ResultException if not success
-     *
-     * @param message
-     */
-    public void throwException(String message) {
-        if (!isSuccess()) {
-            throw new ResultException(message, this);
-        }
-    }
+   private static final Logger LOGGER = Logger.getLogger(Result.class.getName());
 
-    private static final Logger LOGGER = Logger.getLogger(Result.class.getName());
+   /**
+    * Create Log Result
+    */
+   public void log() {
+      log("==");
+   }
 
-    /**
-     * Create Log Result
-     */
-    public void log() {
-        log("==");
-    }
-
-    /**
-     * Create Log Result
-     *
-     * @param title title log
-     */
-    public void log(String title) {
-        LOGGER.log(Level.INFO, "Result:{0}|Outcome={1}|Messages={2}|This={4}", new Object[]{title, outcome, messages, this});
-    }
+   /**
+    * Create Log Result
+    *
+    * @param title title log
+    */
+   public void log(String title) {
+      LOGGER.log(Level.INFO, "Result:{0}|Outcome={1}|Messages={2}|This={4}", new Object[]{title, outcome, messages, this});
+   }
 }

@@ -23,27 +23,26 @@ import lombok.ToString;
 @ToString
 @ApplicationException(rollback = true)
 public class ResultException extends RuntimeException {
+   private Result result;
 
-    private Result result;
+   public ResultException() {
+   }
 
-    public ResultException() {
-    }
+   public ResultException(Throwable cause) {
+      super(cause);
+   }
 
-    public ResultException(Throwable cause) {
-        super(cause);
-    }
+   public ResultException(Result result) {
+      this.result = result;
+   }
 
-    public ResultException(Result result) {
-        this.result = result;
-    }
+   public ResultException(String message, Result result) {
+      super(message);
+      this.result = result;
+   }
 
-    public ResultException(String message, Result result) {
-        super(message);
-        this.result = result;
-    }
-
-    public ResultException(Result result, Throwable cause) {
-        super(cause);
-        this.result = result;
-    }
+   public ResultException(Result result, Throwable cause) {
+      super(cause);
+      this.result = result;
+   }
 }

@@ -22,20 +22,19 @@ import javax.persistence.Converter;
  */
 @Converter(autoApply = true)
 public class JsonObjectConverter implements AttributeConverter<JsonObject, String> {
+   @Override
+   public String convertToDatabaseColumn(JsonObject jo) {
+      return jo == null ? null : jo.toString();
+   }
 
-    @Override
-    public String convertToDatabaseColumn(JsonObject jo) {
-        return jo == null ? null : jo.toString();
-    }
-
-    @Override
-    public JsonObject convertToEntityAttribute(String value) {
-        JsonObject jo = Json.createObjectBuilder().build();
-        if (value != null) {
-            try ( JsonReader jsonReader = Json.createReader(new StringReader(value))) {
-                jo = jsonReader.readObject();
-            }
-        }
-        return jo;
-    }
+   @Override
+   public JsonObject convertToEntityAttribute(String value) {
+      JsonObject jo = Json.createObjectBuilder().build();
+      if (value != null) {
+         try (JsonReader jsonReader = Json.createReader(new StringReader(value))) {
+            jo = jsonReader.readObject();
+         }
+      }
+      return jo;
+   }
 }
