@@ -12,16 +12,15 @@ package com.hiska.faces.bean;
 
 import com.hiska.faces.ContextUtil;
 import com.hiska.faces.application.FacesResultMessage;
+import com.hiska.result.Filter;
 import com.hiska.result.*;
 import java.io.IOException;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * @author Willyams Yujra
@@ -180,14 +179,14 @@ public class HelpDefaultBean {
       } else // if(o == null)
       {
          message = new Message();
-         message.setCode("000");
+         message.setLevel(Message.Level.WARNING);
+         message.setCode("HTTP-301");
          message.setTitle("Error no reportado");
          message.setDescription("Error no reportado o no codificado en las excepciones");
          message.addCause("No se reporto ningun error a visualizar.");
          message.addCause("La exception no esta codificada.");
          message.addCause("Acceso directo a la pagina de error.");
          message.setAction("Consulte con el adminstrador del sistema.");
-         message.setLevel(Message.Level.warn);
       }
       return message;
    }

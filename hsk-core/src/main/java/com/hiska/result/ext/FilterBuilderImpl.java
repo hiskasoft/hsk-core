@@ -192,6 +192,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
          if (pagination != null) {
             if (pagination.getLength() == -1) {
                int count = getCount(em).intValue();
+               System.out.println("---->" + count);
                int size = pagination.getSize();
                int length = count / size;
                if (length * size != count) {

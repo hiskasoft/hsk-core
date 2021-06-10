@@ -12,8 +12,7 @@ package com.hiska.faces.application;
 
 import com.hiska.result.Message;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import javax.faces.application.FacesMessage;
 
 /**
@@ -61,10 +60,11 @@ public class FacesResultMessage extends FacesMessage {
       action = message.getAction();
       date = format.format(new Date());
       Message.Level level = message.getLevel();
-      Severity severity = level == Message.Level.fatal ? FacesMessage.SEVERITY_FATAL
-            : level == Message.Level.error ? FacesMessage.SEVERITY_ERROR
-                  : level == Message.Level.info ? FacesMessage.SEVERITY_INFO
-                        : level == Message.Level.warn ? FacesMessage.SEVERITY_WARN : FacesMessage.SEVERITY_INFO;
+      Severity severity = level == Message.Level.FATAL ? FacesMessage.SEVERITY_FATAL
+            : level == Message.Level.ERROR ? FacesMessage.SEVERITY_ERROR
+                  : level == Message.Level.SUCCESS ? FacesMessage.SEVERITY_INFO
+                        : level == Message.Level.INFO ? FacesMessage.SEVERITY_INFO
+                              : level == Message.Level.WARNING ? FacesMessage.SEVERITY_WARN : null;
       setSeverity(severity);
    }
 

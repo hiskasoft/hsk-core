@@ -13,8 +13,7 @@ package com.hiska.result;
 import com.hiska.result.ext.MessageBuilder;
 import java.io.Serializable;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 import javax.xml.bind.annotation.*;
 import lombok.*;
 
@@ -53,7 +52,7 @@ public class Result implements Serializable {
    public void addMessage(final Message message) {
       if (message != null) {
          if (messages.isEmpty()) {
-            boolean isSuccess = message.getLevel() == Message.Level.info;
+            boolean isSuccess = message.getLevel() == Message.Level.SUCCESS;
             setSuccess(isSuccess);
          }
          messages.add(message);

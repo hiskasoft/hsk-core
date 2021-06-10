@@ -10,12 +10,10 @@
  */
 package com.hiska.jaxrs.ext;
 
-import com.hiska.result.ext.MessageBuilder;
 import com.hiska.result.Result;
-import javax.validation.ConstraintViolationException;
-import javax.validation.Path;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import com.hiska.result.ext.MessageBuilder;
+import javax.validation.*;
+import javax.ws.rs.core.*;
 import javax.ws.rs.ext.Provider;
 
 /**
@@ -34,9 +32,9 @@ public class ValidationExceptionMapper extends JaxrsExceptionMapper<ConstraintVi
 
    @Override
    public Response processResponse(ConstraintViolationException exception) {
-      MessageBuilder mb = MessageBuilder.create("APP-2001: Parametros invalidos")
+      MessageBuilder mb = MessageBuilder.create("APP-4001: Parametros invalidos")
             .title("Validacion")
-            .warn();
+            .error();
       exception.getConstraintViolations()
             .stream()
             .forEach(it -> {

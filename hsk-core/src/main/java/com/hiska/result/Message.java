@@ -27,16 +27,18 @@ public class Message implements Serializable {
     * Level Message
     */
    public static enum Level {
-      info,
-      warn,
-      error,
-      fatal
+      NONE,
+      INFO,
+      SUCCESS,
+      WARNING,
+      ERROR,
+      FATAL;
    }
 
    /**
     * Level Message
     */
-   private Level level = Level.info;
+   private Level level;
    /**
     * Code Message
     */
@@ -113,5 +115,33 @@ public class Message implements Serializable {
       causes.addAll(other.causes);
       traces.clear();
       traces.addAll(other.traces);
+   }
+
+   public static Level typeOf(String code) {
+      if (code.startsWith("HTTP-1")) {
+         return Message.Level.INFO;
+      } else if (code.startsWith("HTTP-2")) {
+         return Message.Level.SUCCESS;
+      } else if (code.startsWith("HTTP-3")) {
+         return Message.Level.WARNING;
+      } else if (code.startsWith("HTTP-4")) {
+         return Message.Level.ERROR;
+      } else if (code.startsWith("HTTP-5")) {
+         return Message.Level.FATAL;
+      } else if (code.contains("-0")) {
+         return Message.Level.NONE;
+      } else if (code.contains("-1")) {
+         return Message.Level.INFO;
+      } else if (code.contains("-2")) {
+         return Message.Level.SUCCESS;
+      } else if (code.contains("-3")) {
+         return Message.Level.WARNING;
+      } else if (code.contains("-4")) {
+         return Message.Level.ERROR;
+      } else if (code.contains("-5")) {
+         return Message.Level.FATAL;
+      } else {
+         return Message.Level.NONE;
+      }
    }
 }

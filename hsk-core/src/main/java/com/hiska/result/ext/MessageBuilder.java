@@ -24,15 +24,27 @@ import lombok.ToString;
 @ToString
 public class MessageBuilder {
    public static Message createMessageInfo(String description) {
-      return new Message(Message.Level.info, description);
+      return new Message(Message.Level.INFO, description);
+   }
+
+   public static Message createMessageSuccess(String description) {
+      return new Message(Message.Level.SUCCESS, description);
+   }
+
+   public static Message createMessageWarning(String description) {
+      return new Message(Message.Level.WARNING, description);
    }
 
    public static Message createMessageError(String description) {
-      return new Message(Message.Level.error, description);
+      return new Message(Message.Level.ERROR, description);
+   }
+
+   public static Message createMessageFatal(String description) {
+      return new Message(Message.Level.FATAL, description);
    }
 
    public static Message createMessageFatal(Throwable root) {
-      return MessageBuilder.create("HSK-2000: Exception no controlada")
+      return MessageBuilder.create("APP-9000: Exception no controlada")
             .description("Ha ocurrido una excepcion no controlada en el servidor")
             .exception(root)
             .get();
@@ -80,28 +92,45 @@ public class MessageBuilder {
       return this;
    }
 
+   public MessageBuilder code(String value) {
+      message.setCode(value);
+      return this;
+   }
+
+   public MessageBuilder codeLevel(String value) {
+      message.setCode(value);
+      Message.Level level = Message.typeOf(value);
+      message.setLevel(level);
+      return this;
+   }
+
    public MessageBuilder level(Message.Level value) {
       message.setLevel(value);
       return this;
    }
 
    public MessageBuilder info() {
-      message.setLevel(Message.Level.info);
+      message.setLevel(Message.Level.INFO);
+      return this;
+   }
+
+   public MessageBuilder success() {
+      message.setLevel(Message.Level.SUCCESS);
+      return this;
+   }
+
+   public MessageBuilder warning() {
+      message.setLevel(Message.Level.WARNING);
       return this;
    }
 
    public MessageBuilder error() {
-      message.setLevel(Message.Level.error);
+      message.setLevel(Message.Level.ERROR);
       return this;
    }
 
    public MessageBuilder fatal() {
-      message.setLevel(Message.Level.fatal);
-      return this;
-   }
-
-   public MessageBuilder warn() {
-      message.setLevel(Message.Level.warn);
+      message.setLevel(Message.Level.FATAL);
       return this;
    }
 
@@ -146,7 +175,7 @@ public class MessageBuilder {
       return this;
    }
 
-   private static final Pattern TXT_CODE = Pattern.compile("([A-Z]{3,5}-[0-9]{3,5}):(.*)", Pattern.DOTALL);
+   private static final Pattern CODE_MESSAGE = Pattern.compile("([A-Z]{3,5}-[0-9]{3,5}):(.*)", Pattern.DOTALL);
 
    /**
     * Text Message in format XXX-####: Text
@@ -157,19 +186,22 @@ public class MessageBuilder {
     * #### is a Number
     * </p>
     * <p>
-    * 0### is INFO
+    * 0### is NONE
     * </p>
     * <p>
     * 1### is INFO
     * </p>
     * <p>
-    * 2### is WARN
+    * 2### is SUCCESS
     * </p>
     * <p>
-    * 3### is ERROR
+    * 3### is WARNING
     * </p>
     * <p>
-    * 9### is FATAL
+    * 4### is ERROR
+    * </p>
+    * <p>
+    * 5### is FATAL
     * </p>
     *
     * @param  text
@@ -177,27 +209,12 @@ public class MessageBuilder {
     */
    public MessageBuilder text(String text) {
       if (text != null) {
-         Matcher matcher = TXT_CODE.matcher(text);
+         Matcher matcher = CODE_MESSAGE.matcher(text);
          if (matcher.find()) {
             String code = matcher.group(1).trim();
             String desc = matcher.group(2).trim();
             message.setCode(code);
             message.setTitle(desc);
-            if (code.startsWith("HTTP-2")) {
-               message.setLevel(Message.Level.info);
-            } else if (code.startsWith("HTTP-4")) {
-               message.setLevel(Message.Level.error);
-            } else if (code.startsWith("HTTP-5")) {
-               message.setLevel(Message.Level.fatal);
-            } else if (code.contains("-0") || code.contains("-1")) {
-               message.setLevel(Message.Level.info);
-            } else if (code.contains("-2")) {
-               message.setLevel(Message.Level.warn);
-            } else if (code.contains("-3")) {
-               message.setLevel(Message.Level.error);
-            } else if (code.contains("-9")) {
-               message.setLevel(Message.Level.fatal);
-            }
          } else {
             message.setTitle(text);
          }
@@ -225,11 +242,6 @@ public class MessageBuilder {
          return null;
       }
       return ste.getClassName() + "::" + ste.getMethodName() + "(" + ste.getFileName() + ":" + ste.getLineNumber() + ")";
-   }
-
-   public MessageBuilder code(String value) {
-      message.setCode(value);
-      return this;
    }
 
    public MessageBuilder set(Consumer<Message> caller) {
@@ -340,6 +352,6 @@ public class MessageBuilder {
 
    private String getOutcome() {
       Message.Level level = message.getLevel();
-      return level == Message.Level.info ? "success" : "error";
+      return level == Message.Level.SUCCESS ? "success" : "error";
    }
 }

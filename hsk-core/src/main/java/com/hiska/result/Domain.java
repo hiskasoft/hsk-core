@@ -21,18 +21,32 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = {"value"})
+@EqualsAndHashCode(of = {"name"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Domain implements Serializable {
-   private String code;
-   private String classifier;
-   private String value;
-
-   public static Domain create(String code) {
-      return code == null ? null : create(code, "NONE");
+   public static enum Type {
+      LIST,
+      TREE
    }
 
-   public static Domain create(String code, String classifier) {
-      return new Domain(code, classifier, null);
+   public static final String NONE = "NONE";
+   private String name;
+   private String classifier;
+   private Type type;
+
+   public static Domain of(String code) {
+      return code == null ? null : of(code, NONE);
+   }
+
+   public static Domain of(String code, Type type) {
+      return code == null ? null : of(code, NONE, type);
+   }
+
+   public static Domain of(String code, String classifier) {
+      return new Domain(code, classifier, Type.LIST);
+   }
+
+   public static Domain of(String code, String classifier, Type type) {
+      return new Domain(code, classifier, type);
    }
 }
