@@ -15,7 +15,7 @@ import javax.ws.rs.HttpMethod;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@HttpMethod("DATA")
+@HttpMethod("CONFIG")
 @Documented
-public @interface DATA {
+public @interface CONFIG {
 }

@@ -10,6 +10,7 @@
  */
 package com.hiska.result.ext;
 
+import com.hiska.result.Message.Mode;
 import com.hiska.result.*;
 import java.util.*;
 import java.util.function.Consumer;
@@ -70,11 +71,12 @@ public class MessageBuilder {
    }
 
    private MessageBuilder() {
-      this.message = new Message();
+      message = new Message();
+      message.setMode(Mode.FLASH);
    }
 
    public MessageBuilder(Message internal) {
-      this.message = internal;
+      message = internal;
    }
 
    public MessageBuilder accept(MessageException e) {
@@ -154,13 +156,23 @@ public class MessageBuilder {
       return this;
    }
 
-   public MessageBuilder hide() {
-      message.setHide(true);
+   public MessageBuilder modeHide() {
+      message.setMode(Message.Mode.HIDE);
       return this;
    }
 
-   public MessageBuilder hide(boolean value) {
-      message.setHide(value);
+   public MessageBuilder modeAlert() {
+      message.setMode(Message.Mode.ALERT);
+      return this;
+   }
+
+   public MessageBuilder modeFlash() {
+      message.setMode(Message.Mode.FLASH);
+      return this;
+   }
+
+   public MessageBuilder mode(Message.Mode mode) {
+      message.setMode(mode);
       return this;
    }
 

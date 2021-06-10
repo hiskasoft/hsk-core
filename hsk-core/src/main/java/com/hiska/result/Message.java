@@ -36,6 +36,19 @@ public class Message implements Serializable {
    }
 
    /**
+    * Mode Message
+    */
+   public static enum Mode {
+      HIDE,
+      ALERT,
+      FLASH;
+   }
+
+   /**
+    * Level Message
+    */
+   private Mode mode;
+   /**
     * Level Message
     */
    private Level level;
@@ -63,10 +76,6 @@ public class Message implements Serializable {
     * Trace Error
     */
    private final List<String> traces = new ArrayList<>();
-   /**
-    * Hide
-    */
-   private boolean hide;
 
    public Message() {
    }
@@ -107,6 +116,7 @@ public class Message implements Serializable {
    }
 
    public void accept(Message other) {
+      mode = other.mode;
       level = other.level;
       code = other.code;
       title = other.title;
