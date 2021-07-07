@@ -10,11 +10,10 @@
  */
 package com.hiska.jaxrs.ext;
 
-import com.hiska.result.ext.MessageBuilder;
 import com.hiska.result.Result;
+import com.hiska.result.ext.MessageBuilder;
 import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.core.*;
 import javax.ws.rs.ext.Provider;
 
 /**
@@ -27,6 +26,7 @@ public class NotAuthorizedExceptionMapper extends JaxrsExceptionMapper<WebApplic
       Response.Status status = Response.Status.UNAUTHORIZED;
       Result result = MessageBuilder.create("HTTP-401: No autorizado")
             .exception(ex)
+            .trace(traceInfo())
             .asResult();
       return Response.status(status)
             .entity(result)

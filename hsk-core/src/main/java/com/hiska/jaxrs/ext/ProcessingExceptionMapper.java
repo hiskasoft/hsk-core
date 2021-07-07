@@ -10,11 +10,10 @@
  */
 package com.hiska.jaxrs.ext;
 
-import com.hiska.result.ext.MessageBuilder;
 import com.hiska.result.Result;
+import com.hiska.result.ext.MessageBuilder;
 import javax.ws.rs.ProcessingException;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.core.*;
 import javax.ws.rs.ext.Provider;
 
 /**
@@ -26,6 +25,7 @@ public class ProcessingExceptionMapper extends JaxrsExceptionMapper<ProcessingEx
    public Response processResponse(ProcessingException ex) {
       Result result = MessageBuilder.create("HTTP-400: Error al processar los parametros")
             .exception(ex)
+            .trace(traceInfo())
             .asResult();
       return Response.status(Response.Status.BAD_REQUEST)
             .entity(result)

@@ -76,6 +76,10 @@ public class Message implements Serializable {
     * Trace Error
     */
    private final List<String> traces = new ArrayList<>();
+   /**
+    * Action Message
+    */
+   private final Date at = new Date();
 
    public Message() {
    }
@@ -95,6 +99,10 @@ public class Message implements Serializable {
       causes.add(value);
    }
 
+   public void addAllCause(Collection<String> value) {
+      causes.addAll(value);
+   }
+
    public boolean isCauseEmpty() {
       return causes.isEmpty();
    }
@@ -105,6 +113,10 @@ public class Message implements Serializable {
 
    public void addTrace(String value) {
       traces.add(value);
+   }
+
+   public void addAllTrace(Collection<String> value) {
+      traces.addAll(value);
    }
 
    public boolean isTraceEmpty() {

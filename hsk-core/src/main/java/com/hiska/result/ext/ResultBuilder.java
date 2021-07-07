@@ -14,10 +14,22 @@ import com.hiska.result.*;
 import java.util.List;
 
 public class ResultBuilder {
+   public static Result successResult() {
+      Result result = new Result();
+      result.setSuccess(true);
+      return result;
+   }
+
    public static Result successResult(String message) {
       Result result = new Result();
       result.setSuccess(true);
       result.message(message);
+      return result;
+   }
+
+   public static Result errorResult() {
+      Result result = new Result();
+      result.setError(true);
       return result;
    }
 

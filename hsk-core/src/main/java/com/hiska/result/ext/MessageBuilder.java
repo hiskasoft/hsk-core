@@ -10,11 +10,11 @@
  */
 package com.hiska.result.ext;
 
-import com.hiska.result.Message.Mode;
 import com.hiska.result.*;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.regex.*;
+import javax.persistence.OptimisticLockException;
 import javax.validation.*;
 import javax.validation.groups.Default;
 import lombok.ToString;
@@ -72,7 +72,6 @@ public class MessageBuilder {
 
    private MessageBuilder() {
       message = new Message();
-      message.setMode(Mode.FLASH);
    }
 
    public MessageBuilder(Message internal) {
@@ -156,6 +155,11 @@ public class MessageBuilder {
       return this;
    }
 
+   public MessageBuilder cause(Collection<String> value) {
+      message.addAllCause(value);
+      return this;
+   }
+
    public MessageBuilder modeHide() {
       message.setMode(Message.Mode.HIDE);
       return this;
@@ -182,12 +186,24 @@ public class MessageBuilder {
    }
 
    public MessageBuilder trace(String name, Object value) {
-      String string = name + " = " + (value == null ? "NULL" : value.toString());
+      String string = formatName(name) + " : " + (value == null ? "NULL" : value.toString());
       message.addTrace(string);
       return this;
    }
 
-   private static final Pattern CODE_MESSAGE = Pattern.compile("([A-Z]{3,5}-[0-9]{3,5}):(.*)", Pattern.DOTALL);
+   public MessageBuilder trace(Collection<String> value) {
+      message.addAllTrace(value);
+      return this;
+   }
+
+   private String formatName(String name) {
+      if (name != null && name.length() < 10) {
+         name = (name + "          ").substring(0, 10);
+      }
+      return name;
+   }
+
+   private static final Pattern CODE_MESSAGE = Pattern.compile("([A-Z]{2,5}-[0-9]{3,5}):(.*)", Pattern.DOTALL);
 
    /**
     * Text Message in format XXX-####: Text
@@ -225,6 +241,9 @@ public class MessageBuilder {
          if (matcher.find()) {
             String code = matcher.group(1).trim();
             String desc = matcher.group(2).trim();
+            Message.Level level = Message.typeOf(code);
+            message.setMode(Message.Mode.FLASH);
+            message.setLevel(level);
             message.setCode(code);
             message.setTitle(desc);
          } else {
@@ -236,12 +255,15 @@ public class MessageBuilder {
 
    public MessageBuilder exception(Throwable root) {
       if (root != null) {
-         message.addTrace("Type: " + root.getClass().getName());
-         message.addTrace("Message: " + root.getMessage());
+         if (root instanceof OptimisticLockException) {
+            message.addCause("Un registro fue modificado o eliminado por otra transaccion");
+         }
+         trace("Type", root.getClass().getName());
+         trace("Message", root.getMessage());
          for (StackTraceElement it : root.getStackTrace()) {
             String line = format(it);
             if (line != null) {
-               message.addTrace(" -" + line);
+               trace(" -" + line);
             }
          }
          exception(root.getCause());
