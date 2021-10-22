@@ -21,22 +21,16 @@ import lombok.*;
 @ToString
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Pagination implements Serializable {
-   public enum Sort {
-      asc,
-      desc,
-      none
-   }
-
    /**
     * Size Block Result
     */
    private int size = 10;
    /**
-    * Index
+    * Page Index
     */
    private int index = 1;
    /**
-    * Max Length for index
+    * Max Pages for page index
     */
    private int length = -1;
    /**
@@ -44,13 +38,13 @@ public class Pagination implements Serializable {
     */
    private int count = 0;
    /**
-    * Sort Attribute
+    * From Index
     */
-   private String attr;
+   private int indexFrom = 0;
    /**
-    * Sort Mode
+    * To Index
     */
-   private Sort sort;
+   private int indexTo = 0;
 
    public static Pagination create(Pagination value) {
       return new Pagination(value);
@@ -64,27 +58,20 @@ public class Pagination implements Serializable {
          size = other.size;
          index = other.index;
          length = other.length;
-         attr = other.attr;
-         sort = other.sort;
+         count = other.count;
       }
    }
 
    public int getIndexFrom() {
       int aux = (index - 1) * size + 1;
-      return count == 0 ? 0 : aux;
+      indexFrom = count == 0 ? 0 : aux;
+      return indexFrom;
    }
 
    public int getIndexTo() {
       int aux = index * size;
-      return count == 0 ? 0 : aux < count ? aux : count;
-   }
-
-   public boolean hasSort() {
-      return sort != null && sort != Sort.none && attr != null && !attr.isEmpty();
-   }
-
-   public boolean withSort() {
-      return sort != null && attr != null && !attr.isEmpty();
+      indexTo = count == 0 ? 0 : aux < count ? aux : count;
+      return indexTo;
    }
 
    public void clean() {
@@ -92,11 +79,15 @@ public class Pagination implements Serializable {
       length = -1;
       index = 1;
       size = 10;
+      indexFrom = 0;
+      indexTo = 0;
    }
 
    public void reload() {
       count = 0;
       length = -1;
+      indexFrom = 0;
+      indexTo = 0;
    }
 
    public void setIndex(int value) {
@@ -113,30 +104,5 @@ public class Pagination implements Serializable {
 
    public void setSize(int value) {
       size = value < 5 ? 5 : value;
-   }
-
-   public boolean isSortAsc() {
-      return sort == Sort.asc;
-   }
-
-   public boolean isSortDesc() {
-      return sort == Sort.desc;
-   }
-
-   public boolean isSortNone() {
-      return sort == Sort.none;
-   }
-
-   public void sort(String name) {
-      if (name != null && name.equals(attr)) {
-         attr = name;
-         sort = sort == Sort.asc ? Sort.desc : sort == Sort.desc ? Sort.none : Sort.asc;
-      } else if (name != null) {
-         attr = name;
-         sort = Sort.asc;
-      } else {
-         attr = null;
-         sort = Sort.none;
-      }
    }
 }

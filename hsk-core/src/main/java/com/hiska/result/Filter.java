@@ -23,7 +23,7 @@ import lombok.*;
 @EqualsAndHashCode
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Filter<T> implements Serializable {
-   public static enum Expr {
+   public static enum Operator {
       none("", -1),
       eq("=", 1),
       neq("!=", 1),
@@ -37,11 +37,11 @@ public class Filter<T> implements Serializable {
       notNull("is not null", 0),
       in("in", 99);
 
-      private final String oper;
+      private final String value;
       private final int params;
 
-      Expr(String oper, int params) {
-         this.oper = oper;
+      Operator(String value, int params) {
+         this.value = value;
          this.params = params;
       }
 
@@ -49,8 +49,8 @@ public class Filter<T> implements Serializable {
          return params;
       }
 
-      public String oper() {
-         return oper;
+      public String alias() {
+         return value;
       }
 
       public boolean ignore() {
@@ -61,7 +61,7 @@ public class Filter<T> implements Serializable {
    /**
     * Expression Filter
     */
-   private Expr expr;
+   private Operator oper;
    /**
     * Value Filter
     */
@@ -78,54 +78,54 @@ public class Filter<T> implements Serializable {
    public Filter() {
    }
 
-   public Filter(Expr expr) {
-      this.expr = expr;
+   public Filter(Operator oper) {
+      this.oper = oper;
    }
 
    public Filter(T value) {
-      this(value, Expr.eq);
+      this(value, Operator.eq);
    }
 
-   public Filter(T value, Expr expr) {
+   public Filter(T value, Operator oper) {
       this.value = value;
-      this.expr = expr;
+      this.oper = oper;
    }
 
    public Filter(T value, T other) {
       this.value = value;
       this.other = other;
-      this.expr = Expr.bw;
+      this.oper = Operator.bw;
    }
 
    public Filter(List<T> values) {
       this.values = values;
-      this.expr = Expr.in;
+      this.oper = Operator.in;
    }
 
-   public Expr getExpr() {
-      if (expr == null) {
-         expr = Expr.none;
+   public Operator getOper() {
+      if (oper == null) {
+         oper = Operator.none;
       }
-      return expr;
+      return oper;
    }
 //    public boolean isWithParam() {
 //        return expr != null && expr.isWithParam();
 //    }
 
    public boolean isWithValue() {
-      return expr != null && expr.params() >= 1;
+      return oper != null && oper.params() >= 1;
    }
 
    public boolean isWithOther() {
-      return expr != null && expr.params() == 2;
+      return oper != null && oper.params() == 2;
    }
 
    public boolean isWithList() {
-      return expr != null && expr.params() == 99;
+      return oper != null && oper.params() == 99;
    }
 
    public boolean isIgnore() {
-      return expr != null && expr.ignore();
+      return oper != null && oper.ignore();
    }
 
    public int getSizeValues() {
@@ -144,6 +144,6 @@ public class Filter<T> implements Serializable {
       return new Filter<>(values);
    }
 
-   public static Filter IS_NULL = new Filter(Expr.isNull);
-   public static Filter NOT_NULL = new Filter(Expr.notNull);
+   public static Filter IS_NULL = new Filter(Operator.isNull);
+   public static Filter NOT_NULL = new Filter(Operator.notNull);
 }

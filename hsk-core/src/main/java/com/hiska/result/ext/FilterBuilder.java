@@ -28,18 +28,22 @@ public interface FilterBuilder<T> {
       return new FilterBuilderImpl(name);
    }
 
-   public static <T> FilterBuilder<T> create(Class<T> aEntity, Object oFilter) {
+   public static <T> FilterBuilder<T> create(Class<T> aEntity, DataFilter oFilter) {
       String name = Common.getEntityName(aEntity);
       FilterBuilder<T> builder = new FilterBuilderImpl(name);
-      builder.filter(oFilter);
+      builder.condition(oFilter.getCondition());
+      builder.pagination(oFilter.getPagination());
+      builder.sortable(oFilter.getSortable());
       return builder;
    }
 
-   public FilterBuilder<T> filter(Object oFilter);
+   public FilterBuilder<T> condition(Object oFilter);
 
    public FilterBuilder<T> appendEntry(String param, String[] names, Filter filter, boolean convertToParam);
 
    public FilterBuilder<T> pagination(Pagination pagination);
+
+   public FilterBuilder<T> sortable(Sortable sortable);
 
    public String createQuery();
 

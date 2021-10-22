@@ -34,6 +34,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
 
    private String source;
    private Pagination pagination;
+   private Sortable sortable;
    private String alias = "o";
    private final List<Entry<?>> entries = new ArrayList<>();
 
@@ -46,7 +47,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    }
 
    @Override
-   public FilterBuilder<T> filter(final Object oFilter) {
+   public FilterBuilder<T> condition(final Object oFilter) {
       if (oFilter != null) {
          Class cFilter = oFilter.getClass();
          List<FilterDefinition> items = FilterDefinition.get(cFilter);
@@ -84,19 +85,24 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    }
 
    @Override
+   public FilterBuilder<T> sortable(final Sortable value) {
+      sortable = new Sortable(value);
+      return this;
+   }
+
+   @Override
    public String createQuery() {
       StringBuilder queryString = new StringBuilder();
       queryString.append("SELECT ").append(alias)
             .append("\n  FROM ").append(source).append(" ").append(alias);
       appendWhere(queryString);
-      if (pagination != null && pagination.hasSort()) {
-         Pagination.Sort sort = pagination.getSort();
+      if (sortable != null && sortable.isValid()) {
          queryString.append("\nORDER BY ")
                .append(alias)
                .append(".")
-               .append(pagination.getAttr())
+               .append(sortable.getName())
                .append(" ")
-               .append(sort);
+               .append(sortable.getTypeString());
       }
       return queryString.toString();
    }
@@ -114,21 +120,21 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
          StringBuilder whereString = new StringBuilder();
          for (Entry entry : entries) {
             Filter filter = entry.filter;
-            Filter.Expr expr = filter.getExpr();
-            if (expr.ignore()) {
+            Filter.Operator oper = filter.getOper();
+            if (oper.ignore()) {
                continue;
             }
             whereString.append("(");
             for (String name : entry.names) {
                whereString.append("\n   ")
                      .append(alias).append(".").append(name)
-                     .append(" ").append(expr.oper());
-               if (expr.params() == 1) {
+                     .append(" ").append(oper.alias());
+               if (oper.params() == 1) {
                   whereString.append(" :").append(entry.param);
-               } else if (expr.params() == 2) {
+               } else if (oper.params() == 2) {
                   whereString.append(" :").append(entry.paramA);
                   whereString.append(" AND :").append(entry.paramB);
-               } else if (expr.params() == 99) {
+               } else if (oper.params() == 99) {
                   whereString.append(" (");
                   int size = filter.getSizeValues();
                   for (int i = 0; i < size; i++) {
@@ -192,7 +198,6 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
          if (pagination != null) {
             if (pagination.getLength() == -1) {
                int count = getCount(em).intValue();
-               System.out.println("---->" + count);
                int size = pagination.getSize();
                int length = count / size;
                if (length * size != count) {
@@ -221,8 +226,8 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    private void appendParameter(Query query) {
       for (Entry entry : entries) {
          Filter filter = entry.filter;
-         Filter.Expr expr = filter.getExpr();
-         if (expr == null || expr.params() <= 0) {
+         Filter.Operator oper = filter.getOper();
+         if (oper == null || oper.params() <= 0) {
             continue;
          }
          Object value = filter.getValue();
@@ -232,16 +237,16 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
             value = Param.of(value);
             other = Param.of(other);
          }
-         if (expr.params() == 1) {
-            if (expr == Filter.Expr.like) {
+         if (oper.params() == 1) {
+            if (oper == Filter.Operator.like) {
                query.setParameter(entry.param, "%" + value + "%");
             } else {
                query.setParameter(entry.param, value);
             }
-         } else if (expr.params() == 2) {
+         } else if (oper.params() == 2) {
             query.setParameter(entry.paramA, value);
             query.setParameter(entry.paramB, other);
-         } else if (expr.params() == 99) {
+         } else if (oper.params() == 99) {
             int size = filter.getSizeValues();
             for (int i = 0; i < size; i++) {
                Object valueIt = values.get(i);

@@ -30,16 +30,16 @@ import lombok.*;
 @SuppressWarnings("unchecked")
 public class HelpDefaultBean {
    private static final Logger LOGGER = Logger.getLogger(HelpDefaultBean.class.getName());
-   private static final List<SelectItem> STRING = asSelectItem(Filter.Expr.eq, Filter.Expr.neq, Filter.Expr.like);
-   private static final List<SelectItem> NUMBER = asSelectItem(Filter.Expr.eq, Filter.Expr.neq, Filter.Expr.bw);
-   private static final List<SelectItem> DATE = asSelectItem(Filter.Expr.eq, Filter.Expr.neq, Filter.Expr.bw);
-   private static final List<SelectItem> NULL = asSelectItem(Filter.Expr.isNull, Filter.Expr.notNull);
-   private static final List<SelectItem> INEQ = asSelectItem(Filter.Expr.lt, Filter.Expr.lte, Filter.Expr.gt, Filter.Expr.gte);
+   private static final List<SelectItem> STRING = asSelectItem(Filter.Operator.eq, Filter.Operator.neq, Filter.Operator.like);
+   private static final List<SelectItem> NUMBER = asSelectItem(Filter.Operator.eq, Filter.Operator.neq, Filter.Operator.bw);
+   private static final List<SelectItem> DATE = asSelectItem(Filter.Operator.eq, Filter.Operator.neq, Filter.Operator.bw);
+   private static final List<SelectItem> NULL = asSelectItem(Filter.Operator.isNull, Filter.Operator.notNull);
+   private static final List<SelectItem> INEQ = asSelectItem(Filter.Operator.lt, Filter.Operator.lte, Filter.Operator.gt, Filter.Operator.gte);
 
-   private static List<SelectItem> asSelectItem(Filter.Expr... es) {
+   private static List<SelectItem> asSelectItem(Filter.Operator... es) {
       List<SelectItem> values = new ArrayList<>();
-      for (Filter.Expr e : es) {
-         values.add(new SelectItem(e.name(), e.oper()));
+      for (Filter.Operator e : es) {
+         values.add(new SelectItem(e.name(), e.alias()));
       }
       return values;
    }
@@ -48,8 +48,8 @@ public class HelpDefaultBean {
       return value == null ? new Filter() : value;
    }
 
-   public Filter.Expr getFilterNone() {
-      return Filter.Expr.none;
+   public Filter.Operator getFilterNone() {
+      return Filter.Operator.none;
    }
 
    public Param getParamNone() {
@@ -161,13 +161,13 @@ public class HelpDefaultBean {
    }
 
    public void setEquals(Filter filter) {
-      filter.setExpr(Filter.Expr.eq);
+      filter.setOper(Filter.Operator.eq);
    }
 
    public void changeValue(Filter filter) {
       if (filter != null) {
          Object value = filter.getValue();
-         filter.setExpr(value == null ? Filter.Expr.none : Filter.Expr.eq);
+         filter.setOper(value == null ? Filter.Operator.none : Filter.Operator.eq);
       }
    }
 
