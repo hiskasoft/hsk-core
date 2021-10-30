@@ -24,7 +24,7 @@ public class Pagination implements Serializable {
    /**
     * Size Block Result
     */
-   private int size = 10;
+   private int size = 15;
    /**
     * Page Index
     */

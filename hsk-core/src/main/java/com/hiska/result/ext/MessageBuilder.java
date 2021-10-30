@@ -45,7 +45,7 @@ public class MessageBuilder {
    }
 
    public static Message createMessageFatal(Throwable root) {
-      return MessageBuilder.create("APP-9000: Exception no controlada")
+      return MessageBuilder.create("APP-5000: Exception no controlada")
             .description("Ha ocurrido una excepcion no controlada en el servidor")
             .exception(root)
             .get();
@@ -66,7 +66,7 @@ public class MessageBuilder {
    }
 
    public static MessageBuilder createPong(String name) {
-      return new MessageBuilder().text("APP-0000: Pong")
+      return new MessageBuilder().text("APP-2000: Pong")
             .description("Pong service name: " + name);
    }
 
