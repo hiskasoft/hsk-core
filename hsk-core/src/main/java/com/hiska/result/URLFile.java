@@ -32,8 +32,8 @@ import lombok.*;
 @AllArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
 public class URLFile implements Serializable {
+   private String url;
    private String action;
-   private String value;
    private byte[] content;
    private String contentType;
    private static final Pattern DATA = Pattern.compile("^data:([^;]*);([^,]*),(.*)$", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
@@ -53,7 +53,7 @@ public class URLFile implements Serializable {
                System.err.println("Not Support base: " + base);
             }
          } else {
-            urlFile.value = string;
+            urlFile.url = string;
          }
       } else if (value instanceof File) {
          try {
@@ -62,7 +62,7 @@ public class URLFile implements Serializable {
             urlFile.content = Files.readAllBytes(path);
             urlFile.contentType = Files.probeContentType(path);
          } catch (IOException e) {
-            urlFile.value = "ERROR";
+            urlFile.url = "ERROR";
             urlFile.contentType = "ERROR";
          }
       } else if (value instanceof URL) {
@@ -72,7 +72,7 @@ public class URLFile implements Serializable {
             urlFile.contentType = con.getContentType();
             urlFile.content = con.getInputStream().readAllBytes();
          } catch (IOException e) {
-            urlFile.value = "ERROR";
+            urlFile.url = "ERROR";
             urlFile.contentType = "ERROR";
          }
       } else if (value instanceof byte[]) {
@@ -84,7 +84,7 @@ public class URLFile implements Serializable {
 
    public static URLFile of(String value, byte[] content, String contentType) {
       URLFile urlFile = new URLFile();
-      urlFile.value = value;
+      urlFile.url = value;
       urlFile.content = content;
       urlFile.contentType = contentType;
       return urlFile;
@@ -92,7 +92,7 @@ public class URLFile implements Serializable {
 
    public static URLFile of(URLFile other) {
       URLFile urlFile = new URLFile();
-      urlFile.value = other.getValue();
+      urlFile.url = other.getUrl();
       urlFile.content = other.getContent();
       urlFile.contentType = other.getContentType();
       return urlFile;
@@ -100,19 +100,19 @@ public class URLFile implements Serializable {
 
    public static URLFile of(Option other) {
       URLFile urlFile = new URLFile();
-      urlFile.value = other.getValue();
+      urlFile.url = other.getValue();
       // urlFile.content = other.getContent();
       // urlFile.contentType = other.getContentType();
       return urlFile;
    }
 
    public static boolean isEquals(URLFile urlFile, String url) {
-      String value = urlFile == null ? null : urlFile.getValue();
+      String value = urlFile == null ? null : urlFile.getUrl();
       return url != null && url.equals(value);
    }
 
    public static boolean isNotIn(URLFile urlFile, String... urls) {
-      String value = urlFile == null ? null : urlFile.getValue();
+      String value = urlFile == null ? null : urlFile.getUrl();
       for (String str : urls) {
          if (str != null && str.equals(value)) {
             return false;
@@ -122,7 +122,7 @@ public class URLFile implements Serializable {
    }
 
    public static boolean isIn(URLFile urlFile, String... urls) {
-      String value = urlFile == null ? null : urlFile.getValue();
+      String value = urlFile == null ? null : urlFile.getUrl();
       for (String str : urls) {
          if (str != null && str.equals(value)) {
             return true;
@@ -132,12 +132,12 @@ public class URLFile implements Serializable {
    }
 
    public boolean isEquals(String url) {
-      return url != null && url.equals(value);
+      return url != null && url.equals(this.url);
    }
 
    public boolean isIn(String... urls) {
       for (String str : urls) {
-         if (str != null && str.equals(value)) {
+         if (str != null && str.equals(url)) {
             return true;
          }
       }
@@ -146,7 +146,7 @@ public class URLFile implements Serializable {
 
    public boolean isNotIn(String... urls) {
       for (String str : urls) {
-         if (str != null && str.equals(value)) {
+         if (str != null && str.equals(url)) {
             return false;
          }
       }
@@ -155,20 +155,20 @@ public class URLFile implements Serializable {
 
    @Override
    public String toString() {
-      return "URL:" + value;
+      return "URL:" + url;
    }
 
    @Override
    public boolean equals(Object o) {
       if (o instanceof URLFile) {
          URLFile param = (URLFile) o;
-         return value != null && value.equals(param.value);
+         return url != null && url.equals(param.url);
       } else if (o instanceof Option) {
          Option option = (Option) o;
-         return value != null && value.equals(option.getValue());
+         return url != null && url.equals(option.getValue());
       } else if (o instanceof String) {
          String string = (String) o;
-         return value != null && value.equals(string);
+         return url != null && url.equals(string);
       }
       return false;
    }
@@ -176,13 +176,13 @@ public class URLFile implements Serializable {
    @Override
    public int hashCode() {
       int hash = 5;
-      hash = 61 * hash + Objects.hashCode(value);
-      hash = 61 * hash + Objects.hashCode("URL:" + value);
+      hash = 61 * hash + Objects.hashCode(url);
+      hash = 61 * hash + Objects.hashCode("URL:" + url);
       return hash;
    }
 
    public void accept(URLFile other) {
-      value = other.value;
+      url = other.url;
       content = other.content;
       contentType = other.contentType;
    }

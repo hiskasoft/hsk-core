@@ -20,7 +20,7 @@ import javax.persistence.*;
 public class URLFileConverter implements AttributeConverter<URLFile, String> {
    @Override
    public String convertToDatabaseColumn(URLFile urlFile) {
-      return urlFile == null || urlFile == URLFile.NONE ? null : urlFile.getValue();
+      return urlFile == null || urlFile == URLFile.NONE ? null : urlFile.getUrl();
    }
 
    @Override
