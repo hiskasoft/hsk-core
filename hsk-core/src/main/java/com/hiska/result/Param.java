@@ -59,6 +59,18 @@ public class Param implements Serializable {
       return param;
    }
 
+   public static String asValue(Param param) {
+      return param == null ? null : param.getValue();
+   }
+
+   public static String asLabel(Param param) {
+      return param == null ? null : param.getLabel();
+   }
+
+   public static String asDescription(Param param) {
+      return param == null ? null : param.getDescription();
+   }
+
    public static boolean isEquals(Param param, String str) {
       String value = param == null ? null : param.getValue();
       return str != null && str.equals(value);

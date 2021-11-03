@@ -106,6 +106,22 @@ public class URLFile implements Serializable {
       return urlFile;
    }
 
+   public static String asUrl(URLFile urlFile) {
+      return urlFile == null ? null : urlFile.getUrl();
+   }
+
+   public static byte[] asContent(URLFile urlFile) {
+      return urlFile == null ? null : urlFile.getContent();
+   }
+
+   public static String asContentType(URLFile urlFile) {
+      return urlFile == null ? null : urlFile.getContentType();
+   }
+
+   public static String asAction(URLFile urlFile) {
+      return urlFile == null ? null : urlFile.getAction();
+   }
+
    public static boolean isEquals(URLFile urlFile, String url) {
       String value = urlFile == null ? null : urlFile.getUrl();
       return url != null && url.equals(value);
