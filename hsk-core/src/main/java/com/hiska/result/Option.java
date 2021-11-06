@@ -26,6 +26,7 @@ import lombok.*;
 public class Option implements Serializable {
    private String value;
    private String label;
+   private boolean disabled;
    private String description;
    private List<Option> children;
 
@@ -47,9 +48,10 @@ public class Option implements Serializable {
 
    public static Option of(Option other) {
       Option option = new Option();
-      option.value = other.getValue();
-      option.label = other.getLabel();
-      option.description = other.getDescription();
+      option.value = other.value;
+      option.label = other.label;
+      option.disabled = other.disabled;
+      option.description = other.description;
       return option;
    }
 

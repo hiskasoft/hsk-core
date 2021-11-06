@@ -28,8 +28,8 @@ public class ParamListConverter implements AttributeConverter<List<Param>, Strin
                .filter(it -> it != null)
                .map(it -> it.getValue())
                .filter(it -> it != null)
-               .forEach(v -> {
-                  result.append(v).append(";");
+               .forEach(it -> {
+                  result.append(it).append(";");
                });
       }
       return result.toString();

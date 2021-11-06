@@ -11,6 +11,7 @@
 package com.hiska.result;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import javax.xml.bind.annotation.*;
 import lombok.*;
@@ -25,6 +26,7 @@ import lombok.*;
 public class Param implements Serializable {
    private String value;
    private String label;
+   private boolean disabled;
    private String description;
 
    public static Param of(Object valor) {
@@ -32,7 +34,7 @@ public class Param implements Serializable {
    }
 
    public static Param of(String valor, String label) {
-      return new Param(valor, label, "DEFAULT_" + valor);
+      return new Param(valor, label, false, "DEFAULT_" + valor);
    }
 
    public static Param of(String valor, String label, String description) {
@@ -43,11 +45,21 @@ public class Param implements Serializable {
       return param;
    }
 
+   public static Param of(String valor, String label, boolean disabled, String description) {
+      Param param = new Param();
+      param.value = valor;
+      param.label = label;
+      param.disabled = disabled;
+      param.description = description;
+      return param;
+   }
+
    public static Param of(Param other) {
       Param param = new Param();
-      param.value = other.getValue();
-      param.label = other.getLabel();
-      param.description = other.getDescription();
+      param.value = other.value;
+      param.label = other.label;
+      param.disabled = other.disabled;
+      param.description = other.description;
       return param;
    }
 
@@ -55,6 +67,7 @@ public class Param implements Serializable {
       Param param = new Param();
       param.value = other.getValue();
       param.label = other.getLabel();
+      param.disabled = other.isDisabled();
       param.description = other.getDescription();
       return param;
    }
@@ -149,8 +162,10 @@ public class Param implements Serializable {
    public void accept(Param other) {
       value = other.value;
       label = other.label;
+      disabled = other.disabled;
       description = other.description;
    }
 
    public static final Param NONE = of("NONE");
+   public static final List<Param> NONES = List.of(NONE);
 }
