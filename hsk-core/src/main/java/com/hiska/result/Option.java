@@ -46,6 +46,15 @@ public class Option implements Serializable {
       return option;
    }
 
+   public static Option of(String value, String label, boolean disabled, String description) {
+      Option option = new Option();
+      option.value = value;
+      option.label = label;
+      option.disabled = disabled;
+      option.description = description;
+      return option;
+   }
+
    public static Option of(Option other) {
       Option option = new Option();
       option.value = other.value;

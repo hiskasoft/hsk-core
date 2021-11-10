@@ -109,6 +109,14 @@ public class Param implements Serializable {
       return false;
    }
 
+   public static boolean isNotInEnabled(Param param, String... strs) {
+      return isNotIn(param, strs) && !param.disabled;
+   }
+
+   public static boolean isInEnabled(Param param, String... strs) {
+      return isIn(param, strs) && !param.disabled;
+   }
+
    public boolean isEquals(String str) {
       return str != null && str.equals(value);
    }
