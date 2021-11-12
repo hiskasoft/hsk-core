@@ -19,7 +19,7 @@ import javax.ws.rs.HttpMethod;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@HttpMethod("CREATE")
+@HttpMethod("X-CREATE")
 @Documented
 public @interface CREATE {
 }

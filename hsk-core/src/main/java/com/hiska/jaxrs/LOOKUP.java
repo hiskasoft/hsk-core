@@ -19,7 +19,7 @@ import javax.ws.rs.HttpMethod;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@HttpMethod("LOOKUP")
+@HttpMethod("X-LOOKUP")
 @Documented
 public @interface LOOKUP {
 }

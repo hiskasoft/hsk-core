@@ -19,7 +19,7 @@ import javax.ws.rs.HttpMethod;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@HttpMethod("FILTER")
+@HttpMethod("X-FILTER")
 @Documented
 public @interface FILTER {
 }

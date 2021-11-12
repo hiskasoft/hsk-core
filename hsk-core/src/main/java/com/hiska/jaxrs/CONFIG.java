@@ -15,7 +15,7 @@ import javax.ws.rs.HttpMethod;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@HttpMethod("CONFIG")
+@HttpMethod("X-CONFIG")
 @Documented
 public @interface CONFIG {
 }

@@ -15,7 +15,7 @@ import javax.ws.rs.HttpMethod;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@HttpMethod("STATE")
+@HttpMethod("X-STATE")
 @Documented
 public @interface STATE {
 }

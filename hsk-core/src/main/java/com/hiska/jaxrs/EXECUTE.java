@@ -19,7 +19,7 @@ import javax.ws.rs.HttpMethod;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@HttpMethod("EXECUTE")
+@HttpMethod("X-EXECUTE")
 @Documented
 public @interface EXECUTE {
 }

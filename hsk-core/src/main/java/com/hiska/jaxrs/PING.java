@@ -19,7 +19,7 @@ import javax.ws.rs.HttpMethod;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@HttpMethod("GET")
+@HttpMethod("X-PING")
 @Documented
 public @interface PING {
 }

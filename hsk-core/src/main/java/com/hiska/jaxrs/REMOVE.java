@@ -19,7 +19,7 @@ import javax.ws.rs.HttpMethod;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@HttpMethod("REMOVE")
+@HttpMethod("X-REMOVE")
 @Documented
 public @interface REMOVE {
 }
