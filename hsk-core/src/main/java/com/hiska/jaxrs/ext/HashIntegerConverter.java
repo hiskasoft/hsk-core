@@ -1,6 +1,6 @@
-package com.hiska.result.ext;
+package com.hiska.jaxrs.ext;
 
-import com.hiska.result.HashInteger;
+import com.hiska.jaxrs.HashInteger;
 import javax.ws.rs.ext.ParamConverter;
 
 public class HashIntegerConverter implements ParamConverter<HashInteger>  {

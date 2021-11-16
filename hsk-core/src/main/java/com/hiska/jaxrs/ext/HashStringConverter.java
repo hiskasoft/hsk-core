@@ -1,6 +1,6 @@
-package com.hiska.result.ext;
+package com.hiska.jaxrs.ext;
 
-import com.hiska.result.HashString;
+import com.hiska.jaxrs.HashString;
 import javax.ws.rs.ext.ParamConverter;
 
 public class HashStringConverter implements ParamConverter<HashString>  {

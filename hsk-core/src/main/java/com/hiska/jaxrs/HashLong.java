@@ -1,4 +1,4 @@
-package com.hiska.result;
+package com.hiska.jaxrs;
 
 import java.io.Serializable;
 import lombok.*;

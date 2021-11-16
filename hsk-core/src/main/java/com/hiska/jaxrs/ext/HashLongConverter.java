@@ -1,6 +1,6 @@
-package com.hiska.result.ext;
+package com.hiska.jaxrs.ext;
 
-import com.hiska.result.HashLong;
+import com.hiska.jaxrs.HashLong;
 import javax.ws.rs.ext.ParamConverter;
 
 public class HashLongConverter implements ParamConverter<HashLong>  {

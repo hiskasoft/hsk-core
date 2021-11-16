@@ -8,9 +8,9 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.result;
+package com.hiska.jaxrs;
 
-import com.hiska.result.ext.DESConvert;
+import com.hiska.jaxrs.ext.DESConvert;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class HashAdapter extends XmlAdapter<String, Long> {

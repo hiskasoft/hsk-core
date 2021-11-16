@@ -8,7 +8,7 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.result.ext;
+package com.hiska.jaxrs.ext;
 
 import java.nio.charset.Charset;
 import java.security.InvalidKeyException;

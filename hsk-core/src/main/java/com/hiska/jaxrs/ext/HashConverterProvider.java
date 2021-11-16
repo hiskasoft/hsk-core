@@ -1,5 +1,8 @@
-package com.hiska.result.ext;
+package com.hiska.jaxrs.ext;
 
+import com.hiska.jaxrs.HashInteger;
+import com.hiska.jaxrs.HashString;
+import com.hiska.jaxrs.HashLong;
 import com.hiska.result.*;
 import javax.ws.rs.ext.ParamConverter;
 import javax.ws.rs.ext.ParamConverterProvider;

@@ -1,4 +1,4 @@
-package com.hiska.result;
+package com.hiska.jaxrs;
 
 import java.io.Serializable;
 import lombok.*;
@@ -7,8 +7,8 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class HashInteger implements Serializable {
+public class HashString implements Serializable {
 
-    public Integer value;
+    public String value;
 
 }
