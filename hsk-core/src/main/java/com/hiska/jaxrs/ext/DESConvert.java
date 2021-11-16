@@ -23,6 +23,7 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
 
 public class DESConvert {
    private static DESConvert instance;
@@ -59,7 +60,8 @@ public class DESConvert {
          cipher.init(Cipher.ENCRYPT_MODE, SECRET_KEY);
          byte[] valueBytes = value.getBytes(UTF8);
          valueBytes = cipher.doFinal(valueBytes);
-         return Base64.getEncoder().encodeToString(valueBytes);
+         String text = Base64.getEncoder().encodeToString(valueBytes);
+         return text.replace("/", "-");
       } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException ex) {
          throw new Exception("Error al ENCRYPT_MODE", ex);
       }
@@ -72,6 +74,7 @@ public class DESConvert {
       try {
          Cipher decipher = Cipher.getInstance("DESede");
          decipher.init(Cipher.DECRYPT_MODE, SECRET_KEY);
+         value = value.replace("-", "/");
          byte[] valueBytes = Base64.getDecoder().decode(value);
          valueBytes = decipher.doFinal(valueBytes);
          String valueText = new String(valueBytes, UTF8);

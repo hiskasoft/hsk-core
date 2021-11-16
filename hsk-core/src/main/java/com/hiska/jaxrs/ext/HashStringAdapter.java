@@ -10,27 +10,25 @@
  */
 package com.hiska.jaxrs.ext;
 
-import com.hiska.jaxrs.HashLong;
-import javax.ws.rs.ext.ParamConverter;
+import com.hiska.jaxrs.ext.DESConvert;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-public class HashLongConverter implements ParamConverter<HashLong> {
+public class HashStringAdapter extends XmlAdapter<String, String> {
    private final DESConvert convert = DESConvert.getInstance();
 
    @Override
-   public HashLong fromString(String param) {
-      if (param == null) {
+   public String unmarshal(String v) throws Exception {
+      if (v == null || v.isEmpty()) {
          return null;
       }
-      Long value = convert.forceDecode(param, Long::parseLong);
-      return new HashLong(value);
+      return convert.forceDecode(v, String::valueOf);
    }
 
    @Override
-   public String toString(HashLong param) {
-      if (param == null) {
+   public String marshal(String v) throws Exception {
+      if (v == null) {
          return null;
       }
-      Long value = param.getValue();
-      return convert.forceEncode(value, String::valueOf);
+      return convert.forceEncode(v, String::valueOf);
    }
 }
