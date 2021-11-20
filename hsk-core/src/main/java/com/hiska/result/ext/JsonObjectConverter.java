@@ -17,7 +17,7 @@ import javax.persistence.*;
 /**
  * @author Willyams Yujra
  */
-@Converter(autoApply = true)
+@Converter
 public class JsonObjectConverter implements AttributeConverter<JsonObject, String> {
    @Override
    public String convertToDatabaseColumn(JsonObject jo) {

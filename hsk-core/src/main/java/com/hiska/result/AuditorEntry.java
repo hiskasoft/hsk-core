@@ -8,15 +8,18 @@
  *  Copyright © 2020 HiskaSoft
  *  http://www.hiskasoft.com/licenses/LICENSE-2.0
  */
-package com.hiska.faces;
+package com.hiska.result;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.io.Serializable;
+import java.util.Date;
+import javax.xml.bind.annotation.*;
+import lombok.*;
 
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface ViewKeeped {
-   public String value();
+@Data
+@ToString
+@EqualsAndHashCode
+@XmlAccessorType(XmlAccessType.FIELD)
+public class AuditorEntry implements Serializable {
+   private Date at;
+   private String by;
 }

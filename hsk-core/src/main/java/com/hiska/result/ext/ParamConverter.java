@@ -12,11 +12,12 @@ package com.hiska.result.ext;
 
 import com.hiska.result.Param;
 import javax.persistence.*;
+import javax.persistence.*;
 
 /**
  * @author Willyams Yujra
  */
-@Converter(autoApply = true)
+@Converter
 public class ParamConverter implements AttributeConverter<Param, String> {
    @Override
    public String convertToDatabaseColumn(Param param) {

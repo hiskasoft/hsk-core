@@ -16,8 +16,8 @@ import javax.persistence.*;
 /**
  * @author Willyams Yujra
  */
-@Converter(autoApply = true)
-public class MapConverter implements AttributeConverter<Map<String, String>, String> {
+@Converter
+public class StringMapConverter implements AttributeConverter<Map<String, String>, String> {
    @Override
    public String convertToDatabaseColumn(Map<String, String> map) {
       StringBuilder result = new StringBuilder();

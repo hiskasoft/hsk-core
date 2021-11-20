@@ -18,7 +18,7 @@ import javax.persistence.*;
 /**
  * @author Willyams Yujra
  */
-@Converter(autoApply = true)
+@Converter
 public class ParamListConverter implements AttributeConverter<List<Param>, String> {
    @Override
    public String convertToDatabaseColumn(List<Param> paramList) {

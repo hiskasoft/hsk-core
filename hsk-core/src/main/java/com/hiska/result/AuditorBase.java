@@ -11,7 +11,6 @@
 package com.hiska.result;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.xml.bind.annotation.*;
 import lombok.*;
 
@@ -19,17 +18,9 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Auditor implements Serializable {
-   private Entry created;
-   private Entry updated;
-   private Entry deleted;
+public class AuditorBase implements Serializable {
+   private AuditorEntry created;
+   private AuditorEntry updated;
+   private AuditorEntry deleted;
    private Long version;
-
-   @Data
-   @ToString
-   @XmlAccessorType(XmlAccessType.FIELD)
-   public static class Entry {
-      private Date at;
-      private String by;
-   }
 }

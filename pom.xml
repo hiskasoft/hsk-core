@@ -18,7 +18,6 @@
     <modules>
         <module>hsk-core</module>
         <module>hsk-result</module>
-        <module>hsk-faces</module>
         <module>hsk-jaxrs</module>
     </modules>
     <licenses>
