@@ -117,7 +117,7 @@ public class ResultBuilder {
       return result;
    }
 
-   public <T> ResultPage<T> get(List<T> value, Pagination pagination) {
+   public <T> ResultPage<T> get(List<T> value, Pager pagination) {
       ResultPage resultPage = new ResultPage<>(result);
       resultPage.setPagination(pagination);
       resultPage.setValue(value);

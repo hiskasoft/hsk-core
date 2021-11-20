@@ -23,20 +23,19 @@ import lombok.Builder;
  */
 public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    @Builder
-   static class Entry<T> {
+   static class RuleEntry<T> {
       private final String param;
       private final String paramA;
       private final String paramB;
       private final String[] names;
       private final Filter<T> filter;
-      private final boolean convertToParam;
    }
 
    private String source;
-   private Pagination pagination;
-   private Sortable sortable;
-   private String alias = "o";
-   private final List<Entry<?>> entries = new ArrayList<>();
+   private Pager pager;
+   private Order order;
+   private String name = "o";
+   private final List<RuleEntry<?>> entries = new ArrayList<>();
 
    protected FilterBuilderImpl() {
       source = "DUAL";
@@ -47,31 +46,30 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    }
 
    @Override
-   public FilterBuilder<T> condition(final Object oFilter) {
+   public FilterBuilder<T> rules(final Object oFilter) {
       if (oFilter != null) {
          Class cFilter = oFilter.getClass();
          List<FilterDefinition> items = FilterDefinition.get(cFilter);
          items.stream()
                .forEach(item -> {
                   Filter filter = item.invokeGetter(oFilter);
-                  appendEntry(item.getParam(), item.getName(), filter, item.isConvertToParam());
+                  appendRule(item.getParam(), item.getName(), filter);
                });
-         Pagination oPagination = PaginationDefinition.getInstance(oFilter);
-         pagination(oPagination);
+         Pager oPager = PaginationDefinition.getInstance(oFilter);
+         pager(oPager);
       }
       return this;
    }
 
    @Override
-   public FilterBuilder<T> appendEntry(final String param, final String[] names, final Filter filter, boolean convertToParam) {
+   public FilterBuilder<T> appendRule(final String param, final String[] names, final Filter filter) {
       if (filter != null && !filter.isIgnore()) {
-         Entry entry = Entry.builder()
+         RuleEntry entry = RuleEntry.builder()
                .param(param)
                .paramA(param + "_A")
                .paramB(param + "_B")
                .names(names)
                .filter(filter)
-               .convertToParam(convertToParam)
                .build();
          entries.add(entry);
       }
@@ -79,30 +77,30 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    }
 
    @Override
-   public FilterBuilder<T> pagination(final Pagination value) {
-      pagination = new Pagination(value);
+   public FilterBuilder<T> pager(final Pager value) {
+      pager = new Pager(value);
       return this;
    }
 
    @Override
-   public FilterBuilder<T> sortable(final Sortable value) {
-      sortable = new Sortable(value);
+   public FilterBuilder<T> order(final Order value) {
+      order = new Order(value);
       return this;
    }
 
    @Override
    public String createQuery() {
       StringBuilder queryString = new StringBuilder();
-      queryString.append("SELECT ").append(alias)
-            .append("\n  FROM ").append(source).append(" ").append(alias);
+      queryString.append("SELECT ").append(name)
+            .append("\n  FROM ").append(source).append(" ").append(name);
       appendWhere(queryString);
-      if (sortable != null && sortable.isValid()) {
+      if (order != null && order.isValid()) {
          queryString.append("\nORDER BY ")
-               .append(alias)
+               .append(name)
                .append(".")
-               .append(sortable.getName())
+               .append(order.getName())
                .append(" ")
-               .append(sortable.getTypeString());
+               .append(order.getTypeString());
       }
       return queryString.toString();
    }
@@ -110,7 +108,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    @Override
    public String createQueryCount() {
       StringBuilder queryString = new StringBuilder();
-      queryString.append("SELECT COUNT(1)\n  FROM ").append(source).append(" ").append(alias);
+      queryString.append("SELECT COUNT(1)\n  FROM ").append(source).append(" ").append(name);
       appendWhere(queryString);
       return queryString.toString();
    }
@@ -118,7 +116,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    private void appendWhere(StringBuilder queryString) {
       if (!entries.isEmpty()) {
          StringBuilder whereString = new StringBuilder();
-         for (Entry entry : entries) {
+         for (RuleEntry entry : entries) {
             Filter filter = entry.filter;
             Filter.Operator oper = filter.getOper();
             if (oper.ignore()) {
@@ -127,7 +125,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
             whereString.append("(");
             for (String name : entry.names) {
                whereString.append("\n   ")
-                     .append(alias).append(".").append(name)
+                     .append(name).append(".").append(name)
                      .append(" ").append(oper.alias());
                if (oper.params() == 1) {
                   whereString.append(" :").append(entry.param);
@@ -176,11 +174,11 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
       String queryString = createQuery();
       Query query = em.createQuery(queryString);
       appendParameter(query);
-      if (pagination != null) {
-         int index = pagination.getIndex() - 1;
-         index = index * pagination.getSize();
+      if (pager != null) {
+         int index = pager.getIndex() - 1;
+         index = index * pager.getSize();
          query.setFirstResult(index);
-         query.setMaxResults(pagination.getSize());
+         query.setMaxResults(pager.getSize());
       }
       return query.getResultList();
    }
@@ -195,23 +193,23 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    public ResultPage<T> getResultPage(EntityManager em) {
       ResultPage<T> result = new ResultPage();
       try {
-         if (pagination != null) {
-            if (pagination.getLength() == -1) {
+         if (pager != null) {
+            if (pager.getLength() == -1) {
                int count = getCount(em).intValue();
-               int size = pagination.getSize();
+               int size = pager.getSize();
                int length = count / size;
                if (length * size != count) {
                   length++;
                }
-               pagination.setCount(count);
-               pagination.setLength(length);
+               pager.setCount(count);
+               pager.setLength(length);
             }
-            if (pagination.getIndex() > pagination.getLength()) {
-               pagination.setIndex(pagination.getLength());
+            if (pager.getIndex() > pager.getLength()) {
+               pager.setIndex(pager.getLength());
             }
          }
          List<T> list = getList(em);
-         result.setPagination(pagination);
+         result.setPagination(pager);
          result.setValue(list);
       } catch (Exception e) {
          LOGGER.log(Level.SEVERE, "EXCEPTION QUERY", e);
@@ -224,7 +222,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    }
 
    private void appendParameter(Query query) {
-      for (Entry entry : entries) {
+      for (RuleEntry entry : entries) {
          Filter filter = entry.filter;
          Filter.Operator oper = filter.getOper();
          if (oper == null || oper.params() <= 0) {
@@ -233,10 +231,6 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
          Object value = filter.getValue();
          Object other = filter.getOther();
          List values = filter.getValues();
-         if (entry.convertToParam) {
-            value = Param.of(value);
-            other = Param.of(other);
-         }
          if (oper.params() == 1) {
             if (oper == Filter.Operator.like) {
                query.setParameter(entry.param, "%" + value + "%");
@@ -250,9 +244,6 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
             int size = filter.getSizeValues();
             for (int i = 0; i < size; i++) {
                Object valueIt = values.get(i);
-               if (entry.convertToParam) {
-                  valueIt = Param.of(valueIt);
-               }
                query.setParameter(entry.param + "_" + i, valueIt);
             }
          }

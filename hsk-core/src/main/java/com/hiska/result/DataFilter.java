@@ -19,7 +19,7 @@ import lombok.*;
 @EqualsAndHashCode
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DataFilter<T> implements Serializable {
-   private T condition;
-   private Pagination pagination;
-   private Sortable sortable;
+   private T rules;
+   private Pager pager;
+   private Order order;
 }

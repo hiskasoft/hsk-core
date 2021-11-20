@@ -31,19 +31,19 @@ public interface FilterBuilder<T> {
    public static <T> FilterBuilder<T> create(Class<T> aEntity, DataFilter oFilter) {
       String name = Common.getEntityName(aEntity);
       FilterBuilder<T> builder = new FilterBuilderImpl(name);
-      builder.condition(oFilter.getCondition());
-      builder.pagination(oFilter.getPagination());
-      builder.sortable(oFilter.getSortable());
+      builder.rules(oFilter.getRules());
+      builder.pager(oFilter.getPager());
+      builder.order(oFilter.getOrder());
       return builder;
    }
 
-   public FilterBuilder<T> condition(Object oFilter);
+   public FilterBuilder<T> rules(Object oFilter);
 
-   public FilterBuilder<T> appendEntry(String param, String[] names, Filter filter, boolean convertToParam);
+   public FilterBuilder<T> appendRule(String param, String[] names, Filter filter);
 
-   public FilterBuilder<T> pagination(Pagination pagination);
+   public FilterBuilder<T> pager(Pager pager);
 
-   public FilterBuilder<T> sortable(Sortable sortable);
+   public FilterBuilder<T> order(Order order);
 
    public String createQuery();
 

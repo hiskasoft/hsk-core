@@ -10,7 +10,7 @@
  */
 package com.hiska.result.definition;
 
-import com.hiska.result.Pagination;
+import com.hiska.result.Pager;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ import java.util.Map;
 
 @lombok.Getter
 @lombok.ToString
-public class PaginationDefinition implements Definition<Pagination> {
+public class PaginationDefinition implements Definition<Pager> {
    private Method getter;
    private Method setter;
 //    public PaginationDefinition(Field field, FilterElement element) {
@@ -35,9 +35,9 @@ public class PaginationDefinition implements Definition<Pagination> {
          item = new PaginationDefinition();
          CACHE.put(aClass, item);
          for (Field field : Common.assertAllField(aClass)) {
-            if (field.getType().isAssignableFrom(Pagination.class)) {
+            if (field.getType().isAssignableFrom(Pager.class)) {
                item.getter = Common.assertGetter(field, aClass);
-               item.setter = Common.assertSetter(field, aClass, Pagination.class);
+               item.setter = Common.assertSetter(field, aClass, Pager.class);
                break;
             }
          }
@@ -45,12 +45,12 @@ public class PaginationDefinition implements Definition<Pagination> {
       return item;
    }
 
-   public static Pagination getInstance(Object aInstance) {
+   public static Pager getInstance(Object aInstance) {
       if (aInstance == null) {
-         return new Pagination();
-      } else if (aInstance instanceof Pagination) {
-         Pagination other = (Pagination) aInstance;
-         return new Pagination(other);
+         return new Pager();
+      } else if (aInstance instanceof Pager) {
+         Pager other = (Pager) aInstance;
+         return new Pager(other);
       } else {
          PaginationDefinition pd = get(aInstance.getClass());
          return pd.invokeGetter(aInstance);

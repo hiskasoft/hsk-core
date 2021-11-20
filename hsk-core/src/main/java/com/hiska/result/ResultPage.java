@@ -26,9 +26,9 @@ import lombok.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ResultPage<T> extends Result implements Serializable {
    /**
-    * Pagination Result
+    * Pager Result
     */
-   private Pagination pagination;
+   private Pager pagination;
    /**
     * List of Object
     */
@@ -46,7 +46,7 @@ public class ResultPage<T> extends Result implements Serializable {
       this.value = value;
    }
 
-   public ResultPage(final List<T> value, final Pagination pagination, final Result other) {
+   public ResultPage(final List<T> value, final Pager pagination, final Result other) {
       super(other);
       this.value = value;
       this.pagination = pagination;

@@ -31,11 +31,4 @@ public @interface FilterElement {
     * @return
     */
    public String param() default "#default";
-
-   /**
-    * Parameter name in the where clause
-    *
-    * @return
-    */
-   public boolean convertToParam() default false;
 }

@@ -24,14 +24,12 @@ import java.util.Map;
 public class FilterDefinition implements Definition<Filter> {
    private final String param;
    private final String[] name;
-   private final boolean convertToParam;
    private final Method getter;
    private final Method setter;
 
    public FilterDefinition(Field field, FilterElement element) {
       param = assertParamName(element.param(), field.getName());
       name = assertAttrNames(element.name(), field.getName());
-      convertToParam = element.convertToParam();
       getter = Common.assertGetter(field, field.getDeclaringClass());
       setter = Common.assertSetter(field, field.getDeclaringClass(), Filter.class);
    }

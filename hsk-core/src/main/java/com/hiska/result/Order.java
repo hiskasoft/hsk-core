@@ -20,7 +20,7 @@ import lombok.*;
 @Data
 @ToString
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Sortable implements Serializable {
+public class Order implements Serializable {
    public enum Type {
       asc,
       desc,
@@ -36,14 +36,14 @@ public class Sortable implements Serializable {
     */
    private Type type;
 
-   public static Sortable create(Sortable value) {
-      return new Sortable(value);
+   public static Order create(Order value) {
+      return new Order(value);
    }
 
-   public Sortable() {
+   public Order() {
    }
 
-   public Sortable(Sortable other) {
+   public Order(Order other) {
       if (other != null) {
          name = other.name;
          type = other.type;

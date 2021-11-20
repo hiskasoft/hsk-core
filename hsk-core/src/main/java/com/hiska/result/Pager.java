@@ -15,12 +15,12 @@ import javax.xml.bind.annotation.*;
 import lombok.*;
 
 /**
- * Pagination Filter
+ * Pager Filter
  */
 @Data
 @ToString
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Pagination implements Serializable {
+public class Pager implements Serializable {
    /**
     * Size Block Result
     */
@@ -46,14 +46,14 @@ public class Pagination implements Serializable {
     */
    private int indexTo = 0;
 
-   public static Pagination create(Pagination value) {
-      return new Pagination(value);
+   public static Pager create(Pager value) {
+      return new Pager(value);
    }
 
-   public Pagination() {
+   public Pager() {
    }
 
-   public Pagination(Pagination other) {
+   public Pager(Pager other) {
       if (other != null) {
          size = other.size;
          index = other.index;
