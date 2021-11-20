@@ -24,7 +24,7 @@ public class XxxRun {
       String jpsql;
       f1 = new XxxFilter();
       jpsql = FilterBuilder.create(XxxEntity.class)
-            .rules(f1)
+            .where(f1)
             .createQuery();
       space();
       System.out.println(jpsql);
@@ -35,7 +35,7 @@ public class XxxRun {
       f1.setCode(Filter.of(Param.of("01"), Param.of("01")));
       f1.setRef(Filter.of(Arrays.asList(1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L)));
       jpsql = FilterBuilder.create(XxxEntity.class)
-            .rules(f1)
+            .where(f1)
             .createQuery();
       space();
       System.out.println(jpsql);

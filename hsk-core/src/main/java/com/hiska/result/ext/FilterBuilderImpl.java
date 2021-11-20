@@ -46,7 +46,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    }
 
    @Override
-   public FilterBuilder<T> rules(final Object oFilter) {
+   public FilterBuilder<T> where(final Object oFilter) {
       if (oFilter != null) {
          Class cFilter = oFilter.getClass();
          List<FilterDefinition> items = FilterDefinition.get(cFilter);

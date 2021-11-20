@@ -31,13 +31,13 @@ public interface FilterBuilder<T> {
    public static <T> FilterBuilder<T> create(Class<T> aEntity, FilterWrap oFilter) {
       String name = Common.getEntityName(aEntity);
       FilterBuilder<T> builder = new FilterBuilderImpl(name);
-      builder.rules(oFilter.getRules());
+      builder.where(oFilter.getWhere());
       builder.pager(oFilter.getPager());
       builder.order(oFilter.getOrder());
       return builder;
    }
 
-   public FilterBuilder<T> rules(Object oFilter);
+   public FilterBuilder<T> where(Object oFilter);
 
    public FilterBuilder<T> appendRule(String param, String[] names, Filter filter);
 

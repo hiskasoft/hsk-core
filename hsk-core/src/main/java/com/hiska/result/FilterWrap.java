@@ -19,7 +19,7 @@ import lombok.*;
 @EqualsAndHashCode
 @XmlAccessorType(XmlAccessType.FIELD)
 public class FilterWrap<T> implements Serializable {
-   private T rules;
+   private T where;
    private Pager pager;
    private Order order;
 }
