@@ -28,7 +28,7 @@ public interface FilterBuilder<T> {
       return new FilterBuilderImpl(name);
    }
 
-   public static <T> FilterBuilder<T> create(Class<T> aEntity, DataFilter oFilter) {
+   public static <T> FilterBuilder<T> create(Class<T> aEntity, FilterWrap oFilter) {
       String name = Common.getEntityName(aEntity);
       FilterBuilder<T> builder = new FilterBuilderImpl(name);
       builder.rules(oFilter.getRules());

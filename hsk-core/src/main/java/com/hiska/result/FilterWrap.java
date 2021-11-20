@@ -18,7 +18,7 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 @XmlAccessorType(XmlAccessType.FIELD)
-public class DataFilter<T> implements Serializable {
+public class FilterWrap<T> implements Serializable {
    private T rules;
    private Pager pager;
    private Order order;
