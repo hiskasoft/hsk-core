@@ -11,13 +11,17 @@
 package com.hiska.result;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Map;
+import javax.xml.bind.annotation.*;
 import lombok.*;
 
 @Data
+@ToString
 @EqualsAndHashCode
-@ToString(includeFieldNames = false)
-public class AuditorEntry implements Serializable {
-   private Date at;
-   private String by;
+@XmlAccessorType(XmlAccessType.FIELD)
+public class FilterBase implements Serializable {
+
+    private Map<String, FilterEntry> where;
+    private Pager pager;
+    private Order order;
 }

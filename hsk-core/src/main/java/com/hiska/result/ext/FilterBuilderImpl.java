@@ -10,7 +10,7 @@
  */
 package com.hiska.result.ext;
 
-import com.hiska.result.Filter;
+import com.hiska.result.FilterEntry;
 import com.hiska.result.*;
 import com.hiska.result.definition.*;
 import java.util.*;
@@ -28,7 +28,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
       private final String paramA;
       private final String paramB;
       private final String[] names;
-      private final Filter<T> filter;
+      private final FilterEntry<T> filter;
    }
 
    private String source;
@@ -52,7 +52,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
          List<FilterDefinition> items = FilterDefinition.get(cFilter);
          items.stream()
                .forEach(item -> {
-                  Filter filter = item.invokeGetter(oFilter);
+                  FilterEntry filter = item.invokeGetter(oFilter);
                   appendRule(item.getParam(), item.getName(), filter);
                });
          Pager oPager = PaginationDefinition.getInstance(oFilter);
@@ -62,7 +62,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
    }
 
    @Override
-   public FilterBuilder<T> appendRule(final String param, final String[] names, final Filter filter) {
+   public FilterBuilder<T> appendRule(final String param, final String[] names, final FilterEntry filter) {
       if (filter != null && !filter.isIgnore()) {
          RuleEntry entry = RuleEntry.builder()
                .param(param)
@@ -117,8 +117,8 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
       if (!entries.isEmpty()) {
          StringBuilder whereString = new StringBuilder();
          for (RuleEntry entry : entries) {
-            Filter filter = entry.filter;
-            Filter.Operator oper = filter.getOper();
+            FilterEntry filter = entry.filter;
+            FilterEntry.Operator oper = filter.getOper();
             if (oper.ignore()) {
                continue;
             }
@@ -223,8 +223,8 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
 
    private void appendParameter(Query query) {
       for (RuleEntry entry : entries) {
-         Filter filter = entry.filter;
-         Filter.Operator oper = filter.getOper();
+         FilterEntry filter = entry.filter;
+         FilterEntry.Operator oper = filter.getOper();
          if (oper == null || oper.params() <= 0) {
             continue;
          }
@@ -232,7 +232,7 @@ public class FilterBuilderImpl<T> implements FilterBuilder<T> {
          Object other = filter.getOther();
          List values = filter.getValues();
          if (oper.params() == 1) {
-            if (oper == Filter.Operator.like) {
+            if (oper == FilterEntry.Operator.like) {
                query.setParameter(entry.param, "%" + value + "%");
             } else {
                query.setParameter(entry.param, value);

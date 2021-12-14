@@ -19,6 +19,7 @@
         <module>hsk-core</module>
         <module>hsk-result</module>
         <module>hsk-jaxrs</module>
+        <module>hsk-mp</module>
     </modules>
     <licenses>
         <license>

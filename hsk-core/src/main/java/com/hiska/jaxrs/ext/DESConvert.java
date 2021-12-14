@@ -99,4 +99,19 @@ public class DESConvert {
          return null;
       }
    }
+
+   public static Long forceDecodeLong(String value) {
+      DESConvert des = getInstance();
+      return des.forceDecode(value, Long::parseLong);
+   }
+
+   public static Integer forceDecodeInteger(String value) {
+      DESConvert des = getInstance();
+      return des.forceDecode(value, Integer::parseInt);
+   }
+
+   public static String forceDecodeString(String value) {
+      DESConvert des = getInstance();
+      return des.forceDecode(value, String::valueOf);
+   }
 }

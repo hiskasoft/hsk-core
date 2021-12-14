@@ -22,7 +22,7 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Filter<T> implements Serializable {
+public class FilterEntry<T> implements Serializable {
    public static enum Operator {
       none("", -1),
       eq("=", 1),
@@ -75,29 +75,29 @@ public class Filter<T> implements Serializable {
     */
    private List<T> values;
 
-   public Filter() {
+   public FilterEntry() {
    }
 
-   public Filter(Operator oper) {
+   public FilterEntry(Operator oper) {
       this.oper = oper;
    }
 
-   public Filter(T value) {
+   public FilterEntry(T value) {
       this(value, Operator.eq);
    }
 
-   public Filter(T value, Operator oper) {
+   public FilterEntry(T value, Operator oper) {
       this.value = value;
       this.oper = oper;
    }
 
-   public Filter(T value, T other) {
+   public FilterEntry(T value, T other) {
       this.value = value;
       this.other = other;
       this.oper = Operator.bw;
    }
 
-   public Filter(List<T> values) {
+   public FilterEntry(List<T> values) {
       this.values = values;
       this.oper = Operator.in;
    }
@@ -132,18 +132,18 @@ public class Filter<T> implements Serializable {
       return values == null ? 0 : values.size();
    }
 
-   public static <T> Filter<T> of(T value) {
-      return new Filter<>(value);
+   public static <T> FilterEntry<T> of(T value) {
+      return new FilterEntry<>(value);
    }
 
-   public static <T> Filter<T> of(T value, T other) {
-      return new Filter<>(value, other);
+   public static <T> FilterEntry<T> of(T value, T other) {
+      return new FilterEntry<>(value, other);
    }
 
-   public static <T> Filter<T> of(List<T> values) {
-      return new Filter<>(values);
+   public static <T> FilterEntry<T> of(List<T> values) {
+      return new FilterEntry<>(values);
    }
 
-   public static Filter IS_NULL = new Filter(Operator.isNull);
-   public static Filter NOT_NULL = new Filter(Operator.notNull);
+   public static FilterEntry IS_NULL = new FilterEntry(Operator.isNull);
+   public static FilterEntry NOT_NULL = new FilterEntry(Operator.notNull);
 }

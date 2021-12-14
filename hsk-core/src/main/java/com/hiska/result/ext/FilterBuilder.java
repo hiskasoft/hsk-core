@@ -39,7 +39,7 @@ public interface FilterBuilder<T> {
 
    public FilterBuilder<T> where(Object oFilter);
 
-   public FilterBuilder<T> appendRule(String param, String[] names, Filter filter);
+   public FilterBuilder<T> appendRule(String param, String[] names, FilterEntry filter);
 
    public FilterBuilder<T> pager(Pager pager);
 

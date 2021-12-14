@@ -10,7 +10,7 @@
  */
 package com.hiska.result.definition;
 
-import com.hiska.result.Filter;
+import com.hiska.result.FilterEntry;
 import com.hiska.result.ext.FilterElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -21,7 +21,7 @@ import java.util.Map;
 
 @lombok.Getter
 @lombok.ToString
-public class FilterDefinition implements Definition<Filter> {
+public class FilterDefinition implements Definition<FilterEntry> {
    private final String param;
    private final String[] name;
    private final Method getter;
@@ -31,7 +31,7 @@ public class FilterDefinition implements Definition<Filter> {
       param = assertParamName(element.param(), field.getName());
       name = assertAttrNames(element.name(), field.getName());
       getter = Common.assertGetter(field, field.getDeclaringClass());
-      setter = Common.assertSetter(field, field.getDeclaringClass(), Filter.class);
+      setter = Common.assertSetter(field, field.getDeclaringClass(), FilterEntry.class);
    }
 
    private static final Map<Class, List<FilterDefinition>> CACHE = new HashMap<>();

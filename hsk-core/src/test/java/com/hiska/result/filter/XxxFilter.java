@@ -10,7 +10,7 @@
  */
 package com.hiska.result.filter;
 
-import com.hiska.result.Filter;
+import com.hiska.result.FilterEntry;
 import com.hiska.result.ext.FilterElement;
 import com.hiska.result.Param;
 import lombok.Data;
@@ -21,13 +21,13 @@ import lombok.Data;
 @Data
 public class XxxFilter {
    @FilterElement
-   private Filter<Long> id;
+   private FilterEntry<Long> id;
    @FilterElement(name = {"col1", "col2", "col3"})
-   private Filter<String> col;
+   private FilterEntry<String> col;
    @FilterElement
-   private Filter<String> colName;
+   private FilterEntry<String> colName;
    @FilterElement
-   private Filter<Param> code;
+   private FilterEntry<Param> code;
    @FilterElement(name = {"other.ref", "ref"})
-   private Filter<Long> ref;
+   private FilterEntry<Long> ref;
 }
