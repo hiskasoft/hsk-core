@@ -1,0 +1,9 @@
+com.hiska.jaxrs.ext.MessageExceptionMapper
+com.hiska.jaxrs.ext.NotAllowedExceptionMapper
+com.hiska.jaxrs.ext.NotAuthorizedExceptionMapper
+com.hiska.jaxrs.ext.NotFoundExceptionMapper
+com.hiska.jaxrs.ext.ProcessingExceptionMapper
+com.hiska.jaxrs.ext.ResultExceptionMapper
+com.hiska.jaxrs.ext.ResultResponseFilter
+com.hiska.jaxrs.ext.ValidationExceptionMapper
+

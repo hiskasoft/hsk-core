@@ -20,8 +20,7 @@ import lombok.*;
 @EqualsAndHashCode
 @XmlAccessorType(XmlAccessType.FIELD)
 public class FilterBase implements Serializable {
-
-    private Map<String, FilterEntry> where;
-    private Pager pager;
-    private Order order;
+   private Map<String, FilterEntry> where;
+   private Pager pager;
+   private Order order;
 }

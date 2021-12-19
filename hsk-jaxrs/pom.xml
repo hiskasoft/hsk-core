@@ -50,7 +50,7 @@
                 </executions>
                 <configuration>
                     <attachSources>true</attachSources>
-                    <includes>com/hiska/jaxrs/**</includes>
+                    <includes>com/hiska/jaxrs/**,META-INF/services/**</includes>
                 </configuration>
             </plugin>
             <plugin>
@@ -69,6 +69,7 @@
                                 <resource>
                                     <directory>${basedir}/target/sources-dependency</directory>
                                     <includes>
+                                        <include>META-INF/services/javax.ws.rs.ext.Providers</include>
                                         <include>META-INF/resources/**/*.*</include>
                                         <include>**/*.properties</include>
                                     </includes>
